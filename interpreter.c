@@ -191,22 +191,23 @@ void doJump(MemoryPointingRegister* PC, const MemoryPointingRegister* dest, bool
 }
 void pushP(MemoryPointingRegister r, MemoryPointingRegister* SP, struct MemoryCell memory[MEMORY_SIZE]) {
   *SP = r;
-  SP += sizeof(MemoryPointingRegister);
+  SP += 1;
 }
 void pushC(struct MemoryCell c, MemoryPointingRegister* SP, struct MemoryCell memory[MEMORY_SIZE]) {
   *SP = c.data;
-  SP += sizeof(MemoryPointingRegister);
+  SP += 1;
 }
 
 void runOneIter(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct Instruction instr, struct MemoryCell memory[UINT16_MAX], struct MemoryCell registers[numGPRegs], struct Flags* flags, bool* out_overrodePC) {
   struct MemoryCell prev, *dest;
   bool doBr = false; // Whether to branch in a branch instruction
   bool spRelative = false;
+  printf("%" PRIu16 " ", instr.mnemonic);
   switch (instr.mnemonic) {
   case addi:
     prev = registers[instr.registerSelect];
-    printf("%" PRIu16 "\n", instr);
-    printf("%" PRIu16 "\n", instr.immediate);
+    printf("%" PRIu16 " ", instr);
+    printf("%" PRIu16 " ", instr.immediate);
     printf("%" PRIu16 "\n", instr.registerSelect);
     registers[instr.registerSelect].data += instr.immediate;
     updateFlagsForAdd(prev, prev, memoryCellFromImmediate(instr.immediate), &registers[instr.registerSelect], instr, memory, flags);
@@ -312,7 +313,7 @@ void runOneIter(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct I
     spRelative = instr.extraOperation == 1;
     *(memory+(spRelative ? *SP : 0)+dest->data) = registers[instr.registerSelect];
     if (spRelative) {
-      spRelative += sizeof(MemoryPointingRegister);
+      spRelative += 1;
     }
     break;
   case ldr:
@@ -324,7 +325,7 @@ void runOneIter(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct I
     spRelative = instr.extraOperation == 1;
     registers[instr.registerSelect] = *(memory+(spRelative ? *SP : 0)+dest->data);
     if (spRelative) {
-      spRelative -= sizeof(MemoryPointingRegister);
+      spRelative -= 1;
     }
     break;
   }
@@ -346,13 +347,16 @@ int main() {
   MemoryPointingRegister PC = {0};
   MemoryPointingRegister SP = {0};
   struct MemoryCell memory[MEMORY_SIZE] //= {0};
-    = {htobe16(0b0000000011111111)}; // Instructions and data memory
+    = {htobe16(0b0000000011111111),
+       htobe16(0b0000000010000000)}; // Instructions and data memory
+  //                         0000 -- the register
+  //                     1111 -- the 
   struct MemoryCell registers[numGPRegs] = {0};
   struct MemoryCell instr;
   struct Flags flags = {0};
   bool overrodePC;
   while ((nread = getline(&line, &len, stream)) != -1) {
-    printf("PC: %" PRIu16 "\n", PC);
+    //printf("PC: %" PRIu16 "\n", PC);
     if (PC > MEMORY_SIZE) {
       fprintf(stderr, "Out of bounds PC: %" PRIu16 "\n", PC);
       exit(1);
@@ -360,12 +364,13 @@ int main() {
     instr = memory[PC];
     overrodePC = false; // Assume false until `runOneIter` runs.
     runOneIter(&PC, &SP, instr.instr, memory, registers, &flags, &overrodePC);
+    printf("Flags: %" PRIu16 "\n", flags);
     printf("Registers:\nPC=%" PRIu16 ", SP=%" PRIu16 "\n", PC, SP);
     DumpHex(registers, sizeof(struct MemoryCell)*numGPRegs);
     puts("Memory:");
     DumpHex(memory, sizeof(struct MemoryCell)*64);
     if (!overrodePC) {
-      PC += sizeof(MemoryPointingRegister);
+      PC += 1;
     }
   }
   free(line);

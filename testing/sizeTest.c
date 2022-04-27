@@ -92,6 +92,11 @@ enum Condition: unsigned {
 
 
 int main() {
+  struct Instruction instr = {0};
+  //instr.registerSelect2 = 15;
+  instr.registerSelect3 = 15;
   printf("%zu, %zu, %zu, %zu\n", sizeof(struct Instruction), sizeof(struct Instruction2), sizeof(struct Instruction3), sizeof(struct MemoryCell));
   printf("%zu\n", sizeof(unsigned));
+
+  printf("%" PRIu16 "\n", instr);
 }
