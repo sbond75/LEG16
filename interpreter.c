@@ -8,6 +8,13 @@
 
 #include "tools.h"
 
+#ifdef __APPLE__
+#include "endian.h"
+#else
+#define _BSD_SOURCE             /* See feature_test_macros(7) */
+#include <endian.h>
+#endif
+
 // https://stackoverflow.com/questions/3437404/min-and-max-in-c
 #define max(a,b)             \
 ({                           \
@@ -25,7 +32,7 @@
 #define MEMORY_SIZE UINT16_MAX
 typedef unsigned Bit;
 typedef uint16_t MemoryPointingRegister; // A register that points at memory. (These registers can theoretically be only 8 bits instead of 16 in order to address more memory with each increment in address being another 16-bit jump in memory.)
-unsigned numGPRegs = 16; // Number of general-purpose registers
+const unsigned numGPRegs = 16; // Number of general-purpose registers
 
 struct Flags {
   // Each of these member variables are bits.
@@ -63,16 +70,18 @@ enum Condition: unsigned {
   cs=0b0101,
 };
 
+// To force compiler to use 1 byte packaging
+#pragma pack(1)
 struct Instruction {
   enum Mnemonic mnemonic: 4; // 4 bits for this
   union {
     unsigned registerSelect: 4;
     enum Condition condition: 4;
     union {
+      unsigned immediate: 8;
       struct {
 	union {
 	  unsigned registerSelect2: 4;
-	  unsigned immediate: 8;
 	};
 	union {
 	  unsigned registerSelect3: 4;
@@ -86,6 +95,7 @@ struct Instruction {
   };
 };
 
+#pragma pack(1)
 struct MemoryCell {
   union {
     union {
@@ -113,6 +123,7 @@ struct MemoryCell {
       unsigned bit_13: 1;
       unsigned bit_14: 1;
       unsigned bit_15: 1; // MSB for little-endian
+
       /* unsigned bit_16: 1; */
       /* unsigned bit_17: 1; */
       /* unsigned bit_18: 1; */
@@ -131,7 +142,9 @@ struct MemoryCell {
       /* unsigned bit_31: 1; */
     };
   };
-};
+}; //__attribute__((aligned (16))); // https://stackoverflow.com/questions/11160551/c-struct-force-extra-padding
+// "The second #pragma resets the pack value." ( https://stackoverflow.com/questions/24887459/c-c-struct-packing-not-working )
+#pragma pack()
 
 struct MemoryCell memoryCellFromImmediate(unsigned immediate) {
   struct MemoryCell mc = {.data=immediate};
@@ -184,53 +197,54 @@ void pushC(struct MemoryCell c, MemoryPointingRegister* SP, struct MemoryCell me
   SP += sizeof(MemoryPointingRegister);
 }
 
-void runOneIter(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct Instruction instr, struct MemoryCell memory[UINT16_MAX], struct Flags* flags, bool* out_overrodePC) {
+void runOneIter(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct Instruction instr, struct MemoryCell memory[UINT16_MAX], struct MemoryCell registers[numGPRegs], struct Flags* flags, bool* out_overrodePC) {
   struct MemoryCell prev, *dest;
   bool doBr = false; // Whether to branch in a branch instruction
   bool spRelative = false;
   switch (instr.mnemonic) {
   case addi:
-    prev = memory[instr.registerSelect];
-    memory[instr.registerSelect].data += instr.immediate;
-    updateFlagsForAdd(prev, prev, memoryCellFromImmediate(instr.immediate), &memory[instr.registerSelect], instr, memory, flags);
+    prev = registers[instr.registerSelect];
+    printf("%" PRIu16 "\n", instr);
+    registers[instr.registerSelect].data += instr.immediate;
+    updateFlagsForAdd(prev, prev, memoryCellFromImmediate(instr.immediate), &registers[instr.registerSelect], instr, memory, flags);
     break;
   case subi:
-    prev = memory[instr.registerSelect];
-    memory[instr.registerSelect].data -= instr.immediate;
-    updateFlagsForSub(prev, prev, memoryCellFromImmediate(instr.immediate), &memory[instr.registerSelect], instr, memory, flags);
+    prev = registers[instr.registerSelect];
+    registers[instr.registerSelect].data -= instr.immediate;
+    updateFlagsForSub(prev, prev, memoryCellFromImmediate(instr.immediate), &registers[instr.registerSelect], instr, memory, flags);
     break;
   case add:
     prev = memory[instr.registerSelect3];
-    memory[instr.registerSelect3].data = memory[instr.registerSelect].data + memory[instr.registerSelect2].data;
-    updateFlagsForAdd(prev, memory[instr.registerSelect], memory[instr.registerSelect2], &memory[instr.registerSelect3], instr, memory, flags);
+    registers[instr.registerSelect3].data = registers[instr.registerSelect].data + registers[instr.registerSelect2].data;
+    updateFlagsForAdd(prev, registers[instr.registerSelect], registers[instr.registerSelect2], &registers[instr.registerSelect3], instr, memory, flags);
     break;
   case sub:
-    prev = memory[instr.registerSelect3];
-    memory[instr.registerSelect3].data = memory[instr.registerSelect].data - memory[instr.registerSelect2].data;
-    updateFlagsForSub(prev, memory[instr.registerSelect], memory[instr.registerSelect2], &memory[instr.registerSelect3], instr, memory, flags);
+    prev = registers[instr.registerSelect3];
+    registers[instr.registerSelect3].data = registers[instr.registerSelect].data - registers[instr.registerSelect2].data;
+    updateFlagsForSub(prev, registers[instr.registerSelect], registers[instr.registerSelect2], &registers[instr.registerSelect3], instr, memory, flags);
     break;
   case xor:
-    prev = memory[instr.registerSelect3];
-    memory[instr.registerSelect3].data = memory[instr.registerSelect].data ^ memory[instr.registerSelect2].data;
-    updateFlagsForXor(prev, memory[instr.registerSelect], memory[instr.registerSelect2], &memory[instr.registerSelect3], instr, memory, flags);
+    prev = registers[instr.registerSelect3];
+    registers[instr.registerSelect3].data = registers[instr.registerSelect].data ^ registers[instr.registerSelect2].data;
+    updateFlagsForXor(prev, registers[instr.registerSelect], registers[instr.registerSelect2], &registers[instr.registerSelect3], instr, memory, flags);
     break;
   case and:
-    prev = memory[instr.registerSelect3];
-    memory[instr.registerSelect3].data = memory[instr.registerSelect].data & memory[instr.registerSelect2].data;
-    updateFlagsForAnd(prev, memory[instr.registerSelect], memory[instr.registerSelect2], &memory[instr.registerSelect3], instr, memory, flags);
+    prev = registers[instr.registerSelect3];
+    registers[instr.registerSelect3].data = registers[instr.registerSelect].data & registers[instr.registerSelect2].data;
+    updateFlagsForAnd(prev, registers[instr.registerSelect], registers[instr.registerSelect2], &registers[instr.registerSelect3], instr, memory, flags);
     break;
   case or:
-    prev = memory[instr.registerSelect3];
-    memory[instr.registerSelect3].data = memory[instr.registerSelect].data | memory[instr.registerSelect2].data;
-    updateFlagsForOr(prev, memory[instr.registerSelect], memory[instr.registerSelect2], &memory[instr.registerSelect3], instr, memory, flags);
+    prev = registers[instr.registerSelect3];
+    registers[instr.registerSelect3].data = registers[instr.registerSelect].data | registers[instr.registerSelect2].data;
+    updateFlagsForOr(prev, registers[instr.registerSelect], registers[instr.registerSelect2], &registers[instr.registerSelect3], instr, memory, flags);
     break;
   case sh:
     prev = memory[instr.registerSelect3];
-    memory[instr.registerSelect3].data = instr.immediate > 0 ? memory[instr.registerSelect].data >> memory[instr.immediate].data : memory[instr.registerSelect].data << -memory[instr.immediate].data;
-    updateFlagsForSh(prev, memory[instr.registerSelect], memory[instr.registerSelect2], &memory[instr.registerSelect3], instr, memory, flags);
+    registers[instr.registerSelect3].data = instr.immediate > 0 ? registers[instr.registerSelect].data >> registers[instr.immediate].data : registers[instr.registerSelect].data << -registers[instr.immediate].data;
+    updateFlagsForSh(prev, registers[instr.registerSelect], registers[instr.registerSelect2], &registers[instr.registerSelect3], instr, memory, flags);
     break;
   case set:
-    memory[instr.registerSelect].data = instr.extraOperation == 1 ? -memory[instr.registerSelect2].data : memory[instr.registerSelect2].data;
+    registers[instr.registerSelect].data = instr.extraOperation == 1 ? -registers[instr.registerSelect2].data : registers[instr.registerSelect2].data;
     break;
   case br:
     switch (instr.condition) {
@@ -258,14 +272,14 @@ void runOneIter(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct I
     }
     break;
   case brdnz:
-    doBr = (memory[instr.registerSelect].data != 0);
+    doBr = (registers[instr.registerSelect].data != 0);
     if (doBr) {
-      memory[instr.registerSelect].data -= 1;
+      registers[instr.registerSelect].data -= 1;
       doJump(PC, PC+instr.immediate, out_overrodePC);
     }
     break;
   case call:
-    dest = &memory[instr.registerSelect];
+    dest = &registers[instr.registerSelect];
     // dest points at the thing containing the address to jump to. *dest or dest->data points at the thing to jump to.
     if (dest->data > MEMORY_SIZE) {
       fprintf(stderr, "Out of bounds call: %" PRIu16 "\n", dest->data);
@@ -275,7 +289,7 @@ void runOneIter(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct I
     doJump(PC, (const MemoryPointingRegister *)memory+dest->data, out_overrodePC);
     break;
   case jmp:
-    dest = &memory[instr.registerSelect];
+    dest = &registers[instr.registerSelect];
     // dest points at the thing containing the address to jump to. *dest or dest->data points at the thing to jump to.
     if (dest->data > MEMORY_SIZE) {
       fprintf(stderr, "Out of bounds jmp: %" PRIu16 "\n", dest->data);
@@ -284,7 +298,7 @@ void runOneIter(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct I
     doJump(PC, (const MemoryPointingRegister *)memory+dest->data, out_overrodePC);
     break;
   case ldi:
-    memory[instr.registerSelect].data_lsbyte = instr.immediate;
+    registers[instr.registerSelect].data_lsbyte = instr.immediate;
     break;
   case str:
     dest = &memory[instr.registerSelect2];
@@ -293,19 +307,19 @@ void runOneIter(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct I
       exit(1);
     }
     spRelative = instr.extraOperation == 1;
-    *(memory+(spRelative ? *SP : 0)+dest->data) = memory[instr.registerSelect];
+    *(memory+(spRelative ? *SP : 0)+dest->data) = registers[instr.registerSelect];
     if (spRelative) {
       spRelative += sizeof(MemoryPointingRegister);
     }
     break;
   case ldr:
-    dest = &memory[instr.registerSelect];
+    dest = &memory[instr.registerSelect2];
     if (dest->data > MEMORY_SIZE) {
-      fprintf(stderr, "Out of bounds str instruction: %" PRIu16 "\n", dest->data);
+      fprintf(stderr, "Out of bounds ldr instruction: %" PRIu16 "\n", dest->data);
       exit(1);
     }
     spRelative = instr.extraOperation == 1;
-    *(memory+(spRelative ? *SP : 0)+dest->data) = memory[instr.registerSelect2];
+    registers[instr.registerSelect] = *(memory+(spRelative ? *SP : 0)+dest->data);
     if (spRelative) {
       spRelative -= sizeof(MemoryPointingRegister);
     }
@@ -313,7 +327,13 @@ void runOneIter(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct I
   }
 }
 
+static_assert(sizeof(struct MemoryCell) == sizeof(uint16_t), "incorrect size");
+//static_assert(sizeof(struct MemoryCell) >= sizeof(uint16_t), "incorrect size");
+
 int main() {
+  printf("%zu, %zu\n", sizeof(struct Instruction), sizeof(struct MemoryCell));
+  //printf("%zu\n", offsetof(struct Instruction, immediate)); // "error: cannot compute offset of bit-field 'immediate'"
+  
   // https://man7.org/linux/man-pages/man3/getline.3.html
   FILE *stream = stdin;
   char *line = NULL;
@@ -322,7 +342,9 @@ int main() {
 	   
   MemoryPointingRegister PC = {0};
   MemoryPointingRegister SP = {0};
-  struct MemoryCell memory[MEMORY_SIZE] = {0};
+  struct MemoryCell memory[MEMORY_SIZE] //= {0};
+    = {htobe16(0b0000000011111111)}; // Instructions and data memory
+  struct MemoryCell registers[numGPRegs] = {0};
   struct MemoryCell instr;
   struct Flags flags = {0};
   bool overrodePC;
@@ -333,8 +355,12 @@ int main() {
       exit(1);
     }
     instr = memory[PC];
-    runOneIter(&PC, &SP, instr.instr, memory, &flags, &overrodePC);
-    DumpHex(memory, 64);
+    overrodePC = false; // Assume false until `runOneIter` runs.
+    runOneIter(&PC, &SP, instr.instr, memory, registers, &flags, &overrodePC);
+    printf("Registers:\nPC=%" PRIu16 ", SP=%" PRIu16 "\n", PC, SP);
+    DumpHex(registers, sizeof(struct MemoryCell)*numGPRegs);
+    puts("Memory:");
+    DumpHex(memory, sizeof(struct MemoryCell)*8);
     if (!overrodePC) {
       PC += sizeof(MemoryPointingRegister);
     }
