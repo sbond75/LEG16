@@ -6,6 +6,8 @@
 #include <stdlib.h>
 #include <inttypes.h>
 
+#include "tools.h"
+
 // https://stackoverflow.com/questions/3437404/min-and-max-in-c
 #define max(a,b)             \
 ({                           \
@@ -169,8 +171,9 @@ void updateFlagsForSh(struct MemoryCell prev, struct MemoryCell arg1, struct Mem
 void updateFlagsForSet(struct MemoryCell prev, struct MemoryCell arg1, struct MemoryCell arg2, struct MemoryCell* res, struct Instruction instr, struct MemoryCell memory[MEMORY_SIZE], struct Flags* flags) {
   updateFlagsForXor(prev, arg1, arg2, res, instr, memory, flags);
 }
-void doJump(MemoryPointingRegister* PC, const MemoryPointingRegister* dest) {
+void doJump(MemoryPointingRegister* PC, const MemoryPointingRegister* dest, bool* out_overrodePC) {
   *PC = *dest;
+  *out_overrodePC = true;
 }
 void pushP(MemoryPointingRegister r, MemoryPointingRegister* SP, struct MemoryCell memory[MEMORY_SIZE]) {
   *SP = r;
@@ -181,7 +184,7 @@ void pushC(struct MemoryCell c, MemoryPointingRegister* SP, struct MemoryCell me
   SP += sizeof(MemoryPointingRegister);
 }
 
-void run(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct Instruction instr, struct MemoryCell memory[UINT16_MAX], struct Flags* flags) {
+void runOneIter(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct Instruction instr, struct MemoryCell memory[UINT16_MAX], struct Flags* flags, bool* out_overrodePC) {
   struct MemoryCell prev, *dest;
   bool doBr = false; // Whether to branch in a branch instruction
   bool spRelative = false;
@@ -251,14 +254,14 @@ void run(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct Instruct
       break;
     }
     if (doBr) {
-      doJump(PC, (PC+instr.immediate));
+      doJump(PC, (PC+instr.immediate), out_overrodePC);
     }
     break;
   case brdnz:
     doBr = (memory[instr.registerSelect].data != 0);
     if (doBr) {
       memory[instr.registerSelect].data -= 1;
-      doJump(PC, PC+instr.immediate);
+      doJump(PC, PC+instr.immediate, out_overrodePC);
     }
     break;
   case call:
@@ -269,7 +272,7 @@ void run(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct Instruct
       exit(1);
     }
     pushP(*PC, SP, memory); // Push a MemoryPointingRegister
-    doJump(PC, (const MemoryPointingRegister *)memory+dest->data);
+    doJump(PC, (const MemoryPointingRegister *)memory+dest->data, out_overrodePC);
     break;
   case jmp:
     dest = &memory[instr.registerSelect];
@@ -278,44 +281,64 @@ void run(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct Instruct
       fprintf(stderr, "Out of bounds jmp: %" PRIu16 "\n", dest->data);
       exit(1);
     }
-    doJump(PC, (const MemoryPointingRegister *)memory+dest->data);
+    doJump(PC, (const MemoryPointingRegister *)memory+dest->data, out_overrodePC);
     break;
-case ldi:
-  memory[instr.registerSelect].data_lsbyte = instr.immediate;
-  break;
-case str:
-  dest = &memory[instr.registerSelect2];
-  if (dest->data > MEMORY_SIZE) {
-    fprintf(stderr, "Out of bounds str instruction: %" PRIu16 "\n", dest->data);
-    exit(1);
+  case ldi:
+    memory[instr.registerSelect].data_lsbyte = instr.immediate;
+    break;
+  case str:
+    dest = &memory[instr.registerSelect2];
+    if (dest->data > MEMORY_SIZE) {
+      fprintf(stderr, "Out of bounds str instruction: %" PRIu16 "\n", dest->data);
+      exit(1);
+    }
+    spRelative = instr.extraOperation == 1;
+    *(memory+(spRelative ? *SP : 0)+dest->data) = memory[instr.registerSelect];
+    if (spRelative) {
+      spRelative += sizeof(MemoryPointingRegister);
+    }
+    break;
+  case ldr:
+    dest = &memory[instr.registerSelect];
+    if (dest->data > MEMORY_SIZE) {
+      fprintf(stderr, "Out of bounds str instruction: %" PRIu16 "\n", dest->data);
+      exit(1);
+    }
+    spRelative = instr.extraOperation == 1;
+    *(memory+(spRelative ? *SP : 0)+dest->data) = memory[instr.registerSelect2];
+    if (spRelative) {
+      spRelative -= sizeof(MemoryPointingRegister);
+    }
+    break;
   }
-  spRelative = instr.extraOperation == 1;
-  *(memory+(spRelative ? *SP : 0)+dest->data) = memory[instr.registerSelect];
-  if (spRelative) {
-    spRelative += sizeof(MemoryPointingRegister);
-  }
-  break;
-case ldr:
-  dest = &memory[instr.registerSelect];
-  if (dest->data > MEMORY_SIZE) {
-    fprintf(stderr, "Out of bounds str instruction: %" PRIu16 "\n", dest->data);
-    exit(1);
-  }
-  spRelative = instr.extraOperation == 1;
-  *(memory+(spRelative ? *SP : 0)+dest->data) = memory[instr.registerSelect2];
-  if (spRelative) {
-    spRelative -= sizeof(MemoryPointingRegister);
-  }
-  break;
-break;
-}
 }
 
 int main() {
-  MemoryPointingRegister PC;
-  MemoryPointingRegister SP;
-  struct MemoryCell memory[MEMORY_SIZE];
-
-  struct MemoryCell instr = memory[PC];
-  run(instr.instr);
+  // https://man7.org/linux/man-pages/man3/getline.3.html
+  FILE *stream = stdin;
+  char *line = NULL;
+  size_t len = 0;
+  ssize_t nread;
+	   
+  MemoryPointingRegister PC = {0};
+  MemoryPointingRegister SP = {0};
+  struct MemoryCell memory[MEMORY_SIZE] = {0};
+  struct MemoryCell instr;
+  struct Flags flags = {0};
+  bool overrodePC;
+  while ((nread = getline(&line, &len, stream)) != -1) {
+    printf("PC: %" PRIu16 "\n", PC);
+    if (PC > MEMORY_SIZE) {
+      fprintf(stderr, "Out of bounds PC: %" PRIu16 "\n", PC);
+      exit(1);
+    }
+    instr = memory[PC];
+    runOneIter(&PC, &SP, instr.instr, memory, &flags, &overrodePC);
+    DumpHex(memory, 64);
+    if (!overrodePC) {
+      PC += sizeof(MemoryPointingRegister);
+    }
+  }
+  free(line);
+  return 0;
 }
