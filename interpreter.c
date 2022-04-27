@@ -79,17 +79,18 @@ struct Instruction {
     enum Condition condition: 4;
     union {
       unsigned immediate: 8;
-      struct {
-	union {
-	  unsigned registerSelect2: 4;
-	};
-	union {
-	  unsigned registerSelect3: 4;
-	  struct {
-	    unsigned unused: 3;
-	    unsigned extraOperation: 1;
-	  };
-	};
+      union {
+        unsigned registerSelect2: 4;
+      };
+      union {
+        unsigned registerSelect3: 4;
+
+        unsigned extraOperation: 4;
+        // Bad: becomes size 1 byte:
+        /* struct { */
+        /*   unsigned unused: 3; */
+        /*   unsigned extraOperation: 1; */
+        /* }; */
       };
     };
   };
@@ -205,6 +206,8 @@ void runOneIter(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct I
   case addi:
     prev = registers[instr.registerSelect];
     printf("%" PRIu16 "\n", instr);
+    printf("%" PRIu16 "\n", instr.immediate);
+    printf("%" PRIu16 "\n", instr.registerSelect);
     registers[instr.registerSelect].data += instr.immediate;
     updateFlagsForAdd(prev, prev, memoryCellFromImmediate(instr.immediate), &registers[instr.registerSelect], instr, memory, flags);
     break;
@@ -331,7 +334,7 @@ static_assert(sizeof(struct MemoryCell) == sizeof(uint16_t), "incorrect size");
 //static_assert(sizeof(struct MemoryCell) >= sizeof(uint16_t), "incorrect size");
 
 int main() {
-  printf("%zu, %zu\n", sizeof(struct Instruction), sizeof(struct MemoryCell));
+  //printf("%zu, %zu\n", sizeof(struct Instruction), sizeof(struct MemoryCell));
   //printf("%zu\n", offsetof(struct Instruction, immediate)); // "error: cannot compute offset of bit-field 'immediate'"
   
   // https://man7.org/linux/man-pages/man3/getline.3.html
@@ -360,7 +363,7 @@ int main() {
     printf("Registers:\nPC=%" PRIu16 ", SP=%" PRIu16 "\n", PC, SP);
     DumpHex(registers, sizeof(struct MemoryCell)*numGPRegs);
     puts("Memory:");
-    DumpHex(memory, sizeof(struct MemoryCell)*8);
+    DumpHex(memory, sizeof(struct MemoryCell)*64);
     if (!overrodePC) {
       PC += sizeof(MemoryPointingRegister);
     }

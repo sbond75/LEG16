@@ -93,4 +93,5 @@ enum Condition: unsigned {
 
 int main() {
   printf("%zu, %zu, %zu, %zu\n", sizeof(struct Instruction), sizeof(struct Instruction2), sizeof(struct Instruction3), sizeof(struct MemoryCell));
+  printf("%zu\n", sizeof(unsigned));
 }
