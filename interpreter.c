@@ -2,6 +2,9 @@
 #include <assert.h>
 #include <stdio.h>
 #include <stdbool.h>
+#include <stddef.h>
+#include <stdlib.h>
+#include <inttypes.h>
 
 // https://stackoverflow.com/questions/3437404/min-and-max-in-c
 #define max(a,b)             \
@@ -17,6 +20,7 @@
     _a < _b ? _a : _b;       \
 })
 
+#define MEMORY_SIZE UINT16_MAX
 typedef unsigned Bit;
 typedef uint16_t MemoryPointingRegister; // A register that points at memory. (These registers can theoretically be only 8 bits instead of 16 in order to address more memory with each increment in address being another 16-bit jump in memory.)
 unsigned numGPRegs = 16; // Number of general-purpose registers
@@ -41,7 +45,7 @@ enum Mnemonic: unsigned {
   set=0b0010,
   br=0b1000,
   brdnz=0b0001,
-  brzOrPrint=0b1111,
+  call=0b1111,
   jmp=0b1001,
   ldi=0b0100,
   str=0b0101,
@@ -64,7 +68,10 @@ struct Instruction {
     enum Condition condition: 4;
     union {
       struct {
-	unsigned registerSelect2: 4;
+	union {
+	  unsigned registerSelect2: 4;
+	  unsigned immediate: 8;
+	};
 	union {
 	  unsigned registerSelect3: 4;
 	  struct {
@@ -73,14 +80,19 @@ struct Instruction {
 	  };
 	};
       };
-      unsigned immediate: 8;
     };
   };
 };
 
 struct MemoryCell {
   union {
-    uint16_t data;
+    union {
+      uint16_t data;
+      struct {
+	uint8_t data_lsbyte;
+	uint8_t data_msbyte;
+      };
+    };
     struct Instruction instr;
     struct {
       unsigned bit_0: 1; // LSB for little-endian
@@ -124,7 +136,7 @@ struct MemoryCell memoryCellFromImmediate(unsigned immediate) {
   return mc;
 }
 
-void updateFlagsForAdd(struct MemoryCell prev, struct MemoryCell arg1, struct MemoryCell arg2, struct MemoryCell* res, struct Instruction instr, struct MemoryCell memory[UINT8_MAX], struct Flags* flags) {
+void updateFlagsForAdd(struct MemoryCell prev, struct MemoryCell arg1, struct MemoryCell arg2, struct MemoryCell* res, struct Instruction instr, struct MemoryCell memory[MEMORY_SIZE], struct Flags* flags) {
   // Unsigned overflow (carry)
   flags->carryFlag = (res->data < min(arg1.data, arg2.data));// || (res->data == prev.data && instr.immediate != 0);
   // Zero flag
@@ -135,35 +147,44 @@ void updateFlagsForAdd(struct MemoryCell prev, struct MemoryCell arg1, struct Me
   flags->negativeFlag = res->bit_15 == 1; //res->data < 0;
   assert((res->bit_15 == 1) == (res->data < 0));
 }
-void updateFlagsForSub(struct MemoryCell prev, struct MemoryCell arg1, struct MemoryCell arg2, struct MemoryCell* res, struct Instruction instr, struct MemoryCell memory[UINT8_MAX], struct Flags* flags) {
+void updateFlagsForSub(struct MemoryCell prev, struct MemoryCell arg1, struct MemoryCell arg2, struct MemoryCell* res, struct Instruction instr, struct MemoryCell memory[MEMORY_SIZE], struct Flags* flags) {
   updateFlagsForAdd(prev, arg1, arg2, res, instr, memory, flags);
 }
-void updateFlagsForXor(struct MemoryCell prev, struct MemoryCell arg1, struct MemoryCell arg2, struct MemoryCell* res, struct Instruction instr, struct MemoryCell memory[UINT8_MAX], struct Flags* flags) {
+void updateFlagsForXor(struct MemoryCell prev, struct MemoryCell arg1, struct MemoryCell arg2, struct MemoryCell* res, struct Instruction instr, struct MemoryCell memory[MEMORY_SIZE], struct Flags* flags) {
   // Zero flag
   flags->zeroFlag = res->data == 0;
   // Negative flag
   flags->negativeFlag = res->bit_15 == 1; //res->data < 0;
   assert((res->bit_15 == 1) == (res->data < 0));
 }
-void updateFlagsForAnd(struct MemoryCell prev, struct MemoryCell arg1, struct MemoryCell arg2, struct MemoryCell* res, struct Instruction instr, struct MemoryCell memory[UINT8_MAX], struct Flags* flags) {
+void updateFlagsForAnd(struct MemoryCell prev, struct MemoryCell arg1, struct MemoryCell arg2, struct MemoryCell* res, struct Instruction instr, struct MemoryCell memory[MEMORY_SIZE], struct Flags* flags) {
   updateFlagsForXor(prev, arg1, arg2, res, instr, memory, flags);
 }
-void updateFlagsForOr(struct MemoryCell prev, struct MemoryCell arg1, struct MemoryCell arg2, struct MemoryCell* res, struct Instruction instr, struct MemoryCell memory[UINT8_MAX], struct Flags* flags) {
+void updateFlagsForOr(struct MemoryCell prev, struct MemoryCell arg1, struct MemoryCell arg2, struct MemoryCell* res, struct Instruction instr, struct MemoryCell memory[MEMORY_SIZE], struct Flags* flags) {
   updateFlagsForXor(prev, arg1, arg2, res, instr, memory, flags);
 }
-void updateFlagsForSh(struct MemoryCell prev, struct MemoryCell arg1, struct MemoryCell arg2, struct MemoryCell* res, struct Instruction instr, struct MemoryCell memory[UINT8_MAX], struct Flags* flags) {
+void updateFlagsForSh(struct MemoryCell prev, struct MemoryCell arg1, struct MemoryCell arg2, struct MemoryCell* res, struct Instruction instr, struct MemoryCell memory[MEMORY_SIZE], struct Flags* flags) {
   updateFlagsForXor(prev, arg1, arg2, res, instr, memory, flags);
 }
-void updateFlagsForSet(struct MemoryCell prev, struct MemoryCell arg1, struct MemoryCell arg2, struct MemoryCell* res, struct Instruction instr, struct MemoryCell memory[UINT8_MAX], struct Flags* flags) {
+void updateFlagsForSet(struct MemoryCell prev, struct MemoryCell arg1, struct MemoryCell arg2, struct MemoryCell* res, struct Instruction instr, struct MemoryCell memory[MEMORY_SIZE], struct Flags* flags) {
   updateFlagsForXor(prev, arg1, arg2, res, instr, memory, flags);
 }
-void doBranch(MemoryPointingRegister* PC, MemoryPointingRegister dest) {
-  PC = dest;
+void doJump(MemoryPointingRegister* PC, const MemoryPointingRegister* dest) {
+  *PC = *dest;
+}
+void pushP(MemoryPointingRegister r, MemoryPointingRegister* SP, struct MemoryCell memory[MEMORY_SIZE]) {
+  *SP = r;
+  SP += sizeof(MemoryPointingRegister);
+}
+void pushC(struct MemoryCell c, MemoryPointingRegister* SP, struct MemoryCell memory[MEMORY_SIZE]) {
+  *SP = c.data;
+  SP += sizeof(MemoryPointingRegister);
 }
 
-void run(MemoryPointingRegister* PC, struct Instruction instr, struct MemoryCell memory[UINT8_MAX], struct Flags* flags) {
-  struct MemoryCell prev;
+void run(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct Instruction instr, struct MemoryCell memory[UINT16_MAX], struct Flags* flags) {
+  struct MemoryCell prev, *dest;
   bool doBr = false; // Whether to branch in a branch instruction
+  bool spRelative = false;
   switch (instr.mnemonic) {
   case addi:
     prev = memory[instr.registerSelect];
@@ -230,29 +251,62 @@ void run(MemoryPointingRegister* PC, struct Instruction instr, struct MemoryCell
       break;
     }
     if (doBr) {
-      doBranch(PC, *PC+instr.immediate);
+      doJump(PC, (PC+instr.immediate));
     }
     break;
   case brdnz:
     doBr = (memory[instr.registerSelect].data != 0);
     if (doBr) {
       memory[instr.registerSelect].data -= 1;
-      doBranch(PC, *PC+instr.immediate);
+      doJump(PC, PC+instr.immediate);
     }
     break;
-  case brzOrPrint:
+  case call:
+    dest = &memory[instr.registerSelect];
+    // dest points at the thing containing the address to jump to. *dest or dest->data points at the thing to jump to.
+    if (dest->data > MEMORY_SIZE) {
+      fprintf(stderr, "Out of bounds call: %" PRIu16 "\n", dest->data);
+      exit(1);
+    }
+    pushP(*PC, SP, memory); // Push a MemoryPointingRegister
+    doJump(PC, (const MemoryPointingRegister *)memory+dest->data);
     break;
-case jmp:
-<#code#>
-break;
+  case jmp:
+    dest = &memory[instr.registerSelect];
+    // dest points at the thing containing the address to jump to. *dest or dest->data points at the thing to jump to.
+    if (dest->data > MEMORY_SIZE) {
+      fprintf(stderr, "Out of bounds jmp: %" PRIu16 "\n", dest->data);
+      exit(1);
+    }
+    doJump(PC, (const MemoryPointingRegister *)memory+dest->data);
+    break;
 case ldi:
-<#code#>
-break;
+  memory[instr.registerSelect].data_lsbyte = instr.immediate;
+  break;
 case str:
-<#code#>
-break;
+  dest = &memory[instr.registerSelect2];
+  if (dest->data > MEMORY_SIZE) {
+    fprintf(stderr, "Out of bounds str instruction: %" PRIu16 "\n", dest->data);
+    exit(1);
+  }
+  spRelative = instr.extraOperation == 1;
+  *(memory+(spRelative ? *SP : 0)+dest->data) = memory[instr.registerSelect];
+  if (spRelative) {
+    spRelative += sizeof(MemoryPointingRegister);
+  }
+  break;
 case ldr:
-<#code#>
+  dest = &memory[instr.registerSelect];
+  if (dest->data > MEMORY_SIZE) {
+    fprintf(stderr, "Out of bounds str instruction: %" PRIu16 "\n", dest->data);
+    exit(1);
+  }
+  spRelative = instr.extraOperation == 1;
+  *(memory+(spRelative ? *SP : 0)+dest->data) = memory[instr.registerSelect2];
+  if (spRelative) {
+    spRelative -= sizeof(MemoryPointingRegister);
+  }
+  break;
 break;
 }
 }
@@ -260,7 +314,7 @@ break;
 int main() {
   MemoryPointingRegister PC;
   MemoryPointingRegister SP;
-  struct MemoryCell memory[UINT8_MAX];
+  struct MemoryCell memory[MEMORY_SIZE];
 
   struct MemoryCell instr = memory[PC];
   run(instr.instr);
