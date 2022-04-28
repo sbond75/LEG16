@@ -53,7 +53,7 @@ enum Mnemonic: unsigned {
   and=0b1101,
   or=0b1110,
   sh=0b0110, // ✓
-  set=0b0010,
+  set=0b0010, // ✓
   br=0b1000,
   brdnz=0b0001,
   call=0b1111,
