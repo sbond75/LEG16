@@ -177,7 +177,7 @@ void updateFlagsForAdd(struct MemoryCell prev, struct MemoryCell arg1, struct Me
   flags->signedCarryFlag = arg1.bit_15 == arg2.bit_15 && res->bit_15 != arg1.bit_15/*arg1 or arg2 are the same at this point and we check if one of them is the opposite of res's bit 15*/; // A XNOR B XNOR (NOT C) where A and B are the sign bits of the two numbers being added, and C is the sign bit of the resulting number.
   // Negative flag
   flags->negativeFlag = res->bit_15 == 1; //res->data < 0;
-  //assert((res->bit_15 == 1) == (res->data < 0));
+  assert((res->bit_15 == 1) == (res->data < 0));
 }
 void updateFlagsForSub(struct MemoryCell prev, struct MemoryCell arg1, struct MemoryCell arg2, struct MemoryCell* res, struct Instruction instr, struct MemoryCell memory[MEMORY_SIZE], struct Flags* flags) {
   updateFlagsForAdd(prev, arg1, arg2, res, instr, memory, flags);
