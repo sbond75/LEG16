@@ -76,6 +76,7 @@ enum Condition: unsigned {
 // To force compiler to use 1 byte packaging
 #pragma pack(1)
 typedef uint8_t ImmediateType;
+typedef int8_t SignedImmediateType;
 // NOTE: this entire struct reads RIGHT (BOTTOM) to LEFT (TOP). the order is swapped essentially, due to endianness. (End of the struct is the start of the instruction)
 struct Instruction {
   union {
@@ -129,22 +130,22 @@ struct MemoryCell {
     };
     struct Instruction instr;
     struct {
-      unsigned bit_0: 1; // LSB for little-endian
-      unsigned bit_1: 1;
-      unsigned bit_2: 1;
-      unsigned bit_3: 1;
-      unsigned bit_4: 1;
-      unsigned bit_5: 1;
-      unsigned bit_6: 1;
-      unsigned bit_7: 1;
-      unsigned bit_8: 1;
-      unsigned bit_9: 1;
-      unsigned bit_10: 1;
-      unsigned bit_11: 1;
-      unsigned bit_12: 1;
-      unsigned bit_13: 1;
-      unsigned bit_14: 1;
       unsigned bit_15: 1; // MSB for little-endian
+      unsigned bit_14: 1;
+      unsigned bit_13: 1;
+      unsigned bit_12: 1;
+      unsigned bit_11: 1;
+      unsigned bit_10: 1;
+      unsigned bit_9: 1;
+      unsigned bit_8: 1;
+      unsigned bit_7: 1;
+      unsigned bit_6: 1;
+      unsigned bit_5: 1;
+      unsigned bit_4: 1;
+      unsigned bit_3: 1;
+      unsigned bit_2: 1;
+      unsigned bit_1: 1;
+      unsigned bit_0: 1; // LSB for little-endian
 
       /* unsigned bit_16: 1; */
       /* unsigned bit_17: 1; */
@@ -187,8 +188,8 @@ void updateFlagsForAdd(struct MemoryCell prev, struct MemoryCell arg1, struct Me
   // Signed carry flag
   flags->signedCarryFlag = arg1.bit_15 == arg2.bit_15 && res->bit_15 != arg1.bit_15/*arg1 or arg2 are the same at this point and we check if one of them is the opposite of res's bit 15*/; // A XNOR B XNOR (NOT C) where A and B are the sign bits of the two numbers being added, and C is the sign bit of the resulting number.
   // Negative flag
-  flags->negativeFlag = res->bit_15 == 1; //res->data < 0;
-  assert((res->bit_15 == 1) == (res->data < 0));
+  flags->negativeFlag = res->bit_15 == 1; // Nvm: res->data < 0;
+  // This is bad: assert((res->bit_15 == 1) == (res->data < 0));
 }
 void updateFlagsForSub(struct MemoryCell prev, struct MemoryCell arg1, struct MemoryCell arg2, struct MemoryCell* res, struct Instruction instr, struct MemoryCell memory[MEMORY_SIZE], struct Flags* flags) {
   updateFlagsForAdd(prev, arg1, arg2, res, instr, memory, flags);
@@ -197,8 +198,9 @@ void updateFlagsForXor(struct MemoryCell prev, struct MemoryCell arg1, struct Me
   // Zero flag
   flags->zeroFlag = res->data == 0;
   // Negative flag
-  flags->negativeFlag = res->bit_15 == 1; //res->data < 0;
-  assert((res->bit_15 == 1) == (res->data < 0));
+  printf("res: %" PRIu16 ", bit_15: %d\n", res, res->bit_15);
+  flags->negativeFlag = res->bit_15 == 1; // Nvm: res->data < 0;
+  // This is bad: assert((res->bit_15 == 1) == (res->data < 0));
 }
 void updateFlagsForAnd(struct MemoryCell prev, struct MemoryCell arg1, struct MemoryCell arg2, struct MemoryCell* res, struct Instruction instr, struct MemoryCell memory[MEMORY_SIZE], struct Flags* flags) {
   updateFlagsForXor(prev, arg1, arg2, res, instr, memory, flags);
@@ -212,8 +214,8 @@ void updateFlagsForSh(struct MemoryCell prev, struct MemoryCell arg1, struct Mem
 void updateFlagsForSet(struct MemoryCell prev, struct MemoryCell arg1, struct MemoryCell arg2, struct MemoryCell* res, struct Instruction instr, struct MemoryCell memory[MEMORY_SIZE], struct Flags* flags) {
   updateFlagsForXor(prev, arg1, arg2, res, instr, memory, flags);
 }
-void doJump(MemoryPointingRegister* PC, const MemoryPointingRegister* dest, bool* out_overrodePC) {
-  *PC = *dest;
+void doJump(MemoryPointingRegister* PC, MemoryPointingRegister dest, bool* out_overrodePC) {
+  *PC = dest;
   *out_overrodePC = true;
 }
 void pushP(MemoryPointingRegister r, MemoryPointingRegister* SP, struct MemoryCell memory[MEMORY_SIZE]) {
@@ -230,6 +232,7 @@ void runOneIter(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct I
   bool doBr = false; // Whether to branch in a branch instruction
   bool spRelative = false;
   ImmediateType imm;
+  SignedImmediateType immSigned;
   printf("%" PRIu16 " ", instr.mnemonic);
   switch (instr.mnemonic) {
   case addi:
@@ -287,6 +290,9 @@ void runOneIter(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct I
     registers[instr.registerSelect].data = instr.extraOperation == 1 ? -registers[instr.registerSelect2].data : registers[instr.registerSelect2].data;
     break;
   case br:
+    imm = is_msb_set_forUInt8(instr.immediate) ? (~instr.immediate + 1 // two's complement
+                                                  ) : (DataType)instr.immediate;
+    immSigned = (is_msb_set_forUInt8(instr.immediate) ? -imm : imm);
     switch (instr.condition) {
     case none:
       doBr = true;
@@ -311,14 +317,14 @@ void runOneIter(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct I
       break;
     }
     if (doBr) {
-      doJump(PC, (PC+instr.immediate), out_overrodePC);
+      doJump(PC, (*PC+immSigned), out_overrodePC);
     }
     break;
   case brdnz:
     doBr = (registers[instr.registerSelect].data != 0);
     if (doBr) {
       registers[instr.registerSelect].data -= 1;
-      doJump(PC, PC+instr.immediate, out_overrodePC);
+      doJump(PC, *PC+immSigned, out_overrodePC);
     }
     break;
   case call:
@@ -329,7 +335,7 @@ void runOneIter(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct I
       exit(1);
     }
     pushP(*PC, SP, memory); // Push a MemoryPointingRegister
-    doJump(PC, (const MemoryPointingRegister *)memory+dest->data, out_overrodePC);
+    doJump(PC, (MemoryPointingRegister)((uint8_t*)memory+dest->data), out_overrodePC);
     break;
   case jmp:
     dest = &registers[instr.registerSelect];
@@ -338,7 +344,7 @@ void runOneIter(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct I
       fprintf(stderr, "Out of bounds jmp: %" PRIu16 "\n", dest->data);
       exit(1);
     }
-    doJump(PC, (const MemoryPointingRegister *)memory+dest->data, out_overrodePC);
+    doJump(PC, (MemoryPointingRegister)((uint8_t*)memory+dest->data), out_overrodePC);
     break;
   case ldi:
     registers[instr.registerSelect].data_lsbyte = instr.immediate;
@@ -416,9 +422,17 @@ int main() {
     // r1 should be 0x007B (PC=15)
     0b0010000100100001, // set r1 to -r2
     // r1 should be 0xFF85 (PC=16)
+    0b1000000001100100, // br to 100
+    // (PC=117)
+    0b1101000100100011, // and r1, r2 into r3
+    // r3 should be 1
+    0b1110000100100011, // or r1, r2 into r3
+    // r3 should be 0xFFFF
   }; // Instructions and data memory
   //                         0000 -- the register
-  //                     1111 -- the 
+  //                     1111 -- the
+  memory[117] = memoryCellFromImmediate(0b1000000010011101); // Add a branch back to after the `br to 100` instruction
+  
   struct MemoryCell registers[numGPRegs] = {0};
   struct MemoryCell instr;
   struct Flags flags = {0};
