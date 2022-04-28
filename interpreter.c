@@ -130,22 +130,22 @@ struct MemoryCell {
     };
     struct Instruction instr;
     struct {
-      unsigned bit_15: 1; // MSB for little-endian
-      unsigned bit_14: 1;
-      unsigned bit_13: 1;
-      unsigned bit_12: 1;
-      unsigned bit_11: 1;
-      unsigned bit_10: 1;
-      unsigned bit_9: 1;
-      unsigned bit_8: 1;
-      unsigned bit_7: 1;
-      unsigned bit_6: 1;
-      unsigned bit_5: 1;
-      unsigned bit_4: 1;
-      unsigned bit_3: 1;
-      unsigned bit_2: 1;
-      unsigned bit_1: 1;
       unsigned bit_0: 1; // LSB for little-endian
+      unsigned bit_1: 1;
+      unsigned bit_2: 1;
+      unsigned bit_3: 1;
+      unsigned bit_4: 1;
+      unsigned bit_5: 1;
+      unsigned bit_6: 1;
+      unsigned bit_7: 1;
+      unsigned bit_8: 1;
+      unsigned bit_9: 1;
+      unsigned bit_10: 1;
+      unsigned bit_11: 1;
+      unsigned bit_12: 1;
+      unsigned bit_13: 1;
+      unsigned bit_14: 1;
+      unsigned bit_15: 1; // MSB for little-endian
 
       /* unsigned bit_16: 1; */
       /* unsigned bit_17: 1; */
@@ -198,7 +198,7 @@ void updateFlagsForXor(struct MemoryCell prev, struct MemoryCell arg1, struct Me
   // Zero flag
   flags->zeroFlag = res->data == 0;
   // Negative flag
-  printf("res: %" PRIu16 ", bit_15: %d\n", res, res->bit_15);
+  printf("res: %" PRIu16 ", bit_15: %d\n", *res, res->bit_15);
   flags->negativeFlag = res->bit_15 == 1; // Nvm: res->data < 0;
   // This is bad: assert((res->bit_15 == 1) == (res->data < 0));
 }
