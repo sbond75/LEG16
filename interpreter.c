@@ -73,27 +73,42 @@ enum Condition: unsigned {
 // To force compiler to use 1 byte packaging
 #pragma pack(1)
 struct Instruction {
-  enum Mnemonic mnemonic: 4; // 4 bits for this
   union {
-    unsigned registerSelect: 4;
-    enum Condition condition: 4;
-    union {
-      unsigned immediate: 8;
-      union {
-        unsigned registerSelect2: 4;
-      };
-      union {
-        unsigned registerSelect3: 4;
-
-        unsigned extraOperation: 4;
-        // Bad: becomes size 1 byte:
-        /* struct { */
-        /*   unsigned unused: 3; */
-        /*   unsigned extraOperation: 1; */
-        /* }; */
-      };
+    struct {
+      enum Mnemonic mnemonic: 4; // 4 bits for this
+      unsigned registerSelect: 4;
+    };
+    struct {
+      enum Mnemonic mnemonic_: 4; // 4 bits for this
+      enum Condition condition: 4;
     };
   };
+  union {
+    unsigned immediate: 8;
+    struct {
+      unsigned registerSelect2: 4;
+      unsigned registerSelect3: 4;
+    };
+    struct {
+      unsigned registerSelect2_: 4;
+      unsigned unused: 3;
+      unsigned extraOperation: 1;
+    };
+
+      //unsigned extraOperation: 4;
+      // Bad: becomes size 1 byte:
+      /* struct {
+      /*   unsigned unused: 3; */
+      /*   unsigned extraOperation: 1; */
+      /* }; */
+  };
+};
+
+// maybe each element of a struct that's a struct or union must be at least 1 byte?
+struct Test1 {
+  unsigned registerSelect2_: 4;
+  unsigned unused: 3;
+  unsigned extraOperation: 1;
 };
 
 #pragma pack(1)
@@ -331,11 +346,11 @@ void runOneIter(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct I
   }
 }
 
-static_assert(sizeof(struct MemoryCell) == sizeof(uint16_t), "incorrect size");
+//static_assert(sizeof(struct MemoryCell) == sizeof(uint16_t), "incorrect size");
 //static_assert(sizeof(struct MemoryCell) >= sizeof(uint16_t), "incorrect size");
 
 int main() {
-  //printf("%zu, %zu\n", sizeof(struct Instruction), sizeof(struct MemoryCell));
+  printf("%zu, %zu, %zu\n", sizeof(struct Instruction), sizeof(struct Test1), sizeof(struct MemoryCell));
   //printf("%zu\n", offsetof(struct Instruction, immediate)); // "error: cannot compute offset of bit-field 'immediate'"
   
   // https://man7.org/linux/man-pages/man3/getline.3.html
