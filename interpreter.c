@@ -74,28 +74,19 @@ enum Condition: unsigned {
 
 // To force compiler to use 1 byte packaging
 #pragma pack(1)
+// NOTE: this entire struct reads RIGHT (BOTTOM) to LEFT (TOP). the order is swapped essentially, due to endianness. (End of the struct is the start of the instruction)
 struct Instruction {
   union {
     struct {
-      enum Mnemonic mnemonic: 4; // 4 bits for this
-      unsigned registerSelect: 4;
-    };
-    struct {
-      enum Mnemonic mnemonic_: 4; // 4 bits for this
-      enum Condition condition: 4;
-    };
-  };
-  union {
-    unsigned immediate: 8;
-    struct {
-      unsigned registerSelect2: 4;
-      unsigned registerSelect3: 4;
-    };
-    struct {
-      unsigned registerSelect2_: 4;
-      unsigned unused: 3;
       unsigned extraOperation: 1;
+      unsigned unused: 3;
+      unsigned registerSelect2_: 4;
     };
+    struct {
+      unsigned registerSelect3: 4;
+      unsigned registerSelect2: 4;
+    };
+    unsigned immediate: 8;
 
       //unsigned extraOperation: 4;
       // Bad: becomes size 1 byte:
@@ -103,6 +94,16 @@ struct Instruction {
       /*   unsigned unused: 3; */
       /*   unsigned extraOperation: 1; */
       /* }; */
+  };
+  union {
+    struct {
+      enum Condition condition: 4;
+      enum Mnemonic mnemonic_: 4; // 4 bits for this
+    };
+    struct {
+      unsigned registerSelect: 4;
+      enum Mnemonic mnemonic: 4; // 4 bits for this
+    };
   };
 };
 
@@ -370,14 +371,14 @@ int main() {
   MemoryPointingRegister SP = {0};
   struct MemoryCell memory[MEMORY_SIZE] //= {0};
     = {
-    nibbleReverse(0b0000000011111111), // addi r0, 255
-    nibbleReverse(0b1010000011111111), // subi r0, 255
-    nibbleReverse(0b0111000100100011), // add r1, r2 into r3
-    nibbleReverse(0b0000000010000000), // addi r0, 128
-    nibbleReverse(0b0100000010011100), // ldi r0, 156
-    nibbleReverse(0b0100000110011101), // ldi r1, 157
-    nibbleReverse(0b0100001010011101), // ldi r2, 156
-    nibbleReverse(0b0111000100100011), // add r1, r2 into r3
+    (0b0000000011111111), // addi r0, 255
+    (0b1010000011111111), // subi r0, 255
+    (0b0111000100100011), // add r1, r2 into r3
+    (0b0000000010000000), // addi r0, 128
+    (0b0100000010011100), // ldi r0, 156
+    (0b0100000110011101), // ldi r1, 157
+    (0b0100001010011100), // ldi r2, 156
+    (0b0111000100100011), // add r1, r2 into r3
   }; // Instructions and data memory
   //                         0000 -- the register
   //                     1111 -- the 
