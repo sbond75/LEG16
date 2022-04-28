@@ -62,12 +62,13 @@ enum Mnemonic: unsigned {
 };
 
 enum Condition: unsigned {
-  sgz=0b0000,
-  slz=0b0001,
-  nz=0b0010,
-  z=0b0011,
-  cu=0b0100,
-  cs=0b0101,
+  none=0b0000,
+  sgz=0b0001,
+  slz=0b0010,
+  nz=0b0011,
+  z=0b0100,
+  cu=0b0101,
+  cs=0b0110,
 };
 
 // To force compiler to use 1 byte packaging
@@ -176,7 +177,7 @@ void updateFlagsForAdd(struct MemoryCell prev, struct MemoryCell arg1, struct Me
   flags->signedCarryFlag = arg1.bit_15 == arg2.bit_15 && res->bit_15 != arg1.bit_15/*arg1 or arg2 are the same at this point and we check if one of them is the opposite of res's bit 15*/; // A XNOR B XNOR (NOT C) where A and B are the sign bits of the two numbers being added, and C is the sign bit of the resulting number.
   // Negative flag
   flags->negativeFlag = res->bit_15 == 1; //res->data < 0;
-  assert((res->bit_15 == 1) == (res->data < 0));
+  //assert((res->bit_15 == 1) == (res->data < 0));
 }
 void updateFlagsForSub(struct MemoryCell prev, struct MemoryCell arg1, struct MemoryCell arg2, struct MemoryCell* res, struct Instruction instr, struct MemoryCell memory[MEMORY_SIZE], struct Flags* flags) {
   updateFlagsForAdd(prev, arg1, arg2, res, instr, memory, flags);
@@ -224,7 +225,7 @@ void runOneIter(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct I
     printf("%" PRIu16 " ", instr);
     printf("%" PRIu16 " ", instr.immediate);
     printf("%" PRIu16 "\n", instr.registerSelect);
-    registers[instr.registerSelect].data += instr.immediate;
+    registers[instr.registerSelect].data += (instr.immediate);
     updateFlagsForAdd(prev, prev, memoryCellFromImmediate(instr.immediate), &registers[instr.registerSelect], instr, memory, flags);
     break;
   case subi:
@@ -267,6 +268,9 @@ void runOneIter(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct I
     break;
   case br:
     switch (instr.condition) {
+    case none:
+      doBr = true;
+      break;
     case sgz:
       doBr = (!flags->negativeFlag && !flags->zeroFlag);
       break;
