@@ -7,6 +7,7 @@
 #include <inttypes.h>
 
 #include "tools.h"
+#include "nibble.h"
 
 #ifdef __APPLE__
 #include "endian.h"
@@ -43,8 +44,8 @@ struct Flags {
 };
 
 enum Mnemonic: unsigned {
-  addi=0b0000,
-  subi=0b1010,
+  addi=0b0000, // ✓
+  subi=0b1010, // ✓
   add=0b0111,
   sub=0b1011,
   xor=0b1100,
@@ -56,7 +57,7 @@ enum Mnemonic: unsigned {
   brdnz=0b0001,
   call=0b1111,
   jmp=0b1001,
-  ldi=0b0100,
+  ldi=0b0100, // ✓
   str=0b0101,
   ldr=0b0011,
 };
@@ -235,6 +236,8 @@ void runOneIter(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct I
     break;
   case add:
     prev = memory[instr.registerSelect3];
+    printf("reg1: %" PRIu16 "\n", registers[instr.registerSelect].data);
+    printf("reg2: %" PRIu16 "\n", registers[instr.registerSelect2].data);
     registers[instr.registerSelect3].data = registers[instr.registerSelect].data + registers[instr.registerSelect2].data;
     updateFlagsForAdd(prev, registers[instr.registerSelect], registers[instr.registerSelect2], &registers[instr.registerSelect3], instr, memory, flags);
     break;
@@ -366,8 +369,16 @@ int main() {
   MemoryPointingRegister PC = {0};
   MemoryPointingRegister SP = {0};
   struct MemoryCell memory[MEMORY_SIZE] //= {0};
-    = {htobe16(0b0000000011111111),
-       htobe16(0b0000000010000000)}; // Instructions and data memory
+    = {
+    nibbleReverse(0b0000000011111111), // addi r0, 255
+    nibbleReverse(0b1010000011111111), // subi r0, 255
+    nibbleReverse(0b0111000100100011), // add r1, r2 into r3
+    nibbleReverse(0b0000000010000000), // addi r0, 128
+    nibbleReverse(0b0100000010011100), // ldi r0, 156
+    nibbleReverse(0b0100000110011101), // ldi r1, 157
+    nibbleReverse(0b0100001010011101), // ldi r2, 156
+    nibbleReverse(0b0111000100100011), // add r1, r2 into r3
+  }; // Instructions and data memory
   //                         0000 -- the register
   //                     1111 -- the 
   struct MemoryCell registers[numGPRegs] = {0};
