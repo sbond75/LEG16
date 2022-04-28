@@ -411,6 +411,11 @@ int main() {
     // r2 should be 0x9C00 (PC=12)
     0b0110001011111000, // sh r2 left 8
     // r2 should be 0x0000 (PC=13)
+    0b0100001001111011, // ldi r2, 123
+    0b0010000100100000, // set r1 to r2
+    // r1 should be 0x007B (PC=15)
+    0b0010000100100001, // set r1 to -r2
+    // r1 should be 0xFF85 (PC=16)
   }; // Instructions and data memory
   //                         0000 -- the register
   //                     1111 -- the 
@@ -418,7 +423,7 @@ int main() {
   struct MemoryCell instr;
   struct Flags flags = {0};
   bool overrodePC;
-  MemoryPointingRegister runUpToThisPCWithoutUserInput = 13;
+  MemoryPointingRegister runUpToThisPCWithoutUserInput = 15;
   while (PC <= runUpToThisPCWithoutUserInput || (nread = getline(&line, &len, stream)) != -1) {
     //printf("PC: %" PRIu16 "\n", PC);
     if (PC > MEMORY_SIZE) {
