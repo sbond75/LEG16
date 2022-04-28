@@ -5,6 +5,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <inttypes.h>
+#include <limits.h>
 
 #include "tools.h"
 #include "nibble.h"
@@ -46,12 +47,12 @@ struct Flags {
 enum Mnemonic: unsigned {
   addi=0b0000, // ✓
   subi=0b1010, // ✓
-  add=0b0111,
-  sub=0b1011,
-  xor=0b1100,
+  add=0b0111, // ✓
+  sub=0b1011, // ✓
+  xor=0b1100, // ✓
   and=0b1101,
   or=0b1110,
-  sh=0b0110,
+  sh=0b0110, // ✓
   set=0b0010,
   br=0b1000,
   brdnz=0b0001,
@@ -74,6 +75,7 @@ enum Condition: unsigned {
 
 // To force compiler to use 1 byte packaging
 #pragma pack(1)
+typedef uint8_t ImmediateType;
 // NOTE: this entire struct reads RIGHT (BOTTOM) to LEFT (TOP). the order is swapped essentially, due to endianness. (End of the struct is the start of the instruction)
 struct Instruction {
   union {
@@ -86,7 +88,7 @@ struct Instruction {
       unsigned registerSelect3: 4;
       unsigned registerSelect2: 4;
     };
-    unsigned immediate: 8;
+    unsigned immediate: 8; // "also" has type ImmediateType
 
       //unsigned extraOperation: 4;
       // Bad: becomes size 1 byte:
@@ -115,10 +117,11 @@ struct Test1 {
 };
 
 #pragma pack(1)
+typedef uint16_t DataType;
 struct MemoryCell {
   union {
     union {
-      uint16_t data;
+      DataType data;
       struct {
 	uint8_t data_lsbyte;
 	uint8_t data_msbyte;
@@ -164,6 +167,12 @@ struct MemoryCell {
 }; //__attribute__((aligned (16))); // https://stackoverflow.com/questions/11160551/c-struct-force-extra-padding
 // "The second #pragma resets the pack value." ( https://stackoverflow.com/questions/24887459/c-c-struct-packing-not-working )
 #pragma pack()
+
+// https://codeforwin.org/2016/01/c-program-to-check-most-significant-bit-of-number-is-set-or-not.html
+bool is_msb_set_forUInt8(uint8_t value) {
+  // CHAR_BIT: "number of bits in a byte (macro constant)" ( https://en.cppreference.com/w/cpp/types/climits )
+  return (1 << (sizeof(uint8_t)*CHAR_BIT - 1)) & value;
+}
 
 struct MemoryCell memoryCellFromImmediate(unsigned immediate) {
   struct MemoryCell mc = {.data=immediate};
@@ -220,6 +229,7 @@ void runOneIter(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct I
   struct MemoryCell prev, *dest;
   bool doBr = false; // Whether to branch in a branch instruction
   bool spRelative = false;
+  ImmediateType imm;
   printf("%" PRIu16 " ", instr.mnemonic);
   switch (instr.mnemonic) {
   case addi:
@@ -263,8 +273,14 @@ void runOneIter(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct I
     updateFlagsForOr(prev, registers[instr.registerSelect], registers[instr.registerSelect2], &registers[instr.registerSelect3], instr, memory, flags);
     break;
   case sh:
-    prev = memory[instr.registerSelect3];
-    registers[instr.registerSelect3].data = instr.immediate > 0 ? registers[instr.registerSelect].data >> registers[instr.immediate].data : registers[instr.registerSelect].data << -registers[instr.immediate].data;
+    imm = is_msb_set_forUInt8(instr.immediate) ? (~instr.immediate + 1 // two's complement
+                                         ) : (DataType)instr.immediate;
+    fprintf(stderr, "A: %d %" PRIu16 "\n", is_msb_set_forUInt8(instr.immediate), imm);
+    if (imm > 8) {
+      fprintf(stderr, "Too large of a shift in sh instruction: %" PRIu16 "\n", imm);
+      exit(1);
+    }
+    registers[instr.registerSelect].data = is_msb_set_forUInt8(instr.immediate) ? registers[instr.registerSelect].data << imm : registers[instr.registerSelect].data >> imm;
     updateFlagsForSh(prev, registers[instr.registerSelect], registers[instr.registerSelect2], &registers[instr.registerSelect3], instr, memory, flags);
     break;
   case set:
@@ -371,14 +387,30 @@ int main() {
   MemoryPointingRegister SP = {0};
   struct MemoryCell memory[MEMORY_SIZE] //= {0};
     = {
-    (0b0000000011111111), // addi r0, 255
-    (0b1010000011111111), // subi r0, 255
-    (0b0111000100100011), // add r1, r2 into r3
-    (0b0000000010000000), // addi r0, 128
-    (0b0100000010011100), // ldi r0, 156
-    (0b0100000110011101), // ldi r1, 157
-    (0b0100001010011100), // ldi r2, 156
-    (0b0111000100100011), // add r1, r2 into r3
+    0b0000000011111111, // addi r0, 255
+    0b1010000011111111, // subi r0, 255
+    0b0111000100100011, // add r1, r2 into r3
+    0b0000000010000000, // addi r0, 128
+    0b0100000010011100, // ldi r0, 156
+    0b0100000110011101, // ldi r1, 157
+    0b0100001010011100, // ldi r2, 156
+    0b0111000100100011, // add r1, r2 into r3
+    0b1011001100010011, // sub r3, r1 into r3
+    0b1011001100100011, // sub r3, r2 into r3
+    // - r3 should be zero at this point. (PC=9 should show on the screen to check this)
+    // - zero flag should be set at this point. (Flags=2)
+    0b1100000100100011, // xor r1, r2 into r3
+    // r3 should be 1 at this point (PC=10)
+    // r0 should be 0x009C
+    // r1 should be 0x009D
+    // r2 should be 0x009C
+    0b0110000100001000, // sh r1 right 8
+    // r1 should be 0 (PC=11)
+    // Flags should = 2
+    0b0110001011111000, // sh r2 left 8
+    // r2 should be 0x9C00 (PC=12)
+    0b0110001011111000, // sh r2 left 8
+    // r2 should be 0x0000 (PC=13)
   }; // Instructions and data memory
   //                         0000 -- the register
   //                     1111 -- the 
@@ -386,7 +418,8 @@ int main() {
   struct MemoryCell instr;
   struct Flags flags = {0};
   bool overrodePC;
-  while ((nread = getline(&line, &len, stream)) != -1) {
+  MemoryPointingRegister runUpToThisPCWithoutUserInput = 13;
+  while (PC <= runUpToThisPCWithoutUserInput || (nread = getline(&line, &len, stream)) != -1) {
     //printf("PC: %" PRIu16 "\n", PC);
     if (PC > MEMORY_SIZE) {
       fprintf(stderr, "Out of bounds PC: %" PRIu16 "\n", PC);
