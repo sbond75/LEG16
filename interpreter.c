@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <inttypes.h>
 #include <limits.h>
+#include <string.h>
 
 #include "tools.h"
 #include "nibble.h"
@@ -38,10 +39,10 @@ const unsigned numGPRegs = 16; // Number of general-purpose registers
 
 struct Flags {
   // Each of these member variables are bits.
-  unsigned carryFlag: 1;
-  unsigned zeroFlag: 1;
-  unsigned signedCarryFlag: 1;
-  unsigned negativeFlag: 1;
+  unsigned carryFlag: 1; // 1
+  unsigned zeroFlag: 1; // 2
+  unsigned signedCarryFlag: 1; // 4
+  unsigned negativeFlag: 1; // 8
 };
 
 enum Mnemonic: unsigned {
@@ -195,6 +196,9 @@ void updateFlagsForSub(struct MemoryCell prev, struct MemoryCell arg1, struct Me
   updateFlagsForAdd(prev, arg1, arg2, res, instr, memory, flags);
 }
 void updateFlagsForXor(struct MemoryCell prev, struct MemoryCell arg1, struct MemoryCell arg2, struct MemoryCell* res, struct Instruction instr, struct MemoryCell memory[MEMORY_SIZE], struct Flags* flags) {
+  // Reset other flags
+  memset(flags, 0, sizeof(struct Flags));
+  
   // Zero flag
   flags->zeroFlag = res->data == 0;
   // Negative flag
@@ -427,7 +431,29 @@ int main() {
     0b1101000100100011, // and r1, r2 into r3
     // r3 should be 1
     0b1110000100100011, // or r1, r2 into r3
-    // r3 should be 0xFFFF
+    // r3 should be 0xFFFF (PC=19)
+    // Note: as a signed two's complement number, 0xFFFF = -1
+    0b1000000100001111, // brsgz to 15 // This shouldn't branch
+    // (PC=20)
+    0b1000001000000011, // brslz to 3 // This should branch
+    // (PC=21)
+    0b0000000010000000, // addi r0, 128 // This shouldn't execute
+    // (PC=22)
+    0b0000000010000000, // addi r0, 128 // This shouldn't execute
+    // (PC=23)
+    0b0000000000000010, // addi r0, 2 // This should execute
+    // (PC=24)
+    0b0111000100100011, // add r1, r2 into r3
+    // (PC=25)
+    0b1000010100000011, // brcu to 3 // This should branch
+    // (PC=26)
+    0b0000000010000000, // addi r0, 128 // This shouldn't execute
+    // (PC=27)
+    0b0000000010000000, // addi r0, 128 // This shouldn't execute
+    // (PC=28)
+    0b1000011000000011, // brcs to 3 // This should branch
+    0b0000000010000000, // addi r0, 128 // This shouldn't execute
+    0b0000000010000000, // addi r0, 128 // This shouldn't execute
   }; // Instructions and data memory
   //                         0000 -- the register
   //                     1111 -- the
