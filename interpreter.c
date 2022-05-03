@@ -65,13 +65,13 @@ enum Mnemonic: unsigned {
 };
 
 enum Condition: unsigned {
-  none=0b0000,
-  sgz=0b0001,
-  slz=0b0010,
-  nz=0b0011,
-  z=0b0100,
-  cu=0b0101,
-  cs=0b0110,
+  none=0b0000, // ✓
+  sgz=0b0001, // ✓
+  slz=0b0010, // ✓
+  nz=0b0011, // ✓
+  z=0b0100, // ✓
+  cu=0b0101, // ✓
+  cs=0b0110, // ✓
 };
 
 // To force compiler to use 1 byte packaging
@@ -94,7 +94,7 @@ struct Instruction {
 
       //unsigned extraOperation: 4;
       // Bad: becomes size 1 byte:
-      /* struct {
+      /* struct { */
       /*   unsigned unused: 3; */
       /*   unsigned extraOperation: 1; */
       /* }; */
@@ -181,19 +181,29 @@ struct MemoryCell memoryCellFromImmediate(unsigned immediate) {
   return mc;
 }
 
-void updateFlagsForAdd(struct MemoryCell prev, struct MemoryCell arg1, struct MemoryCell arg2, struct MemoryCell* res, struct Instruction instr, struct MemoryCell memory[MEMORY_SIZE], struct Flags* flags) {
-  // Unsigned overflow (carry)
-  flags->carryFlag = (res->data < min(arg1.data, arg2.data));// || (res->data == prev.data && instr.immediate != 0);
+void updateFlagsForAddAndSubCommon(struct MemoryCell prev, struct MemoryCell arg1, struct MemoryCell arg2, struct MemoryCell* res, struct Instruction instr, struct MemoryCell memory[MEMORY_SIZE], struct Flags* flags) {
   // Zero flag
   flags->zeroFlag = res->data == 0;
   // Signed carry flag
-  flags->signedCarryFlag = arg1.bit_15 == arg2.bit_15 && res->bit_15 != arg1.bit_15/*arg1 or arg2 are the same at this point and we check if one of them is the opposite of res's bit 15*/; // A XNOR B XNOR (NOT C) where A and B are the sign bits of the two numbers being added, and C is the sign bit of the resulting number.
+  printf("bit_15's: %d %d %d\n", arg1.bit_15, arg2.bit_15, res->bit_15);
+  flags->signedCarryFlag = arg1.bit_15 == arg2.bit_15 && res->bit_15 != arg1.bit_15/*arg1 or arg2's bit 15 are the same at this point and we check if one of them is the opposite of res's bit 15*/; // A XNOR B XNOR (NOT C) where A and B are the sign bits of the two numbers being added, and C is the sign bit of the resulting number.
   // Negative flag
   flags->negativeFlag = res->bit_15 == 1; // Nvm: res->data < 0;
   // This is bad: assert((res->bit_15 == 1) == (res->data < 0));
 }
+void updateFlagsForAdd_internal(struct MemoryCell prev, struct MemoryCell arg1, struct MemoryCell arg2, struct MemoryCell* res, struct Instruction instr, struct MemoryCell memory[MEMORY_SIZE], struct Flags* flags) {
+  // Unsigned overflow (carry)
+  flags->carryFlag = (res->data < max(arg1.data, arg2.data));// || (res->data == prev.data && instr.immediate != 0);
+}
+void updateFlagsForAdd(struct MemoryCell prev, struct MemoryCell arg1, struct MemoryCell arg2, struct MemoryCell* res, struct Instruction instr, struct MemoryCell memory[MEMORY_SIZE], struct Flags* flags) {
+  updateFlagsForAdd_internal(prev, arg1, arg2, res, instr, memory, flags);
+  updateFlagsForAddAndSubCommon(prev, arg1, arg2, res, instr, memory, flags);
+}
 void updateFlagsForSub(struct MemoryCell prev, struct MemoryCell arg1, struct MemoryCell arg2, struct MemoryCell* res, struct Instruction instr, struct MemoryCell memory[MEMORY_SIZE], struct Flags* flags) {
-  updateFlagsForAdd(prev, arg1, arg2, res, instr, memory, flags);
+  // Unsigned overflow (carry)
+  flags->carryFlag = (res->data > min(arg1.data, arg2.data));// || (res->data == prev.data && instr.immediate != 0);
+  
+  updateFlagsForAddAndSubCommon(prev, arg1, arg2, res, instr, memory, flags);
 }
 void updateFlagsForXor(struct MemoryCell prev, struct MemoryCell arg1, struct MemoryCell arg2, struct MemoryCell* res, struct Instruction instr, struct MemoryCell memory[MEMORY_SIZE], struct Flags* flags) {
   // Reset other flags
@@ -250,7 +260,7 @@ void runOneIter(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct I
   case subi:
     prev = registers[instr.registerSelect];
     registers[instr.registerSelect].data -= instr.immediate;
-    updateFlagsForSub(prev, prev, memoryCellFromImmediate(instr.immediate), &registers[instr.registerSelect], instr, memory, flags);
+    updateFlagsForSub(prev, prev, memoryCellFromImmediate(-instr.immediate), &registers[instr.registerSelect], instr, memory, flags);
     break;
   case add:
     prev = memory[instr.registerSelect3];
@@ -262,7 +272,7 @@ void runOneIter(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct I
   case sub:
     prev = registers[instr.registerSelect3];
     registers[instr.registerSelect3].data = registers[instr.registerSelect].data - registers[instr.registerSelect2].data;
-    updateFlagsForSub(prev, registers[instr.registerSelect], registers[instr.registerSelect2], &registers[instr.registerSelect3], instr, memory, flags);
+    updateFlagsForSub(prev, registers[instr.registerSelect], memoryCellFromImmediate(-(registers[instr.registerSelect2].data)), &registers[instr.registerSelect3], instr, memory, flags);
     break;
   case xor:
     prev = registers[instr.registerSelect3];
@@ -394,7 +404,8 @@ int main() {
   ssize_t nread;
 	   
   MemoryPointingRegister PC = {0};
-  MemoryPointingRegister SP = {0};
+  MemoryPointingRegister SP = {MEMORY_SIZE / 2}; // We initialize SP to halfway in the memory
+  MemoryPointingRegister SP_orig = SP;
   struct MemoryCell memory[MEMORY_SIZE] //= {0};
     = {
     0b0000000011111111, // addi r0, 255
@@ -451,9 +462,66 @@ int main() {
     // (PC=27)
     0b0000000010000000, // addi r0, 128 // This shouldn't execute
     // (PC=28)
+    0b1000011000000011, // brcs to 3 // This shouldn't branch
+    // (PC=29)
+    0b0000000010000000, // addi r0, 128 // This should execute
+    // (PC=30)
+    0b0000000010000000, // addi r0, 128 // This should execute
+    // (PC=31)
+    0b1010000010000000, // subi r0, 128
+    // (PC=32)
+    0b1010000010000000, // subi r0, 128
+    // (PC=33)
+    0b1010000010000000, // subi r0, 128
+    // (PC=34)
+    0b1010000010000000, // subi r0, 128
+    // (PC=35)
+    0b1010000010000000, // subi r0, 128
+    // (PC=36)
+    0b1010000010000000, // subi r0, 128
+    // (PC=37)
+    0b1010000010000000, // subi r0, 128
+    // (PC=38)
+    0b0110001011111000, // sh r2 left 8
+    // (PC=39)
+    0b1000010000000011, // brz to 3 // This should branch
+    // (PC=40)
+    0b0000000010000000, // addi r0, 128 // This shouldn't execute
+    // (PC=41)
+    0b0000000010000000, // addi r0, 128 // This shouldn't execute
+    // (PC=42)
+    0b0110000011111010, // sh r0 left 6
+    // (PC=43)
+    0b1010000011111111, // subi r0, 255
+    // (PC=44)
+    0b1010000011111111, // subi r0, 255
+    // (PC=45)
+    0b1010000011111111, // subi r0, 255
+    // (PC=46)
+    0b1010000011111111, // subi r0, 255
+    // (PC=47)
+    0b1010000011111111, // subi r0, 255
+    // (PC=48)
+    0b1010000011111111, // subi r0, 255
+    // (PC=49)
+    0b1010000011111111, // subi r0, 255
+    // (PC=50)
+    // r0 as an unsigned number=32903
+    0b1010000011111111, // subi r0, 255
+    // (PC=51)
+    // r0 as an unsigned number=32648 <-- notice that this just dipped below the absolute value of int16's min value (normally -32768) which is (absolute value): 32768 (or if it were addition, max value of 32767 would need to be surpassed). two's complement of 32648 is (-)32888 so is that the same as checking the unsigned? anyway I think it works..
     0b1000011000000011, // brcs to 3 // This should branch
+    // (PC=52)
     0b0000000010000000, // addi r0, 128 // This shouldn't execute
+    // (PC=53)
     0b0000000010000000, // addi r0, 128 // This shouldn't execute
+    // (PC=54)
+    0b1000001100000011, // brnz to 3 // This should branch
+    // (PC=55)
+    0b0000000010000000, // addi r0, 128 // This shouldn't execute
+    // (PC=56)
+    0b0000000010000000, // addi r0, 128 // This shouldn't execute
+    // (PC=57)
   }; // Instructions and data memory
   //                         0000 -- the register
   //                     1111 -- the
@@ -463,7 +531,7 @@ int main() {
   struct MemoryCell instr;
   struct Flags flags = {0};
   bool overrodePC;
-  MemoryPointingRegister runUpToThisPCWithoutUserInput = 15;
+  MemoryPointingRegister runUpToThisPCWithoutUserInput = 15;//28;//15;
   while (PC <= runUpToThisPCWithoutUserInput || (nread = getline(&line, &len, stream)) != -1) {
     //printf("PC: %" PRIu16 "\n", PC);
     if (PC > MEMORY_SIZE) {
@@ -478,6 +546,8 @@ int main() {
     DumpHex(registers, sizeof(struct MemoryCell)*numGPRegs);
     puts("Memory:");
     DumpHex(memory, sizeof(struct MemoryCell)*64);
+    puts("Stack:");
+    DumpHex((uint8_t*)memory+SP_orig, sizeof(struct MemoryCell)*64);
     if (!overrodePC) {
       PC += 1;
     }
