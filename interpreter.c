@@ -45,6 +45,7 @@ struct Flags {
   unsigned negativeFlag: 1; // 8
 };
 
+// Note: ✓ = this was tested
 enum Mnemonic: unsigned {
   addi=0b0000, // ✓
   subi=0b1010, // ✓
@@ -55,13 +56,13 @@ enum Mnemonic: unsigned {
   or=0b1110,
   sh=0b0110, // ✓
   set=0b0010, // ✓
-  br=0b1000,
-  brdnz=0b0001,
-  call=0b1111,
-  jmp=0b1001,
+  br=0b1000, // ✓
+  brdnz=0b0001, // ✓
+  call=0b1111, // ✓
+  jmp=0b1001, // ✓
   ldi=0b0100, // ✓
-  str=0b0101,
-  ldr=0b0011,
+  str=0b0101, // ✓
+  ldr=0b0011, // ✓
 };
 
 enum Condition: unsigned {
@@ -268,7 +269,7 @@ void runOneIter(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct I
     updateFlagsForSub(prev, prev, memoryCellFromImmediate(-instr.immediate), &registers[instr.registerSelect], instr, memory, flags);
     break;
   case add:
-    prev = memory[instr.registerSelect3];
+    prev = registers[instr.registerSelect3];
     printf("reg1: %" PRIu16 "\n", registers[instr.registerSelect].data);
     printf("reg2: %" PRIu16 "\n", registers[instr.registerSelect2].data);
     registers[instr.registerSelect3].data = registers[instr.registerSelect].data + registers[instr.registerSelect2].data;
@@ -342,6 +343,9 @@ void runOneIter(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct I
   case brdnz:
     doBr = (registers[instr.registerSelect].data != 0);
     if (doBr) {
+      imm = is_msb_set_forUInt8(instr.immediate) ? (~instr.immediate + 1 // two's complement
+                                                    ) : (DataType)instr.immediate;
+      immSigned = (is_msb_set_forUInt8(instr.immediate) ? -imm : imm);
       registers[instr.registerSelect].data -= 1;
       doJump(PC, (*PC+immSigned)*2, out_overrodePC);
     }
@@ -353,7 +357,7 @@ void runOneIter(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct I
       fprintf(stderr, "Out of bounds call: %" PRIu16 "\n", dest->data);
       exit(1);
     }
-    pushP(*PC*2, SP, memory); // Push a MemoryPointingRegister
+    pushP((*PC+1)*2, SP, memory); // Push a MemoryPointingRegister
     doJump(PC, (MemoryPointingRegister)(dest->data), out_overrodePC);
     break;
   case jmp:
@@ -369,8 +373,9 @@ void runOneIter(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct I
     registers[instr.registerSelect].data_lsbyte = instr.immediate;
     break;
   case str:
-    dest = &memory[instr.registerSelect2];
-    destMem = memoryCellFromImmediate((spRelative ? *SP : 0)+(spRelative ? 0 : dest->data));
+    dest = &registers[instr.registerSelect2]; // actually is source, not dest..
+    spRelative = instr.extraOperation == 1;
+    destMem = memoryCellFromImmediate((spRelative ? *SP*2 : 0)+(spRelative ? 0 : dest->data));
     if (destMem.data > MEMORY_SIZE) {
       fprintf(stderr, "Out of bounds str instruction: %" PRIu16 "\n", dest->data);
       exit(1);
@@ -380,7 +385,6 @@ void runOneIter(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct I
       fprintf(stderr, "Destination for str is not a multiple of %zu: %" PRIu16 "\n", sizeof(struct MemoryCell), destMem);
       exit(1);
     }
-    spRelative = instr.extraOperation == 1;
     printf("str instruction: %" PRIu16 " %" PRIu16 "\n", destMem, dest->data);
     memory[destMem.data/2] = registers[instr.registerSelect];
     if (spRelative) { // Post-increment
@@ -388,7 +392,7 @@ void runOneIter(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct I
     }
     break;
   case ldr:
-    dest = &memory[instr.registerSelect2];
+    dest = &registers[instr.registerSelect2];
     spRelative = instr.extraOperation == 1;
     if (spRelative) { // Pre-decrement
       *SP -= 1;
@@ -544,6 +548,25 @@ int main() {
     0b0000000100000001, // addi r1, 1
     // (PC=58)
     0b1111000100000000, // call r1 // This should execute, causing PC=32707
+    // (PC=59)
+    0b0000000100000001, // addi r1, 1 // This should execute, and r1 should be 121 after this instruction
+    // (PC=60)
+    0b0101000100000001, // str r1 at SP++
+    // (PC=61)
+    // r1 is 0x79
+    0b0100000100000010, // ldi r1, 2
+    // (PC=62)
+    // r1 is 0x2
+    0b0101000100010000, // str r1 at r1
+    // (PC=63)
+    // Memory: 2nd byte in raw hexdump should go from FF A0 to 02 00
+    0b0011000100010000, // ldr r1 from r1
+    // (PC=64)
+    // r1 is 0x2
+    0b0001000100000000, // brdnz r1 to 0 // Should jump to itself a bunch until r1 is 0
+    // (PC=65)
+    0b0001000110011100, // brdnz r1 to -100 // Shouldn't branch
+    // (PC=66)
   }; // Instructions and data memory
   //                         0000 -- the register
   //                     1111 -- the
