@@ -228,21 +228,26 @@ void updateFlagsForSh(struct MemoryCell prev, struct MemoryCell arg1, struct Mem
 void updateFlagsForSet(struct MemoryCell prev, struct MemoryCell arg1, struct MemoryCell arg2, struct MemoryCell* res, struct Instruction instr, struct MemoryCell memory[MEMORY_SIZE], struct Flags* flags) {
   updateFlagsForXor(prev, arg1, arg2, res, instr, memory, flags);
 }
-void doJump(MemoryPointingRegister* PC, MemoryPointingRegister dest, bool* out_overrodePC) {
-  *PC = dest;
+void doJump(MemoryPointingRegister* PC, MemoryPointingRegister dest // times 2
+            , bool* out_overrodePC) {
+  if (dest % sizeof(struct MemoryCell) != 0) {
+    fprintf(stderr, "Destination for jump is not a multiple of %zu: %" PRIu16 "\n", sizeof(struct MemoryCell), dest);
+    exit(1);
+  }
+  *PC = dest / 2;
   *out_overrodePC = true;
 }
 void pushP(MemoryPointingRegister r, MemoryPointingRegister* SP, struct MemoryCell memory[MEMORY_SIZE]) {
-  *SP = r;
-  SP += 1;
+  memory[*SP] = memoryCellFromImmediate(r);
+  *SP += 1;
 }
 void pushC(struct MemoryCell c, MemoryPointingRegister* SP, struct MemoryCell memory[MEMORY_SIZE]) {
-  *SP = c.data;
-  SP += 1;
+  memory[*SP] = c;
+  *SP += 1;
 }
 
 void runOneIter(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct Instruction instr, struct MemoryCell memory[UINT16_MAX], struct MemoryCell registers[numGPRegs], struct Flags* flags, bool* out_overrodePC) {
-  struct MemoryCell prev, *dest;
+  struct MemoryCell prev, *dest, destMem;
   bool doBr = false; // Whether to branch in a branch instruction
   bool spRelative = false;
   ImmediateType imm;
@@ -331,14 +336,14 @@ void runOneIter(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct I
       break;
     }
     if (doBr) {
-      doJump(PC, (*PC+immSigned), out_overrodePC);
+      doJump(PC, (*PC+immSigned)*2, out_overrodePC);
     }
     break;
   case brdnz:
     doBr = (registers[instr.registerSelect].data != 0);
     if (doBr) {
       registers[instr.registerSelect].data -= 1;
-      doJump(PC, *PC+immSigned, out_overrodePC);
+      doJump(PC, (*PC+immSigned)*2, out_overrodePC);
     }
     break;
   case call:
@@ -348,8 +353,8 @@ void runOneIter(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct I
       fprintf(stderr, "Out of bounds call: %" PRIu16 "\n", dest->data);
       exit(1);
     }
-    pushP(*PC, SP, memory); // Push a MemoryPointingRegister
-    doJump(PC, (MemoryPointingRegister)((uint8_t*)memory+dest->data), out_overrodePC);
+    pushP(*PC*2, SP, memory); // Push a MemoryPointingRegister
+    doJump(PC, (MemoryPointingRegister)(dest->data), out_overrodePC);
     break;
   case jmp:
     dest = &registers[instr.registerSelect];
@@ -358,34 +363,48 @@ void runOneIter(MemoryPointingRegister* PC, MemoryPointingRegister* SP, struct I
       fprintf(stderr, "Out of bounds jmp: %" PRIu16 "\n", dest->data);
       exit(1);
     }
-    doJump(PC, (MemoryPointingRegister)((uint8_t*)memory+dest->data), out_overrodePC);
+    doJump(PC, (MemoryPointingRegister)(dest->data), out_overrodePC);
     break;
   case ldi:
     registers[instr.registerSelect].data_lsbyte = instr.immediate;
     break;
   case str:
     dest = &memory[instr.registerSelect2];
-    if (dest->data > MEMORY_SIZE) {
+    destMem = memoryCellFromImmediate((spRelative ? *SP : 0)+(spRelative ? 0 : dest->data));
+    if (destMem.data > MEMORY_SIZE) {
       fprintf(stderr, "Out of bounds str instruction: %" PRIu16 "\n", dest->data);
       exit(1);
     }
+    // Check alignment
+    if (destMem.data % sizeof(struct MemoryCell) != 0) {
+      fprintf(stderr, "Destination for str is not a multiple of %zu: %" PRIu16 "\n", sizeof(struct MemoryCell), destMem);
+      exit(1);
+    }
     spRelative = instr.extraOperation == 1;
-    *(memory+(spRelative ? *SP : 0)+dest->data) = registers[instr.registerSelect];
-    if (spRelative) {
-      spRelative += 1;
+    printf("str instruction: %" PRIu16 " %" PRIu16 "\n", destMem, dest->data);
+    memory[destMem.data/2] = registers[instr.registerSelect];
+    if (spRelative) { // Post-increment
+      *SP += 1;
     }
     break;
   case ldr:
     dest = &memory[instr.registerSelect2];
-    if (dest->data > MEMORY_SIZE) {
+    spRelative = instr.extraOperation == 1;
+    if (spRelative) { // Pre-decrement
+      *SP -= 1;
+    }
+    destMem = memoryCellFromImmediate((spRelative ? *SP*2 : 0)+(spRelative ? 0 : dest->data));
+    // Check alignment
+    if (destMem.data % sizeof(struct MemoryCell) != 0) {
+      fprintf(stderr, "Source for ldr is not a multiple of %zu: %" PRIu16 "\n", sizeof(struct MemoryCell), destMem);
+      exit(1);
+    }
+    if (destMem.data > MEMORY_SIZE) {
       fprintf(stderr, "Out of bounds ldr instruction: %" PRIu16 "\n", dest->data);
       exit(1);
     }
-    spRelative = instr.extraOperation == 1;
-    registers[instr.registerSelect] = *(memory+(spRelative ? *SP : 0)+dest->data);
-    if (spRelative) {
-      spRelative -= 1;
-    }
+    printf("ldr instruction: %" PRIu16 " %" PRIu16 " %" PRIu16 "\n", destMem, dest->data, memory[destMem.data/2]);
+    registers[instr.registerSelect] = memory[destMem.data/2];
     break;
   }
 }
@@ -404,7 +423,7 @@ int main() {
   ssize_t nread;
 	   
   MemoryPointingRegister PC = {0};
-  MemoryPointingRegister SP = {MEMORY_SIZE / 2}; // We initialize SP to halfway in the memory
+  MemoryPointingRegister SP = {MEMORY_SIZE/sizeof(struct MemoryCell) / 2}; // We initialize SP to halfway in the memory
   MemoryPointingRegister SP_orig = SP;
   struct MemoryCell memory[MEMORY_SIZE] //= {0};
     = {
@@ -522,16 +541,22 @@ int main() {
     // (PC=56)
     0b0000000010000000, // addi r0, 128 // This shouldn't execute
     // (PC=57)
+    0b0000000100000001, // addi r1, 1
+    // (PC=58)
+    0b1111000100000000, // call r1 // This should execute, causing PC=32707
   }; // Instructions and data memory
   //                         0000 -- the register
   //                     1111 -- the
   memory[117] = memoryCellFromImmediate(0b1000000010011101); // Add a branch back to after the `br to 100` instruction
+  // Add a ret back to after the `call r1` instruction
+  memory[32707] = memoryCellFromImmediate(0b0011000100000001); // ldr r1 from --SP
+  memory[32708] = memoryCellFromImmediate(0b1001000100000000); // jmp r1
   
   struct MemoryCell registers[numGPRegs] = {0};
   struct MemoryCell instr;
   struct Flags flags = {0};
   bool overrodePC;
-  MemoryPointingRegister runUpToThisPCWithoutUserInput = 15;//28;//15;
+  MemoryPointingRegister runUpToThisPCWithoutUserInput = 57;//28;//15;
   while (PC <= runUpToThisPCWithoutUserInput || (nread = getline(&line, &len, stream)) != -1) {
     //printf("PC: %" PRIu16 "\n", PC);
     if (PC > MEMORY_SIZE) {
@@ -547,7 +572,7 @@ int main() {
     puts("Memory:");
     DumpHex(memory, sizeof(struct MemoryCell)*64);
     puts("Stack:");
-    DumpHex((uint8_t*)memory+SP_orig, sizeof(struct MemoryCell)*64);
+    DumpHex(memory+SP_orig, sizeof(struct MemoryCell)*64);
     if (!overrodePC) {
       PC += 1;
     }
