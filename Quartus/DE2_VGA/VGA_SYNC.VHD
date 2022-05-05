@@ -327,7 +327,8 @@ BEGIN
 	  
 		-- CPU --
 		-- runOneIter basically
-		
+		instr := memory(conv_integer(PC));
+		PC <= PC + 1;
 		-- --
 
 	  

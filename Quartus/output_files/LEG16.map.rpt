@@ -1,5 +1,5 @@
 Analysis & Synthesis report for LEG16
-Thu May  5 00:06:09 2022
+Thu May  5 00:10:07 2022
 Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
 
 
@@ -46,7 +46,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu May  5 00:06:09 2022       ;
+; Analysis & Synthesis Status        ; Successful - Thu May  5 00:10:07 2022       ;
 ; Quartus Prime Version              ; 21.1.0 Build 842 10/21/2021 SJ Lite Edition ;
 ; Revision Name                      ; LEG16                                       ;
 ; Top-level Entity Name              ; VGA_Test                                    ;
@@ -680,7 +680,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
-    Info: Processing started: Thu May  5 00:05:58 2022
+    Info: Processing started: Thu May  5 00:09:56 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off LEG16 -c LEG16
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -713,6 +713,8 @@ Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(99): used impli
 Warning (10036): Verilog HDL or VHDL warning at VGA_SYNC.VHD(102): object "enableSwitch" assigned a value but never read File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 102
 Warning (10036): Verilog HDL or VHDL warning at VGA_SYNC.VHD(104): object "distToCircleCenterSquared" assigned a value but never read File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 104
 Warning (10540): VHDL Signal Declaration warning at VGA_SYNC.VHD(108): used explicit default value for signal "SP" because signal was never assigned a value File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 108
+Warning (10540): VHDL Signal Declaration warning at VGA_SYNC.VHD(112): used explicit default value for signal "memory" because signal was never assigned a value File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 112
+Warning (10036): Verilog HDL or VHDL warning at VGA_SYNC.VHD(299): object "instr" assigned a value but never read File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 299
 Info (12128): Elaborating entity "video_PLL" for hierarchy "VGA_SYNC_module:U1|video_PLL:video_PLL_inst" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 286
 Info (12128): Elaborating entity "altpll" for hierarchy "VGA_SYNC_module:U1|video_PLL:video_PLL_inst|altpll:altpll_component" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/video_PLL.vhd Line: 132
 Info (12130): Elaborated megafunction instantiation "VGA_SYNC_module:U1|video_PLL:video_PLL_inst|altpll:altpll_component" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/video_PLL.vhd Line: 132
@@ -831,10 +833,10 @@ Info (21057): Implemented 53 device resources after synthesis - the final resour
     Info (21058): Implemented 23 input pins
     Info (21059): Implemented 29 output pins
     Info (21065): Implemented 1 PLLs
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 71 warnings
-    Info: Peak virtual memory: 670 megabytes
-    Info: Processing ended: Thu May  5 00:06:09 2022
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 73 warnings
+    Info: Peak virtual memory: 676 megabytes
+    Info: Processing ended: Thu May  5 00:10:07 2022
     Info: Elapsed time: 00:00:11
-    Info: Total CPU time (on all processors): 00:00:24
+    Info: Total CPU time (on all processors): 00:00:22
 
 
