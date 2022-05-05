@@ -4,7 +4,6 @@ use  IEEE.STD_LOGIC_ARITH.all;
 use  IEEE.STD_LOGIC_UNSIGNED.all; -- makes all additions of std_logic_vector UNSIGNED ( https://community.intel.com/t5/Intel-Quartus-Prime-Software/Error-10327-Can-t-determine-definition-of-operator-quot-quot/td-p/61149 )
 --use  IEEE.STD_LOGIC_SIGNED.all;
 use IEEE.math_real.all;
-
 -- Module Generates Video Sync Signals for Video Montor Interface
 -- RGB and Sync outputs tie directly to monitor conector pins
 ENTITY VGA_SYNC_module IS
@@ -17,76 +16,6 @@ ENTITY VGA_SYNC_module IS
 			SWITCHES:	IN STD_LOGIC_VECTOR(7 DOWNTO 0));
 END VGA_SYNC_module;
 ARCHITECTURE a OF VGA_SYNC_module IS
-	-- enums basically --
-
-	subtype t_Mnemonic is std_logic_vector(3 downto 0);
-
-	constant mn_addi: t_Mnemonic := "0000";
-	constant mn_subi: t_Mnemonic := "1010";
-	constant mn_add: t_Mnemonic := "0111";
-	constant mn_sub: t_Mnemonic := "1011";
-	constant mn_xor: t_Mnemonic := "1100";
-	constant mn_and: t_Mnemonic := "1101";
-	constant mn_or: t_Mnemonic := "1110";
-	constant mn_sh: t_Mnemonic := "0110";
-	constant mn_set: t_Mnemonic := "0010";
-	constant mn_br: t_Mnemonic := "1000";
-	constant mn_brdnz: t_Mnemonic := "0001";
-	constant mn_call: t_Mnemonic := "1111";
-	constant mn_jmp: t_Mnemonic := "1001";
-	constant mn_ldi: t_Mnemonic := "0100";
-	constant mn_str: t_Mnemonic := "0101";
-	constant mn_ldr: t_Mnemonic := "0011";
-
-	subtype t_Condition is std_logic_vector(3 downto 0);
-	
-	constant cond_none: t_Condition := "0000";
-	constant cond_sgz: t_Condition := "0001";
-	constant cond_slz: t_Condition := "0010";
-	constant cond_nz: t_Condition := "0011";
-	constant cond_z: t_Condition := "0100";
-	constant cond_cu: t_Condition := "0101";
-	constant cond_cs: t_Condition := "0110";
-	
-	-- typedefs basically --
-	
-	subtype MemoryPointingRegister is Natural range 0 to 65535; -- 16-bit unsigned integer
-	subtype ImmediateType is Natural range 0 to 255; -- 8-bit unsigned integer
-	subtype SignedImmediateType is Integer range -128 to 127; -- 8-bit signed integer
-
-	-- structs basically --
-	
-	type t_MemoryCell is record
-		dataOrInstruction: std_logic_vector(15 downto 0);
-	end record t_MemoryCell;
-	
-	type t_Instruction is record
-		immediate_orRegSelects_orRegSelectAndExtraOperation: std_logic_vector(7 downto 0); -- this is used to store either an immediate or two register selects or ((a register select and an extra operation)).
-		conditionOrRegSelect: std_logic_vector(3 downto 0);
-		mnemonic: t_Mnemonic;
-	end record t_Instruction;
-
-	-- functions --
-
-	-- https://www.nandland.com/vhdl/examples/example-function-advanced.html
-  function f_is_msb_set_forUInt8 (
-    value    : in std_logic_vector(7 downto 0))
-    return std_logic is
-    variable v_res : std_logic := '0';
-  begin
-    v_res := value(7);
-    return v_res;
-  end function f_is_msb_set_forUInt8;
-
-	function f_memoryCellFromImmediate(value: in Natural)
-		return t_MemoryCell is variable v_res: t_MemoryCell;
-	begin
-		v_res <= (dataOrInstruction <= std_logic_vector(to_(value, 16)));
-		return v_res;
-	end function f_memoryCellFromImmediate;
-
-	-- signals --
-	
 	SIGNAL horiz_sync, vert_sync, pixel_clock_int : STD_LOGIC;
 	SIGNAL video_on_int, video_on_v, video_on_h : STD_LOGIC;
 	SIGNAL h_count, v_count :STD_LOGIC_VECTOR(9 DOWNTO 0);
@@ -96,10 +25,6 @@ ARCHITECTURE a OF VGA_SYNC_module IS
 	signal enableCircleSwitch: STD_LOGIC := '1';
 	signal distToCircleCenterSquared: STD_LOGIC_VECTOR(19 DOWNTO 0);
 	--signal distToCircleCenterReal: integer;
-
-        signal PC: MemoryPointingRegister := 0;
-        signal SP: MemoryPointingRegister := MEMORY_SIZE / ;
-        
 	
 --
 -- To select a different screen resolution, clock rate, and refresh rate
@@ -149,11 +74,6 @@ video_on <= video_on_int;
 PROCESS
 BEGIN
 	WAIT UNTIL(pixel_clock_int'EVENT) AND (pixel_clock_int='1');
-	
-	-- CPU --
-	
-	-- --
-	
 	
 	-- Calculate circle coords
 	-- Compute distance to the circleCenterX and Y:
