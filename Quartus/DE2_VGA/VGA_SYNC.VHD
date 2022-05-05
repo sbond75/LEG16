@@ -19,7 +19,7 @@ ENTITY VGA_SYNC_module IS
 
     -- Input switches
     
-    SW 			: IN STD_LOGIC_VECTOR (17 downto 0);         -- DPDT switches
+    --SW 			: IN STD_LOGIC_VECTOR (17 downto 0);         -- DPDT switches
 
 
     -- 16 X 2 LCD Module
@@ -34,10 +34,11 @@ ENTITY VGA_SYNC_module IS
 END VGA_SYNC_module;
 ARCHITECTURE a OF VGA_SYNC_module IS
   
-COMPONENT LCD_Display
+COMPONENT LCD_Display -- referencing an entity in a different file or declaration
 
 	GENERIC(Num_Hex_Digits: Integer:= 2);
-	
+
+	-- the ports in component declaration are the same (repeated) from the entity declaration
 	PORT(reset					: IN	STD_LOGIC;
 	     clk_50MHz				: IN	STD_LOGIC;
 		  Hex_Display_Data	: IN    STD_LOGIC_VECTOR((Num_Hex_Digits*4)-1 DOWNTO 0);
@@ -124,6 +125,8 @@ END COMPONENT;
 	end function f_memoryCellFromImmediate;
 
 	-- signals --
+
+	signal Hex_Display_Data: std_logic_vector(7 downto 0);
 	
 	SIGNAL horiz_sync, vert_sync, pixel_clock_int : STD_LOGIC;
 	SIGNAL video_on_int, video_on_v, video_on_h : STD_LOGIC;
@@ -333,10 +336,10 @@ video_on <= video_on_int;
 
 
 	U1: LCD_Display PORT MAP
-		(reset				=>	NOT SW(17),
+		(reset				=>	not SWITCHES(7), --NOT SW(17),
 		 -- v-- port/internal signals
 		 clk_50MHz			=>	clock_50Mhz, -- signal from outside
-		 Hex_Display_Data	=>	SW(7 DOWNTO 0),	
+		 Hex_Display_Data	=>	Hex_Display_Data, --SW(7 DOWNTO 0),	
 		 LCD_RS				=>	LCD_RS,
 		 LCD_E				=>	LCD_EN,
 		 LCD_RW				=>	LCD_RW,
@@ -377,6 +380,7 @@ BEGIN
 		-- runOneIter basically
 		instr := memory(conv_integer(PC));
 		PC <= PC + 1;
+		Hex_Display_Data <= "00010101";
 		-- --
 
 	  

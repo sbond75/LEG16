@@ -17,7 +17,7 @@
 -- PROGRAM "Quartus Prime"
 -- VERSION "Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition"
 
--- DATE "05/05/2022 12:49:25"
+-- DATE "05/05/2022 18:24:28"
 
 -- 
 -- Device: Altera EP4CE115F29C7 Package FBGA780
@@ -60,7 +60,6 @@ END VGA_Test;
 -- SW[4]	=>  Location: PIN_AB27,	 I/O Standard: 2.5 V,	 Current Strength: Default
 -- SW[5]	=>  Location: PIN_AC26,	 I/O Standard: 2.5 V,	 Current Strength: Default
 -- SW[6]	=>  Location: PIN_AD26,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- SW[7]	=>  Location: PIN_AB26,	 I/O Standard: 2.5 V,	 Current Strength: Default
 -- SW[8]	=>  Location: PIN_AC25,	 I/O Standard: 2.5 V,	 Current Strength: Default
 -- SW[9]	=>  Location: PIN_AB25,	 I/O Standard: 2.5 V,	 Current Strength: Default
 -- SW[10]	=>  Location: PIN_AC24,	 I/O Standard: 2.5 V,	 Current Strength: Default
@@ -100,6 +99,7 @@ END VGA_Test;
 -- VGA_B[5]	=>  Location: PIN_C12,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 8mA
 -- VGA_B[6]	=>  Location: PIN_D11,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 8mA
 -- VGA_B[7]	=>  Location: PIN_D12,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 8mA
+-- SW[7]	=>  Location: PIN_AB26,	 I/O Standard: 2.5 V,	 Current Strength: Default
 -- CLOCK_50	=>  Location: PIN_Y2,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
 
 
@@ -138,7 +138,6 @@ SIGNAL \SW[3]~input_o\ : std_logic;
 SIGNAL \SW[4]~input_o\ : std_logic;
 SIGNAL \SW[5]~input_o\ : std_logic;
 SIGNAL \SW[6]~input_o\ : std_logic;
-SIGNAL \SW[7]~input_o\ : std_logic;
 SIGNAL \SW[8]~input_o\ : std_logic;
 SIGNAL \SW[9]~input_o\ : std_logic;
 SIGNAL \SW[10]~input_o\ : std_logic;
@@ -149,6 +148,7 @@ SIGNAL \SW[14]~input_o\ : std_logic;
 SIGNAL \SW[15]~input_o\ : std_logic;
 SIGNAL \SW[16]~input_o\ : std_logic;
 SIGNAL \SW[17]~input_o\ : std_logic;
+SIGNAL \SW[7]~input_o\ : std_logic;
 SIGNAL \~ALTERA_ASDO_DATA1~~ibuf_o\ : std_logic;
 SIGNAL \~ALTERA_ASDO_DATA1~~padout\ : std_logic;
 SIGNAL \~ALTERA_FLASH_nCE_nCSO~~ibuf_o\ : std_logic;
@@ -775,17 +775,6 @@ PORT MAP (
 	i => ww_SW(6),
 	o => \SW[6]~input_o\);
 
--- Location: IOIBUF_X115_Y15_N1
-\SW[7]~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_SW(7),
-	o => \SW[7]~input_o\);
-
 -- Location: IOIBUF_X115_Y4_N22
 \SW[8]~input\ : cycloneive_io_ibuf
 -- pragma translate_off
@@ -895,6 +884,17 @@ GENERIC MAP (
 PORT MAP (
 	i => ww_SW(17),
 	o => \SW[17]~input_o\);
+
+-- Location: IOIBUF_X115_Y15_N1
+\SW[7]~input\ : cycloneive_io_ibuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	simulate_z_as => "z")
+-- pragma translate_on
+PORT MAP (
+	i => ww_SW(7),
+	o => \SW[7]~input_o\);
 END structure;
 
 
