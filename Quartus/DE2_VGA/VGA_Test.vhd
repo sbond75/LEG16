@@ -84,7 +84,7 @@ END VGA_Test;
 
 ARCHITECTURE structural OF VGA_Test IS
 
-	constant Num_Hex_Digits: Integer:= 4;
+	constant Num_Hex_Digits: Integer:= 8;
   
 COMPONENT LCD_Display
 

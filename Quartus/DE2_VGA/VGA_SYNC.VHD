@@ -24,16 +24,7 @@ ENTITY VGA_SYNC_module IS
     
     --SW 			: IN STD_LOGIC_VECTOR (17 downto 0);         -- DPDT switches
 
-
-    -- 16 X 2 LCD Module
-    
-    LCD_BLON : out std_logic;      							-- Back Light ON/OFF
-    LCD_EN   : out std_logic;      							-- Enable
-    LCD_ON   : out std_logic;      							-- Power ON/OFF
-    LCD_RS   : out std_logic;	   							-- Command/Data Select, 0 = Command, 1 = Data
-    LCD_RW   : out std_logic; 	   						-- Read/Write Select, 0 = Write, 1 = Read
-    LCD_DATA : inout std_logic_vector(7 downto 0); 	-- Data bus 8 bits
-	Hex_Display_Data: out std_logic_vector((Num_Hex_Digits*4)-1 downto 0)
+	Hex_Display_Data: out std_logic_vector((Num_Hex_Digits*4)-1 downto 0) := "00010101000101010001010100010101"
 			);
 END VGA_SYNC_module;
 ARCHITECTURE a OF VGA_SYNC_module IS
@@ -320,8 +311,6 @@ PROCESS(clock_50Mhz)
 BEGIN
 	--WAIT UNTIL(pixel_clock_int'EVENT) AND (pixel_clock_int='1');
   if rising_edge(clock_50Mhz) then
-		Hex_Display_Data <= "0001010100010101";
-	
 	-- Calculate circle coords
 	-- Compute distance to the circleCenterX and Y:
 	distToCircleCenterSquared <= conv_std_logic_vector((conv_integer(h_count) -- X
@@ -340,19 +329,19 @@ BEGIN
 		 
 	-- Note: this can interrupt drawing of the screen on button press -- in the middle of a vertical refresh, making a line cutting between the current and previous color on the screen
 	if KEYS(0) = '0' then -- key pressed (0)
-		-- Change color
-		-- if enableSwitch = '1' then
-		-- 	currentColor <= currentColor + 1;
+		if enableSwitch = '1' then
+			-- Change color
+			-- 	currentColor <= currentColor + 1;
 	  
-		-- CPU --
-		-- runOneIter basically
-		instr := memory(conv_integer(PC));
-		PC <= PC + 1;
-		Hex_Display_Data <= PC;
-		-- --
-		-- end if;
+			-- CPU --
+			-- runOneIter basically
+			instr := memory(conv_integer(PC));
+			PC <= PC + 1;
+			Hex_Display_Data(15 downto 0) <= PC;
+			-- --
 
-		enableSwitch <= '0';
+			enableSwitch <= '0';
+		end if;
 	else -- key not pressed
 		enableSwitch <= '1';
 	end if;

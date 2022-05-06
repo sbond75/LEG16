@@ -1,5 +1,5 @@
 Timing Analyzer report for LEG16
-Thu May  5 21:46:40 2022
+Thu May  5 22:03:30 2022
 Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
 
 
@@ -104,7 +104,7 @@ https://fpgasoftware.intel.com/eula.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-4         ;   0.5%      ;
+;     Processors 2-4         ;   0.6%      ;
 +----------------------------+-------------+
 
 
@@ -123,7 +123,7 @@ https://fpgasoftware.intel.com/eula.
 +------------+-----------------+------------+------+
 ; Fmax       ; Restricted Fmax ; Clock Name ; Note ;
 +------------+-----------------+------------+------+
-; 183.72 MHz ; 183.72 MHz      ; CLOCK_50   ;      ;
+; 140.98 MHz ; 140.98 MHz      ; CLOCK_50   ;      ;
 +------------+-----------------+------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -139,7 +139,7 @@ HTML report is unavailable in plain text report export.
 +----------+--------+-----------------+
 ; Clock    ; Slack  ; End Point TNS   ;
 +----------+--------+-----------------+
-; CLOCK_50 ; 14.557 ; 0.000           ;
+; CLOCK_50 ; 12.907 ; 0.000           ;
 +----------+--------+-----------------+
 
 
@@ -178,106 +178,106 @@ No paths to report.
 +--------+-----------------------------------------+-----------------------------------+--------------+-------------+--------------+------------+------------+
 ; Slack  ; From Node                               ; To Node                           ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +--------+-----------------------------------------+-----------------------------------+--------------+-------------+--------------+------------+------------+
-; 14.557 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.084     ; 5.357      ;
-; 14.560 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 5.356      ;
-; 14.603 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.084     ; 5.311      ;
-; 14.671 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 5.245      ;
-; 14.699 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 5.217      ;
-; 14.721 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.084     ; 5.193      ;
-; 14.741 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.084     ; 5.173      ;
-; 14.741 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 5.175      ;
-; 14.843 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.084     ; 5.071      ;
-; 14.880 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.084     ; 5.034      ;
-; 14.886 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.084     ; 5.028      ;
-; 14.889 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 5.027      ;
-; 14.894 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.084     ; 5.020      ;
-; 14.914 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.084     ; 5.000      ;
-; 14.962 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.084     ; 4.952      ;
-; 15.008 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.084     ; 4.906      ;
-; 15.041 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.084     ; 4.873      ;
-; 15.059 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.084     ; 4.855      ;
-; 15.061 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.084     ; 4.853      ;
-; 15.206 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.084     ; 4.708      ;
-; 15.240 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.083     ; 4.675      ;
-; 15.251 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.083     ; 4.664      ;
-; 15.258 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.083     ; 4.657      ;
-; 15.259 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.083     ; 4.656      ;
-; 15.286 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.083     ; 4.629      ;
-; 15.338 ; VGA_SYNC_module:U1|Hex_Display_Data[8]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 4.578      ;
-; 15.362 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.083     ; 4.553      ;
-; 15.364 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.083     ; 4.551      ;
-; 15.391 ; VGA_SYNC_module:U1|Hex_Display_Data[12] ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 4.525      ;
-; 15.397 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.083     ; 4.518      ;
-; 15.398 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.083     ; 4.517      ;
-; 15.424 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.083     ; 4.491      ;
-; 15.432 ; VGA_SYNC_module:U1|Hex_Display_Data[1]  ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.486      ;
-; 15.433 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.083     ; 4.482      ;
-; 15.435 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.083     ; 4.480      ;
-; 15.453 ; VGA_SYNC_module:U1|Hex_Display_Data[0]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 4.463      ;
-; 15.484 ; VGA_SYNC_module:U1|Hex_Display_Data[9]  ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.434      ;
-; 15.565 ; VGA_SYNC_module:U1|Hex_Display_Data[4]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 4.351      ;
-; 15.571 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.083     ; 4.344      ;
-; 15.580 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.083     ; 4.335      ;
-; 15.582 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.083     ; 4.333      ;
-; 15.584 ; VGA_SYNC_module:U1|Hex_Display_Data[1]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 4.332      ;
-; 15.604 ; VGA_SYNC_module:U1|Hex_Display_Data[1]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 4.312      ;
-; 15.636 ; VGA_SYNC_module:U1|Hex_Display_Data[9]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 4.280      ;
-; 15.656 ; VGA_SYNC_module:U1|Hex_Display_Data[9]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 4.260      ;
-; 15.680 ; VGA_SYNC_module:U1|Hex_Display_Data[8]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 4.236      ;
-; 15.732 ; VGA_SYNC_module:U1|Hex_Display_Data[12] ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 4.184      ;
-; 15.733 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[0] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.185      ;
-; 15.733 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[1] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.185      ;
-; 15.733 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[2] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.185      ;
-; 15.733 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[3] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.185      ;
-; 15.733 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[4] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.185      ;
-; 15.733 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[5] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.185      ;
-; 15.733 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[6] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.185      ;
-; 15.733 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[7] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.185      ;
-; 15.733 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[8] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.185      ;
-; 15.733 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[9] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.185      ;
-; 15.743 ; VGA_SYNC_module:U1|Hex_Display_Data[8]  ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 4.173      ;
-; 15.749 ; VGA_SYNC_module:U1|Hex_Display_Data[1]  ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 4.167      ;
-; 15.761 ; VGA_SYNC_module:U1|Hex_Display_Data[0]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 4.155      ;
-; 15.796 ; VGA_SYNC_module:U1|Hex_Display_Data[12] ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 4.120      ;
-; 15.801 ; VGA_SYNC_module:U1|Hex_Display_Data[9]  ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 4.115      ;
-; 15.828 ; VGA_SYNC_module:U1|Hex_Display_Data[0]  ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 4.088      ;
-; 15.860 ; VGA_SYNC_module:U1|Hex_Display_Data[3]  ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.058      ;
-; 15.873 ; VGA_SYNC_module:U1|Hex_Display_Data[4]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 4.043      ;
-; 15.892 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[0] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.026      ;
-; 15.892 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[1] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.026      ;
-; 15.892 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[2] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.026      ;
-; 15.892 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[3] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.026      ;
-; 15.892 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[4] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.026      ;
-; 15.892 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[5] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.026      ;
-; 15.892 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[6] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.026      ;
-; 15.892 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[7] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.026      ;
-; 15.892 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[8] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.026      ;
-; 15.892 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[9] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.026      ;
-; 15.940 ; VGA_SYNC_module:U1|Hex_Display_Data[4]  ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 3.976      ;
-; 15.951 ; VGA_SYNC_module:U1|Hex_Display_Data[3]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 3.965      ;
-; 15.971 ; VGA_SYNC_module:U1|Hex_Display_Data[3]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 3.945      ;
-; 15.983 ; VGA_SYNC_module:U1|Hex_Display_Data[6]  ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.081     ; 3.934      ;
-; 16.018 ; LCD_Display:U2|CLK_COUNT_400HZ[9]       ; LCD_Display:U2|CLK_COUNT_400HZ[0] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 3.900      ;
-; 16.018 ; LCD_Display:U2|CLK_COUNT_400HZ[9]       ; LCD_Display:U2|CLK_COUNT_400HZ[1] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 3.900      ;
-; 16.018 ; LCD_Display:U2|CLK_COUNT_400HZ[9]       ; LCD_Display:U2|CLK_COUNT_400HZ[2] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 3.900      ;
-; 16.018 ; LCD_Display:U2|CLK_COUNT_400HZ[9]       ; LCD_Display:U2|CLK_COUNT_400HZ[3] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 3.900      ;
-; 16.018 ; LCD_Display:U2|CLK_COUNT_400HZ[9]       ; LCD_Display:U2|CLK_COUNT_400HZ[4] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 3.900      ;
-; 16.018 ; LCD_Display:U2|CLK_COUNT_400HZ[9]       ; LCD_Display:U2|CLK_COUNT_400HZ[5] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 3.900      ;
-; 16.018 ; LCD_Display:U2|CLK_COUNT_400HZ[9]       ; LCD_Display:U2|CLK_COUNT_400HZ[6] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 3.900      ;
-; 16.018 ; LCD_Display:U2|CLK_COUNT_400HZ[9]       ; LCD_Display:U2|CLK_COUNT_400HZ[7] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 3.900      ;
-; 16.018 ; LCD_Display:U2|CLK_COUNT_400HZ[9]       ; LCD_Display:U2|CLK_COUNT_400HZ[8] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 3.900      ;
-; 16.018 ; LCD_Display:U2|CLK_COUNT_400HZ[9]       ; LCD_Display:U2|CLK_COUNT_400HZ[9] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 3.900      ;
-; 16.021 ; VGA_SYNC_module:U1|Hex_Display_Data[8]  ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.081     ; 3.896      ;
-; 16.029 ; LCD_Display:U2|CLK_COUNT_400HZ[6]       ; LCD_Display:U2|CLK_COUNT_400HZ[0] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 3.889      ;
-; 16.029 ; LCD_Display:U2|CLK_COUNT_400HZ[6]       ; LCD_Display:U2|CLK_COUNT_400HZ[1] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 3.889      ;
-; 16.029 ; LCD_Display:U2|CLK_COUNT_400HZ[6]       ; LCD_Display:U2|CLK_COUNT_400HZ[2] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 3.889      ;
-; 16.029 ; LCD_Display:U2|CLK_COUNT_400HZ[6]       ; LCD_Display:U2|CLK_COUNT_400HZ[3] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 3.889      ;
-; 16.029 ; LCD_Display:U2|CLK_COUNT_400HZ[6]       ; LCD_Display:U2|CLK_COUNT_400HZ[4] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 3.889      ;
-; 16.029 ; LCD_Display:U2|CLK_COUNT_400HZ[6]       ; LCD_Display:U2|CLK_COUNT_400HZ[5] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 3.889      ;
-; 16.029 ; LCD_Display:U2|CLK_COUNT_400HZ[6]       ; LCD_Display:U2|CLK_COUNT_400HZ[6] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 3.889      ;
-; 16.029 ; LCD_Display:U2|CLK_COUNT_400HZ[6]       ; LCD_Display:U2|CLK_COUNT_400HZ[7] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 3.889      ;
-; 16.029 ; LCD_Display:U2|CLK_COUNT_400HZ[6]       ; LCD_Display:U2|CLK_COUNT_400HZ[8] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 3.889      ;
-; 16.029 ; LCD_Display:U2|CLK_COUNT_400HZ[6]       ; LCD_Display:U2|CLK_COUNT_400HZ[9] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 3.889      ;
+; 12.907 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 7.009      ;
+; 12.977 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 6.939      ;
+; 13.046 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 6.870      ;
+; 13.274 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.085     ; 6.639      ;
+; 13.344 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.085     ; 6.569      ;
+; 13.403 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 6.513      ;
+; 13.413 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.085     ; 6.500      ;
+; 13.604 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 6.312      ;
+; 13.641 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.079     ; 6.278      ;
+; 13.711 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.079     ; 6.208      ;
+; 13.740 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.085     ; 6.173      ;
+; 13.780 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.079     ; 6.139      ;
+; 13.941 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.085     ; 5.972      ;
+; 14.095 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.079     ; 5.824      ;
+; 14.177 ; VGA_SYNC_module:U1|Hex_Display_Data[10] ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.077     ; 5.744      ;
+; 14.197 ; VGA_SYNC_module:U1|Hex_Display_Data[14] ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.077     ; 5.724      ;
+; 14.207 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.085     ; 5.706      ;
+; 14.277 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.085     ; 5.636      ;
+; 14.296 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.079     ; 5.623      ;
+; 14.346 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.085     ; 5.567      ;
+; 14.435 ; VGA_SYNC_module:U1|Hex_Display_Data[11] ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.077     ; 5.486      ;
+; 14.492 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 5.424      ;
+; 14.524 ; VGA_SYNC_module:U1|Hex_Display_Data[7]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.077     ; 5.397      ;
+; 14.525 ; VGA_SYNC_module:U1|Hex_Display_Data[5]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.077     ; 5.396      ;
+; 14.529 ; VGA_SYNC_module:U1|Hex_Display_Data[2]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 5.393      ;
+; 14.536 ; VGA_SYNC_module:U1|Hex_Display_Data[6]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.077     ; 5.385      ;
+; 14.544 ; VGA_SYNC_module:U1|Hex_Display_Data[10] ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 5.374      ;
+; 14.562 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 5.354      ;
+; 14.564 ; VGA_SYNC_module:U1|Hex_Display_Data[14] ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 5.354      ;
+; 14.631 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 5.285      ;
+; 14.690 ; VGA_SYNC_module:U1|Hex_Display_Data[9]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.077     ; 5.231      ;
+; 14.705 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.085     ; 5.208      ;
+; 14.728 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 5.188      ;
+; 14.743 ; VGA_SYNC_module:U1|Hex_Display_Data[13] ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.077     ; 5.178      ;
+; 14.798 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 5.118      ;
+; 14.802 ; VGA_SYNC_module:U1|Hex_Display_Data[11] ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 5.116      ;
+; 14.862 ; VGA_SYNC_module:U1|Hex_Display_Data[5]  ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 5.056      ;
+; 14.867 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 5.049      ;
+; 14.891 ; VGA_SYNC_module:U1|Hex_Display_Data[7]  ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 5.027      ;
+; 14.896 ; VGA_SYNC_module:U1|Hex_Display_Data[2]  ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.079     ; 5.023      ;
+; 14.903 ; VGA_SYNC_module:U1|Hex_Display_Data[6]  ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 5.015      ;
+; 14.911 ; VGA_SYNC_module:U1|Hex_Display_Data[10] ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.074     ; 5.013      ;
+; 14.924 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.085     ; 4.989      ;
+; 14.931 ; VGA_SYNC_module:U1|Hex_Display_Data[14] ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.074     ; 4.993      ;
+; 14.945 ; VGA_SYNC_module:U1|Hex_Display_Data[15] ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.973      ;
+; 14.950 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 4.966      ;
+; 15.006 ; VGA_SYNC_module:U1|Hex_Display_Data[8]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.077     ; 4.915      ;
+; 15.023 ; VGA_SYNC_module:U1|Hex_Display_Data[12] ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.077     ; 4.898      ;
+; 15.057 ; VGA_SYNC_module:U1|Hex_Display_Data[9]  ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.861      ;
+; 15.110 ; VGA_SYNC_module:U1|Hex_Display_Data[13] ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.808      ;
+; 15.112 ; VGA_SYNC_module:U1|Hex_Display_Data[1]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.077     ; 4.809      ;
+; 15.151 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 4.765      ;
+; 15.169 ; VGA_SYNC_module:U1|Hex_Display_Data[11] ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.074     ; 4.755      ;
+; 15.217 ; VGA_SYNC_module:U1|Hex_Display_Data[5]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.074     ; 4.707      ;
+; 15.225 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 4.691      ;
+; 15.228 ; VGA_SYNC_module:U1|Hex_Display_Data[4]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.077     ; 4.693      ;
+; 15.258 ; VGA_SYNC_module:U1|Hex_Display_Data[7]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.074     ; 4.666      ;
+; 15.263 ; VGA_SYNC_module:U1|Hex_Display_Data[2]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.073     ; 4.662      ;
+; 15.270 ; VGA_SYNC_module:U1|Hex_Display_Data[6]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.074     ; 4.654      ;
+; 15.312 ; VGA_SYNC_module:U1|Hex_Display_Data[15] ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.083     ; 4.603      ;
+; 15.366 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 4.550      ;
+; 15.424 ; VGA_SYNC_module:U1|Hex_Display_Data[9]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.074     ; 4.500      ;
+; 15.426 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 4.490      ;
+; 15.436 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 4.480      ;
+; 15.477 ; VGA_SYNC_module:U1|Hex_Display_Data[13] ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.074     ; 4.447      ;
+; 15.477 ; VGA_SYNC_module:U1|Hex_Display_Data[10] ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.441      ;
+; 15.479 ; VGA_SYNC_module:U1|Hex_Display_Data[1]  ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.439      ;
+; 15.497 ; VGA_SYNC_module:U1|Hex_Display_Data[14] ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.421      ;
+; 15.511 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 4.405      ;
+; 15.547 ; VGA_SYNC_module:U1|Hex_Display_Data[0]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.077     ; 4.374      ;
+; 15.597 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[0] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.321      ;
+; 15.597 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[1] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.321      ;
+; 15.597 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[2] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.321      ;
+; 15.597 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[3] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.321      ;
+; 15.597 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[4] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.321      ;
+; 15.597 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[5] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.321      ;
+; 15.597 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[6] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.321      ;
+; 15.597 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[7] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.321      ;
+; 15.597 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[8] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.321      ;
+; 15.597 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[9] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.321      ;
+; 15.628 ; VGA_SYNC_module:U1|Hex_Display_Data[12] ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.074     ; 4.296      ;
+; 15.629 ; VGA_SYNC_module:U1|Hex_Display_Data[3]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.289      ;
+; 15.642 ; VGA_SYNC_module:U1|Hex_Display_Data[8]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.074     ; 4.282      ;
+; 15.679 ; VGA_SYNC_module:U1|Hex_Display_Data[15] ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.077     ; 4.242      ;
+; 15.735 ; VGA_SYNC_module:U1|Hex_Display_Data[11] ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.183      ;
+; 15.755 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[0] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.163      ;
+; 15.755 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[1] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.163      ;
+; 15.755 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[2] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.163      ;
+; 15.755 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[3] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.163      ;
+; 15.755 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[4] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.163      ;
+; 15.755 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[5] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.163      ;
+; 15.755 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[6] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.163      ;
+; 15.755 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[7] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.163      ;
+; 15.755 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[8] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.163      ;
+; 15.755 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[9] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.163      ;
+; 15.762 ; VGA_SYNC_module:U1|Hex_Display_Data[10] ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.077     ; 4.159      ;
+; 15.782 ; VGA_SYNC_module:U1|Hex_Display_Data[14] ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.077     ; 4.139      ;
+; 15.819 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.082     ; 4.097      ;
+; 15.824 ; VGA_SYNC_module:U1|Hex_Display_Data[7]  ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.080     ; 4.094      ;
+; 15.829 ; VGA_SYNC_module:U1|Hex_Display_Data[2]  ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.079     ; 4.090      ;
 +--------+-----------------------------------------+-----------------------------------+--------------+-------------+--------------+------------+------------+
 
 
@@ -286,106 +286,106 @@ No paths to report.
 +-------+-------------------------------------------+-------------------------------------------+--------------+-------------+--------------+------------+------------+
 ; Slack ; From Node                                 ; To Node                                   ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +-------+-------------------------------------------+-------------------------------------------+--------------+-------------+--------------+------------+------------+
-; 0.402 ; LCD_Display:U2|LCD_RS                     ; LCD_Display:U2|LCD_RS                     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.669      ;
 ; 0.402 ; LCD_Display:U2|DATA_BUS_VALUE[7]          ; LCD_Display:U2|DATA_BUS_VALUE[7]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.669      ;
 ; 0.402 ; LCD_Display:U2|DATA_BUS_VALUE[1]          ; LCD_Display:U2|DATA_BUS_VALUE[1]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.669      ;
-; 0.402 ; VGA_SYNC_module:U1|PC[0]                  ; VGA_SYNC_module:U1|PC[0]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.669      ;
-; 0.402 ; LCD_Display:U2|next_command.Print_String  ; LCD_Display:U2|next_command.Print_String  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.669      ;
-; 0.402 ; LCD_Display:U2|next_command.MODE_SET      ; LCD_Display:U2|next_command.MODE_SET      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.669      ;
+; 0.402 ; LCD_Display:U2|next_command.RETURN_HOME   ; LCD_Display:U2|next_command.RETURN_HOME   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.669      ;
+; 0.402 ; LCD_Display:U2|next_command.LINE2         ; LCD_Display:U2|next_command.LINE2         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.669      ;
+; 0.403 ; LCD_Display:U2|LCD_RS                     ; LCD_Display:U2|LCD_RS                     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.669      ;
 ; 0.403 ; LCD_Display:U2|LCD_E                      ; LCD_Display:U2|LCD_E                      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.669      ;
+; 0.403 ; LCD_Display:U2|next_command.MODE_SET      ; LCD_Display:U2|next_command.MODE_SET      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.669      ;
 ; 0.403 ; LCD_Display:U2|next_command.DISPLAY_ON    ; LCD_Display:U2|next_command.DISPLAY_ON    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.669      ;
 ; 0.403 ; LCD_Display:U2|next_command.DISPLAY_CLEAR ; LCD_Display:U2|next_command.DISPLAY_CLEAR ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.669      ;
 ; 0.403 ; LCD_Display:U2|next_command.DISPLAY_OFF   ; LCD_Display:U2|next_command.DISPLAY_OFF   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.669      ;
 ; 0.403 ; LCD_Display:U2|next_command.FUNC_SET      ; LCD_Display:U2|next_command.FUNC_SET      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.669      ;
 ; 0.403 ; LCD_Display:U2|next_command.RESET3        ; LCD_Display:U2|next_command.RESET3        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.669      ;
 ; 0.403 ; LCD_Display:U2|next_command.RESET2        ; LCD_Display:U2|next_command.RESET2        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.669      ;
-; 0.422 ; LCD_Display:U2|next_command.RESET2        ; LCD_Display:U2|state.RESET2               ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.688      ;
+; 0.407 ; VGA_SYNC_module:U1|Hex_Display_Data[0]    ; VGA_SYNC_module:U1|Hex_Display_Data[0]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.674      ;
+; 0.407 ; LCD_Display:U2|state.DROP_LCD_E           ; LCD_Display:U2|state.DROP_LCD_E           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.674      ;
 ; 0.428 ; LCD_Display:U2|CLK_COUNT_400HZ[19]        ; LCD_Display:U2|CLK_COUNT_400HZ[19]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.694      ;
-; 0.430 ; LCD_Display:U2|next_command.MODE_SET      ; LCD_Display:U2|state.MODE_SET             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.697      ;
-; 0.430 ; LCD_Display:U2|next_command.RESET3        ; LCD_Display:U2|state.RESET3               ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.696      ;
-; 0.431 ; LCD_Display:U2|next_command.FUNC_SET      ; LCD_Display:U2|state.FUNC_SET             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.697      ;
-; 0.437 ; LCD_Display:U2|state.DISPLAY_OFF          ; LCD_Display:U2|next_command.DISPLAY_CLEAR ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.703      ;
-; 0.437 ; LCD_Display:U2|state.FUNC_SET             ; LCD_Display:U2|next_command.DISPLAY_OFF   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.703      ;
+; 0.431 ; LCD_Display:U2|next_command.DISPLAY_OFF   ; LCD_Display:U2|state.DISPLAY_OFF          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.697      ;
+; 0.432 ; LCD_Display:U2|next_command.RESET3        ; LCD_Display:U2|state.RESET3               ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.698      ;
 ; 0.438 ; LCD_Display:U2|state.RESET2               ; LCD_Display:U2|next_command.RESET3        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.704      ;
-; 0.454 ; LCD_Display:U2|state.DISPLAY_CLEAR        ; LCD_Display:U2|next_command.DISPLAY_ON    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.720      ;
-; 0.493 ; LCD_Display:U2|state.HOLD                 ; LCD_Display:U2|state.RETURN_HOME          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.760      ;
-; 0.494 ; LCD_Display:U2|state.HOLD                 ; LCD_Display:U2|state.LINE2                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.761      ;
-; 0.495 ; LCD_Display:U2|state.HOLD                 ; LCD_Display:U2|LCD_RS                     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.762      ;
-; 0.497 ; LCD_Display:U2|state.HOLD                 ; LCD_Display:U2|state.Print_String         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.764      ;
-; 0.552 ; LCD_Display:U2|next_command.DISPLAY_ON    ; LCD_Display:U2|state.DISPLAY_ON           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.818      ;
-; 0.553 ; LCD_Display:U2|next_command.DISPLAY_CLEAR ; LCD_Display:U2|state.DISPLAY_CLEAR        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.819      ;
-; 0.554 ; LCD_Display:U2|next_command.DISPLAY_OFF   ; LCD_Display:U2|state.DISPLAY_OFF          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.820      ;
-; 0.603 ; LCD_Display:U2|state.Print_String         ; LCD_Display:U2|next_command.RETURN_HOME   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.870      ;
-; 0.606 ; LCD_Display:U2|state.RESET1               ; LCD_Display:U2|next_command.RESET2        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.872      ;
-; 0.636 ; LCD_Display:U2|next_command.Print_String  ; LCD_Display:U2|state.Print_String         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.903      ;
+; 0.452 ; LCD_Display:U2|state.MODE_SET             ; LCD_Display:U2|DATA_BUS_VALUE[2]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.718      ;
+; 0.453 ; LCD_Display:U2|state.LINE2                ; LCD_Display:U2|DATA_BUS_VALUE[7]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.720      ;
+; 0.453 ; LCD_Display:U2|state.RESET1               ; LCD_Display:U2|next_command.RESET2        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.719      ;
+; 0.474 ; LCD_Display:U2|state.Print_String         ; LCD_Display:U2|next_command.LINE2         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.741      ;
+; 0.475 ; LCD_Display:U2|state.Print_String         ; LCD_Display:U2|DATA_BUS_VALUE[6]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.742      ;
+; 0.550 ; VGA_SYNC_module:U1|PC[2]                  ; VGA_SYNC_module:U1|Hex_Display_Data[2]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.816      ;
+; 0.553 ; LCD_Display:U2|next_command.MODE_SET      ; LCD_Display:U2|state.MODE_SET             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.819      ;
+; 0.571 ; LCD_Display:U2|state.RETURN_HOME          ; LCD_Display:U2|next_command.Print_String  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.838      ;
+; 0.607 ; VGA_SYNC_module:U1|PC[8]                  ; VGA_SYNC_module:U1|Hex_Display_Data[8]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.874      ;
+; 0.620 ; LCD_Display:U2|state.FUNC_SET             ; LCD_Display:U2|next_command.DISPLAY_OFF   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.079      ; 0.885      ;
 ; 0.637 ; LCD_Display:U2|CLK_COUNT_400HZ[1]         ; LCD_Display:U2|CLK_COUNT_400HZ[1]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.903      ;
-; 0.638 ; LCD_Display:U2|state.DROP_LCD_E           ; LCD_Display:U2|state.HOLD                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.905      ;
+; 0.639 ; LCD_Display:U2|next_command.LINE2         ; LCD_Display:U2|state.LINE2                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.906      ;
+; 0.640 ; LCD_Display:U2|next_command.DISPLAY_ON    ; LCD_Display:U2|state.DISPLAY_ON           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.906      ;
 ; 0.640 ; LCD_Display:U2|CLK_COUNT_400HZ[7]         ; LCD_Display:U2|CLK_COUNT_400HZ[7]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.906      ;
 ; 0.640 ; LCD_Display:U2|CLK_COUNT_400HZ[9]         ; LCD_Display:U2|CLK_COUNT_400HZ[9]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.906      ;
 ; 0.641 ; LCD_Display:U2|CLK_COUNT_400HZ[13]        ; LCD_Display:U2|CLK_COUNT_400HZ[13]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.907      ;
+; 0.642 ; VGA_SYNC_module:U1|PC[9]                  ; VGA_SYNC_module:U1|Hex_Display_Data[9]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.909      ;
+; 0.642 ; LCD_Display:U2|next_command.RETURN_HOME   ; LCD_Display:U2|state.RETURN_HOME          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.909      ;
+; 0.642 ; LCD_Display:U2|next_command.DISPLAY_CLEAR ; LCD_Display:U2|state.DISPLAY_CLEAR        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.908      ;
 ; 0.642 ; LCD_Display:U2|CLK_COUNT_400HZ[5]         ; LCD_Display:U2|CLK_COUNT_400HZ[5]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.908      ;
 ; 0.642 ; LCD_Display:U2|CLK_COUNT_400HZ[15]        ; LCD_Display:U2|CLK_COUNT_400HZ[15]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.908      ;
-; 0.643 ; VGA_SYNC_module:U1|PC[11]                 ; VGA_SYNC_module:U1|Hex_Display_Data[11]   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.910      ;
 ; 0.643 ; LCD_Display:U2|CLK_COUNT_400HZ[11]        ; LCD_Display:U2|CLK_COUNT_400HZ[11]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.909      ;
+; 0.643 ; LCD_Display:U2|state.DISPLAY_ON           ; LCD_Display:U2|next_command.MODE_SET      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.909      ;
+; 0.644 ; VGA_SYNC_module:U1|PC[2]                  ; VGA_SYNC_module:U1|PC[2]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.910      ;
 ; 0.644 ; LCD_Display:U2|CLK_COUNT_400HZ[3]         ; LCD_Display:U2|CLK_COUNT_400HZ[3]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.910      ;
-; 0.645 ; VGA_SYNC_module:U1|PC[15]                 ; VGA_SYNC_module:U1|PC[15]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.911      ;
 ; 0.645 ; LCD_Display:U2|CLK_COUNT_400HZ[16]        ; LCD_Display:U2|CLK_COUNT_400HZ[16]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.911      ;
 ; 0.645 ; LCD_Display:U2|CLK_COUNT_400HZ[8]         ; LCD_Display:U2|CLK_COUNT_400HZ[8]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.911      ;
-; 0.645 ; LCD_Display:U2|state.RESET3               ; LCD_Display:U2|next_command.FUNC_SET      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.911      ;
-; 0.645 ; LCD_Display:U2|next_command.RETURN_HOME   ; LCD_Display:U2|state.RETURN_HOME          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.912      ;
+; 0.645 ; LCD_Display:U2|CLK_COUNT_400HZ[10]        ; LCD_Display:U2|CLK_COUNT_400HZ[10]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.911      ;
+; 0.646 ; LCD_Display:U2|next_command.Print_String  ; LCD_Display:U2|state.Print_String         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.913      ;
 ; 0.646 ; LCD_Display:U2|CLK_COUNT_400HZ[6]         ; LCD_Display:U2|CLK_COUNT_400HZ[6]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.912      ;
 ; 0.646 ; LCD_Display:U2|CLK_COUNT_400HZ[12]        ; LCD_Display:U2|CLK_COUNT_400HZ[12]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.912      ;
 ; 0.646 ; LCD_Display:U2|CLK_COUNT_400HZ[17]        ; LCD_Display:U2|CLK_COUNT_400HZ[17]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.912      ;
 ; 0.647 ; LCD_Display:U2|CLK_COUNT_400HZ[2]         ; LCD_Display:U2|CLK_COUNT_400HZ[2]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.913      ;
 ; 0.647 ; LCD_Display:U2|CLK_COUNT_400HZ[14]        ; LCD_Display:U2|CLK_COUNT_400HZ[14]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.913      ;
-; 0.647 ; LCD_Display:U2|next_command.LINE2         ; LCD_Display:U2|state.LINE2                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.914      ;
 ; 0.649 ; LCD_Display:U2|CLK_COUNT_400HZ[18]        ; LCD_Display:U2|CLK_COUNT_400HZ[18]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.915      ;
+; 0.652 ; LCD_Display:U2|state.DISPLAY_CLEAR        ; LCD_Display:U2|next_command.DISPLAY_ON    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.918      ;
+; 0.652 ; LCD_Display:U2|state.DISPLAY_OFF          ; LCD_Display:U2|next_command.DISPLAY_CLEAR ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.919      ;
 ; 0.655 ; LCD_Display:U2|CLK_COUNT_400HZ[0]         ; LCD_Display:U2|CLK_COUNT_400HZ[0]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.921      ;
 ; 0.656 ; VGA_SYNC_module:U1|PC[6]                  ; VGA_SYNC_module:U1|PC[6]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.922      ;
 ; 0.658 ; VGA_SYNC_module:U1|PC[13]                 ; VGA_SYNC_module:U1|PC[13]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.924      ;
 ; 0.658 ; VGA_SYNC_module:U1|PC[5]                  ; VGA_SYNC_module:U1|PC[5]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.924      ;
 ; 0.658 ; VGA_SYNC_module:U1|PC[4]                  ; VGA_SYNC_module:U1|PC[4]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.924      ;
 ; 0.658 ; VGA_SYNC_module:U1|PC[3]                  ; VGA_SYNC_module:U1|PC[3]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.924      ;
-; 0.658 ; VGA_SYNC_module:U1|PC[2]                  ; VGA_SYNC_module:U1|PC[2]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.924      ;
 ; 0.659 ; VGA_SYNC_module:U1|PC[14]                 ; VGA_SYNC_module:U1|PC[14]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.925      ;
 ; 0.659 ; VGA_SYNC_module:U1|PC[12]                 ; VGA_SYNC_module:U1|PC[12]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.925      ;
 ; 0.659 ; VGA_SYNC_module:U1|PC[11]                 ; VGA_SYNC_module:U1|PC[11]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.925      ;
 ; 0.659 ; VGA_SYNC_module:U1|PC[10]                 ; VGA_SYNC_module:U1|PC[10]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.925      ;
 ; 0.659 ; VGA_SYNC_module:U1|PC[8]                  ; VGA_SYNC_module:U1|PC[8]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.925      ;
-; 0.660 ; LCD_Display:U2|CLK_COUNT_400HZ[10]        ; LCD_Display:U2|CLK_COUNT_400HZ[10]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.926      ;
+; 0.660 ; VGA_SYNC_module:U1|PC[15]                 ; VGA_SYNC_module:U1|PC[15]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.926      ;
 ; 0.661 ; LCD_Display:U2|CLK_COUNT_400HZ[4]         ; LCD_Display:U2|CLK_COUNT_400HZ[4]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.927      ;
 ; 0.662 ; VGA_SYNC_module:U1|PC[9]                  ; VGA_SYNC_module:U1|PC[9]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.928      ;
 ; 0.662 ; VGA_SYNC_module:U1|PC[7]                  ; VGA_SYNC_module:U1|PC[7]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.928      ;
+; 0.665 ; LCD_Display:U2|state.RESET3               ; LCD_Display:U2|next_command.FUNC_SET      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.931      ;
 ; 0.674 ; VGA_SYNC_module:U1|PC[1]                  ; VGA_SYNC_module:U1|PC[1]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 0.940      ;
-; 0.704 ; LCD_Display:U2|CHAR_COUNT[3]              ; LCD_Display:U2|CHAR_COUNT[3]              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.971      ;
-; 0.705 ; VGA_SYNC_module:U1|PC[0]                  ; VGA_SYNC_module:U1|Hex_Display_Data[0]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.972      ;
-; 0.707 ; LCD_Display:U2|state.LINE2                ; LCD_Display:U2|DATA_BUS_VALUE[7]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.974      ;
-; 0.708 ; LCD_Display:U2|CHAR_COUNT[2]              ; LCD_Display:U2|CHAR_COUNT[2]              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.975      ;
-; 0.713 ; LCD_Display:U2|CHAR_COUNT[1]              ; LCD_Display:U2|CHAR_COUNT[1]              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.980      ;
-; 0.721 ; LCD_Display:U2|CHAR_COUNT[4]              ; LCD_Display:U2|CHAR_COUNT[4]              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.988      ;
-; 0.743 ; VGA_SYNC_module:U1|PC[3]                  ; VGA_SYNC_module:U1|Hex_Display_Data[3]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 1.009      ;
-; 0.745 ; VGA_SYNC_module:U1|PC[8]                  ; VGA_SYNC_module:U1|Hex_Display_Data[8]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 1.011      ;
-; 0.766 ; VGA_SYNC_module:U1|PC[13]                 ; VGA_SYNC_module:U1|Hex_Display_Data[13]   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 1.032      ;
-; 0.797 ; LCD_Display:U2|DATA_BUS_VALUE[2]          ; LCD_Display:U2|DATA_BUS_VALUE[2]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 1.064      ;
-; 0.822 ; VGA_SYNC_module:U1|PC[10]                 ; VGA_SYNC_module:U1|Hex_Display_Data[10]   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 1.089      ;
-; 0.830 ; LCD_Display:U2|state.RETURN_HOME          ; LCD_Display:U2|DATA_BUS_VALUE[7]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 1.097      ;
-; 0.840 ; VGA_SYNC_module:U1|PC[0]                  ; VGA_SYNC_module:U1|PC[1]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 1.107      ;
-; 0.858 ; VGA_SYNC_module:U1|PC[4]                  ; VGA_SYNC_module:U1|Hex_Display_Data[4]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 1.124      ;
-; 0.867 ; VGA_SYNC_module:U1|PC[7]                  ; VGA_SYNC_module:U1|Hex_Display_Data[7]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 1.134      ;
-; 0.868 ; VGA_SYNC_module:U1|PC[6]                  ; VGA_SYNC_module:U1|Hex_Display_Data[6]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 1.135      ;
-; 0.876 ; LCD_Display:U2|state.MODE_SET             ; LCD_Display:U2|DATA_BUS_VALUE[1]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 1.142      ;
-; 0.882 ; LCD_Display:U2|CHAR_COUNT[0]              ; LCD_Display:U2|CHAR_COUNT[0]              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 1.149      ;
-; 0.902 ; VGA_SYNC_module:U1|PC[1]                  ; VGA_SYNC_module:U1|Hex_Display_Data[1]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 1.168      ;
-; 0.904 ; VGA_SYNC_module:U1|PC[5]                  ; VGA_SYNC_module:U1|Hex_Display_Data[5]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 1.170      ;
+; 0.690 ; LCD_Display:U2|CHAR_COUNT[3]              ; LCD_Display:U2|CHAR_COUNT[3]              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.957      ;
+; 0.690 ; LCD_Display:U2|CHAR_COUNT[1]              ; LCD_Display:U2|CHAR_COUNT[1]              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.957      ;
+; 0.692 ; LCD_Display:U2|CHAR_COUNT[4]              ; LCD_Display:U2|CHAR_COUNT[4]              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.959      ;
+; 0.699 ; LCD_Display:U2|state.RETURN_HOME          ; LCD_Display:U2|DATA_BUS_VALUE[7]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.966      ;
+; 0.709 ; LCD_Display:U2|CHAR_COUNT[0]              ; LCD_Display:U2|CHAR_COUNT[0]              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.976      ;
+; 0.731 ; VGA_SYNC_module:U1|PC[10]                 ; VGA_SYNC_module:U1|Hex_Display_Data[10]   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 0.998      ;
+; 0.736 ; LCD_Display:U2|state.LINE2                ; LCD_Display:U2|next_command.Print_String  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 1.003      ;
+; 0.755 ; LCD_Display:U2|state.HOLD                 ; LCD_Display:U2|state.LINE2                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 1.022      ;
+; 0.755 ; LCD_Display:U2|state.HOLD                 ; LCD_Display:U2|state.Print_String         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 1.022      ;
+; 0.756 ; LCD_Display:U2|state.HOLD                 ; LCD_Display:U2|state.RETURN_HOME          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 1.023      ;
+; 0.766 ; LCD_Display:U2|state.DROP_LCD_E           ; LCD_Display:U2|next_command.RETURN_HOME   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 1.033      ;
+; 0.771 ; LCD_Display:U2|state.DROP_LCD_E           ; LCD_Display:U2|DATA_BUS_VALUE[1]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 1.038      ;
+; 0.789 ; VGA_SYNC_module:U1|PC[5]                  ; VGA_SYNC_module:U1|Hex_Display_Data[5]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 1.056      ;
+; 0.791 ; LCD_Display:U2|state.DROP_LCD_E           ; LCD_Display:U2|state.HOLD                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 1.058      ;
+; 0.821 ; VGA_SYNC_module:U1|PC[7]                  ; VGA_SYNC_module:U1|Hex_Display_Data[7]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 1.088      ;
+; 0.823 ; VGA_SYNC_module:U1|PC[6]                  ; VGA_SYNC_module:U1|Hex_Display_Data[6]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 1.090      ;
+; 0.830 ; LCD_Display:U2|state.Print_String         ; LCD_Display:U2|next_command.RETURN_HOME   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 1.097      ;
+; 0.874 ; LCD_Display:U2|state.HOLD                 ; LCD_Display:U2|state.DROP_LCD_E           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.081      ; 1.141      ;
 ; 0.909 ; LCD_Display:U2|CLK_COUNT_400HZ[13]        ; LCD_Display:U2|CLK_400HZ_Enable           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 1.175      ;
+; 0.931 ; LCD_Display:U2|state.MODE_SET             ; LCD_Display:U2|next_command.Print_String  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.075      ; 1.192      ;
 ; 0.954 ; LCD_Display:U2|CLK_COUNT_400HZ[1]         ; LCD_Display:U2|CLK_COUNT_400HZ[2]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 1.220      ;
-; 0.956 ; LCD_Display:U2|CLK_COUNT_400HZ[9]         ; LCD_Display:U2|CLK_COUNT_400HZ[10]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.082      ; 1.224      ;
+; 0.955 ; LCD_Display:U2|CLK_COUNT_400HZ[9]         ; LCD_Display:U2|CLK_COUNT_400HZ[10]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.083      ; 1.224      ;
 ; 0.958 ; LCD_Display:U2|CLK_COUNT_400HZ[7]         ; LCD_Display:U2|CLK_COUNT_400HZ[8]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 1.224      ;
 ; 0.959 ; LCD_Display:U2|CLK_COUNT_400HZ[13]        ; LCD_Display:U2|CLK_COUNT_400HZ[14]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 1.225      ;
 ; 0.960 ; LCD_Display:U2|CLK_COUNT_400HZ[15]        ; LCD_Display:U2|CLK_COUNT_400HZ[16]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 1.226      ;
 ; 0.960 ; LCD_Display:U2|CLK_COUNT_400HZ[5]         ; LCD_Display:U2|CLK_COUNT_400HZ[6]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 1.226      ;
 ; 0.960 ; LCD_Display:U2|CLK_COUNT_400HZ[11]        ; LCD_Display:U2|CLK_COUNT_400HZ[12]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 1.226      ;
-; 0.961 ; LCD_Display:U2|CLK_COUNT_400HZ[3]         ; LCD_Display:U2|CLK_COUNT_400HZ[4]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.080      ; 1.227      ;
 +-------+-------------------------------------------+-------------------------------------------+--------------+-------------+--------------+------------+------------+
 
 
@@ -400,7 +400,7 @@ No synchronizer chains to report.
 +------------+-----------------+------------+------+
 ; Fmax       ; Restricted Fmax ; Clock Name ; Note ;
 +------------+-----------------+------------+------+
-; 199.72 MHz ; 199.72 MHz      ; CLOCK_50   ;      ;
+; 152.35 MHz ; 152.35 MHz      ; CLOCK_50   ;      ;
 +------------+-----------------+------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -410,7 +410,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +----------+--------+----------------+
 ; Clock    ; Slack  ; End Point TNS  ;
 +----------+--------+----------------+
-; CLOCK_50 ; 14.993 ; 0.000          ;
+; CLOCK_50 ; 13.436 ; 0.000          ;
 +----------+--------+----------------+
 
 
@@ -449,106 +449,106 @@ No paths to report.
 +--------+-----------------------------------------+-----------------------------------+--------------+-------------+--------------+------------+------------+
 ; Slack  ; From Node                               ; To Node                           ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +--------+-----------------------------------------+-----------------------------------+--------------+-------------+--------------+------------+------------+
-; 14.993 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 4.930      ;
-; 15.033 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.075     ; 4.891      ;
-; 15.040 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 4.883      ;
-; 15.109 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.075     ; 4.815      ;
-; 15.148 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.075     ; 4.776      ;
-; 15.164 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.075     ; 4.760      ;
-; 15.208 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 4.715      ;
-; 15.235 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 4.688      ;
-; 15.286 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.075     ; 4.638      ;
-; 15.311 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 4.612      ;
-; 15.337 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 4.586      ;
-; 15.339 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 4.584      ;
-; 15.350 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 4.573      ;
-; 15.353 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 4.570      ;
-; 15.366 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 4.557      ;
-; 15.400 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 4.523      ;
-; 15.461 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 4.462      ;
-; 15.468 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 4.455      ;
-; 15.488 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 4.435      ;
-; 15.590 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 4.333      ;
-; 15.608 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 4.315      ;
-; 15.654 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 4.269      ;
-; 15.655 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 4.268      ;
-; 15.655 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 4.268      ;
-; 15.656 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 4.267      ;
-; 15.690 ; VGA_SYNC_module:U1|Hex_Display_Data[8]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.073     ; 4.236      ;
-; 15.731 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 4.192      ;
-; 15.732 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 4.191      ;
-; 15.739 ; VGA_SYNC_module:U1|Hex_Display_Data[12] ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.073     ; 4.187      ;
-; 15.770 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 4.153      ;
-; 15.771 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 4.152      ;
-; 15.785 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 4.138      ;
-; 15.786 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 4.137      ;
-; 15.787 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 4.136      ;
-; 15.810 ; VGA_SYNC_module:U1|Hex_Display_Data[1]  ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 4.117      ;
-; 15.862 ; VGA_SYNC_module:U1|Hex_Display_Data[0]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.073     ; 4.064      ;
-; 15.863 ; VGA_SYNC_module:U1|Hex_Display_Data[9]  ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 4.064      ;
-; 15.907 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 4.016      ;
-; 15.908 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 4.015      ;
-; 15.909 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 4.014      ;
-; 15.942 ; VGA_SYNC_module:U1|Hex_Display_Data[4]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.073     ; 3.984      ;
-; 15.985 ; VGA_SYNC_module:U1|Hex_Display_Data[1]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.073     ; 3.941      ;
-; 16.012 ; VGA_SYNC_module:U1|Hex_Display_Data[1]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.073     ; 3.914      ;
-; 16.014 ; VGA_SYNC_module:U1|Hex_Display_Data[8]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.073     ; 3.912      ;
-; 16.038 ; VGA_SYNC_module:U1|Hex_Display_Data[9]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.073     ; 3.888      ;
-; 16.050 ; VGA_SYNC_module:U1|Hex_Display_Data[8]  ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.073     ; 3.876      ;
-; 16.063 ; VGA_SYNC_module:U1|Hex_Display_Data[12] ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.073     ; 3.863      ;
-; 16.065 ; VGA_SYNC_module:U1|Hex_Display_Data[9]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.073     ; 3.861      ;
-; 16.097 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[0] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.830      ;
-; 16.097 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[1] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.830      ;
-; 16.097 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[2] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.830      ;
-; 16.097 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[3] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.830      ;
-; 16.097 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[4] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.830      ;
-; 16.097 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[5] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.830      ;
-; 16.097 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[6] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.830      ;
-; 16.097 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[7] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.830      ;
-; 16.097 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[8] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.830      ;
-; 16.097 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[9] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.830      ;
-; 16.099 ; VGA_SYNC_module:U1|Hex_Display_Data[12] ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.073     ; 3.827      ;
-; 16.114 ; VGA_SYNC_module:U1|Hex_Display_Data[1]  ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.073     ; 3.812      ;
-; 16.167 ; VGA_SYNC_module:U1|Hex_Display_Data[9]  ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.073     ; 3.759      ;
-; 16.186 ; VGA_SYNC_module:U1|Hex_Display_Data[0]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.073     ; 3.740      ;
-; 16.222 ; VGA_SYNC_module:U1|Hex_Display_Data[0]  ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.073     ; 3.704      ;
-; 16.224 ; VGA_SYNC_module:U1|Hex_Display_Data[3]  ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.703      ;
-; 16.245 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[0] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.682      ;
-; 16.245 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[1] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.682      ;
-; 16.245 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[2] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.682      ;
-; 16.245 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[3] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.682      ;
-; 16.245 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[4] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.682      ;
-; 16.245 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[5] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.682      ;
-; 16.245 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[6] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.682      ;
-; 16.245 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[7] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.682      ;
-; 16.245 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[8] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.682      ;
-; 16.245 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[9] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.682      ;
-; 16.266 ; VGA_SYNC_module:U1|Hex_Display_Data[4]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.073     ; 3.660      ;
-; 16.302 ; VGA_SYNC_module:U1|Hex_Display_Data[4]  ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.073     ; 3.624      ;
-; 16.305 ; VGA_SYNC_module:U1|Hex_Display_Data[8]  ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.073     ; 3.621      ;
-; 16.335 ; VGA_SYNC_module:U1|Hex_Display_Data[3]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.073     ; 3.591      ;
-; 16.354 ; VGA_SYNC_module:U1|Hex_Display_Data[12] ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.073     ; 3.572      ;
-; 16.355 ; LCD_Display:U2|CLK_400HZ_Enable         ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.069     ; 3.575      ;
-; 16.362 ; VGA_SYNC_module:U1|Hex_Display_Data[3]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.073     ; 3.564      ;
-; 16.365 ; LCD_Display:U2|CLK_COUNT_400HZ[9]       ; LCD_Display:U2|CLK_COUNT_400HZ[0] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.562      ;
-; 16.365 ; LCD_Display:U2|CLK_COUNT_400HZ[9]       ; LCD_Display:U2|CLK_COUNT_400HZ[1] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.562      ;
-; 16.365 ; LCD_Display:U2|CLK_COUNT_400HZ[9]       ; LCD_Display:U2|CLK_COUNT_400HZ[2] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.562      ;
-; 16.365 ; LCD_Display:U2|CLK_COUNT_400HZ[9]       ; LCD_Display:U2|CLK_COUNT_400HZ[3] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.562      ;
-; 16.365 ; LCD_Display:U2|CLK_COUNT_400HZ[9]       ; LCD_Display:U2|CLK_COUNT_400HZ[4] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.562      ;
-; 16.365 ; LCD_Display:U2|CLK_COUNT_400HZ[9]       ; LCD_Display:U2|CLK_COUNT_400HZ[5] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.562      ;
-; 16.365 ; LCD_Display:U2|CLK_COUNT_400HZ[9]       ; LCD_Display:U2|CLK_COUNT_400HZ[6] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.562      ;
-; 16.365 ; LCD_Display:U2|CLK_COUNT_400HZ[9]       ; LCD_Display:U2|CLK_COUNT_400HZ[7] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.562      ;
-; 16.365 ; LCD_Display:U2|CLK_COUNT_400HZ[9]       ; LCD_Display:U2|CLK_COUNT_400HZ[8] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.562      ;
-; 16.365 ; LCD_Display:U2|CLK_COUNT_400HZ[9]       ; LCD_Display:U2|CLK_COUNT_400HZ[9] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.562      ;
-; 16.368 ; VGA_SYNC_module:U1|Hex_Display_Data[6]  ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.074     ; 3.557      ;
-; 16.374 ; LCD_Display:U2|CLK_COUNT_400HZ[6]       ; LCD_Display:U2|CLK_COUNT_400HZ[0] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.553      ;
-; 16.374 ; LCD_Display:U2|CLK_COUNT_400HZ[6]       ; LCD_Display:U2|CLK_COUNT_400HZ[1] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.553      ;
-; 16.374 ; LCD_Display:U2|CLK_COUNT_400HZ[6]       ; LCD_Display:U2|CLK_COUNT_400HZ[2] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.553      ;
-; 16.374 ; LCD_Display:U2|CLK_COUNT_400HZ[6]       ; LCD_Display:U2|CLK_COUNT_400HZ[3] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.553      ;
-; 16.374 ; LCD_Display:U2|CLK_COUNT_400HZ[6]       ; LCD_Display:U2|CLK_COUNT_400HZ[4] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.553      ;
-; 16.374 ; LCD_Display:U2|CLK_COUNT_400HZ[6]       ; LCD_Display:U2|CLK_COUNT_400HZ[5] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.553      ;
-; 16.374 ; LCD_Display:U2|CLK_COUNT_400HZ[6]       ; LCD_Display:U2|CLK_COUNT_400HZ[6] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.553      ;
-; 16.374 ; LCD_Display:U2|CLK_COUNT_400HZ[6]       ; LCD_Display:U2|CLK_COUNT_400HZ[7] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 3.553      ;
+; 13.436 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 6.491      ;
+; 13.526 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 6.401      ;
+; 13.567 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 6.360      ;
+; 13.758 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 6.165      ;
+; 13.848 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 6.075      ;
+; 13.889 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 6.034      ;
+; 13.933 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 5.994      ;
+; 14.100 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.069     ; 5.830      ;
+; 14.103 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 5.824      ;
+; 14.190 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.069     ; 5.740      ;
+; 14.231 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.069     ; 5.699      ;
+; 14.255 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 5.668      ;
+; 14.425 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 5.498      ;
+; 14.597 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.069     ; 5.333      ;
+; 14.608 ; VGA_SYNC_module:U1|Hex_Display_Data[10] ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.067     ; 5.324      ;
+; 14.619 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 5.304      ;
+; 14.651 ; VGA_SYNC_module:U1|Hex_Display_Data[14] ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.067     ; 5.281      ;
+; 14.709 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 5.214      ;
+; 14.750 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 5.173      ;
+; 14.767 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.069     ; 5.163      ;
+; 14.886 ; VGA_SYNC_module:U1|Hex_Display_Data[11] ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.067     ; 5.046      ;
+; 14.892 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 5.035      ;
+; 14.927 ; VGA_SYNC_module:U1|Hex_Display_Data[7]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.067     ; 5.005      ;
+; 14.930 ; VGA_SYNC_module:U1|Hex_Display_Data[10] ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.071     ; 4.998      ;
+; 14.937 ; VGA_SYNC_module:U1|Hex_Display_Data[6]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.067     ; 4.995      ;
+; 14.942 ; VGA_SYNC_module:U1|Hex_Display_Data[2]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.066     ; 4.991      ;
+; 14.954 ; VGA_SYNC_module:U1|Hex_Display_Data[5]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.067     ; 4.978      ;
+; 14.973 ; VGA_SYNC_module:U1|Hex_Display_Data[14] ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.071     ; 4.955      ;
+; 14.982 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 4.945      ;
+; 15.023 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 4.904      ;
+; 15.104 ; VGA_SYNC_module:U1|Hex_Display_Data[9]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.067     ; 4.828      ;
+; 15.109 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 4.818      ;
+; 15.116 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 4.807      ;
+; 15.152 ; VGA_SYNC_module:U1|Hex_Display_Data[13] ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.067     ; 4.780      ;
+; 15.199 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 4.728      ;
+; 15.208 ; VGA_SYNC_module:U1|Hex_Display_Data[11] ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.071     ; 4.720      ;
+; 15.240 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 4.687      ;
+; 15.249 ; VGA_SYNC_module:U1|Hex_Display_Data[7]  ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.071     ; 4.679      ;
+; 15.259 ; VGA_SYNC_module:U1|Hex_Display_Data[6]  ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.071     ; 4.669      ;
+; 15.264 ; VGA_SYNC_module:U1|Hex_Display_Data[2]  ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.070     ; 4.665      ;
+; 15.272 ; VGA_SYNC_module:U1|Hex_Display_Data[10] ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.064     ; 4.663      ;
+; 15.276 ; VGA_SYNC_module:U1|Hex_Display_Data[5]  ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.071     ; 4.652      ;
+; 15.286 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.076     ; 4.637      ;
+; 15.315 ; VGA_SYNC_module:U1|Hex_Display_Data[14] ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.064     ; 4.620      ;
+; 15.352 ; VGA_SYNC_module:U1|Hex_Display_Data[15] ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.071     ; 4.576      ;
+; 15.389 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 4.538      ;
+; 15.426 ; VGA_SYNC_module:U1|Hex_Display_Data[9]  ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.071     ; 4.502      ;
+; 15.433 ; VGA_SYNC_module:U1|Hex_Display_Data[8]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.067     ; 4.499      ;
+; 15.443 ; VGA_SYNC_module:U1|Hex_Display_Data[12] ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.067     ; 4.489      ;
+; 15.474 ; VGA_SYNC_module:U1|Hex_Display_Data[13] ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.071     ; 4.454      ;
+; 15.486 ; VGA_SYNC_module:U1|Hex_Display_Data[1]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.067     ; 4.446      ;
+; 15.550 ; VGA_SYNC_module:U1|Hex_Display_Data[11] ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.064     ; 4.385      ;
+; 15.559 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 4.368      ;
+; 15.591 ; VGA_SYNC_module:U1|Hex_Display_Data[7]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.064     ; 4.344      ;
+; 15.601 ; VGA_SYNC_module:U1|Hex_Display_Data[6]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.064     ; 4.334      ;
+; 15.603 ; VGA_SYNC_module:U1|Hex_Display_Data[4]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.067     ; 4.329      ;
+; 15.606 ; VGA_SYNC_module:U1|Hex_Display_Data[2]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.063     ; 4.330      ;
+; 15.606 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 4.321      ;
+; 15.618 ; VGA_SYNC_module:U1|Hex_Display_Data[5]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.064     ; 4.317      ;
+; 15.674 ; VGA_SYNC_module:U1|Hex_Display_Data[15] ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.075     ; 4.250      ;
+; 15.741 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 4.186      ;
+; 15.768 ; VGA_SYNC_module:U1|Hex_Display_Data[9]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.064     ; 4.167      ;
+; 15.776 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 4.151      ;
+; 15.791 ; VGA_SYNC_module:U1|Hex_Display_Data[10] ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.071     ; 4.137      ;
+; 15.808 ; VGA_SYNC_module:U1|Hex_Display_Data[1]  ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.071     ; 4.120      ;
+; 15.812 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 4.115      ;
+; 15.816 ; VGA_SYNC_module:U1|Hex_Display_Data[13] ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.064     ; 4.119      ;
+; 15.834 ; VGA_SYNC_module:U1|Hex_Display_Data[14] ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.071     ; 4.094      ;
+; 15.872 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.072     ; 4.055      ;
+; 15.899 ; VGA_SYNC_module:U1|Hex_Display_Data[0]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.067     ; 4.033      ;
+; 15.945 ; VGA_SYNC_module:U1|Hex_Display_Data[8]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.064     ; 3.990      ;
+; 15.955 ; VGA_SYNC_module:U1|Hex_Display_Data[12] ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.064     ; 3.980      ;
+; 15.960 ; VGA_SYNC_module:U1|Hex_Display_Data[3]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.071     ; 3.968      ;
+; 15.980 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[0] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.071     ; 3.948      ;
+; 15.980 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[1] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.071     ; 3.948      ;
+; 15.980 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[2] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.071     ; 3.948      ;
+; 15.980 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[3] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.071     ; 3.948      ;
+; 15.980 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[4] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.071     ; 3.948      ;
+; 15.980 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[5] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.071     ; 3.948      ;
+; 15.980 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[6] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.071     ; 3.948      ;
+; 15.980 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[7] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.071     ; 3.948      ;
+; 15.980 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[8] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.071     ; 3.948      ;
+; 15.980 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[9] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.071     ; 3.948      ;
+; 16.016 ; VGA_SYNC_module:U1|Hex_Display_Data[15] ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.068     ; 3.915      ;
+; 16.064 ; VGA_SYNC_module:U1|Hex_Display_Data[10] ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.067     ; 3.868      ;
+; 16.069 ; VGA_SYNC_module:U1|Hex_Display_Data[11] ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.071     ; 3.859      ;
+; 16.107 ; VGA_SYNC_module:U1|Hex_Display_Data[14] ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.067     ; 3.825      ;
+; 16.110 ; VGA_SYNC_module:U1|Hex_Display_Data[7]  ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.071     ; 3.818      ;
+; 16.115 ; VGA_SYNC_module:U1|Hex_Display_Data[4]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.064     ; 3.820      ;
+; 16.117 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[0] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.071     ; 3.811      ;
+; 16.117 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[1] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.071     ; 3.811      ;
+; 16.117 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[2] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.071     ; 3.811      ;
+; 16.117 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[3] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.071     ; 3.811      ;
+; 16.117 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[4] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.071     ; 3.811      ;
+; 16.117 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[5] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.071     ; 3.811      ;
+; 16.117 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[6] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.071     ; 3.811      ;
+; 16.117 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[7] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.071     ; 3.811      ;
+; 16.117 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[8] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.071     ; 3.811      ;
+; 16.117 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[9] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.071     ; 3.811      ;
+; 16.120 ; VGA_SYNC_module:U1|Hex_Display_Data[6]  ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.071     ; 3.808      ;
 +--------+-----------------------------------------+-----------------------------------+--------------+-------------+--------------+------------+------------+
 
 
@@ -560,8 +560,9 @@ No paths to report.
 ; 0.354 ; LCD_Display:U2|LCD_RS                     ; LCD_Display:U2|LCD_RS                     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.597      ;
 ; 0.354 ; LCD_Display:U2|LCD_E                      ; LCD_Display:U2|LCD_E                      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.597      ;
 ; 0.354 ; LCD_Display:U2|DATA_BUS_VALUE[7]          ; LCD_Display:U2|DATA_BUS_VALUE[7]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.597      ;
-; 0.354 ; VGA_SYNC_module:U1|PC[0]                  ; VGA_SYNC_module:U1|PC[0]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.597      ;
-; 0.354 ; LCD_Display:U2|next_command.Print_String  ; LCD_Display:U2|next_command.Print_String  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.597      ;
+; 0.354 ; LCD_Display:U2|DATA_BUS_VALUE[1]          ; LCD_Display:U2|DATA_BUS_VALUE[1]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.597      ;
+; 0.354 ; LCD_Display:U2|next_command.RETURN_HOME   ; LCD_Display:U2|next_command.RETURN_HOME   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.597      ;
+; 0.354 ; LCD_Display:U2|next_command.LINE2         ; LCD_Display:U2|next_command.LINE2         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.597      ;
 ; 0.354 ; LCD_Display:U2|next_command.MODE_SET      ; LCD_Display:U2|next_command.MODE_SET      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.597      ;
 ; 0.354 ; LCD_Display:U2|next_command.DISPLAY_ON    ; LCD_Display:U2|next_command.DISPLAY_ON    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.597      ;
 ; 0.354 ; LCD_Display:U2|next_command.DISPLAY_CLEAR ; LCD_Display:U2|next_command.DISPLAY_CLEAR ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.597      ;
@@ -569,94 +570,93 @@ No paths to report.
 ; 0.354 ; LCD_Display:U2|next_command.FUNC_SET      ; LCD_Display:U2|next_command.FUNC_SET      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.597      ;
 ; 0.354 ; LCD_Display:U2|next_command.RESET3        ; LCD_Display:U2|next_command.RESET3        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.597      ;
 ; 0.354 ; LCD_Display:U2|next_command.RESET2        ; LCD_Display:U2|next_command.RESET2        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.597      ;
-; 0.355 ; LCD_Display:U2|DATA_BUS_VALUE[1]          ; LCD_Display:U2|DATA_BUS_VALUE[1]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.597      ;
-; 0.382 ; LCD_Display:U2|next_command.RESET2        ; LCD_Display:U2|state.RESET2               ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.625      ;
+; 0.365 ; LCD_Display:U2|state.DROP_LCD_E           ; LCD_Display:U2|state.DROP_LCD_E           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.608      ;
+; 0.366 ; VGA_SYNC_module:U1|Hex_Display_Data[0]    ; VGA_SYNC_module:U1|Hex_Display_Data[0]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.608      ;
 ; 0.387 ; LCD_Display:U2|CLK_COUNT_400HZ[19]        ; LCD_Display:U2|CLK_COUNT_400HZ[19]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.630      ;
-; 0.396 ; LCD_Display:U2|next_command.RESET3        ; LCD_Display:U2|state.RESET3               ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.639      ;
-; 0.397 ; LCD_Display:U2|next_command.MODE_SET      ; LCD_Display:U2|state.MODE_SET             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.640      ;
-; 0.398 ; LCD_Display:U2|next_command.FUNC_SET      ; LCD_Display:U2|state.FUNC_SET             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.641      ;
-; 0.402 ; LCD_Display:U2|state.FUNC_SET             ; LCD_Display:U2|next_command.DISPLAY_OFF   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.645      ;
+; 0.398 ; LCD_Display:U2|next_command.DISPLAY_OFF   ; LCD_Display:U2|state.DISPLAY_OFF          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.641      ;
+; 0.399 ; LCD_Display:U2|next_command.RESET3        ; LCD_Display:U2|state.RESET3               ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.642      ;
 ; 0.403 ; LCD_Display:U2|state.RESET2               ; LCD_Display:U2|next_command.RESET3        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.646      ;
-; 0.404 ; LCD_Display:U2|state.DISPLAY_OFF          ; LCD_Display:U2|next_command.DISPLAY_CLEAR ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.647      ;
-; 0.418 ; LCD_Display:U2|state.DISPLAY_CLEAR        ; LCD_Display:U2|next_command.DISPLAY_ON    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.661      ;
-; 0.455 ; LCD_Display:U2|state.HOLD                 ; LCD_Display:U2|state.LINE2                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.698      ;
-; 0.455 ; LCD_Display:U2|state.HOLD                 ; LCD_Display:U2|state.RETURN_HOME          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.698      ;
-; 0.456 ; LCD_Display:U2|state.HOLD                 ; LCD_Display:U2|LCD_RS                     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.699      ;
-; 0.459 ; LCD_Display:U2|state.HOLD                 ; LCD_Display:U2|state.Print_String         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.702      ;
-; 0.506 ; LCD_Display:U2|next_command.DISPLAY_ON    ; LCD_Display:U2|state.DISPLAY_ON           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.749      ;
-; 0.507 ; LCD_Display:U2|next_command.DISPLAY_CLEAR ; LCD_Display:U2|state.DISPLAY_CLEAR        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.750      ;
-; 0.507 ; LCD_Display:U2|next_command.DISPLAY_OFF   ; LCD_Display:U2|state.DISPLAY_OFF          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.750      ;
-; 0.559 ; LCD_Display:U2|state.Print_String         ; LCD_Display:U2|next_command.RETURN_HOME   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.802      ;
-; 0.563 ; LCD_Display:U2|state.RESET1               ; LCD_Display:U2|next_command.RESET2        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.806      ;
-; 0.582 ; LCD_Display:U2|next_command.Print_String  ; LCD_Display:U2|state.Print_String         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.825      ;
-; 0.583 ; LCD_Display:U2|state.DROP_LCD_E           ; LCD_Display:U2|state.HOLD                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.826      ;
-; 0.583 ; LCD_Display:U2|CLK_COUNT_400HZ[1]         ; LCD_Display:U2|CLK_COUNT_400HZ[1]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.826      ;
-; 0.584 ; LCD_Display:U2|CLK_COUNT_400HZ[7]         ; LCD_Display:U2|CLK_COUNT_400HZ[7]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.827      ;
+; 0.417 ; LCD_Display:U2|state.MODE_SET             ; LCD_Display:U2|DATA_BUS_VALUE[2]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.660      ;
+; 0.418 ; LCD_Display:U2|state.LINE2                ; LCD_Display:U2|DATA_BUS_VALUE[7]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.661      ;
+; 0.418 ; LCD_Display:U2|state.RESET1               ; LCD_Display:U2|next_command.RESET2        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.661      ;
+; 0.437 ; LCD_Display:U2|state.Print_String         ; LCD_Display:U2|next_command.LINE2         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.680      ;
+; 0.438 ; LCD_Display:U2|state.Print_String         ; LCD_Display:U2|DATA_BUS_VALUE[6]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.681      ;
+; 0.499 ; VGA_SYNC_module:U1|PC[2]                  ; VGA_SYNC_module:U1|Hex_Display_Data[2]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.741      ;
+; 0.506 ; LCD_Display:U2|next_command.MODE_SET      ; LCD_Display:U2|state.MODE_SET             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.749      ;
+; 0.525 ; LCD_Display:U2|state.RETURN_HOME          ; LCD_Display:U2|next_command.Print_String  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.768      ;
+; 0.563 ; VGA_SYNC_module:U1|PC[8]                  ; VGA_SYNC_module:U1|Hex_Display_Data[8]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.806      ;
+; 0.571 ; LCD_Display:U2|state.FUNC_SET             ; LCD_Display:U2|next_command.DISPLAY_OFF   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.813      ;
+; 0.584 ; LCD_Display:U2|next_command.LINE2         ; LCD_Display:U2|state.LINE2                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.827      ;
+; 0.584 ; LCD_Display:U2|CLK_COUNT_400HZ[1]         ; LCD_Display:U2|CLK_COUNT_400HZ[1]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.826      ;
+; 0.585 ; LCD_Display:U2|next_command.DISPLAY_ON    ; LCD_Display:U2|state.DISPLAY_ON           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.828      ;
 ; 0.585 ; LCD_Display:U2|CLK_COUNT_400HZ[13]        ; LCD_Display:U2|CLK_COUNT_400HZ[13]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.828      ;
-; 0.585 ; LCD_Display:U2|CLK_COUNT_400HZ[5]         ; LCD_Display:U2|CLK_COUNT_400HZ[5]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.828      ;
-; 0.585 ; LCD_Display:U2|CLK_COUNT_400HZ[9]         ; LCD_Display:U2|CLK_COUNT_400HZ[9]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.828      ;
-; 0.587 ; VGA_SYNC_module:U1|PC[15]                 ; VGA_SYNC_module:U1|PC[15]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.830      ;
+; 0.585 ; LCD_Display:U2|CLK_COUNT_400HZ[9]         ; LCD_Display:U2|CLK_COUNT_400HZ[9]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.827      ;
+; 0.586 ; LCD_Display:U2|CLK_COUNT_400HZ[5]         ; LCD_Display:U2|CLK_COUNT_400HZ[5]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.828      ;
+; 0.586 ; LCD_Display:U2|CLK_COUNT_400HZ[7]         ; LCD_Display:U2|CLK_COUNT_400HZ[7]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.828      ;
+; 0.587 ; LCD_Display:U2|next_command.RETURN_HOME   ; LCD_Display:U2|state.RETURN_HOME          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.830      ;
 ; 0.587 ; LCD_Display:U2|CLK_COUNT_400HZ[15]        ; LCD_Display:U2|CLK_COUNT_400HZ[15]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.830      ;
+; 0.588 ; LCD_Display:U2|next_command.DISPLAY_CLEAR ; LCD_Display:U2|state.DISPLAY_CLEAR        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.831      ;
 ; 0.588 ; LCD_Display:U2|CLK_COUNT_400HZ[11]        ; LCD_Display:U2|CLK_COUNT_400HZ[11]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.831      ;
-; 0.588 ; LCD_Display:U2|state.RESET3               ; LCD_Display:U2|next_command.FUNC_SET      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.831      ;
 ; 0.589 ; LCD_Display:U2|CLK_COUNT_400HZ[16]        ; LCD_Display:U2|CLK_COUNT_400HZ[16]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.832      ;
-; 0.589 ; LCD_Display:U2|CLK_COUNT_400HZ[3]         ; LCD_Display:U2|CLK_COUNT_400HZ[3]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.832      ;
-; 0.589 ; LCD_Display:U2|CLK_COUNT_400HZ[8]         ; LCD_Display:U2|CLK_COUNT_400HZ[8]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.832      ;
-; 0.590 ; VGA_SYNC_module:U1|PC[11]                 ; VGA_SYNC_module:U1|Hex_Display_Data[11]   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.073      ; 0.834      ;
-; 0.590 ; LCD_Display:U2|CLK_COUNT_400HZ[6]         ; LCD_Display:U2|CLK_COUNT_400HZ[6]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.833      ;
+; 0.589 ; LCD_Display:U2|CLK_COUNT_400HZ[10]        ; LCD_Display:U2|CLK_COUNT_400HZ[10]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.832      ;
+; 0.590 ; VGA_SYNC_module:U1|PC[2]                  ; VGA_SYNC_module:U1|PC[2]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.832      ;
+; 0.590 ; LCD_Display:U2|next_command.Print_String  ; LCD_Display:U2|state.Print_String         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.833      ;
+; 0.590 ; LCD_Display:U2|CLK_COUNT_400HZ[3]         ; LCD_Display:U2|CLK_COUNT_400HZ[3]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.832      ;
+; 0.590 ; LCD_Display:U2|CLK_COUNT_400HZ[8]         ; LCD_Display:U2|CLK_COUNT_400HZ[8]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.832      ;
 ; 0.590 ; LCD_Display:U2|CLK_COUNT_400HZ[12]        ; LCD_Display:U2|CLK_COUNT_400HZ[12]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.833      ;
-; 0.590 ; LCD_Display:U2|next_command.RETURN_HOME   ; LCD_Display:U2|state.RETURN_HOME          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.833      ;
-; 0.591 ; LCD_Display:U2|CLK_COUNT_400HZ[2]         ; LCD_Display:U2|CLK_COUNT_400HZ[2]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.834      ;
+; 0.591 ; VGA_SYNC_module:U1|PC[9]                  ; VGA_SYNC_module:U1|Hex_Display_Data[9]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.834      ;
+; 0.591 ; LCD_Display:U2|CLK_COUNT_400HZ[6]         ; LCD_Display:U2|CLK_COUNT_400HZ[6]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.833      ;
 ; 0.591 ; LCD_Display:U2|CLK_COUNT_400HZ[14]        ; LCD_Display:U2|CLK_COUNT_400HZ[14]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.834      ;
 ; 0.591 ; LCD_Display:U2|CLK_COUNT_400HZ[17]        ; LCD_Display:U2|CLK_COUNT_400HZ[17]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.834      ;
-; 0.592 ; LCD_Display:U2|next_command.LINE2         ; LCD_Display:U2|state.LINE2                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.835      ;
+; 0.591 ; LCD_Display:U2|state.DISPLAY_ON           ; LCD_Display:U2|next_command.MODE_SET      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.834      ;
+; 0.592 ; LCD_Display:U2|CLK_COUNT_400HZ[2]         ; LCD_Display:U2|CLK_COUNT_400HZ[2]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.834      ;
 ; 0.593 ; LCD_Display:U2|CLK_COUNT_400HZ[18]        ; LCD_Display:U2|CLK_COUNT_400HZ[18]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.836      ;
-; 0.599 ; LCD_Display:U2|CLK_COUNT_400HZ[0]         ; LCD_Display:U2|CLK_COUNT_400HZ[0]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.842      ;
-; 0.600 ; VGA_SYNC_module:U1|PC[13]                 ; VGA_SYNC_module:U1|PC[13]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.843      ;
-; 0.600 ; VGA_SYNC_module:U1|PC[6]                  ; VGA_SYNC_module:U1|PC[6]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.843      ;
-; 0.600 ; VGA_SYNC_module:U1|PC[5]                  ; VGA_SYNC_module:U1|PC[5]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.843      ;
-; 0.600 ; VGA_SYNC_module:U1|PC[3]                  ; VGA_SYNC_module:U1|PC[3]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.843      ;
-; 0.601 ; VGA_SYNC_module:U1|PC[11]                 ; VGA_SYNC_module:U1|PC[11]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.844      ;
-; 0.602 ; VGA_SYNC_module:U1|PC[14]                 ; VGA_SYNC_module:U1|PC[14]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.845      ;
-; 0.602 ; VGA_SYNC_module:U1|PC[4]                  ; VGA_SYNC_module:U1|PC[4]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.845      ;
-; 0.602 ; VGA_SYNC_module:U1|PC[2]                  ; VGA_SYNC_module:U1|PC[2]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.845      ;
-; 0.603 ; VGA_SYNC_module:U1|PC[12]                 ; VGA_SYNC_module:U1|PC[12]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.846      ;
-; 0.603 ; VGA_SYNC_module:U1|PC[10]                 ; VGA_SYNC_module:U1|PC[10]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.846      ;
-; 0.603 ; VGA_SYNC_module:U1|PC[8]                  ; VGA_SYNC_module:U1|PC[8]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.846      ;
-; 0.603 ; LCD_Display:U2|CLK_COUNT_400HZ[10]        ; LCD_Display:U2|CLK_COUNT_400HZ[10]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.846      ;
-; 0.605 ; VGA_SYNC_module:U1|PC[9]                  ; VGA_SYNC_module:U1|PC[9]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.848      ;
-; 0.605 ; VGA_SYNC_module:U1|PC[7]                  ; VGA_SYNC_module:U1|PC[7]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.848      ;
-; 0.605 ; LCD_Display:U2|CLK_COUNT_400HZ[4]         ; LCD_Display:U2|CLK_COUNT_400HZ[4]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.848      ;
-; 0.618 ; VGA_SYNC_module:U1|PC[1]                  ; VGA_SYNC_module:U1|PC[1]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.861      ;
-; 0.642 ; LCD_Display:U2|CHAR_COUNT[3]              ; LCD_Display:U2|CHAR_COUNT[3]              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.885      ;
-; 0.644 ; VGA_SYNC_module:U1|PC[0]                  ; VGA_SYNC_module:U1|Hex_Display_Data[0]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.887      ;
-; 0.646 ; LCD_Display:U2|CHAR_COUNT[2]              ; LCD_Display:U2|CHAR_COUNT[2]              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.889      ;
-; 0.646 ; LCD_Display:U2|state.LINE2                ; LCD_Display:U2|DATA_BUS_VALUE[7]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.889      ;
-; 0.652 ; LCD_Display:U2|CHAR_COUNT[1]              ; LCD_Display:U2|CHAR_COUNT[1]              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.895      ;
-; 0.655 ; LCD_Display:U2|CHAR_COUNT[4]              ; LCD_Display:U2|CHAR_COUNT[4]              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.898      ;
-; 0.694 ; VGA_SYNC_module:U1|PC[3]                  ; VGA_SYNC_module:U1|Hex_Display_Data[3]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.936      ;
-; 0.695 ; VGA_SYNC_module:U1|PC[8]                  ; VGA_SYNC_module:U1|Hex_Display_Data[8]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.937      ;
-; 0.716 ; VGA_SYNC_module:U1|PC[13]                 ; VGA_SYNC_module:U1|Hex_Display_Data[13]   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.958      ;
-; 0.735 ; LCD_Display:U2|state.RETURN_HOME          ; LCD_Display:U2|DATA_BUS_VALUE[7]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.978      ;
-; 0.739 ; LCD_Display:U2|DATA_BUS_VALUE[2]          ; LCD_Display:U2|DATA_BUS_VALUE[2]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.981      ;
-; 0.763 ; VGA_SYNC_module:U1|PC[10]                 ; VGA_SYNC_module:U1|Hex_Display_Data[10]   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.073      ; 1.007      ;
-; 0.780 ; VGA_SYNC_module:U1|PC[0]                  ; VGA_SYNC_module:U1|PC[1]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.073      ; 1.024      ;
-; 0.796 ; VGA_SYNC_module:U1|PC[4]                  ; VGA_SYNC_module:U1|Hex_Display_Data[4]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 1.038      ;
-; 0.803 ; VGA_SYNC_module:U1|PC[7]                  ; VGA_SYNC_module:U1|Hex_Display_Data[7]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.073      ; 1.047      ;
-; 0.805 ; VGA_SYNC_module:U1|PC[6]                  ; VGA_SYNC_module:U1|Hex_Display_Data[6]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.073      ; 1.049      ;
-; 0.811 ; LCD_Display:U2|state.MODE_SET             ; LCD_Display:U2|DATA_BUS_VALUE[1]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 1.053      ;
-; 0.822 ; LCD_Display:U2|CHAR_COUNT[0]              ; LCD_Display:U2|CHAR_COUNT[0]              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 1.065      ;
+; 0.597 ; LCD_Display:U2|state.DISPLAY_CLEAR        ; LCD_Display:U2|next_command.DISPLAY_ON    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.840      ;
+; 0.600 ; LCD_Display:U2|CLK_COUNT_400HZ[0]         ; LCD_Display:U2|CLK_COUNT_400HZ[0]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.842      ;
+; 0.601 ; VGA_SYNC_module:U1|PC[13]                 ; VGA_SYNC_module:U1|PC[13]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.843      ;
+; 0.601 ; VGA_SYNC_module:U1|PC[6]                  ; VGA_SYNC_module:U1|PC[6]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.843      ;
+; 0.601 ; VGA_SYNC_module:U1|PC[5]                  ; VGA_SYNC_module:U1|PC[5]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.843      ;
+; 0.601 ; VGA_SYNC_module:U1|PC[3]                  ; VGA_SYNC_module:U1|PC[3]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.843      ;
+; 0.602 ; VGA_SYNC_module:U1|PC[15]                 ; VGA_SYNC_module:U1|PC[15]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.844      ;
+; 0.602 ; VGA_SYNC_module:U1|PC[11]                 ; VGA_SYNC_module:U1|PC[11]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.844      ;
+; 0.602 ; LCD_Display:U2|state.DISPLAY_OFF          ; LCD_Display:U2|next_command.DISPLAY_CLEAR ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.073      ; 0.846      ;
+; 0.603 ; VGA_SYNC_module:U1|PC[14]                 ; VGA_SYNC_module:U1|PC[14]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.845      ;
+; 0.603 ; VGA_SYNC_module:U1|PC[4]                  ; VGA_SYNC_module:U1|PC[4]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.845      ;
+; 0.604 ; VGA_SYNC_module:U1|PC[12]                 ; VGA_SYNC_module:U1|PC[12]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.846      ;
+; 0.604 ; VGA_SYNC_module:U1|PC[10]                 ; VGA_SYNC_module:U1|PC[10]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.846      ;
+; 0.604 ; VGA_SYNC_module:U1|PC[8]                  ; VGA_SYNC_module:U1|PC[8]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.846      ;
+; 0.606 ; VGA_SYNC_module:U1|PC[9]                  ; VGA_SYNC_module:U1|PC[9]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.848      ;
+; 0.606 ; VGA_SYNC_module:U1|PC[7]                  ; VGA_SYNC_module:U1|PC[7]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.848      ;
+; 0.606 ; LCD_Display:U2|CLK_COUNT_400HZ[4]         ; LCD_Display:U2|CLK_COUNT_400HZ[4]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.848      ;
+; 0.608 ; LCD_Display:U2|state.RESET3               ; LCD_Display:U2|next_command.FUNC_SET      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.851      ;
+; 0.619 ; VGA_SYNC_module:U1|PC[1]                  ; VGA_SYNC_module:U1|PC[1]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 0.861      ;
+; 0.630 ; LCD_Display:U2|CHAR_COUNT[3]              ; LCD_Display:U2|CHAR_COUNT[3]              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.873      ;
+; 0.630 ; LCD_Display:U2|CHAR_COUNT[4]              ; LCD_Display:U2|CHAR_COUNT[4]              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.873      ;
+; 0.631 ; LCD_Display:U2|CHAR_COUNT[1]              ; LCD_Display:U2|CHAR_COUNT[1]              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.874      ;
+; 0.638 ; LCD_Display:U2|state.RETURN_HOME          ; LCD_Display:U2|DATA_BUS_VALUE[7]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.881      ;
+; 0.647 ; LCD_Display:U2|CHAR_COUNT[0]              ; LCD_Display:U2|CHAR_COUNT[0]              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.890      ;
+; 0.674 ; LCD_Display:U2|state.LINE2                ; LCD_Display:U2|next_command.Print_String  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.917      ;
+; 0.676 ; VGA_SYNC_module:U1|PC[10]                 ; VGA_SYNC_module:U1|Hex_Display_Data[10]   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.919      ;
+; 0.689 ; LCD_Display:U2|state.DROP_LCD_E           ; LCD_Display:U2|next_command.RETURN_HOME   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.932      ;
+; 0.693 ; LCD_Display:U2|state.DROP_LCD_E           ; LCD_Display:U2|DATA_BUS_VALUE[1]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.936      ;
+; 0.703 ; LCD_Display:U2|state.HOLD                 ; LCD_Display:U2|state.Print_String         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.946      ;
+; 0.704 ; LCD_Display:U2|state.HOLD                 ; LCD_Display:U2|state.LINE2                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.947      ;
+; 0.704 ; LCD_Display:U2|state.HOLD                 ; LCD_Display:U2|state.RETURN_HOME          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.947      ;
+; 0.732 ; VGA_SYNC_module:U1|PC[5]                  ; VGA_SYNC_module:U1|Hex_Display_Data[5]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.975      ;
+; 0.736 ; LCD_Display:U2|state.DROP_LCD_E           ; LCD_Display:U2|state.HOLD                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 0.979      ;
+; 0.766 ; VGA_SYNC_module:U1|PC[7]                  ; VGA_SYNC_module:U1|Hex_Display_Data[7]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 1.009      ;
+; 0.767 ; VGA_SYNC_module:U1|PC[6]                  ; VGA_SYNC_module:U1|Hex_Display_Data[6]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 1.010      ;
+; 0.770 ; LCD_Display:U2|state.Print_String         ; LCD_Display:U2|next_command.RETURN_HOME   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 1.013      ;
+; 0.807 ; LCD_Display:U2|state.HOLD                 ; LCD_Display:U2|state.DROP_LCD_E           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 1.050      ;
 ; 0.829 ; LCD_Display:U2|CLK_COUNT_400HZ[13]        ; LCD_Display:U2|CLK_400HZ_Enable           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 1.072      ;
-; 0.837 ; VGA_SYNC_module:U1|PC[1]                  ; VGA_SYNC_module:U1|Hex_Display_Data[1]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 1.079      ;
-; 0.839 ; VGA_SYNC_module:U1|PC[5]                  ; VGA_SYNC_module:U1|Hex_Display_Data[5]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 1.081      ;
-; 0.868 ; LCD_Display:U2|CLK_COUNT_400HZ[9]         ; LCD_Display:U2|CLK_COUNT_400HZ[10]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.075      ; 1.114      ;
-; 0.868 ; LCD_Display:U2|CLK_COUNT_400HZ[0]         ; LCD_Display:U2|CLK_COUNT_400HZ[1]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 1.111      ;
-; 0.870 ; LCD_Display:U2|CLK_COUNT_400HZ[7]         ; LCD_Display:U2|CLK_COUNT_400HZ[8]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 1.113      ;
-; 0.870 ; LCD_Display:U2|CLK_COUNT_400HZ[1]         ; LCD_Display:U2|CLK_COUNT_400HZ[2]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 1.113      ;
-; 0.871 ; LCD_Display:U2|CLK_COUNT_400HZ[5]         ; LCD_Display:U2|CLK_COUNT_400HZ[6]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 1.114      ;
+; 0.860 ; LCD_Display:U2|state.MODE_SET             ; LCD_Display:U2|next_command.Print_String  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.065      ; 1.096      ;
+; 0.867 ; LCD_Display:U2|CLK_COUNT_400HZ[9]         ; LCD_Display:U2|CLK_COUNT_400HZ[10]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.075      ; 1.113      ;
+; 0.869 ; LCD_Display:U2|CLK_COUNT_400HZ[0]         ; LCD_Display:U2|CLK_COUNT_400HZ[1]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 1.111      ;
 ; 0.871 ; LCD_Display:U2|CLK_COUNT_400HZ[13]        ; LCD_Display:U2|CLK_COUNT_400HZ[14]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 1.114      ;
+; 0.871 ; LCD_Display:U2|CLK_COUNT_400HZ[1]         ; LCD_Display:U2|CLK_COUNT_400HZ[2]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 1.113      ;
+; 0.872 ; LCD_Display:U2|CLK_COUNT_400HZ[7]         ; LCD_Display:U2|CLK_COUNT_400HZ[8]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 1.114      ;
+; 0.872 ; LCD_Display:U2|CLK_COUNT_400HZ[5]         ; LCD_Display:U2|CLK_COUNT_400HZ[6]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.071      ; 1.114      ;
 ; 0.873 ; LCD_Display:U2|CLK_COUNT_400HZ[15]        ; LCD_Display:U2|CLK_COUNT_400HZ[16]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 1.116      ;
-; 0.875 ; LCD_Display:U2|CLK_COUNT_400HZ[11]        ; LCD_Display:U2|CLK_COUNT_400HZ[12]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.072      ; 1.118      ;
 +-------+-------------------------------------------+-------------------------------------------+--------------+-------------+--------------+------------+------------+
 
 
@@ -671,7 +671,7 @@ No synchronizer chains to report.
 +----------+--------+----------------+
 ; Clock    ; Slack  ; End Point TNS  ;
 +----------+--------+----------------+
-; CLOCK_50 ; 17.293 ; 0.000          ;
+; CLOCK_50 ; 16.541 ; 0.000          ;
 +----------+--------+----------------+
 
 
@@ -710,106 +710,106 @@ No paths to report.
 +--------+-----------------------------------------+-----------------------------------+--------------+-------------+--------------+------------+------------+
 ; Slack  ; From Node                               ; To Node                           ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +--------+-----------------------------------------+-----------------------------------+--------------+-------------+--------------+------------+------------+
-; 17.293 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 2.649      ;
-; 17.310 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 2.632      ;
-; 17.327 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.044     ; 2.616      ;
-; 17.353 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 2.589      ;
-; 17.367 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 2.575      ;
-; 17.387 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.044     ; 2.556      ;
-; 17.406 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.044     ; 2.537      ;
-; 17.426 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.044     ; 2.517      ;
-; 17.427 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 2.515      ;
-; 17.446 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 2.496      ;
-; 17.447 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 2.495      ;
-; 17.452 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 2.490      ;
-; 17.466 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 2.476      ;
-; 17.476 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 2.466      ;
-; 17.493 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 2.449      ;
-; 17.502 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.044     ; 2.441      ;
-; 17.528 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 2.414      ;
-; 17.542 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 2.400      ;
-; 17.546 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 2.396      ;
-; 17.605 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 2.337      ;
-; 17.605 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 2.337      ;
-; 17.607 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 2.335      ;
-; 17.612 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 2.330      ;
-; 17.622 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 2.320      ;
-; 17.629 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 2.313      ;
-; 17.665 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 2.277      ;
-; 17.667 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 2.275      ;
-; 17.684 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 2.258      ;
-; 17.686 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 2.256      ;
-; 17.694 ; VGA_SYNC_module:U1|Hex_Display_Data[8]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.043     ; 2.250      ;
-; 17.704 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 2.238      ;
-; 17.704 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 2.238      ;
-; 17.706 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 2.236      ;
-; 17.718 ; VGA_SYNC_module:U1|Hex_Display_Data[12] ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.043     ; 2.226      ;
-; 17.728 ; VGA_SYNC_module:U1|Hex_Display_Data[0]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.043     ; 2.216      ;
-; 17.780 ; VGA_SYNC_module:U1|Hex_Display_Data[1]  ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.042     ; 2.165      ;
-; 17.780 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 2.162      ;
-; 17.780 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 2.162      ;
-; 17.782 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 2.160      ;
-; 17.792 ; VGA_SYNC_module:U1|Hex_Display_Data[4]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.043     ; 2.152      ;
-; 17.801 ; VGA_SYNC_module:U1|Hex_Display_Data[9]  ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.042     ; 2.144      ;
-; 17.806 ; VGA_SYNC_module:U1|Hex_Display_Data[1]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.043     ; 2.138      ;
-; 17.820 ; VGA_SYNC_module:U1|Hex_Display_Data[1]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.043     ; 2.124      ;
-; 17.827 ; VGA_SYNC_module:U1|Hex_Display_Data[9]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.043     ; 2.117      ;
-; 17.841 ; VGA_SYNC_module:U1|Hex_Display_Data[9]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.043     ; 2.103      ;
-; 17.858 ; VGA_SYNC_module:U1|Hex_Display_Data[8]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.043     ; 2.086      ;
-; 17.877 ; VGA_SYNC_module:U1|Hex_Display_Data[8]  ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.043     ; 2.067      ;
-; 17.882 ; VGA_SYNC_module:U1|Hex_Display_Data[12] ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.043     ; 2.062      ;
-; 17.892 ; VGA_SYNC_module:U1|Hex_Display_Data[0]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.043     ; 2.052      ;
-; 17.900 ; VGA_SYNC_module:U1|Hex_Display_Data[1]  ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.043     ; 2.044      ;
-; 17.901 ; VGA_SYNC_module:U1|Hex_Display_Data[12] ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.043     ; 2.043      ;
-; 17.911 ; VGA_SYNC_module:U1|Hex_Display_Data[0]  ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.043     ; 2.033      ;
-; 17.921 ; VGA_SYNC_module:U1|Hex_Display_Data[9]  ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.043     ; 2.023      ;
-; 17.956 ; VGA_SYNC_module:U1|Hex_Display_Data[4]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.043     ; 1.988      ;
-; 17.964 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[0] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 1.982      ;
-; 17.964 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[1] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 1.982      ;
-; 17.964 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[2] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 1.982      ;
-; 17.964 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[3] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 1.982      ;
-; 17.964 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[4] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 1.982      ;
-; 17.964 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[5] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 1.982      ;
-; 17.964 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[6] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 1.982      ;
-; 17.964 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[7] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 1.982      ;
-; 17.964 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[8] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 1.982      ;
-; 17.964 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[9] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 1.982      ;
-; 17.974 ; VGA_SYNC_module:U1|Hex_Display_Data[3]  ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.042     ; 1.971      ;
-; 17.974 ; VGA_SYNC_module:U1|Hex_Display_Data[3]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.043     ; 1.970      ;
-; 17.975 ; VGA_SYNC_module:U1|Hex_Display_Data[4]  ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.043     ; 1.969      ;
-; 17.988 ; VGA_SYNC_module:U1|Hex_Display_Data[3]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.043     ; 1.956      ;
-; 18.013 ; VGA_SYNC_module:U1|Hex_Display_Data[8]  ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.043     ; 1.931      ;
-; 18.035 ; LCD_Display:U2|CLK_400HZ_Enable         ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 1.911      ;
-; 18.037 ; VGA_SYNC_module:U1|Hex_Display_Data[12] ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.043     ; 1.907      ;
-; 18.038 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[0] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 1.908      ;
-; 18.038 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[1] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 1.908      ;
-; 18.038 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[2] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 1.908      ;
-; 18.038 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[3] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 1.908      ;
-; 18.038 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[4] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 1.908      ;
-; 18.038 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[5] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 1.908      ;
-; 18.038 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[6] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 1.908      ;
-; 18.038 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[7] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 1.908      ;
-; 18.038 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[8] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 1.908      ;
-; 18.038 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[9] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 1.908      ;
-; 18.047 ; VGA_SYNC_module:U1|Hex_Display_Data[0]  ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.043     ; 1.897      ;
-; 18.058 ; VGA_SYNC_module:U1|Hex_Display_Data[1]  ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.043     ; 1.886      ;
-; 18.058 ; VGA_SYNC_module:U1|Hex_Display_Data[1]  ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.043     ; 1.886      ;
-; 18.060 ; VGA_SYNC_module:U1|Hex_Display_Data[1]  ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.043     ; 1.884      ;
-; 18.068 ; VGA_SYNC_module:U1|Hex_Display_Data[3]  ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.043     ; 1.876      ;
-; 18.076 ; VGA_SYNC_module:U1|Hex_Display_Data[6]  ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.043     ; 1.868      ;
-; 18.079 ; VGA_SYNC_module:U1|Hex_Display_Data[9]  ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.043     ; 1.865      ;
-; 18.079 ; VGA_SYNC_module:U1|Hex_Display_Data[9]  ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.043     ; 1.865      ;
-; 18.081 ; VGA_SYNC_module:U1|Hex_Display_Data[9]  ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.043     ; 1.863      ;
-; 18.087 ; VGA_SYNC_module:U1|Hex_Display_Data[7]  ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.043     ; 1.857      ;
-; 18.087 ; VGA_SYNC_module:U1|Hex_Display_Data[7]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.044     ; 1.856      ;
-; 18.098 ; VGA_SYNC_module:U1|Hex_Display_Data[14] ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.043     ; 1.846      ;
-; 18.099 ; VGA_SYNC_module:U1|Hex_Display_Data[6]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.044     ; 1.844      ;
-; 18.101 ; VGA_SYNC_module:U1|Hex_Display_Data[7]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.044     ; 1.842      ;
-; 18.108 ; VGA_SYNC_module:U1|Hex_Display_Data[15] ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.043     ; 1.836      ;
-; 18.108 ; VGA_SYNC_module:U1|Hex_Display_Data[15] ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.044     ; 1.835      ;
-; 18.111 ; VGA_SYNC_module:U1|Hex_Display_Data[4]  ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.043     ; 1.833      ;
-; 18.112 ; LCD_Display:U2|CLK_COUNT_400HZ[9]       ; LCD_Display:U2|CLK_COUNT_400HZ[0] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 1.834      ;
-; 18.112 ; LCD_Display:U2|CLK_COUNT_400HZ[9]       ; LCD_Display:U2|CLK_COUNT_400HZ[1] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 1.834      ;
+; 16.541 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.042     ; 3.404      ;
+; 16.541 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.042     ; 3.404      ;
+; 16.583 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.042     ; 3.362      ;
+; 16.645 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 3.297      ;
+; 16.645 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 3.297      ;
+; 16.687 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 3.255      ;
+; 16.761 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.042     ; 3.184      ;
+; 16.865 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 3.077      ;
+; 16.867 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.042     ; 3.078      ;
+; 16.872 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.039     ; 3.076      ;
+; 16.872 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.039     ; 3.076      ;
+; 16.914 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.039     ; 3.034      ;
+; 16.971 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 2.971      ;
+; 17.092 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.039     ; 2.856      ;
+; 17.135 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 2.807      ;
+; 17.135 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 2.807      ;
+; 17.177 ; VGA_SYNC_module:U1|Hex_Display_Data[10] ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.038     ; 2.772      ;
+; 17.177 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 2.765      ;
+; 17.197 ; VGA_SYNC_module:U1|Hex_Display_Data[14] ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.038     ; 2.752      ;
+; 17.198 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.039     ; 2.750      ;
+; 17.259 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.042     ; 2.686      ;
+; 17.259 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.042     ; 2.686      ;
+; 17.281 ; VGA_SYNC_module:U1|Hex_Display_Data[10] ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 2.665      ;
+; 17.295 ; VGA_SYNC_module:U1|Hex_Display_Data[11] ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.038     ; 2.654      ;
+; 17.301 ; VGA_SYNC_module:U1|Hex_Display_Data[14] ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 2.645      ;
+; 17.301 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.042     ; 2.644      ;
+; 17.306 ; VGA_SYNC_module:U1|Hex_Display_Data[5]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.038     ; 2.643      ;
+; 17.349 ; VGA_SYNC_module:U1|Hex_Display_Data[6]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.038     ; 2.600      ;
+; 17.352 ; VGA_SYNC_module:U1|Hex_Display_Data[7]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.038     ; 2.597      ;
+; 17.355 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 2.587      ;
+; 17.388 ; VGA_SYNC_module:U1|Hex_Display_Data[2]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.038     ; 2.561      ;
+; 17.399 ; VGA_SYNC_module:U1|Hex_Display_Data[11] ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 2.547      ;
+; 17.400 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.042     ; 2.545      ;
+; 17.400 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.042     ; 2.545      ;
+; 17.410 ; VGA_SYNC_module:U1|Hex_Display_Data[5]  ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 2.536      ;
+; 17.419 ; VGA_SYNC_module:U1|Hex_Display_Data[9]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.038     ; 2.530      ;
+; 17.442 ; VGA_SYNC_module:U1|Hex_Display_Data[13] ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.038     ; 2.507      ;
+; 17.442 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.042     ; 2.503      ;
+; 17.453 ; VGA_SYNC_module:U1|Hex_Display_Data[6]  ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 2.493      ;
+; 17.456 ; VGA_SYNC_module:U1|Hex_Display_Data[7]  ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 2.490      ;
+; 17.461 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.045     ; 2.481      ;
+; 17.479 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.042     ; 2.466      ;
+; 17.492 ; VGA_SYNC_module:U1|Hex_Display_Data[2]  ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 2.454      ;
+; 17.508 ; VGA_SYNC_module:U1|Hex_Display_Data[10] ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.035     ; 2.444      ;
+; 17.523 ; VGA_SYNC_module:U1|Hex_Display_Data[9]  ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 2.423      ;
+; 17.528 ; VGA_SYNC_module:U1|Hex_Display_Data[14] ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.035     ; 2.424      ;
+; 17.546 ; VGA_SYNC_module:U1|Hex_Display_Data[13] ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 2.400      ;
+; 17.570 ; VGA_SYNC_module:U1|Hex_Display_Data[15] ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 2.376      ;
+; 17.585 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.042     ; 2.360      ;
+; 17.597 ; VGA_SYNC_module:U1|Hex_Display_Data[8]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.038     ; 2.352      ;
+; 17.606 ; VGA_SYNC_module:U1|Hex_Display_Data[12] ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.038     ; 2.343      ;
+; 17.615 ; VGA_SYNC_module:U1|Hex_Display_Data[1]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.038     ; 2.334      ;
+; 17.620 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.042     ; 2.325      ;
+; 17.626 ; VGA_SYNC_module:U1|Hex_Display_Data[11] ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.035     ; 2.326      ;
+; 17.637 ; VGA_SYNC_module:U1|Hex_Display_Data[5]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.035     ; 2.315      ;
+; 17.674 ; VGA_SYNC_module:U1|Hex_Display_Data[15] ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.044     ; 2.269      ;
+; 17.680 ; VGA_SYNC_module:U1|Hex_Display_Data[6]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.035     ; 2.272      ;
+; 17.681 ; VGA_SYNC_module:U1|Hex_Display_Data[4]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.038     ; 2.268      ;
+; 17.683 ; VGA_SYNC_module:U1|Hex_Display_Data[7]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.035     ; 2.269      ;
+; 17.689 ; LCD_Display:U2|CHAR_COUNT[2]            ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.042     ; 2.256      ;
+; 17.719 ; VGA_SYNC_module:U1|Hex_Display_Data[1]  ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 2.227      ;
+; 17.719 ; VGA_SYNC_module:U1|Hex_Display_Data[2]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.035     ; 2.233      ;
+; 17.725 ; LCD_Display:U2|CHAR_COUNT[0]            ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.042     ; 2.220      ;
+; 17.726 ; LCD_Display:U2|CHAR_COUNT[4]            ; LCD_Display:U2|DATA_BUS_VALUE[0]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.042     ; 2.219      ;
+; 17.750 ; VGA_SYNC_module:U1|Hex_Display_Data[9]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.035     ; 2.202      ;
+; 17.767 ; LCD_Display:U2|CHAR_COUNT[1]            ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.042     ; 2.178      ;
+; 17.771 ; VGA_SYNC_module:U1|Hex_Display_Data[10] ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 2.175      ;
+; 17.773 ; VGA_SYNC_module:U1|Hex_Display_Data[13] ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.035     ; 2.179      ;
+; 17.791 ; VGA_SYNC_module:U1|Hex_Display_Data[14] ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 2.155      ;
+; 17.863 ; VGA_SYNC_module:U1|Hex_Display_Data[8]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.035     ; 2.089      ;
+; 17.872 ; VGA_SYNC_module:U1|Hex_Display_Data[12] ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.035     ; 2.080      ;
+; 17.882 ; VGA_SYNC_module:U1|Hex_Display_Data[0]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.038     ; 2.067      ;
+; 17.889 ; VGA_SYNC_module:U1|Hex_Display_Data[11] ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 2.057      ;
+; 17.895 ; VGA_SYNC_module:U1|Hex_Display_Data[10] ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.038     ; 2.054      ;
+; 17.896 ; VGA_SYNC_module:U1|Hex_Display_Data[3]  ; LCD_Display:U2|DATA_BUS_VALUE[3]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 2.050      ;
+; 17.900 ; VGA_SYNC_module:U1|Hex_Display_Data[5]  ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 2.046      ;
+; 17.901 ; VGA_SYNC_module:U1|Hex_Display_Data[15] ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.038     ; 2.048      ;
+; 17.907 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[0] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 2.039      ;
+; 17.907 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[1] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 2.039      ;
+; 17.907 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[2] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 2.039      ;
+; 17.907 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[3] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 2.039      ;
+; 17.907 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[4] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 2.039      ;
+; 17.907 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[5] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 2.039      ;
+; 17.907 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[6] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 2.039      ;
+; 17.907 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[7] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 2.039      ;
+; 17.907 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[8] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 2.039      ;
+; 17.907 ; LCD_Display:U2|CLK_COUNT_400HZ[4]       ; LCD_Display:U2|CLK_COUNT_400HZ[9] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 2.039      ;
+; 17.912 ; LCD_Display:U2|CHAR_COUNT[3]            ; LCD_Display:U2|DATA_BUS_VALUE[5]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.042     ; 2.033      ;
+; 17.915 ; VGA_SYNC_module:U1|Hex_Display_Data[14] ; LCD_Display:U2|DATA_BUS_VALUE[4]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.038     ; 2.034      ;
+; 17.943 ; VGA_SYNC_module:U1|Hex_Display_Data[6]  ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 2.003      ;
+; 17.946 ; VGA_SYNC_module:U1|Hex_Display_Data[1]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.035     ; 2.006      ;
+; 17.946 ; VGA_SYNC_module:U1|Hex_Display_Data[7]  ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 2.000      ;
+; 17.947 ; VGA_SYNC_module:U1|Hex_Display_Data[4]  ; LCD_Display:U2|DATA_BUS_VALUE[2]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.035     ; 2.005      ;
+; 17.955 ; VGA_SYNC_module:U1|Hex_Display_Data[8]  ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 1.991      ;
+; 17.964 ; VGA_SYNC_module:U1|Hex_Display_Data[12] ; LCD_Display:U2|DATA_BUS_VALUE[1]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 1.982      ;
+; 17.982 ; VGA_SYNC_module:U1|Hex_Display_Data[2]  ; LCD_Display:U2|DATA_BUS_VALUE[6]  ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 1.964      ;
+; 17.982 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[0] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 1.964      ;
+; 17.982 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[1] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 1.964      ;
+; 17.982 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[2] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 1.964      ;
+; 17.982 ; LCD_Display:U2|CLK_COUNT_400HZ[3]       ; LCD_Display:U2|CLK_COUNT_400HZ[3] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; -0.041     ; 1.964      ;
 +--------+-----------------------------------------+-----------------------------------+--------------+-------------+--------------+------------+------------+
 
 
@@ -818,61 +818,63 @@ No paths to report.
 +-------+-------------------------------------------+-------------------------------------------+--------------+-------------+--------------+------------+------------+
 ; Slack ; From Node                                 ; To Node                                   ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +-------+-------------------------------------------+-------------------------------------------+--------------+-------------+--------------+------------+------------+
-; 0.181 ; LCD_Display:U2|DATA_BUS_VALUE[1]          ; LCD_Display:U2|DATA_BUS_VALUE[1]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.307      ;
-; 0.181 ; LCD_Display:U2|next_command.MODE_SET      ; LCD_Display:U2|next_command.MODE_SET      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.307      ;
+; 0.181 ; LCD_Display:U2|next_command.DISPLAY_OFF   ; LCD_Display:U2|next_command.DISPLAY_OFF   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.307      ;
+; 0.181 ; LCD_Display:U2|next_command.FUNC_SET      ; LCD_Display:U2|next_command.FUNC_SET      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.307      ;
+; 0.181 ; LCD_Display:U2|next_command.RESET3        ; LCD_Display:U2|next_command.RESET3        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.307      ;
 ; 0.182 ; LCD_Display:U2|LCD_RS                     ; LCD_Display:U2|LCD_RS                     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.307      ;
 ; 0.182 ; LCD_Display:U2|LCD_E                      ; LCD_Display:U2|LCD_E                      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.307      ;
 ; 0.182 ; LCD_Display:U2|DATA_BUS_VALUE[7]          ; LCD_Display:U2|DATA_BUS_VALUE[7]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.307      ;
-; 0.182 ; VGA_SYNC_module:U1|PC[0]                  ; VGA_SYNC_module:U1|PC[0]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.307      ;
-; 0.182 ; LCD_Display:U2|next_command.Print_String  ; LCD_Display:U2|next_command.Print_String  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.307      ;
+; 0.182 ; LCD_Display:U2|DATA_BUS_VALUE[1]          ; LCD_Display:U2|DATA_BUS_VALUE[1]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.307      ;
+; 0.182 ; LCD_Display:U2|next_command.RETURN_HOME   ; LCD_Display:U2|next_command.RETURN_HOME   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.307      ;
+; 0.182 ; LCD_Display:U2|next_command.LINE2         ; LCD_Display:U2|next_command.LINE2         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.307      ;
+; 0.182 ; LCD_Display:U2|next_command.MODE_SET      ; LCD_Display:U2|next_command.MODE_SET      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.307      ;
 ; 0.182 ; LCD_Display:U2|next_command.DISPLAY_ON    ; LCD_Display:U2|next_command.DISPLAY_ON    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.307      ;
 ; 0.182 ; LCD_Display:U2|next_command.DISPLAY_CLEAR ; LCD_Display:U2|next_command.DISPLAY_CLEAR ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.307      ;
-; 0.182 ; LCD_Display:U2|next_command.DISPLAY_OFF   ; LCD_Display:U2|next_command.DISPLAY_OFF   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.307      ;
-; 0.182 ; LCD_Display:U2|next_command.FUNC_SET      ; LCD_Display:U2|next_command.FUNC_SET      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.307      ;
-; 0.182 ; LCD_Display:U2|next_command.RESET3        ; LCD_Display:U2|next_command.RESET3        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.307      ;
 ; 0.182 ; LCD_Display:U2|next_command.RESET2        ; LCD_Display:U2|next_command.RESET2        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.307      ;
-; 0.189 ; LCD_Display:U2|next_command.MODE_SET      ; LCD_Display:U2|state.MODE_SET             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.315      ;
-; 0.189 ; LCD_Display:U2|next_command.RESET3        ; LCD_Display:U2|state.RESET3               ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.314      ;
-; 0.191 ; LCD_Display:U2|next_command.FUNC_SET      ; LCD_Display:U2|state.FUNC_SET             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.316      ;
-; 0.192 ; LCD_Display:U2|CLK_COUNT_400HZ[19]        ; LCD_Display:U2|CLK_COUNT_400HZ[19]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.318      ;
-; 0.194 ; LCD_Display:U2|next_command.RESET2        ; LCD_Display:U2|state.RESET2               ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.319      ;
-; 0.194 ; LCD_Display:U2|state.DISPLAY_OFF          ; LCD_Display:U2|next_command.DISPLAY_CLEAR ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.319      ;
-; 0.194 ; LCD_Display:U2|state.FUNC_SET             ; LCD_Display:U2|next_command.DISPLAY_OFF   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.319      ;
-; 0.194 ; LCD_Display:U2|state.RESET2               ; LCD_Display:U2|next_command.RESET3        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.319      ;
-; 0.202 ; LCD_Display:U2|state.DISPLAY_CLEAR        ; LCD_Display:U2|next_command.DISPLAY_ON    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.327      ;
-; 0.223 ; LCD_Display:U2|state.HOLD                 ; LCD_Display:U2|state.RETURN_HOME          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.348      ;
-; 0.224 ; LCD_Display:U2|state.HOLD                 ; LCD_Display:U2|state.LINE2                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.349      ;
-; 0.225 ; LCD_Display:U2|state.HOLD                 ; LCD_Display:U2|LCD_RS                     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.350      ;
-; 0.227 ; LCD_Display:U2|state.HOLD                 ; LCD_Display:U2|state.Print_String         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.352      ;
-; 0.247 ; LCD_Display:U2|next_command.DISPLAY_ON    ; LCD_Display:U2|state.DISPLAY_ON           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.372      ;
-; 0.248 ; LCD_Display:U2|next_command.DISPLAY_CLEAR ; LCD_Display:U2|state.DISPLAY_CLEAR        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.373      ;
-; 0.248 ; LCD_Display:U2|next_command.DISPLAY_OFF   ; LCD_Display:U2|state.DISPLAY_OFF          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.373      ;
-; 0.263 ; LCD_Display:U2|state.Print_String         ; LCD_Display:U2|next_command.RETURN_HOME   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.388      ;
-; 0.264 ; LCD_Display:U2|state.RESET1               ; LCD_Display:U2|next_command.RESET2        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.389      ;
-; 0.277 ; VGA_SYNC_module:U1|PC[11]                 ; VGA_SYNC_module:U1|Hex_Display_Data[11]   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.403      ;
-; 0.284 ; LCD_Display:U2|state.DROP_LCD_E           ; LCD_Display:U2|state.HOLD                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.409      ;
+; 0.189 ; VGA_SYNC_module:U1|Hex_Display_Data[0]    ; VGA_SYNC_module:U1|Hex_Display_Data[0]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.314      ;
+; 0.189 ; LCD_Display:U2|next_command.DISPLAY_OFF   ; LCD_Display:U2|state.DISPLAY_OFF          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.315      ;
+; 0.189 ; LCD_Display:U2|state.DROP_LCD_E           ; LCD_Display:U2|state.DROP_LCD_E           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.314      ;
+; 0.190 ; LCD_Display:U2|next_command.RESET3        ; LCD_Display:U2|state.RESET3               ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.316      ;
+; 0.193 ; LCD_Display:U2|CLK_COUNT_400HZ[19]        ; LCD_Display:U2|CLK_COUNT_400HZ[19]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.318      ;
+; 0.193 ; LCD_Display:U2|state.RESET2               ; LCD_Display:U2|next_command.RESET3        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.319      ;
+; 0.201 ; LCD_Display:U2|state.MODE_SET             ; LCD_Display:U2|DATA_BUS_VALUE[2]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.326      ;
+; 0.202 ; LCD_Display:U2|state.RESET1               ; LCD_Display:U2|next_command.RESET2        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.327      ;
+; 0.204 ; LCD_Display:U2|state.LINE2                ; LCD_Display:U2|DATA_BUS_VALUE[7]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.329      ;
+; 0.213 ; LCD_Display:U2|state.Print_String         ; LCD_Display:U2|next_command.LINE2         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.338      ;
+; 0.214 ; LCD_Display:U2|state.Print_String         ; LCD_Display:U2|DATA_BUS_VALUE[6]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.339      ;
+; 0.248 ; LCD_Display:U2|next_command.MODE_SET      ; LCD_Display:U2|state.MODE_SET             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.373      ;
+; 0.250 ; VGA_SYNC_module:U1|PC[2]                  ; VGA_SYNC_module:U1|Hex_Display_Data[2]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.376      ;
+; 0.259 ; LCD_Display:U2|state.RETURN_HOME          ; LCD_Display:U2|next_command.Print_String  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.384      ;
+; 0.266 ; LCD_Display:U2|state.FUNC_SET             ; LCD_Display:U2|next_command.DISPLAY_OFF   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.391      ;
+; 0.272 ; VGA_SYNC_module:U1|PC[8]                  ; VGA_SYNC_module:U1|Hex_Display_Data[8]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.398      ;
+; 0.277 ; VGA_SYNC_module:U1|PC[9]                  ; VGA_SYNC_module:U1|Hex_Display_Data[9]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.403      ;
+; 0.283 ; LCD_Display:U2|state.DISPLAY_ON           ; LCD_Display:U2|next_command.MODE_SET      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.408      ;
+; 0.285 ; LCD_Display:U2|state.DISPLAY_OFF          ; LCD_Display:U2|next_command.DISPLAY_CLEAR ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.411      ;
 ; 0.289 ; LCD_Display:U2|CLK_COUNT_400HZ[1]         ; LCD_Display:U2|CLK_COUNT_400HZ[1]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.414      ;
-; 0.289 ; LCD_Display:U2|next_command.Print_String  ; LCD_Display:U2|state.Print_String         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.414      ;
-; 0.291 ; LCD_Display:U2|CLK_COUNT_400HZ[13]        ; LCD_Display:U2|CLK_COUNT_400HZ[13]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.417      ;
+; 0.290 ; LCD_Display:U2|next_command.DISPLAY_ON    ; LCD_Display:U2|state.DISPLAY_ON           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.415      ;
+; 0.291 ; LCD_Display:U2|next_command.LINE2         ; LCD_Display:U2|state.LINE2                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.416      ;
+; 0.291 ; LCD_Display:U2|next_command.RETURN_HOME   ; LCD_Display:U2|state.RETURN_HOME          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.416      ;
 ; 0.291 ; LCD_Display:U2|CLK_COUNT_400HZ[9]         ; LCD_Display:U2|CLK_COUNT_400HZ[9]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.416      ;
-; 0.292 ; VGA_SYNC_module:U1|PC[15]                 ; VGA_SYNC_module:U1|PC[15]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.418      ;
+; 0.292 ; LCD_Display:U2|CLK_COUNT_400HZ[13]        ; LCD_Display:U2|CLK_COUNT_400HZ[13]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.417      ;
 ; 0.292 ; LCD_Display:U2|CLK_COUNT_400HZ[7]         ; LCD_Display:U2|CLK_COUNT_400HZ[7]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.417      ;
-; 0.292 ; LCD_Display:U2|CLK_COUNT_400HZ[11]        ; LCD_Display:U2|CLK_COUNT_400HZ[11]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.418      ;
+; 0.293 ; LCD_Display:U2|next_command.DISPLAY_CLEAR ; LCD_Display:U2|state.DISPLAY_CLEAR        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.418      ;
 ; 0.293 ; LCD_Display:U2|CLK_COUNT_400HZ[5]         ; LCD_Display:U2|CLK_COUNT_400HZ[5]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.418      ;
 ; 0.293 ; LCD_Display:U2|CLK_COUNT_400HZ[8]         ; LCD_Display:U2|CLK_COUNT_400HZ[8]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.418      ;
-; 0.293 ; LCD_Display:U2|CLK_COUNT_400HZ[15]        ; LCD_Display:U2|CLK_COUNT_400HZ[15]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.419      ;
-; 0.294 ; LCD_Display:U2|CLK_COUNT_400HZ[16]        ; LCD_Display:U2|CLK_COUNT_400HZ[16]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.420      ;
+; 0.293 ; LCD_Display:U2|CLK_COUNT_400HZ[10]        ; LCD_Display:U2|CLK_COUNT_400HZ[10]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.418      ;
+; 0.293 ; LCD_Display:U2|CLK_COUNT_400HZ[11]        ; LCD_Display:U2|CLK_COUNT_400HZ[11]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.418      ;
+; 0.294 ; VGA_SYNC_module:U1|PC[2]                  ; VGA_SYNC_module:U1|PC[2]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.420      ;
 ; 0.294 ; LCD_Display:U2|CLK_COUNT_400HZ[2]         ; LCD_Display:U2|CLK_COUNT_400HZ[2]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.419      ;
 ; 0.294 ; LCD_Display:U2|CLK_COUNT_400HZ[3]         ; LCD_Display:U2|CLK_COUNT_400HZ[3]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.419      ;
-; 0.294 ; LCD_Display:U2|CLK_COUNT_400HZ[12]        ; LCD_Display:U2|CLK_COUNT_400HZ[12]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.420      ;
-; 0.294 ; LCD_Display:U2|CLK_COUNT_400HZ[14]        ; LCD_Display:U2|CLK_COUNT_400HZ[14]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.420      ;
-; 0.294 ; LCD_Display:U2|CLK_COUNT_400HZ[17]        ; LCD_Display:U2|CLK_COUNT_400HZ[17]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.420      ;
-; 0.294 ; LCD_Display:U2|state.RESET3               ; LCD_Display:U2|next_command.FUNC_SET      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.419      ;
+; 0.294 ; LCD_Display:U2|CLK_COUNT_400HZ[15]        ; LCD_Display:U2|CLK_COUNT_400HZ[15]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.419      ;
+; 0.295 ; LCD_Display:U2|next_command.Print_String  ; LCD_Display:U2|state.Print_String         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.420      ;
+; 0.295 ; LCD_Display:U2|CLK_COUNT_400HZ[16]        ; LCD_Display:U2|CLK_COUNT_400HZ[16]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.420      ;
 ; 0.295 ; LCD_Display:U2|CLK_COUNT_400HZ[6]         ; LCD_Display:U2|CLK_COUNT_400HZ[6]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.420      ;
-; 0.295 ; LCD_Display:U2|CLK_COUNT_400HZ[18]        ; LCD_Display:U2|CLK_COUNT_400HZ[18]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.421      ;
-; 0.295 ; LCD_Display:U2|next_command.RETURN_HOME   ; LCD_Display:U2|state.RETURN_HOME          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.420      ;
-; 0.296 ; LCD_Display:U2|next_command.LINE2         ; LCD_Display:U2|state.LINE2                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.421      ;
+; 0.295 ; LCD_Display:U2|CLK_COUNT_400HZ[12]        ; LCD_Display:U2|CLK_COUNT_400HZ[12]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.420      ;
+; 0.295 ; LCD_Display:U2|CLK_COUNT_400HZ[14]        ; LCD_Display:U2|CLK_COUNT_400HZ[14]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.420      ;
+; 0.295 ; LCD_Display:U2|CLK_COUNT_400HZ[17]        ; LCD_Display:U2|CLK_COUNT_400HZ[17]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.420      ;
+; 0.296 ; LCD_Display:U2|CLK_COUNT_400HZ[18]        ; LCD_Display:U2|CLK_COUNT_400HZ[18]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.421      ;
 ; 0.298 ; LCD_Display:U2|CLK_COUNT_400HZ[0]         ; LCD_Display:U2|CLK_COUNT_400HZ[0]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.423      ;
+; 0.299 ; VGA_SYNC_module:U1|PC[15]                 ; VGA_SYNC_module:U1|PC[15]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.425      ;
 ; 0.299 ; VGA_SYNC_module:U1|PC[6]                  ; VGA_SYNC_module:U1|PC[6]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.425      ;
 ; 0.300 ; VGA_SYNC_module:U1|PC[14]                 ; VGA_SYNC_module:U1|PC[14]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.426      ;
 ; 0.300 ; VGA_SYNC_module:U1|PC[13]                 ; VGA_SYNC_module:U1|PC[13]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.426      ;
@@ -881,43 +883,41 @@ No paths to report.
 ; 0.300 ; VGA_SYNC_module:U1|PC[5]                  ; VGA_SYNC_module:U1|PC[5]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.426      ;
 ; 0.300 ; VGA_SYNC_module:U1|PC[4]                  ; VGA_SYNC_module:U1|PC[4]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.426      ;
 ; 0.300 ; VGA_SYNC_module:U1|PC[3]                  ; VGA_SYNC_module:U1|PC[3]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.426      ;
-; 0.300 ; VGA_SYNC_module:U1|PC[2]                  ; VGA_SYNC_module:U1|PC[2]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.426      ;
-; 0.300 ; LCD_Display:U2|CLK_COUNT_400HZ[10]        ; LCD_Display:U2|CLK_COUNT_400HZ[10]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.426      ;
+; 0.300 ; LCD_Display:U2|state.DISPLAY_CLEAR        ; LCD_Display:U2|next_command.DISPLAY_ON    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.425      ;
 ; 0.301 ; VGA_SYNC_module:U1|PC[12]                 ; VGA_SYNC_module:U1|PC[12]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.427      ;
 ; 0.301 ; VGA_SYNC_module:U1|PC[10]                 ; VGA_SYNC_module:U1|PC[10]                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.427      ;
 ; 0.301 ; VGA_SYNC_module:U1|PC[9]                  ; VGA_SYNC_module:U1|PC[9]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.427      ;
 ; 0.301 ; VGA_SYNC_module:U1|PC[7]                  ; VGA_SYNC_module:U1|PC[7]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.427      ;
 ; 0.302 ; LCD_Display:U2|CLK_COUNT_400HZ[4]         ; LCD_Display:U2|CLK_COUNT_400HZ[4]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.427      ;
+; 0.304 ; LCD_Display:U2|state.RESET3               ; LCD_Display:U2|next_command.FUNC_SET      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.430      ;
 ; 0.305 ; VGA_SYNC_module:U1|PC[1]                  ; VGA_SYNC_module:U1|PC[1]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.431      ;
-; 0.323 ; VGA_SYNC_module:U1|PC[0]                  ; VGA_SYNC_module:U1|Hex_Display_Data[0]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.448      ;
-; 0.325 ; LCD_Display:U2|CHAR_COUNT[3]              ; LCD_Display:U2|CHAR_COUNT[3]              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.451      ;
-; 0.325 ; LCD_Display:U2|state.LINE2                ; LCD_Display:U2|DATA_BUS_VALUE[7]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.450      ;
-; 0.328 ; VGA_SYNC_module:U1|PC[8]                  ; VGA_SYNC_module:U1|Hex_Display_Data[8]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.453      ;
-; 0.328 ; VGA_SYNC_module:U1|PC[3]                  ; VGA_SYNC_module:U1|Hex_Display_Data[3]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.453      ;
-; 0.328 ; LCD_Display:U2|CHAR_COUNT[2]              ; LCD_Display:U2|CHAR_COUNT[2]              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.454      ;
-; 0.331 ; LCD_Display:U2|CHAR_COUNT[1]              ; LCD_Display:U2|CHAR_COUNT[1]              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.457      ;
-; 0.334 ; LCD_Display:U2|CHAR_COUNT[4]              ; LCD_Display:U2|CHAR_COUNT[4]              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.460      ;
-; 0.336 ; VGA_SYNC_module:U1|PC[13]                 ; VGA_SYNC_module:U1|Hex_Display_Data[13]   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.461      ;
-; 0.352 ; LCD_Display:U2|DATA_BUS_VALUE[2]          ; LCD_Display:U2|DATA_BUS_VALUE[2]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.478      ;
-; 0.361 ; LCD_Display:U2|state.RETURN_HOME          ; LCD_Display:U2|DATA_BUS_VALUE[7]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.486      ;
-; 0.368 ; VGA_SYNC_module:U1|PC[10]                 ; VGA_SYNC_module:U1|Hex_Display_Data[10]   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.494      ;
-; 0.376 ; VGA_SYNC_module:U1|PC[0]                  ; VGA_SYNC_module:U1|PC[1]                  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.502      ;
-; 0.384 ; VGA_SYNC_module:U1|PC[7]                  ; VGA_SYNC_module:U1|Hex_Display_Data[7]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.510      ;
-; 0.385 ; VGA_SYNC_module:U1|PC[6]                  ; VGA_SYNC_module:U1|Hex_Display_Data[6]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.511      ;
-; 0.389 ; VGA_SYNC_module:U1|PC[4]                  ; VGA_SYNC_module:U1|Hex_Display_Data[4]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.514      ;
-; 0.392 ; LCD_Display:U2|state.MODE_SET             ; LCD_Display:U2|DATA_BUS_VALUE[1]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.518      ;
-; 0.403 ; VGA_SYNC_module:U1|PC[1]                  ; VGA_SYNC_module:U1|Hex_Display_Data[1]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.528      ;
-; 0.404 ; VGA_SYNC_module:U1|PC[5]                  ; VGA_SYNC_module:U1|Hex_Display_Data[5]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.529      ;
-; 0.404 ; LCD_Display:U2|CHAR_COUNT[0]              ; LCD_Display:U2|CHAR_COUNT[0]              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.530      ;
-; 0.421 ; LCD_Display:U2|CLK_COUNT_400HZ[13]        ; LCD_Display:U2|CLK_400HZ_Enable           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.547      ;
+; 0.318 ; LCD_Display:U2|CHAR_COUNT[3]              ; LCD_Display:U2|CHAR_COUNT[3]              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.444      ;
+; 0.318 ; LCD_Display:U2|CHAR_COUNT[1]              ; LCD_Display:U2|CHAR_COUNT[1]              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.444      ;
+; 0.320 ; LCD_Display:U2|CHAR_COUNT[4]              ; LCD_Display:U2|CHAR_COUNT[4]              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.446      ;
+; 0.324 ; LCD_Display:U2|state.RETURN_HOME          ; LCD_Display:U2|DATA_BUS_VALUE[7]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.449      ;
+; 0.326 ; LCD_Display:U2|CHAR_COUNT[0]              ; LCD_Display:U2|CHAR_COUNT[0]              ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.452      ;
+; 0.327 ; VGA_SYNC_module:U1|PC[10]                 ; VGA_SYNC_module:U1|Hex_Display_Data[10]   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.453      ;
+; 0.339 ; LCD_Display:U2|state.HOLD                 ; LCD_Display:U2|state.Print_String         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.464      ;
+; 0.340 ; LCD_Display:U2|state.LINE2                ; LCD_Display:U2|next_command.Print_String  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.465      ;
+; 0.340 ; LCD_Display:U2|state.HOLD                 ; LCD_Display:U2|state.LINE2                ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.465      ;
+; 0.340 ; LCD_Display:U2|state.HOLD                 ; LCD_Display:U2|state.RETURN_HOME          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.465      ;
+; 0.341 ; VGA_SYNC_module:U1|PC[5]                  ; VGA_SYNC_module:U1|Hex_Display_Data[5]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.467      ;
+; 0.346 ; LCD_Display:U2|state.DROP_LCD_E           ; LCD_Display:U2|state.HOLD                 ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.471      ;
+; 0.353 ; VGA_SYNC_module:U1|PC[7]                  ; VGA_SYNC_module:U1|Hex_Display_Data[7]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.479      ;
+; 0.354 ; VGA_SYNC_module:U1|PC[6]                  ; VGA_SYNC_module:U1|Hex_Display_Data[6]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.480      ;
+; 0.358 ; LCD_Display:U2|state.DROP_LCD_E           ; LCD_Display:U2|next_command.RETURN_HOME   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.483      ;
+; 0.362 ; LCD_Display:U2|state.DROP_LCD_E           ; LCD_Display:U2|DATA_BUS_VALUE[1]          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.487      ;
+; 0.372 ; LCD_Display:U2|state.Print_String         ; LCD_Display:U2|next_command.RETURN_HOME   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.497      ;
+; 0.398 ; LCD_Display:U2|state.HOLD                 ; LCD_Display:U2|state.DROP_LCD_E           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.523      ;
+; 0.422 ; LCD_Display:U2|CLK_COUNT_400HZ[13]        ; LCD_Display:U2|CLK_400HZ_Enable           ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.547      ;
+; 0.431 ; LCD_Display:U2|state.MODE_SET             ; LCD_Display:U2|next_command.Print_String  ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.035      ; 0.550      ;
+; 0.434 ; VGA_SYNC_module:U1|PC[14]                 ; VGA_SYNC_module:U1|Hex_Display_Data[14]   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.560      ;
+; 0.436 ; VGA_SYNC_module:U1|PC[11]                 ; VGA_SYNC_module:U1|Hex_Display_Data[11]   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.562      ;
 ; 0.437 ; LCD_Display:U2|CLK_COUNT_400HZ[9]         ; LCD_Display:U2|CLK_COUNT_400HZ[10]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.044      ; 0.565      ;
-; 0.438 ; LCD_Display:U2|state.HOLD                 ; LCD_Display:U2|state.MODE_SET             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.563      ;
 ; 0.438 ; LCD_Display:U2|CLK_COUNT_400HZ[1]         ; LCD_Display:U2|CLK_COUNT_400HZ[2]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.563      ;
-; 0.440 ; LCD_Display:U2|CLK_COUNT_400HZ[13]        ; LCD_Display:U2|CLK_COUNT_400HZ[14]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.566      ;
+; 0.439 ; VGA_SYNC_module:U1|PC[15]                 ; VGA_SYNC_module:U1|Hex_Display_Data[15]   ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.045      ; 0.568      ;
 ; 0.441 ; LCD_Display:U2|CLK_COUNT_400HZ[7]         ; LCD_Display:U2|CLK_COUNT_400HZ[8]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.566      ;
-; 0.441 ; LCD_Display:U2|CLK_COUNT_400HZ[11]        ; LCD_Display:U2|CLK_COUNT_400HZ[12]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.567      ;
-; 0.442 ; LCD_Display:U2|CLK_COUNT_400HZ[15]        ; LCD_Display:U2|CLK_COUNT_400HZ[16]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.042      ; 0.568      ;
-; 0.442 ; LCD_Display:U2|CLK_COUNT_400HZ[5]         ; LCD_Display:U2|CLK_COUNT_400HZ[6]         ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.567      ;
+; 0.441 ; LCD_Display:U2|CLK_COUNT_400HZ[13]        ; LCD_Display:U2|CLK_COUNT_400HZ[14]        ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.041      ; 0.566      ;
 +-------+-------------------------------------------+-------------------------------------------+--------------+-------------+--------------+------------+------------+
 
 
@@ -932,8 +932,8 @@ No synchronizer chains to report.
 +------------------+--------+-------+----------+---------+---------------------+
 ; Clock            ; Setup  ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
 +------------------+--------+-------+----------+---------+---------------------+
-; Worst-case Slack ; 14.557 ; 0.181 ; N/A      ; N/A     ; 9.265               ;
-;  CLOCK_50        ; 14.557 ; 0.181 ; N/A      ; N/A     ; 9.265               ;
+; Worst-case Slack ; 12.907 ; 0.181 ; N/A      ; N/A     ; 9.265               ;
+;  CLOCK_50        ; 12.907 ; 0.181 ; N/A      ; N/A     ; 9.265               ;
 ; Design-wide TNS  ; 0.0    ; 0.0   ; 0.0      ; 0.0     ; 0.0                 ;
 ;  CLOCK_50        ; 0.000  ; 0.000 ; N/A      ; N/A     ; 0.000               ;
 +------------------+--------+-------+----------+---------+---------------------+
@@ -1194,7 +1194,7 @@ No synchronizer chains to report.
 +------------+----------+----------+----------+----------+----------+
 ; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +------------+----------+----------+----------+----------+----------+
-; CLOCK_50   ; CLOCK_50 ; 1831     ; 0        ; 0        ; 0        ;
+; CLOCK_50   ; CLOCK_50 ; 1859     ; 0        ; 0        ; 0        ;
 +------------+----------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -1204,7 +1204,7 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +------------+----------+----------+----------+----------+----------+
 ; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +------------+----------+----------+----------+----------+----------+
-; CLOCK_50   ; CLOCK_50 ; 1831     ; 0        ; 0        ; 0        ;
+; CLOCK_50   ; CLOCK_50 ; 1859     ; 0        ; 0        ; 0        ;
 +------------+----------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -1311,7 +1311,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
-    Info: Processing started: Thu May  5 21:46:38 2022
+    Info: Processing started: Thu May  5 22:03:28 2022
 Info: Command: quartus_sta LEG16 -c LEG16
 Info: qsta_default_script.tcl version: #1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
@@ -1329,10 +1329,10 @@ Info (332143): No user constrained clock uncertainty found in the design. Callin
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Analyzing Slow 1200mV 85C Model
-Info (332146): Worst-case setup slack is 14.557
+Info (332146): Worst-case setup slack is 12.907
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    14.557               0.000 CLOCK_50 
+    Info (332119):    12.907               0.000 CLOCK_50 
 Info (332146): Worst-case hold slack is 0.402
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
@@ -1347,10 +1347,10 @@ Info: Analyzing Slow 1200mV 0C Model
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
-Info (332146): Worst-case setup slack is 14.993
+Info (332146): Worst-case setup slack is 13.436
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    14.993               0.000 CLOCK_50 
+    Info (332119):    13.436               0.000 CLOCK_50 
 Info (332146): Worst-case hold slack is 0.354
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
@@ -1363,10 +1363,10 @@ Info (332146): Worst-case minimum pulse width slack is 9.688
     Info (332119):     9.688               0.000 CLOCK_50 
 Info: Analyzing Fast 1200mV 0C Model
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
-Info (332146): Worst-case setup slack is 17.293
+Info (332146): Worst-case setup slack is 16.541
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    17.293               0.000 CLOCK_50 
+    Info (332119):    16.541               0.000 CLOCK_50 
 Info (332146): Worst-case hold slack is 0.181
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
@@ -1381,7 +1381,7 @@ Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime Timing Analyzer was successful. 0 errors, 2 warnings
     Info: Peak virtual memory: 710 megabytes
-    Info: Processing ended: Thu May  5 21:46:40 2022
+    Info: Processing ended: Thu May  5 22:03:30 2022
     Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:02
 
