@@ -4,6 +4,7 @@ use  IEEE.STD_LOGIC_ARITH.all; -- needed for conv_unsigned etc. ( https://www2.c
 use  IEEE.STD_LOGIC_UNSIGNED.all; -- makes all additions of std_logic_vector UNSIGNED ( https://community.intel.com/t5/Intel-Quartus-Prime-Software/Error-10327-Can-t-determine-definition-of-operator-quot-quot/td-p/61149 )
 --use  IEEE.STD_LOGIC_SIGNED.all;
 --use ieee.numeric_std.all; -- needed for `to_unsigned(65535, unsigned'length);`
+use ieee.numeric_std.shift_left;
 use IEEE.math_real.all;
 
 -- Module Generates Video Sync Signals for Video Montor Interface
@@ -208,13 +209,14 @@ ARCHITECTURE a OF VGA_SYNC_module IS
 	  p_updateFlagsForAddAndSubCommon(arg1, arg2, res);
 	end procedure;
 
-	procedure p_doJump(PC: inout MemoryPointingRegister; dest: in MemoryPointingRegister; out_overrodePC: inout std_logic) is
-	begin
-		-- TODO: error handling from interpreter.c goes here
+	-- procedure p_doJump(PC: inout MemoryPointingRegister; dest: in MemoryPointingRegister; out_overrodePC: inout std_logic) is
+	-- begin
+	-- 	-- TODO: error handling from interpreter.c goes here
 
-		PC := dest sll 2; -- divide by 2 with a "shift left logical" ( https://www.eng.auburn.edu/~nelsovp/courses/elec4200/VHDL/VHDL_Operators.pdf )
-		out_overrodePC := '1';
-	end procedure;
+	-- 	PC := dest;
+	-- 	--PC := -- divide by 2 with a "shift left logical" ( https://www.eng.auburn.edu/~nelsovp/courses/elec4200/VHDL/VHDL_Operators.pdf )
+	-- 	out_overrodePC := '1';
+	-- end procedure;
 
 	-- etc. --
 
@@ -416,6 +418,7 @@ PROCESS(clock_50Mhz)
   variable res: std_logic_vector(mcbi-1 downto 0);
   variable imm: std_logic_vector(7 downto 0);
   variable doBr: std_logic;
+  variable out_overrodePC: std_logic := '0';
 BEGIN
 	--WAIT UNTIL(pixel_clock_int'EVENT) AND (pixel_clock_int='1');
   if rising_edge(clock_50Mhz) then
@@ -489,7 +492,7 @@ BEGIN
 					else
 						imm := decodedInstruction.immediate_orRegSelects_orRegSelectAndExtraOperation;
 					end if;
-					case imm is
+					case decodedInstruction.conditionOrRegSelect is
 						when cond_none =>
 							doBr := '1';
 						when cond_sgz =>
@@ -528,9 +531,14 @@ BEGIN
 							else
 								doBr := '0';
 							end if;
+						when others =>
+							-- invalid data
+							doBr := '0';
 						end case;
 						if doBr = '1' then
-							p_doJump(PC, PC+imm*2, out_overrodePC);
+							--p_doJump(PC, PC+imm*2, out_overrodePC);
+							  PC <= PC+imm; --TODO: hack, should multiply by 2 like above
+							  out_overrodePC := '1';
 						end if;
 				when others =>
 					Hex_Display_Data(31 downto 16) <= "0110011001100110";
@@ -543,7 +551,9 @@ BEGIN
 			Hex_Display_Data(62) <= fl_signedCarry;
 			Hex_Display_Data(63) <= fl_negative;
 			-- Increment PC
-			PC <= PC + 1;
+			if out_overrodePC = '0' then
+				PC <= PC + 1;
+			end if;
 			-- --
 
 			enableSwitch <= '0';
