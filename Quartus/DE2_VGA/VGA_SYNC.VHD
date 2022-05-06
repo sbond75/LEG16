@@ -314,6 +314,7 @@ video_on <= video_on_int;
 PROCESS(clock_50Mhz)
   variable instr : t_MemoryCell := (dataOrInstruction => conv_std_logic_vector(0, 16));
   variable decodedInstruction : t_Instruction;
+  variable res: std_logic_vector(15 downto 0);
 BEGIN
 	--WAIT UNTIL(pixel_clock_int'EVENT) AND (pixel_clock_int='1');
   if rising_edge(clock_50Mhz) then
@@ -345,9 +346,11 @@ BEGIN
 			decodedInstruction := t_Instruction'(instr.dataOrInstruction(7 downto 0), instr.dataOrInstruction(11 downto 8), instr.dataOrInstruction(15 downto 12));
 			case decodedInstruction.mnemonic is 
 				when mn_addi =>
-					registers(conv_integer(decodedInstruction.conditionOrRegSelect)).dataOrInstruction <= registers(conv_integer(decodedInstruction.conditionOrRegSelect)).dataOrInstruction + decodedInstruction.immediate_orRegSelects_orRegSelectAndExtraOperation;
+					res := registers(conv_integer(decodedInstruction.conditionOrRegSelect)).dataOrInstruction + decodedInstruction.immediate_orRegSelects_orRegSelectAndExtraOperation;
+					registers(conv_integer(decodedInstruction.conditionOrRegSelect)).dataOrInstruction <= res;
 							  -- MAXIMUM
-					Hex_Display_Data(31 downto 16) <= registers(conv_integer(decodedInstruction.conditionOrRegSelect)).dataOrInstruction;
+					--Hex_Display_Data(31 downto 16) <= registers(conv_integer(decodedInstruction.conditionOrRegSelect)).dataOrInstruction; --reads back the old value
+					Hex_Display_Data(31 downto 16) <= res;
 					--Hex_Display_Data(31 downto 16) <= "1110111011101110";
 					--Hex_Display_Data(31 downto 16) <= instr.dataOrInstruction;
 				when others =>
