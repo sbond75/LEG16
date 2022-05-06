@@ -63,8 +63,18 @@ ENTITY VGA_Test IS
     VGA_VS 		 : out std_logic;            -- V_SYNC
     VGA_R 		 : out STD_LOGIC_VECTOR(7 downto 0); -- Red[7:0]
     VGA_G 		 : out STD_LOGIC_VECTOR(7 downto 0); -- Green[7:0]
-    VGA_B 		 : out STD_LOGIC_VECTOR(7 downto 0) -- Blue[7:0]
+    VGA_B 		 : out STD_LOGIC_VECTOR(7 downto 0); -- Blue[7:0]
 
+    
+    -- 16 X 2 LCD Module
+    
+    LCD_BLON : out std_logic;      							-- Back Light ON/OFF
+    LCD_EN   : out std_logic;      							-- Enable
+    LCD_ON   : out std_logic;      							-- Power ON/OFF
+    LCD_RS   : out std_logic;	   							-- Command/Data Select, 0 = Command, 1 = Data
+    LCD_RW   : out std_logic; 	   						-- Read/Write Select, 0 = Write, 1 = Read
+    LCD_DATA : inout std_logic_vector(7 downto 0) 	-- Data bus 8 bits
+    
 	);
 END VGA_Test;
 
@@ -73,6 +83,22 @@ END VGA_Test;
 -- 		Describes the functionality or internal implementation of the entity
 
 ARCHITECTURE structural OF VGA_Test IS
+
+  
+COMPONENT LCD_Display
+
+	GENERIC(Num_Hex_Digits: Integer:= 2);
+	
+	PORT(reset					: IN	STD_LOGIC;
+	     clk_50MHz				: IN	STD_LOGIC;
+		  Hex_Display_Data	: IN    STD_LOGIC_VECTOR((Num_Hex_Digits*4)-1 DOWNTO 0);
+		  LCD_RS					: OUT	STD_LOGIC;
+		  LCD_E					: OUT	STD_LOGIC;
+		  LCD_RW					: OUT   STD_LOGIC;
+		  DATA_BUS				: INOUT	STD_LOGIC_VECTOR(7 DOWNTO 0)
+		 );
+
+END COMPONENT;
 
 COMPONENT VGA_SYNC_module
 
@@ -99,6 +125,23 @@ signal currentCircleColor: STD_LOGIC_VECTOR(2 downto 0) := "000";
 BEGIN
 
 
+-- use LCD --
+	LCD_ON   <= '1';
+	LCD_BLON <= '1';
+
+
+	U2: LCD_Display PORT MAP
+		(reset				=>	not SW(7), --NOT SW(17),
+		 -- v-- port/internal signals
+		 clk_50MHz			=>	CLOCK_50, -- signal from outside
+		 Hex_Display_Data	=>	SW(7 DOWNTO 0),	--Hex_Display_Data, --SW(7 DOWNTO 0),	
+		 LCD_RS				=>	LCD_RS,
+		 LCD_E				=>	LCD_EN,
+		 LCD_RW				=>	LCD_RW,
+		 DATA_BUS			=>	LCD_DATA
+		);
+
+	
 	U1: VGA_SYNC_module PORT MAP
 		(clock_50Mhz		=>	CLOCK_50,
 		 red					=>	currentColor(2),

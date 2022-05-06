@@ -1,4 +1,3 @@
--- LCD_Display --
 LIBRARY IEEE;
 USE  IEEE.STD_LOGIC_1164.all;
 USE  IEEE.STD_LOGIC_ARITH.all;
@@ -50,7 +49,7 @@ ENTITY LCD_Display IS
 		
 END ENTITY LCD_Display;
 
-ARCHITECTURE ab OF LCD_Display IS
+ARCHITECTURE a OF LCD_Display IS
 
 TYPE character_string IS ARRAY ( 0 TO 31 ) OF STD_LOGIC_VECTOR( 7 DOWNTO 0 );
 
@@ -247,4 +246,4 @@ X"20",X"20",X"20",X"20",X"20",X"20",X"20",X"20");
 		  END IF;
 		END IF;
 	END PROCESS;
-END ab;
+END a;
