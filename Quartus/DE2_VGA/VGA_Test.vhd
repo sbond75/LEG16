@@ -84,10 +84,11 @@ END VGA_Test;
 
 ARCHITECTURE structural OF VGA_Test IS
 
+	constant Num_Hex_Digits: Integer:= 4;
   
 COMPONENT LCD_Display
 
-	GENERIC(Num_Hex_Digits: Integer:= 2);
+	GENERIC(Num_Hex_Digits: Integer:= Num_Hex_Digits);
 	
 	PORT(reset					: IN	STD_LOGIC;
 	     clk_50MHz				: IN	STD_LOGIC;
@@ -134,7 +135,7 @@ BEGIN
 		(reset				=>	not SW(7), --NOT SW(17),
 		 -- v-- port/internal signals
 		 clk_50MHz			=>	CLOCK_50, -- signal from outside
-		 Hex_Display_Data	=>	SW(7 DOWNTO 0),	--Hex_Display_Data, --SW(7 DOWNTO 0),	
+		 Hex_Display_Data	=>	SW((Num_Hex_Digits*4)-1 DOWNTO 0),	--Hex_Display_Data, --SW(7 DOWNTO 0),	
 		 LCD_RS				=>	LCD_RS,
 		 LCD_E				=>	LCD_EN,
 		 LCD_RW				=>	LCD_RW,

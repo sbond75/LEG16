@@ -71,7 +71,7 @@ ARCHITECTURE structural OF LCD_Test IS
 
 COMPONENT LCD_Display
 
-	GENERIC(Num_Hex_Digits: Integer:= 2);
+	GENERIC(Num_Hex_Digits: Integer:= 4);
 	
 	PORT(reset					: IN	STD_LOGIC;
 	     clk_50MHz				: IN	STD_LOGIC;
@@ -93,7 +93,7 @@ BEGIN
 	U1: LCD_Display PORT MAP
 		(reset				=>	NOT SW(17),
 		 clk_50MHz			=>	CLOCK_50,
-		 Hex_Display_Data	=>	SW(7 DOWNTO 0),	
+		 Hex_Display_Data	=>	SW(15 DOWNTO 0),	
 		 LCD_RS				=>	LCD_RS,
 		 LCD_E				=>	LCD_EN,
 		 LCD_RW				=>	LCD_RW,

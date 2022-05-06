@@ -33,10 +33,12 @@ ENTITY VGA_SYNC_module IS
 			);
 END VGA_SYNC_module;
 ARCHITECTURE a OF VGA_SYNC_module IS
+
+  constant Num_Hex_Digits: Integer:= 4;
   
 COMPONENT LCD_Display -- referencing an entity in a different file or declaration
 
-	GENERIC(Num_Hex_Digits: Integer:= 4);
+	GENERIC(Num_Hex_Digits: Integer:= Num_Hex_Digits);
 
 	-- the ports in component declaration are the same (repeated) from the entity declaration
 	PORT(reset					: IN	STD_LOGIC;
@@ -126,7 +128,7 @@ END COMPONENT;
 
 	-- signals --
 
-	signal Hex_Display_Data: std_logic_vector(7 downto 0);
+	signal Hex_Display_Data: std_logic_vector((Num_Hex_Digits*4)-1 downto 0);
 	
 	SIGNAL horiz_sync, vert_sync, pixel_clock_int : STD_LOGIC;
 	SIGNAL video_on_int, video_on_v, video_on_h : STD_LOGIC;
