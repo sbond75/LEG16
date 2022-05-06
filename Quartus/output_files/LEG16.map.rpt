@@ -1,5 +1,5 @@
 Analysis & Synthesis report for LEG16
-Thu May  5 21:29:41 2022
+Thu May  5 21:44:24 2022
 Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
 
 
@@ -13,23 +13,20 @@ Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. State Machine - |VGA_Test|VGA_SYNC_module:U1|LCD_Display:U1|next_command
-  9. State Machine - |VGA_Test|VGA_SYNC_module:U1|LCD_Display:U1|state
- 10. State Machine - |VGA_Test|LCD_Display:U2|next_command
- 11. State Machine - |VGA_Test|LCD_Display:U2|state
- 12. Registers Removed During Synthesis
- 13. Removed Registers Triggering Further Register Optimizations
- 14. General Register Statistics
- 15. Inverted Register Statistics
- 16. Multiplexer Restructuring Statistics (Restructuring Performed)
- 17. Parameter Settings for User Entity Instance: LCD_Display:U2
- 18. Parameter Settings for User Entity Instance: VGA_SYNC_module:U1|video_PLL:video_PLL_inst|altpll:altpll_component
- 19. Parameter Settings for User Entity Instance: VGA_SYNC_module:U1|LCD_Display:U1
- 20. altpll Parameter Settings by Entity Instance
- 21. Port Connectivity Checks: "VGA_SYNC_module:U1"
- 22. Post-Synthesis Netlist Statistics for Top Partition
- 23. Elapsed Time Per Partition
- 24. Analysis & Synthesis Messages
+  8. State Machine - |VGA_Test|LCD_Display:U2|next_command
+  9. State Machine - |VGA_Test|LCD_Display:U2|state
+ 10. Registers Removed During Synthesis
+ 11. General Register Statistics
+ 12. Inverted Register Statistics
+ 13. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 14. Parameter Settings for User Entity Instance: LCD_Display:U2
+ 15. Parameter Settings for User Entity Instance: VGA_SYNC_module:U1
+ 16. Parameter Settings for User Entity Instance: VGA_SYNC_module:U1|video_PLL:video_PLL_inst|altpll:altpll_component
+ 17. altpll Parameter Settings by Entity Instance
+ 18. Port Connectivity Checks: "VGA_SYNC_module:U1"
+ 19. Post-Synthesis Netlist Statistics for Top Partition
+ 20. Elapsed Time Per Partition
+ 21. Analysis & Synthesis Messages
 
 
 
@@ -56,15 +53,15 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu May  5 21:29:41 2022       ;
+; Analysis & Synthesis Status        ; Successful - Thu May  5 21:44:24 2022       ;
 ; Quartus Prime Version              ; 21.1.0 Build 842 10/21/2021 SJ Lite Edition ;
 ; Revision Name                      ; LEG16                                       ;
 ; Top-level Entity Name              ; VGA_Test                                    ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 120                                         ;
-;     Total combinational functions  ; 117                                         ;
-;     Dedicated logic registers      ; 60                                          ;
-; Total registers                    ; 60                                          ;
+; Total logic elements               ; 152                                         ;
+;     Total combinational functions  ; 149                                         ;
+;     Dedicated logic registers      ; 92                                          ;
+; Total registers                    ; 92                                          ;
 ; Total pins                         ; 65                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
@@ -172,8 +169,7 @@ https://fpgasoftware.intel.com/eula.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.0%      ;
-;     Processors 3-4         ;   0.0%      ;
+;     Processors 2-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -200,20 +196,20 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimated Total logic elements              ; 120            ;
+; Estimated Total logic elements              ; 152            ;
 ;                                             ;                ;
-; Total combinational functions               ; 117            ;
+; Total combinational functions               ; 149            ;
 ; Logic element usage by number of LUT inputs ;                ;
 ;     -- 4 input functions                    ; 61             ;
-;     -- 3 input functions                    ; 11             ;
-;     -- <=2 input functions                  ; 45             ;
+;     -- 3 input functions                    ; 12             ;
+;     -- <=2 input functions                  ; 76             ;
 ;                                             ;                ;
 ; Logic elements by mode                      ;                ;
-;     -- normal mode                          ; 94             ;
-;     -- arithmetic mode                      ; 23             ;
+;     -- normal mode                          ; 112            ;
+;     -- arithmetic mode                      ; 37             ;
 ;                                             ;                ;
-; Total registers                             ; 60             ;
-;     -- Dedicated logic registers            ; 60             ;
+; Total registers                             ; 92             ;
+;     -- Dedicated logic registers            ; 92             ;
 ;     -- I/O registers                        ; 0              ;
 ;                                             ;                ;
 ; I/O pins                                    ; 65             ;
@@ -224,9 +220,9 @@ https://fpgasoftware.intel.com/eula.
 ;     -- PLLs                                 ; 1              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 61             ;
-; Total fan-out                               ; 680            ;
-; Average fan-out                             ; 2.15           ;
+; Maximum fan-out                             ; 93             ;
+; Total fan-out                               ; 823            ;
+; Average fan-out                             ; 2.17           ;
 +---------------------------------------------+----------------+
 
 
@@ -235,59 +231,14 @@ https://fpgasoftware.intel.com/eula.
 +------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------+-----------------+--------------+
 ; Compilation Hierarchy Node               ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                      ; Entity Name     ; Library Name ;
 +------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------+-----------------+--------------+
-; |VGA_Test                                ; 117 (0)             ; 60 (0)                    ; 0           ; 0            ; 0       ; 0         ; 65   ; 0            ; |VGA_Test                                                                                                ; VGA_Test        ; work         ;
-;    |LCD_Display:U2|                      ; 116 (116)           ; 60 (60)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|LCD_Display:U2                                                                                 ; LCD_Display     ; work         ;
-;    |VGA_SYNC_module:U1|                  ; 1 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1                                                                             ; VGA_SYNC_module ; work         ;
-;       |LCD_Display:U1|                   ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1|LCD_Display:U1                                                              ; LCD_Display     ; work         ;
+; |VGA_Test                                ; 149 (0)             ; 92 (0)                    ; 0           ; 0            ; 0       ; 0         ; 65   ; 0            ; |VGA_Test                                                                                                ; VGA_Test        ; work         ;
+;    |LCD_Display:U2|                      ; 117 (117)           ; 60 (60)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|LCD_Display:U2                                                                                 ; LCD_Display     ; work         ;
+;    |VGA_SYNC_module:U1|                  ; 32 (32)             ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1                                                                             ; VGA_SYNC_module ; work         ;
 ;       |video_PLL:video_PLL_inst|         ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1|video_PLL:video_PLL_inst                                                    ; video_PLL       ; work         ;
 ;          |altpll:altpll_component|       ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1|video_PLL:video_PLL_inst|altpll:altpll_component                            ; altpll          ; work         ;
 ;             |altpll_dp72:auto_generated| ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1|video_PLL:video_PLL_inst|altpll:altpll_component|altpll_dp72:auto_generated ; altpll_dp72     ; work         ;
 +------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------+-----------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
-
-
-Encoding Type:  One-Hot
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |VGA_Test|VGA_SYNC_module:U1|LCD_Display:U1|next_command                                                                                                                                                                                                                                                                                 ;
-+----------------------------+----------------------------+--------------------------+---------------------+-------------------+---------------------+-------------------------+--------------------------+--------------------+---------------------------+-----------------------+-------------------------+-----------------------+---------------------+
-; Name                       ; next_command.DISPLAY_CLEAR ; next_command.DISPLAY_OFF ; next_command.RESET3 ; next_command.HOLD ; next_command.RESET1 ; next_command.DROP_LCD_E ; next_command.RETURN_HOME ; next_command.LINE2 ; next_command.Print_String ; next_command.MODE_SET ; next_command.DISPLAY_ON ; next_command.FUNC_SET ; next_command.RESET2 ;
-+----------------------------+----------------------------+--------------------------+---------------------+-------------------+---------------------+-------------------------+--------------------------+--------------------+---------------------------+-----------------------+-------------------------+-----------------------+---------------------+
-; next_command.RESET2        ; 0                          ; 0                        ; 0                   ; 0                 ; 0                   ; 0                       ; 0                        ; 0                  ; 0                         ; 0                     ; 0                       ; 0                     ; 0                   ;
-; next_command.FUNC_SET      ; 0                          ; 0                        ; 0                   ; 0                 ; 0                   ; 0                       ; 0                        ; 0                  ; 0                         ; 0                     ; 0                       ; 1                     ; 1                   ;
-; next_command.DISPLAY_ON    ; 0                          ; 0                        ; 0                   ; 0                 ; 0                   ; 0                       ; 0                        ; 0                  ; 0                         ; 0                     ; 1                       ; 0                     ; 1                   ;
-; next_command.MODE_SET      ; 0                          ; 0                        ; 0                   ; 0                 ; 0                   ; 0                       ; 0                        ; 0                  ; 0                         ; 1                     ; 0                       ; 0                     ; 1                   ;
-; next_command.Print_String  ; 0                          ; 0                        ; 0                   ; 0                 ; 0                   ; 0                       ; 0                        ; 0                  ; 1                         ; 0                     ; 0                       ; 0                     ; 1                   ;
-; next_command.LINE2         ; 0                          ; 0                        ; 0                   ; 0                 ; 0                   ; 0                       ; 0                        ; 1                  ; 0                         ; 0                     ; 0                       ; 0                     ; 1                   ;
-; next_command.RETURN_HOME   ; 0                          ; 0                        ; 0                   ; 0                 ; 0                   ; 0                       ; 1                        ; 0                  ; 0                         ; 0                     ; 0                       ; 0                     ; 1                   ;
-; next_command.DROP_LCD_E    ; 0                          ; 0                        ; 0                   ; 0                 ; 0                   ; 1                       ; 0                        ; 0                  ; 0                         ; 0                     ; 0                       ; 0                     ; 1                   ;
-; next_command.RESET1        ; 0                          ; 0                        ; 0                   ; 0                 ; 1                   ; 0                       ; 0                        ; 0                  ; 0                         ; 0                     ; 0                       ; 0                     ; 1                   ;
-; next_command.HOLD          ; 0                          ; 0                        ; 0                   ; 1                 ; 0                   ; 0                       ; 0                        ; 0                  ; 0                         ; 0                     ; 0                       ; 0                     ; 1                   ;
-; next_command.RESET3        ; 0                          ; 0                        ; 1                   ; 0                 ; 0                   ; 0                       ; 0                        ; 0                  ; 0                         ; 0                     ; 0                       ; 0                     ; 1                   ;
-; next_command.DISPLAY_OFF   ; 0                          ; 1                        ; 0                   ; 0                 ; 0                   ; 0                       ; 0                        ; 0                  ; 0                         ; 0                     ; 0                       ; 0                     ; 1                   ;
-; next_command.DISPLAY_CLEAR ; 1                          ; 0                        ; 0                   ; 0                 ; 0                   ; 0                       ; 0                        ; 0                  ; 0                         ; 0                     ; 0                       ; 0                     ; 1                   ;
-+----------------------------+----------------------------+--------------------------+---------------------+-------------------+---------------------+-------------------------+--------------------------+--------------------+---------------------------+-----------------------+-------------------------+-----------------------+---------------------+
-
-
-Encoding Type:  One-Hot
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |VGA_Test|VGA_SYNC_module:U1|LCD_Display:U1|state                                                                                                                                                                                      ;
-+---------------------+---------------------+-------------------+--------------+--------------+------------+------------------+-------------------+-------------+--------------------+----------------+------------------+----------------+--------------+
-; Name                ; state.DISPLAY_CLEAR ; state.DISPLAY_OFF ; state.RESET3 ; state.RESET2 ; state.HOLD ; state.DROP_LCD_E ; state.RETURN_HOME ; state.LINE2 ; state.Print_String ; state.MODE_SET ; state.DISPLAY_ON ; state.FUNC_SET ; state.RESET1 ;
-+---------------------+---------------------+-------------------+--------------+--------------+------------+------------------+-------------------+-------------+--------------------+----------------+------------------+----------------+--------------+
-; state.RESET1        ; 0                   ; 0                 ; 0            ; 0            ; 0          ; 0                ; 0                 ; 0           ; 0                  ; 0              ; 0                ; 0              ; 0            ;
-; state.FUNC_SET      ; 0                   ; 0                 ; 0            ; 0            ; 0          ; 0                ; 0                 ; 0           ; 0                  ; 0              ; 0                ; 1              ; 1            ;
-; state.DISPLAY_ON    ; 0                   ; 0                 ; 0            ; 0            ; 0          ; 0                ; 0                 ; 0           ; 0                  ; 0              ; 1                ; 0              ; 1            ;
-; state.MODE_SET      ; 0                   ; 0                 ; 0            ; 0            ; 0          ; 0                ; 0                 ; 0           ; 0                  ; 1              ; 0                ; 0              ; 1            ;
-; state.Print_String  ; 0                   ; 0                 ; 0            ; 0            ; 0          ; 0                ; 0                 ; 0           ; 1                  ; 0              ; 0                ; 0              ; 1            ;
-; state.LINE2         ; 0                   ; 0                 ; 0            ; 0            ; 0          ; 0                ; 0                 ; 1           ; 0                  ; 0              ; 0                ; 0              ; 1            ;
-; state.RETURN_HOME   ; 0                   ; 0                 ; 0            ; 0            ; 0          ; 0                ; 1                 ; 0           ; 0                  ; 0              ; 0                ; 0              ; 1            ;
-; state.DROP_LCD_E    ; 0                   ; 0                 ; 0            ; 0            ; 0          ; 1                ; 0                 ; 0           ; 0                  ; 0              ; 0                ; 0              ; 1            ;
-; state.HOLD          ; 0                   ; 0                 ; 0            ; 0            ; 1          ; 0                ; 0                 ; 0           ; 0                  ; 0              ; 0                ; 0              ; 1            ;
-; state.RESET2        ; 0                   ; 0                 ; 0            ; 1            ; 0          ; 0                ; 0                 ; 0           ; 0                  ; 0              ; 0                ; 0              ; 1            ;
-; state.RESET3        ; 0                   ; 0                 ; 1            ; 0            ; 0          ; 0                ; 0                 ; 0           ; 0                  ; 0              ; 0                ; 0              ; 1            ;
-; state.DISPLAY_OFF   ; 0                   ; 1                 ; 0            ; 0            ; 0          ; 0                ; 0                 ; 0           ; 0                  ; 0              ; 0                ; 0              ; 1            ;
-; state.DISPLAY_CLEAR ; 1                   ; 0                 ; 0            ; 0            ; 0          ; 0                ; 0                 ; 0           ; 0                  ; 0              ; 0                ; 0              ; 1            ;
-+---------------------+---------------------+-------------------+--------------+--------------+------------+------------------+-------------------+-------------+--------------------+----------------+------------------+----------------+--------------+
 
 
 Encoding Type:  One-Hot
@@ -334,75 +285,16 @@ Encoding Type:  One-Hot
 +---------------------+---------------------+-------------------+--------------+--------------+------------+------------------+-------------------+-------------+--------------------+----------------+------------------+----------------+--------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                                                ;
-+--------------------------------------------------------------+----------------------------------------------------+
-; Register name                                                ; Reason for Removal                                 ;
-+--------------------------------------------------------------+----------------------------------------------------+
-; VGA_SYNC_module:U1|LCD_Display:U1|CLK_400HZ_Enable           ; Merged with LCD_Display:U2|CLK_400HZ_Enable        ;
-; VGA_SYNC_module:U1|LCD_Display:U1|CLK_COUNT_400HZ[19]        ; Merged with LCD_Display:U2|CLK_COUNT_400HZ[19]     ;
-; VGA_SYNC_module:U1|LCD_Display:U1|CLK_COUNT_400HZ[18]        ; Merged with LCD_Display:U2|CLK_COUNT_400HZ[18]     ;
-; VGA_SYNC_module:U1|LCD_Display:U1|CLK_COUNT_400HZ[17]        ; Merged with LCD_Display:U2|CLK_COUNT_400HZ[17]     ;
-; VGA_SYNC_module:U1|LCD_Display:U1|CLK_COUNT_400HZ[16]        ; Merged with LCD_Display:U2|CLK_COUNT_400HZ[16]     ;
-; VGA_SYNC_module:U1|LCD_Display:U1|CLK_COUNT_400HZ[15]        ; Merged with LCD_Display:U2|CLK_COUNT_400HZ[15]     ;
-; VGA_SYNC_module:U1|LCD_Display:U1|CLK_COUNT_400HZ[14]        ; Merged with LCD_Display:U2|CLK_COUNT_400HZ[14]     ;
-; VGA_SYNC_module:U1|LCD_Display:U1|CLK_COUNT_400HZ[13]        ; Merged with LCD_Display:U2|CLK_COUNT_400HZ[13]     ;
-; VGA_SYNC_module:U1|LCD_Display:U1|CLK_COUNT_400HZ[12]        ; Merged with LCD_Display:U2|CLK_COUNT_400HZ[12]     ;
-; VGA_SYNC_module:U1|LCD_Display:U1|CLK_COUNT_400HZ[11]        ; Merged with LCD_Display:U2|CLK_COUNT_400HZ[11]     ;
-; VGA_SYNC_module:U1|LCD_Display:U1|CLK_COUNT_400HZ[10]        ; Merged with LCD_Display:U2|CLK_COUNT_400HZ[10]     ;
-; VGA_SYNC_module:U1|LCD_Display:U1|CLK_COUNT_400HZ[9]         ; Merged with LCD_Display:U2|CLK_COUNT_400HZ[9]      ;
-; VGA_SYNC_module:U1|LCD_Display:U1|CLK_COUNT_400HZ[8]         ; Merged with LCD_Display:U2|CLK_COUNT_400HZ[8]      ;
-; VGA_SYNC_module:U1|LCD_Display:U1|CLK_COUNT_400HZ[7]         ; Merged with LCD_Display:U2|CLK_COUNT_400HZ[7]      ;
-; VGA_SYNC_module:U1|LCD_Display:U1|CLK_COUNT_400HZ[6]         ; Merged with LCD_Display:U2|CLK_COUNT_400HZ[6]      ;
-; VGA_SYNC_module:U1|LCD_Display:U1|CLK_COUNT_400HZ[5]         ; Merged with LCD_Display:U2|CLK_COUNT_400HZ[5]      ;
-; VGA_SYNC_module:U1|LCD_Display:U1|CLK_COUNT_400HZ[4]         ; Merged with LCD_Display:U2|CLK_COUNT_400HZ[4]      ;
-; VGA_SYNC_module:U1|LCD_Display:U1|CLK_COUNT_400HZ[3]         ; Merged with LCD_Display:U2|CLK_COUNT_400HZ[3]      ;
-; VGA_SYNC_module:U1|LCD_Display:U1|CLK_COUNT_400HZ[2]         ; Merged with LCD_Display:U2|CLK_COUNT_400HZ[2]      ;
-; VGA_SYNC_module:U1|LCD_Display:U1|CLK_COUNT_400HZ[1]         ; Merged with LCD_Display:U2|CLK_COUNT_400HZ[1]      ;
-; VGA_SYNC_module:U1|LCD_Display:U1|CLK_COUNT_400HZ[0]         ; Merged with LCD_Display:U2|CLK_COUNT_400HZ[0]      ;
-; VGA_SYNC_module:U1|LCD_Display:U1|CHAR_COUNT[0..4]           ; Lost fanout                                        ;
-; VGA_SYNC_module:U1|LCD_Display:U1|next_command.RESET2        ; Lost fanout                                        ;
-; VGA_SYNC_module:U1|LCD_Display:U1|next_command.FUNC_SET      ; Lost fanout                                        ;
-; VGA_SYNC_module:U1|LCD_Display:U1|next_command.DISPLAY_ON    ; Lost fanout                                        ;
-; VGA_SYNC_module:U1|LCD_Display:U1|next_command.MODE_SET      ; Lost fanout                                        ;
-; VGA_SYNC_module:U1|LCD_Display:U1|next_command.Print_String  ; Lost fanout                                        ;
-; VGA_SYNC_module:U1|LCD_Display:U1|next_command.LINE2         ; Lost fanout                                        ;
-; VGA_SYNC_module:U1|LCD_Display:U1|next_command.RETURN_HOME   ; Lost fanout                                        ;
-; VGA_SYNC_module:U1|LCD_Display:U1|next_command.DROP_LCD_E    ; Lost fanout                                        ;
-; VGA_SYNC_module:U1|LCD_Display:U1|next_command.RESET1        ; Lost fanout                                        ;
-; VGA_SYNC_module:U1|LCD_Display:U1|next_command.HOLD          ; Lost fanout                                        ;
-; VGA_SYNC_module:U1|LCD_Display:U1|next_command.RESET3        ; Lost fanout                                        ;
-; VGA_SYNC_module:U1|LCD_Display:U1|next_command.DISPLAY_OFF   ; Lost fanout                                        ;
-; VGA_SYNC_module:U1|LCD_Display:U1|next_command.DISPLAY_CLEAR ; Lost fanout                                        ;
-; VGA_SYNC_module:U1|LCD_Display:U1|state.RESET1               ; Lost fanout                                        ;
-; VGA_SYNC_module:U1|LCD_Display:U1|state.FUNC_SET             ; Lost fanout                                        ;
-; VGA_SYNC_module:U1|LCD_Display:U1|state.DISPLAY_ON           ; Lost fanout                                        ;
-; VGA_SYNC_module:U1|LCD_Display:U1|state.MODE_SET             ; Lost fanout                                        ;
-; VGA_SYNC_module:U1|LCD_Display:U1|state.Print_String         ; Lost fanout                                        ;
-; VGA_SYNC_module:U1|LCD_Display:U1|state.LINE2                ; Lost fanout                                        ;
-; VGA_SYNC_module:U1|LCD_Display:U1|state.RETURN_HOME          ; Lost fanout                                        ;
-; VGA_SYNC_module:U1|LCD_Display:U1|state.DROP_LCD_E           ; Lost fanout                                        ;
-; VGA_SYNC_module:U1|LCD_Display:U1|state.HOLD                 ; Lost fanout                                        ;
-; VGA_SYNC_module:U1|LCD_Display:U1|state.RESET2               ; Lost fanout                                        ;
-; VGA_SYNC_module:U1|LCD_Display:U1|state.RESET3               ; Lost fanout                                        ;
-; VGA_SYNC_module:U1|LCD_Display:U1|state.DISPLAY_OFF          ; Lost fanout                                        ;
-; VGA_SYNC_module:U1|LCD_Display:U1|state.DISPLAY_CLEAR        ; Lost fanout                                        ;
-; LCD_Display:U2|next_command.HOLD                             ; Merged with LCD_Display:U2|next_command.DROP_LCD_E ;
-; LCD_Display:U2|next_command.RESET1                           ; Merged with LCD_Display:U2|next_command.DROP_LCD_E ;
-; LCD_Display:U2|next_command.DROP_LCD_E                       ; Stuck at GND due to stuck port data_in             ;
-; Total Number of Removed Registers = 55                       ;                                                    ;
-+--------------------------------------------------------------+----------------------------------------------------+
-
-
-+-----------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                 ;
-+-------------------------------------------------+--------------------+------------------------------------------------------+
-; Register name                                   ; Reason for Removal ; Registers Removed due to This Register               ;
-+-------------------------------------------------+--------------------+------------------------------------------------------+
-; VGA_SYNC_module:U1|LCD_Display:U1|CHAR_COUNT[0] ; Lost Fanouts       ; VGA_SYNC_module:U1|LCD_Display:U1|CHAR_COUNT[4],     ;
-;                                                 ;                    ; VGA_SYNC_module:U1|LCD_Display:U1|state.RESET1,      ;
-;                                                 ;                    ; VGA_SYNC_module:U1|LCD_Display:U1|state.Print_String ;
-+-------------------------------------------------+--------------------+------------------------------------------------------+
++---------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                          ;
++----------------------------------------+----------------------------------------------------+
+; Register name                          ; Reason for Removal                                 ;
++----------------------------------------+----------------------------------------------------+
+; LCD_Display:U2|next_command.HOLD       ; Merged with LCD_Display:U2|next_command.DROP_LCD_E ;
+; LCD_Display:U2|next_command.RESET1     ; Merged with LCD_Display:U2|next_command.DROP_LCD_E ;
+; LCD_Display:U2|next_command.DROP_LCD_E ; Stuck at GND due to stuck port data_in             ;
+; Total Number of Removed Registers = 3  ;                                                    ;
++----------------------------------------+----------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -410,12 +302,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 60    ;
+; Total registers                              ; 92    ;
 ; Number of registers using Synchronous Clear  ; 20    ;
 ; Number of registers using Synchronous Load   ; 5     ;
 ; Number of registers using Asynchronous Clear ; 34    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 38    ;
+; Number of registers using Clock Enable       ; 53    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -434,17 +326,16 @@ Encoding Type:  One-Hot
 +----------------------------------------+---------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                  ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                        ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------+
-; 3:1                ; 20 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |VGA_Test|LCD_Display:U2|CLK_COUNT_400HZ[14]      ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |VGA_Test|LCD_Display:U2|DATA_BUS_VALUE[5]        ;
-; 3:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; No         ; |VGA_Test|VGA_SYNC_module:U1|LCD_Display:U1|state ;
-; 3:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; No         ; |VGA_Test|LCD_Display:U2|state                    ;
-; 32:1               ; 4 bits    ; 84 LEs        ; 40 LEs               ; 44 LEs                 ; No         ; |VGA_Test|LCD_Display:U2|Mux6                     ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------+
+; 3:1                ; 20 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |VGA_Test|LCD_Display:U2|CLK_COUNT_400HZ[15] ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |VGA_Test|LCD_Display:U2|DATA_BUS_VALUE[4]   ;
+; 3:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; No         ; |VGA_Test|LCD_Display:U2|state               ;
+; 32:1               ; 4 bits    ; 84 LEs        ; 40 LEs               ; 44 LEs                 ; No         ; |VGA_Test|LCD_Display:U2|Mux6                ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------+
 
 
 +-------------------------------------------------------------+
@@ -454,6 +345,16 @@ Encoding Type:  One-Hot
 +----------------+-------+------------------------------------+
 ; num_hex_digits ; 4     ; Signed Integer                     ;
 +----------------+-------+------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: VGA_SYNC_module:U1 ;
++----------------+-------+----------------------------------------+
+; Parameter Name ; Value ; Type                                   ;
++----------------+-------+----------------------------------------+
+; num_hex_digits ; 4     ; Signed Integer                         ;
++----------------+-------+----------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -831,16 +732,6 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+--------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: VGA_SYNC_module:U1|LCD_Display:U1 ;
-+----------------+-------+-------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                  ;
-+----------------+-------+-------------------------------------------------------+
-; num_hex_digits ; 4     ; Signed Integer                                        ;
-+----------------+-------+-------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
 +-----------------------------------------------------------------------------------------------------+
 ; altpll Parameter Settings by Entity Instance                                                        ;
 +-------------------------------+---------------------------------------------------------------------+
@@ -883,26 +774,28 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 65                          ;
-; cycloneiii_ff         ; 60                          ;
+; cycloneiii_ff         ; 92                          ;
 ;     CLR               ; 1                           ;
+;     ENA               ; 15                          ;
 ;     ENA CLR           ; 33                          ;
 ;     ENA SLD           ; 5                           ;
 ;     SCLR              ; 20                          ;
-;     plain             ; 1                           ;
+;     plain             ; 18                          ;
 ; cycloneiii_io_obuf    ; 8                           ;
-; cycloneiii_lcell_comb ; 121                         ;
-;     arith             ; 23                          ;
-;         2 data inputs ; 23                          ;
-;     normal            ; 98                          ;
+; cycloneiii_lcell_comb ; 153                         ;
+;     arith             ; 37                          ;
+;         2 data inputs ; 36                          ;
+;         3 data inputs ; 1                           ;
+;     normal            ; 116                         ;
 ;         0 data inputs ; 2                           ;
-;         1 data inputs ; 4                           ;
-;         2 data inputs ; 20                          ;
+;         1 data inputs ; 5                           ;
+;         2 data inputs ; 37                          ;
 ;         3 data inputs ; 11                          ;
 ;         4 data inputs ; 61                          ;
 ; cycloneiii_pll        ; 1                           ;
 ;                       ;                             ;
 ; Max LUT depth         ; 6.00                        ;
-; Average LUT depth     ; 2.88                        ;
+; Average LUT depth     ; 2.61                        ;
 +-----------------------+-----------------------------+
 
 
@@ -911,7 +804,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:01     ;
 +----------------+--------------+
 
 
@@ -921,7 +814,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
-    Info: Processing started: Thu May  5 21:29:30 2022
+    Info: Processing started: Thu May  5 21:44:13 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off LEG16 -c LEG16
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -938,32 +831,37 @@ Info (12021): Found 2 design units, including 1 entities, in source file de2_vga
     Info (12022): Found design unit 1: VGA_Test-structural File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 85
     Info (12023): Found entity 1: VGA_Test File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 36
 Info (12021): Found 2 design units, including 1 entities, in source file de2_vga/vga_sync.vhd
-    Info (12022): Found design unit 1: VGA_SYNC_module-a File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 35
+    Info (12022): Found design unit 1: VGA_SYNC_module-a File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 39
     Info (12023): Found entity 1: VGA_SYNC_module File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 11
 Info (12127): Elaborating entity "VGA_Test" for the top level hierarchy
 Warning (10541): VHDL Signal Declaration warning at VGA_Test.vhd(62): used implicit default value for signal "VGA_SYNC_N" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 62
-Warning (10036): Verilog HDL or VHDL warning at VGA_Test.vhd(121): object "pixel_row_int" assigned a value but never read File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 121
-Warning (10036): Verilog HDL or VHDL warning at VGA_Test.vhd(122): object "pixel_column_int" assigned a value but never read File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 122
-Warning (10540): VHDL Signal Declaration warning at VGA_Test.vhd(123): used explicit default value for signal "currentColor" because signal was never assigned a value File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 123
-Info (12128): Elaborating entity "LCD_Display" for hierarchy "LCD_Display:U2" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 134
-Info (12128): Elaborating entity "VGA_SYNC_module" for hierarchy "VGA_SYNC_module:U1" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 146
-Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(13): used implicit default value for signal "red_out" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 13
-Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(13): used implicit default value for signal "green_out" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 13
-Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(13): used implicit default value for signal "blue_out" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 13
-Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(14): used implicit default value for signal "horiz_sync_out" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 14
-Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(14): used implicit default value for signal "vert_sync_out" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 14
-Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(16): used implicit default value for signal "pixel_row" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 16
-Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(16): used implicit default value for signal "pixel_column" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 16
-Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(134): used implicit default value for signal "video_on_v" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 134
-Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(134): used implicit default value for signal "video_on_h" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 134
-Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(135): used implicit default value for signal "h_count" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 135
-Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(135): used implicit default value for signal "v_count" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 135
-Warning (10036): Verilog HDL or VHDL warning at VGA_SYNC.VHD(138): object "enableSwitch" assigned a value but never read File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 138
-Warning (10036): Verilog HDL or VHDL warning at VGA_SYNC.VHD(140): object "distToCircleCenterSquared" assigned a value but never read File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 140
-Warning (10540): VHDL Signal Declaration warning at VGA_SYNC.VHD(144): used explicit default value for signal "SP" because signal was never assigned a value File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 144
-Warning (10540): VHDL Signal Declaration warning at VGA_SYNC.VHD(148): used explicit default value for signal "memory" because signal was never assigned a value File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 148
-Warning (10036): Verilog HDL or VHDL warning at VGA_SYNC.VHD(352): object "instr" assigned a value but never read File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 352
-Info (12128): Elaborating entity "video_PLL" for hierarchy "VGA_SYNC_module:U1|video_PLL:video_PLL_inst" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 322
+Warning (10036): Verilog HDL or VHDL warning at VGA_Test.vhd(126): object "pixel_row_int" assigned a value but never read File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 126
+Warning (10036): Verilog HDL or VHDL warning at VGA_Test.vhd(127): object "pixel_column_int" assigned a value but never read File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 127
+Warning (10540): VHDL Signal Declaration warning at VGA_Test.vhd(128): used explicit default value for signal "currentColor" because signal was never assigned a value File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 128
+Info (12128): Elaborating entity "LCD_Display" for hierarchy "LCD_Display:U2" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 139
+Info (12128): Elaborating entity "VGA_SYNC_module" for hierarchy "VGA_SYNC_module:U1" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 151
+Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(16): used implicit default value for signal "red_out" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 16
+Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(16): used implicit default value for signal "green_out" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 16
+Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(16): used implicit default value for signal "blue_out" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 16
+Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(17): used implicit default value for signal "horiz_sync_out" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 17
+Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(17): used implicit default value for signal "vert_sync_out" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 17
+Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(19): used implicit default value for signal "pixel_row" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 19
+Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(19): used implicit default value for signal "pixel_column" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 19
+Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(30): used implicit default value for signal "LCD_BLON" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 30
+Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(31): used implicit default value for signal "LCD_EN" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 31
+Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(32): used implicit default value for signal "LCD_ON" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 32
+Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(33): used implicit default value for signal "LCD_RS" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 33
+Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(34): used implicit default value for signal "LCD_RW" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 34
+Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(118): used implicit default value for signal "video_on_v" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 118
+Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(118): used implicit default value for signal "video_on_h" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 118
+Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(119): used implicit default value for signal "h_count" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 119
+Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(119): used implicit default value for signal "v_count" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 119
+Warning (10036): Verilog HDL or VHDL warning at VGA_SYNC.VHD(122): object "enableSwitch" assigned a value but never read File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 122
+Warning (10036): Verilog HDL or VHDL warning at VGA_SYNC.VHD(124): object "distToCircleCenterSquared" assigned a value but never read File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 124
+Warning (10540): VHDL Signal Declaration warning at VGA_SYNC.VHD(128): used explicit default value for signal "SP" because signal was never assigned a value File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 128
+Warning (10540): VHDL Signal Declaration warning at VGA_SYNC.VHD(132): used explicit default value for signal "memory" because signal was never assigned a value File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 132
+Warning (10036): Verilog HDL or VHDL warning at VGA_SYNC.VHD(319): object "instr" assigned a value but never read File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 319
+Info (12128): Elaborating entity "video_PLL" for hierarchy "VGA_SYNC_module:U1|video_PLL:video_PLL_inst" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 306
 Info (12128): Elaborating entity "altpll" for hierarchy "VGA_SYNC_module:U1|video_PLL:video_PLL_inst|altpll:altpll_component" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/video_PLL.vhd Line: 132
 Info (12130): Elaborated megafunction instantiation "VGA_SYNC_module:U1|video_PLL:video_PLL_inst|altpll:altpll_component" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/video_PLL.vhd Line: 132
 Info (12133): Instantiated megafunction "VGA_SYNC_module:U1|video_PLL:video_PLL_inst|altpll:altpll_component" with the following parameter: File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/video_PLL.vhd Line: 132
@@ -1023,6 +921,14 @@ Info (12133): Instantiated megafunction "VGA_SYNC_module:U1|video_PLL:video_PLL_
 Info (12021): Found 1 design units, including 1 entities, in source file db/altpll_dp72.tdf
     Info (12023): Found entity 1: altpll_dp72 File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/altpll_dp72.tdf Line: 26
 Info (12128): Elaborating entity "altpll_dp72" for hierarchy "VGA_SYNC_module:U1|video_PLL:video_PLL_inst|altpll:altpll_component|altpll_dp72:auto_generated" File: c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/altpll.tdf Line: 898
+Warning (12161): Node "VGA_SYNC_module:U1|LCD_DATA[7]" is stuck at GND because node is in wire loop and does not have a source File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 35
+Warning (12161): Node "VGA_SYNC_module:U1|LCD_DATA[6]" is stuck at GND because node is in wire loop and does not have a source File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 35
+Warning (12161): Node "VGA_SYNC_module:U1|LCD_DATA[5]" is stuck at GND because node is in wire loop and does not have a source File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 35
+Warning (12161): Node "VGA_SYNC_module:U1|LCD_DATA[4]" is stuck at GND because node is in wire loop and does not have a source File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 35
+Warning (12161): Node "VGA_SYNC_module:U1|LCD_DATA[3]" is stuck at GND because node is in wire loop and does not have a source File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 35
+Warning (12161): Node "VGA_SYNC_module:U1|LCD_DATA[2]" is stuck at GND because node is in wire loop and does not have a source File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 35
+Warning (12161): Node "VGA_SYNC_module:U1|LCD_DATA[1]" is stuck at GND because node is in wire loop and does not have a source File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 35
+Warning (12161): Node "VGA_SYNC_module:U1|LCD_DATA[0]" is stuck at GND because node is in wire loop and does not have a source File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 35
 Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Info (13000): Registers with preset signals will power-up high File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/LCD_Display.vhd Line: 46
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
@@ -1058,26 +964,39 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "LCD_BLON" is stuck at VCC File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 71
     Warning (13410): Pin "LCD_ON" is stuck at VCC File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 73
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 31 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 1 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 6 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "KEY[0]" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 51
+Warning (21074): Design contains 20 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "KEY[1]" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 51
     Warning (15610): No output dependent on input pin "KEY[2]" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 51
     Warning (15610): No output dependent on input pin "KEY[3]" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 51
+    Warning (15610): No output dependent on input pin "SW[0]" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 55
+    Warning (15610): No output dependent on input pin "SW[1]" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 55
+    Warning (15610): No output dependent on input pin "SW[2]" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 55
+    Warning (15610): No output dependent on input pin "SW[3]" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 55
+    Warning (15610): No output dependent on input pin "SW[4]" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 55
+    Warning (15610): No output dependent on input pin "SW[5]" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 55
+    Warning (15610): No output dependent on input pin "SW[6]" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 55
+    Warning (15610): No output dependent on input pin "SW[8]" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 55
+    Warning (15610): No output dependent on input pin "SW[9]" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 55
+    Warning (15610): No output dependent on input pin "SW[10]" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 55
+    Warning (15610): No output dependent on input pin "SW[11]" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 55
+    Warning (15610): No output dependent on input pin "SW[12]" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 55
+    Warning (15610): No output dependent on input pin "SW[13]" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 55
+    Warning (15610): No output dependent on input pin "SW[14]" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 55
+    Warning (15610): No output dependent on input pin "SW[15]" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 55
     Warning (15610): No output dependent on input pin "SW[16]" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 55
     Warning (15610): No output dependent on input pin "SW[17]" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 55
-Info (21057): Implemented 187 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 219 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 23 input pins
     Info (21059): Implemented 34 output pins
     Info (21060): Implemented 8 bidirectional pins
-    Info (21061): Implemented 121 logic cells
+    Info (21061): Implemented 153 logic cells
     Info (21065): Implemented 1 PLLs
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 60 warnings
-    Info: Peak virtual memory: 676 megabytes
-    Info: Processing ended: Thu May  5 21:29:41 2022
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 87 warnings
+    Info: Peak virtual memory: 679 megabytes
+    Info: Processing ended: Thu May  5 21:44:24 2022
     Info: Elapsed time: 00:00:11
-    Info: Total CPU time (on all processors): 00:00:23
+    Info: Total CPU time (on all processors): 00:00:22
 
 

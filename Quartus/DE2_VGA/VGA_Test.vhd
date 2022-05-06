@@ -103,15 +103,20 @@ END COMPONENT;
 
 COMPONENT VGA_SYNC_module
 
+	GENERIC(Num_Hex_Digits: Integer:= Num_Hex_Digits);
+	
 	PORT(	clock_50Mhz, red, green, blue		: IN	STD_LOGIC;
 			red_out, green_out, blue_out		: OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
 			horiz_sync_out, vert_sync_out, video_on, pixel_clock	: OUT	STD_LOGIC;
 			pixel_row, pixel_column: OUT STD_LOGIC_VECTOR(9 DOWNTO 0);
 			KEYS: IN STD_LOGIC_VECTOR(3 downto 0);
-			SWITCHES: IN STD_LOGIC_VECTOR(7 DOWNTO 0));
+			SWITCHES: IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+		Hex_Display_Data: out std_logic_vector((Num_Hex_Digits*4)-1 downto 0)
+		);
 
 END COMPONENT;
 
+signal Hex_Display_Data: std_logic_vector((Num_Hex_Digits*4)-1 downto 0);
 
 SIGNAL red_int : STD_LOGIC;
 SIGNAL green_int : STD_LOGIC;
@@ -135,7 +140,7 @@ BEGIN
 		(reset				=>	not SW(7), --NOT SW(17),
 		 -- v-- port/internal signals
 		 clk_50MHz			=>	CLOCK_50, -- signal from outside
-		 Hex_Display_Data	=>	SW((Num_Hex_Digits*4)-1 DOWNTO 0),	--Hex_Display_Data, --SW(7 DOWNTO 0),	
+		 Hex_Display_Data	=>	Hex_Display_Data, --SW((Num_Hex_Digits*4)-1 DOWNTO 0),	--Hex_Display_Data, --SW(7 DOWNTO 0),	
 		 LCD_RS				=>	LCD_RS,
 		 LCD_E				=>	LCD_EN,
 		 LCD_RW				=>	LCD_RW,
@@ -158,7 +163,8 @@ BEGIN
 		 pixel_row			=>	pixel_row_int,
 		 pixel_column		=>	pixel_column_int,
 		 KEYS             => KEY,
-		 SWITCHES			=> SW(7 DOWNTO 0)
+		 SWITCHES			=> SW(7 DOWNTO 0),
+		 Hex_Display_Data => Hex_Display_Data
 		);
 		
 --process begin

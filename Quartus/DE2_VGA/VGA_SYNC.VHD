@@ -9,6 +9,9 @@ use IEEE.math_real.all;
 -- Module Generates Video Sync Signals for Video Montor Interface
 -- RGB and Sync outputs tie directly to monitor conector pins
 ENTITY VGA_SYNC_module IS
+  generic (
+    constant Num_Hex_Digits : integer
+  );
 	PORT(	clock_50Mhz, red, green, blue		: IN	STD_LOGIC;
 			red_out, green_out, blue_out	:	OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
 			horiz_sync_out, vert_sync_out, video_on, pixel_clock
@@ -29,28 +32,11 @@ ENTITY VGA_SYNC_module IS
     LCD_ON   : out std_logic;      							-- Power ON/OFF
     LCD_RS   : out std_logic;	   							-- Command/Data Select, 0 = Command, 1 = Data
     LCD_RW   : out std_logic; 	   						-- Read/Write Select, 0 = Write, 1 = Read
-    LCD_DATA : inout std_logic_vector(7 downto 0) 	-- Data bus 8 bits
+    LCD_DATA : inout std_logic_vector(7 downto 0); 	-- Data bus 8 bits
+	Hex_Display_Data: out std_logic_vector((Num_Hex_Digits*4)-1 downto 0)
 			);
 END VGA_SYNC_module;
 ARCHITECTURE a OF VGA_SYNC_module IS
-
-  constant Num_Hex_Digits: Integer:= 4;
-  
-COMPONENT LCD_Display -- referencing an entity in a different file or declaration
-
-	GENERIC(Num_Hex_Digits: Integer:= Num_Hex_Digits);
-
-	-- the ports in component declaration are the same (repeated) from the entity declaration
-	PORT(reset					: IN	STD_LOGIC;
-	     clk_50MHz				: IN	STD_LOGIC;
-		  Hex_Display_Data	: IN    STD_LOGIC_VECTOR((Num_Hex_Digits*4)-1 DOWNTO 0);
-		  LCD_RS					: OUT	STD_LOGIC;
-		  LCD_E					: OUT	STD_LOGIC;
-		  LCD_RW					: OUT   STD_LOGIC;
-		  DATA_BUS				: INOUT	STD_LOGIC_VECTOR(7 DOWNTO 0)
-		 );
-
-END COMPONENT;
 
 	-- enums basically --
 
@@ -127,8 +113,6 @@ END COMPONENT;
 	end function f_memoryCellFromImmediate;
 
 	-- signals --
-
-	signal Hex_Display_Data: std_logic_vector((Num_Hex_Digits*4)-1 downto 0);
 	
 	SIGNAL horiz_sync, vert_sync, pixel_clock_int : STD_LOGIC;
 	SIGNAL video_on_int, video_on_v, video_on_h : STD_LOGIC;
@@ -330,23 +314,6 @@ video_on_int <= video_on_H AND video_on_V;
 -- output pixel clock and video on for external user logic
 pixel_clock <= pixel_clock_int;
 video_on <= video_on_int; 
-
-
--- use LCD --
-	LCD_ON   <= '1';
-	LCD_BLON <= '1';
-
-
-	U1: LCD_Display PORT MAP
-		(reset				=>	not SWITCHES(7), --NOT SW(17),
-		 -- v-- port/internal signals
-		 clk_50MHz			=>	clock_50Mhz, -- signal from outside
-		 Hex_Display_Data	=>	Hex_Display_Data, --SW(7 DOWNTO 0),	
-		 LCD_RS				=>	LCD_RS,
-		 LCD_E				=>	LCD_EN,
-		 LCD_RW				=>	LCD_RW,
-		 DATA_BUS			=>	LCD_DATA
-		);
 
 PROCESS(clock_50Mhz)
   variable instr : t_MemoryCell := (dataOrInstruction => conv_std_logic_vector(0, 16));
