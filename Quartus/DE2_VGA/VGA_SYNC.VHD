@@ -171,7 +171,7 @@ ARCHITECTURE a OF VGA_SYNC_module IS
 		else
 			fl_zero <= '0';
 		end if;
-		if arg1.dataOrInstruction(15) = arg2.dataOrInstruction(15) and res.dataOrInstruction(15) /= arg1.dataOrInstruction(15) then
+		if arg1.dataOrInstruction(mcbi-1) = arg2.dataOrInstruction(mcbi-1) and res.dataOrInstruction(mcbi-1) /= arg1.dataOrInstruction(mcbi-1) then -- (mcbi-1 is "bit 15")
 			fl_signedCarry <= '1';
 		else
 			fl_signedCarry <= '0';
@@ -206,6 +206,14 @@ ARCHITECTURE a OF VGA_SYNC_module IS
 			fl_carry <= '0';
 		end if;
 	  p_updateFlagsForAddAndSubCommon(arg1, arg2, res);
+	end procedure;
+
+	procedure p_doJump(PC: inout MemoryPointingRegister; dest: in MemoryPointingRegister; out_overrodePC: inout std_logic) is
+	begin
+		-- TODO: error handling from interpreter.c goes here
+
+		PC := dest sll 2; -- divide by 2 with a "shift left logical" ( https://www.eng.auburn.edu/~nelsovp/courses/elec4200/VHDL/VHDL_Operators.pdf )
+		out_overrodePC := '1';
 	end procedure;
 
 	-- etc. --
@@ -406,6 +414,8 @@ PROCESS(clock_50Mhz)
   variable instr : t_MemoryCell := (dataOrInstruction => conv_std_logic_vector(0, 16));
   variable decodedInstruction : t_Instruction;
   variable res: std_logic_vector(mcbi-1 downto 0);
+  variable imm: std_logic_vector(7 downto 0);
+  variable doBr: std_logic;
 BEGIN
 	--WAIT UNTIL(pixel_clock_int'EVENT) AND (pixel_clock_int='1');
   if rising_edge(clock_50Mhz) then
@@ -464,16 +474,74 @@ BEGIN
 					
 					-- Write out res
 					Hex_Display_Data(31 downto 16) <= res;
+				when mn_sub =>
+					res := registers(conv_integer(decodedInstruction.conditionOrRegSelect)).dataOrInstruction - registers(conv_integer(decodedInstruction.immediate_orRegSelects_orRegSelectAndExtraOperation(3 downto 0))).dataOrInstruction;
+					p_updateFlagsForSub(registers(conv_integer(decodedInstruction.conditionOrRegSelect)), registers(conv_integer(decodedInstruction.immediate_orRegSelects_orRegSelectAndExtraOperation(3 downto 0))), f_memoryCellFromImmediate_vecMCBI(res));
+					
+					registers(conv_integer(decodedInstruction.immediate_orRegSelects_orRegSelectAndExtraOperation(7 downto 4))).dataOrInstruction <= res;
+					
+					-- Write out res
+					Hex_Display_Data(31 downto 16) <= res;
+				when mn_br =>
+					if f_is_msb_set_forUInt8(decodedInstruction.immediate_orRegSelects_orRegSelectAndExtraOperation) = '1' then
+						imm := -conv_signed(conv_integer(decodedInstruction.immediate_orRegSelects_orRegSelectAndExtraOperation), 8);
+					--std_logic_vector(-signed(unsigned(decodedInstruction.immediate_orRegSelects_orRegSelectAndExtraOperation))); --std_logic_vector(-signed(resize(unsigned(decodedInstruction.immediate_orRegSelects_orRegSelectAndExtraOperation), imm'length))); -- two's complement ( https://stackoverflow.com/questions/20428277/twos-complement-vhdl )
+					else
+						imm := decodedInstruction.immediate_orRegSelects_orRegSelectAndExtraOperation;
+					end if;
+					case imm is
+						when cond_none =>
+							doBr := '1';
+						when cond_sgz =>
+							if fl_negative = '0' and fl_zero = '0' then
+								doBr := '1';
+							else
+								doBr := '0';
+							end if;
+						when cond_slz =>
+							if fl_negative = '1' then
+								doBr := '1';
+							else
+								doBr := '0';
+							end if;
+						when cond_nz =>
+							if fl_zero = '0' then
+								doBr := '1';
+							else
+								doBr := '0';
+							end if;
+						when cond_z =>
+							if fl_zero = '1' then
+								doBr := '1';
+							else
+								doBr := '0';
+							end if;
+						when cond_cu =>
+							if fl_carry = '1' then
+								doBr := '1';
+							else
+								doBr := '0';
+							end if;
+						when cond_cs =>
+							if fl_signedCarry = '1' then
+								doBr := '1';
+							else
+								doBr := '0';
+							end if;
+						end case;
+						if doBr = '1' then
+							p_doJump(PC, PC+imm*2, out_overrodePC);
+						end if;
 				when others =>
 					Hex_Display_Data(31 downto 16) <= "0110011001100110";
 			end case;
 			-- Write out PC
 			Hex_Display_Data(15 downto 0) <= PC;
-			-- Write out flags
-			Hex_Display_Data(63) <= fl_carry;
-			Hex_Display_Data(62) <= fl_zero;
-			Hex_Display_Data(61) <= fl_signedCarry;
-			Hex_Display_Data(60) <= fl_negative;
+			-- Write out flags [NOTE: these are delayed by one clock cycle / button push / update due to shift register junk -- ideally we should read from a variable, since it seems reads to a latch like the fl_ signals will return the old value (despite a write on that clock cycle) until the next clock cycle]
+			Hex_Display_Data(60) <= fl_carry;
+			Hex_Display_Data(61) <= fl_zero;
+			Hex_Display_Data(62) <= fl_signedCarry;
+			Hex_Display_Data(63) <= fl_negative;
 			-- Increment PC
 			PC <= PC + 1;
 			-- --
