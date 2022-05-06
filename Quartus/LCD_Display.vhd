@@ -7,7 +7,7 @@ USE  IEEE.STD_LOGIC_UNSIGNED.all;
 ENTITY LCD_Display IS
 -- Enter number of live Hex hardware data values to display
 -- (do not count ASCII character constants)
-	GENERIC(Num_Hex_Digits: Integer:= 4); 
+	GENERIC(constant Num_Hex_Digits: Integer); 
 
 -----------------------------------------------------------------------
 -- LCD Displays 16 Characters on 2 lines
@@ -83,7 +83,7 @@ X"56",X"61",X"6C",X"75",X"65",X"3D",
 X"0" & Hex_Display_Data(31 DOWNTO 28),X"0" & Hex_Display_Data(27 DOWNTO 24),X"0" & Hex_Display_Data(23 DOWNTO 20),X"0" & Hex_Display_Data(19 DOWNTO 16),
 X"20",X"20",X"20",X"20",X"20",X"20",
 -- Line 2
-X"44",X"45",X"32",X"20",X"20",X"20",X"20",X"20",
+X"0" & Hex_Display_Data(63 DOWNTO 60),X"0" & Hex_Display_Data(59 DOWNTO 56),X"0" & Hex_Display_Data(55 DOWNTO 52),X"0" & Hex_Display_Data(51 DOWNTO 48),X"0" & Hex_Display_Data(47 DOWNTO 44),X"0" & Hex_Display_Data(43 DOWNTO 40),X"0" & Hex_Display_Data(39 DOWNTO 36),X"0" & Hex_Display_Data(35 DOWNTO 32),
 X"20",X"20",X"20",X"20",
 X"0" & Hex_Display_Data(15 DOWNTO 12),X"0" & Hex_Display_Data(11 DOWNTO 8),X"0" & Hex_Display_Data(7 DOWNTO 4),X"0" & Hex_Display_Data(3 DOWNTO 0)
 );
