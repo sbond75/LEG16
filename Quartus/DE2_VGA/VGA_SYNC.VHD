@@ -121,144 +121,149 @@ ARCHITECTURE a OF VGA_SYNC_module IS
 
 	type t_MEMORY is array(65535 downto 0) of t_MemoryCell; --"should" be: type t_MEMORY is array(MEMORY_SIZE downto 0) of t_MemoryCell;
 	signal memory: t_MEMORY := (
-    (dataOrInstruction => "0000000011111111"), -- addi r0, 255
-    (dataOrInstruction => "1010000011111111"), -- subi r0, 255
-    (dataOrInstruction => "0111000100100011"), -- add r1, r2 into r3
-    (dataOrInstruction => "0000000010000000"), -- addi r0, 128
-    (dataOrInstruction => "0100000010011100"), -- ldi r0, 156
-    (dataOrInstruction => "0100000110011101"), -- ldi r1, 157
-    (dataOrInstruction => "0100001010011100"), -- ldi r2, 156
-    (dataOrInstruction => "0111000100100011"), -- add r1, r2 into r3
-    (dataOrInstruction => "1011001100010011"), -- sub r3, r1 into r3
-    (dataOrInstruction => "1011001100100011"), -- sub r3, r2 into r3
+    0 => (dataOrInstruction => "0000000011111111"), -- addi r0, 255
+    1 => (dataOrInstruction => "1010000011111111"), -- subi r0, 255
+    2 => (dataOrInstruction => "0111000100100011"), -- add r1, r2 into r3
+    3 => (dataOrInstruction => "0000000010000000"), -- addi r0, 128
+    4 => (dataOrInstruction => "0100000010011100"), -- ldi r0, 156
+    5 => (dataOrInstruction => "0100000110011101"), -- ldi r1, 157
+    6 => (dataOrInstruction => "0100001010011100"), -- ldi r2, 156
+    7 => (dataOrInstruction => "0111000100100011"), -- add r1, r2 into r3
+    8 => (dataOrInstruction => "1011001100010011"), -- sub r3, r1 into r3
+    9 => (dataOrInstruction => "1011001100100011"), -- sub r3, r2 into r3
     -- - r3 should be zero at this point. (PC=9 should show on the screen to check this)
     -- - zero flag should be set at this point. (Flags=2)
-    (dataOrInstruction => "1100000100100011"), -- xor r1, r2 into r3
+    10 => (dataOrInstruction => "1100000100100011"), -- xor r1, r2 into r3
     -- r3 should be 1 at this point (PC=10)
     -- r0 should be 0x009C
     -- r1 should be 0x009D
     -- r2 should be 0x009C
-    (dataOrInstruction => "0110000100001000"), -- sh r1 right 8
+    11 => (dataOrInstruction => "0110000100001000"), -- sh r1 right 8
     -- r1 should be 0 (PC=11)
     -- Flags should = 2
-    (dataOrInstruction => "0110001011111000"), -- sh r2 left 8
+    12 => (dataOrInstruction => "0110001011111000"), -- sh r2 left 8
     -- r2 should be 0x9C00 (PC=12)
-    (dataOrInstruction => "0110001011111000"), -- sh r2 left 8
+    13 => (dataOrInstruction => "0110001011111000"), -- sh r2 left 8
     -- r2 should be 0x0000 (PC=13)
-    (dataOrInstruction => "0100001001111011"), -- ldi r2, 123
-    (dataOrInstruction => "0010000100100000"), -- set r1 to r2
+    14 => (dataOrInstruction => "0100001001111011"), -- ldi r2, 123
+    15 => (dataOrInstruction => "0010000100100000"), -- set r1 to r2
     -- r1 should be 0x007B (PC=15)
-    (dataOrInstruction => "0010000100100001"), -- set r1 to -r2
+    16 => (dataOrInstruction => "0010000100100001"), -- set r1 to -r2
     -- r1 should be 0xFF85 (PC=16)
-    (dataOrInstruction => "1000000001100100"), -- br to 100
+    17 => (dataOrInstruction => "1000000001100100"), -- br to 100
     -- (PC=117)
-    (dataOrInstruction => "1101000100100011"), -- and r1, r2 into r3
+    18 => (dataOrInstruction => "1101000100100011"), -- and r1, r2 into r3
     -- r3 should be 1
-    (dataOrInstruction => "1110000100100011"), -- or r1, r2 into r3
+    19 => (dataOrInstruction => "1110000100100011"), -- or r1, r2 into r3
     -- r3 should be 0xFFFF (PC=19)
     -- Note: as a signed two's complement number, 0xFFFF = -1
-    (dataOrInstruction => "1000000100001111"), -- brsgz to 15 -- This shouldn't branch
+    20 => (dataOrInstruction => "1000000100001111"), -- brsgz to 15 -- This shouldn't branch
     -- (PC=20)
-    (dataOrInstruction => "1000001000000011"), -- brslz to 3 -- This should branch
+    21 => (dataOrInstruction => "1000001000000011"), -- brslz to 3 -- This should branch
     -- (PC=21)
-    (dataOrInstruction => "0000000010000000"), -- addi r0, 128 -- This shouldn't execute
+    22 => (dataOrInstruction => "0000000010000000"), -- addi r0, 128 -- This shouldn't execute
     -- (PC=22)
-    (dataOrInstruction => "0000000010000000"), -- addi r0, 128 -- This shouldn't execute
+    23 => (dataOrInstruction => "0000000010000000"), -- addi r0, 128 -- This shouldn't execute
     -- (PC=23)
-    (dataOrInstruction => "0000000000000010"), -- addi r0, 2 -- This should execute
+    24 => (dataOrInstruction => "0000000000000010"), -- addi r0, 2 -- This should execute
     -- (PC=24)
-    (dataOrInstruction => "0111000100100011"), -- add r1, r2 into r3
+    25 => (dataOrInstruction => "0111000100100011"), -- add r1, r2 into r3
     -- (PC=25)
-    (dataOrInstruction => "1000010100000011"), -- brcu to 3 -- This should branch
+    26 => (dataOrInstruction => "1000010100000011"), -- brcu to 3 -- This should branch
     -- (PC=26)
-    (dataOrInstruction => "0000000010000000"), -- addi r0, 128 -- This shouldn't execute
+    27 => (dataOrInstruction => "0000000010000000"), -- addi r0, 128 -- This shouldn't execute
     -- (PC=27)
-    (dataOrInstruction => "0000000010000000"), -- addi r0, 128 -- This shouldn't execute
+    28 => (dataOrInstruction => "0000000010000000"), -- addi r0, 128 -- This shouldn't execute
     -- (PC=28)
-    (dataOrInstruction => "1000011000000011"), -- brcs to 3 -- This shouldn't branch
+    29 => (dataOrInstruction => "1000011000000011"), -- brcs to 3 -- This shouldn't branch
     -- (PC=29)
-    (dataOrInstruction => "0000000010000000"), -- addi r0, 128 -- This should execute
+    30 => (dataOrInstruction => "0000000010000000"), -- addi r0, 128 -- This should execute
     -- (PC=30)
-    (dataOrInstruction => "0000000010000000"), -- addi r0, 128 -- This should execute
+    31 => (dataOrInstruction => "0000000010000000"), -- addi r0, 128 -- This should execute
     -- (PC=31)
-    (dataOrInstruction => "1010000010000000"), -- subi r0, 128
+    32 => (dataOrInstruction => "1010000010000000"), -- subi r0, 128
     -- (PC=32)
-    (dataOrInstruction => "1010000010000000"), -- subi r0, 128
+    33 => (dataOrInstruction => "1010000010000000"), -- subi r0, 128
     -- (PC=33)
-    (dataOrInstruction => "1010000010000000"), -- subi r0, 128
+    34 => (dataOrInstruction => "1010000010000000"), -- subi r0, 128
     -- (PC=34)
-    (dataOrInstruction => "1010000010000000"), -- subi r0, 128
+    35 => (dataOrInstruction => "1010000010000000"), -- subi r0, 128
     -- (PC=35)
-    (dataOrInstruction => "1010000010000000"), -- subi r0, 128
+    36 => (dataOrInstruction => "1010000010000000"), -- subi r0, 128
     -- (PC=36)
-    (dataOrInstruction => "1010000010000000"), -- subi r0, 128
+    37 => (dataOrInstruction => "1010000010000000"), -- subi r0, 128
     -- (PC=37)
-    (dataOrInstruction => "1010000010000000"), -- subi r0, 128
+    38 => (dataOrInstruction => "1010000010000000"), -- subi r0, 128
     -- (PC=38)
-    (dataOrInstruction => "0110001011111000"), -- sh r2 left 8
+    39 => (dataOrInstruction => "0110001011111000"), -- sh r2 left 8
     -- (PC=39)
-    (dataOrInstruction => "1000010000000011"), -- brz to 3 -- This should branch
+    40 => (dataOrInstruction => "1000010000000011"), -- brz to 3 -- This should branch
     -- (PC=40)
-    (dataOrInstruction => "0000000010000000"), -- addi r0, 128 -- This shouldn't execute
+    41 => (dataOrInstruction => "0000000010000000"), -- addi r0, 128 -- This shouldn't execute
     -- (PC=41)
-    (dataOrInstruction => "0000000010000000"), -- addi r0, 128 -- This shouldn't execute
+    42 => (dataOrInstruction => "0000000010000000"), -- addi r0, 128 -- This shouldn't execute
     -- (PC=42)
-    (dataOrInstruction => "0110000011111010"), -- sh r0 left 6
+    43 => (dataOrInstruction => "0110000011111010"), -- sh r0 left 6
     -- (PC=43)
-    (dataOrInstruction => "1010000011111111"), -- subi r0, 255
+    44 => (dataOrInstruction => "1010000011111111"), -- subi r0, 255
     -- (PC=44)
-    (dataOrInstruction => "1010000011111111"), -- subi r0, 255
+    45 => (dataOrInstruction => "1010000011111111"), -- subi r0, 255
     -- (PC=45)
-    (dataOrInstruction => "1010000011111111"), -- subi r0, 255
+    46 => (dataOrInstruction => "1010000011111111"), -- subi r0, 255
     -- (PC=46)
-    (dataOrInstruction => "1010000011111111"), -- subi r0, 255
+    47 => (dataOrInstruction => "1010000011111111"), -- subi r0, 255
     -- (PC=47)
-    (dataOrInstruction => "1010000011111111"), -- subi r0, 255
+    48 => (dataOrInstruction => "1010000011111111"), -- subi r0, 255
     -- (PC=48)
-    (dataOrInstruction => "1010000011111111"), -- subi r0, 255
+    49 => (dataOrInstruction => "1010000011111111"), -- subi r0, 255
     -- (PC=49)
-    (dataOrInstruction => "1010000011111111"), -- subi r0, 255
+    50 => (dataOrInstruction => "1010000011111111"), -- subi r0, 255
     -- (PC=50)
     -- r0 as an unsigned number=32903
-    (dataOrInstruction => "1010000011111111"), -- subi r0, 255
+    51 => (dataOrInstruction => "1010000011111111"), -- subi r0, 255
     -- (PC=51)
     -- r0 as an unsigned number=32648 <-- notice that this just dipped below the absolute value of int16's min value (normally -32768) which is (absolute value): 32768 (or if it were addition, max value of 32767 would need to be surpassed). two's complement of 32648 is (-)32888 so is that the same as checking the unsigned? anyway I think it works..
-    (dataOrInstruction => "1000011000000011"), -- brcs to 3 -- This should branch
+    52 => (dataOrInstruction => "1000011000000011"), -- brcs to 3 -- This should branch
     -- (PC=52)
-    (dataOrInstruction => "0000000010000000"), -- addi r0, 128 -- This shouldn't execute
+    53 => (dataOrInstruction => "0000000010000000"), -- addi r0, 128 -- This shouldn't execute
     -- (PC=53)
-    (dataOrInstruction => "0000000010000000"), -- addi r0, 128 -- This shouldn't execute
+    54 => (dataOrInstruction => "0000000010000000"), -- addi r0, 128 -- This shouldn't execute
     -- (PC=54)
-    (dataOrInstruction => "1000001100000011"), -- brnz to 3 -- This should branch
+    55 => (dataOrInstruction => "1000001100000011"), -- brnz to 3 -- This should branch
     -- (PC=55)
-    (dataOrInstruction => "0000000010000000"), -- addi r0, 128 -- This shouldn't execute
+    56 => (dataOrInstruction => "0000000010000000"), -- addi r0, 128 -- This shouldn't execute
     -- (PC=56)
-    (dataOrInstruction => "0000000010000000"), -- addi r0, 128 -- This shouldn't execute
+    57 => (dataOrInstruction => "0000000010000000"), -- addi r0, 128 -- This shouldn't execute
     -- (PC=57)
-    (dataOrInstruction => "0000000100000001"), -- addi r1, 1
+    58 => (dataOrInstruction => "0000000100000001"), -- addi r1, 1
     -- (PC=58)
-    (dataOrInstruction => "1111000100000000"), -- call r1 -- This should execute, causing PC=32707
+    59 => (dataOrInstruction => "1111000100000000"), -- call r1 -- This should execute, causing PC=32707
     -- (PC=59)
-    (dataOrInstruction => "0000000100000001"), -- addi r1, 1 -- This should execute, and r1 should be 121 after this instruction
+    60 => (dataOrInstruction => "0000000100000001"), -- addi r1, 1 -- This should execute, and r1 should be 121 after this instruction
     -- (PC=60)
-    (dataOrInstruction => "0101000100000001"), -- str r1 at SP++
+    61 => (dataOrInstruction => "0101000100000001"), -- str r1 at SP++
     -- (PC=61)
     -- r1 is 0x79
-    (dataOrInstruction => "0100000100000010"), -- ldi r1, 2
+    62 => (dataOrInstruction => "0100000100000010"), -- ldi r1, 2
     -- (PC=62)
     -- r1 is 0x2
-    (dataOrInstruction => "0101000100010000"), -- str r1 at r1
+    63 => (dataOrInstruction => "0101000100010000"), -- str r1 at r1
     -- (PC=63)
     -- Memory: 2nd byte in raw hexdump should go from FF A0 to 02 00
-    (dataOrInstruction => "0011000100010000"), -- ldr r1 from r1
+    64 => (dataOrInstruction => "0011000100010000"), -- ldr r1 from r1
     -- (PC=64)
     -- r1 is 0x2
-    (dataOrInstruction => "0001000100000000"), -- brdnz r1 to 0 -- Should jump to itself a bunch until r1 is 0
+    65 => (dataOrInstruction => "0001000100000000"), -- brdnz r1 to 0 -- Should jump to itself a bunch until r1 is 0
     -- (PC=65)
-    (dataOrInstruction => "0001000110011100"), -- brdnz r1 to -100 -- Shouldn't branch
+    66 => (dataOrInstruction => "0001000110011100"), -- brdnz r1 to -100 -- Shouldn't branch
     -- (PC=66)
     others => (dataOrInstruction => conv_std_logic_vector(0, 16))
 ); -- Instructions and data memory
+	
+	type t_REGISTERS is array(15 downto 0) of t_MemoryCell;
+	signal registers: t_REGISTERS := (
+	  others => (dataOrInstruction => conv_std_logic_vector(0, 16))
+	);
         
 	
 --
@@ -308,6 +313,7 @@ video_on <= video_on_int;
 
 PROCESS(clock_50Mhz)
   variable instr : t_MemoryCell := (dataOrInstruction => conv_std_logic_vector(0, 16));
+  variable decodedInstruction : t_Instruction;
 BEGIN
 	--WAIT UNTIL(pixel_clock_int'EVENT) AND (pixel_clock_int='1');
   if rising_edge(clock_50Mhz) then
@@ -336,8 +342,19 @@ BEGIN
 			-- CPU --
 			-- runOneIter basically
 			instr := memory(conv_integer(PC));
-			PC <= PC + 1;
+			decodedInstruction := t_Instruction'(instr.dataOrInstruction(7 downto 0), instr.dataOrInstruction(11 downto 8), instr.dataOrInstruction(15 downto 12));
+			case decodedInstruction.mnemonic is 
+				when mn_addi =>
+					registers(conv_integer(decodedInstruction.conditionOrRegSelect)).dataOrInstruction <= registers(conv_integer(decodedInstruction.conditionOrRegSelect)).dataOrInstruction + decodedInstruction.immediate_orRegSelects_orRegSelectAndExtraOperation;
+							  -- MAXIMUM
+					-- Hex_Display_Data(31 downto 16) <= registers(conv_integer(decodedInstruction.conditionOrRegSelect)).dataOrInstruction;
+					--Hex_Display_Data(31 downto 16) <= "1110111011101110";
+					Hex_Display_Data(31 downto 16) <= instr.dataOrInstruction;
+				when others =>
+					Hex_Display_Data(31 downto 16) <= "0110011001100110";
+			end case;
 			Hex_Display_Data(15 downto 0) <= PC;
+			PC <= PC + 1;
 			-- --
 
 			enableSwitch <= '0';

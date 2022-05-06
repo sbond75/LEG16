@@ -1,5 +1,5 @@
 Analysis & Synthesis report for LEG16
-Thu May  5 22:03:11 2022
+Thu May  5 23:03:27 2022
 Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
 
 
@@ -13,20 +13,46 @@ Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. State Machine - |VGA_Test|LCD_Display:U2|next_command
-  9. State Machine - |VGA_Test|LCD_Display:U2|state
- 10. Registers Removed During Synthesis
- 11. General Register Statistics
- 12. Inverted Register Statistics
- 13. Multiplexer Restructuring Statistics (Restructuring Performed)
- 14. Parameter Settings for User Entity Instance: LCD_Display:U2
- 15. Parameter Settings for User Entity Instance: VGA_SYNC_module:U1
- 16. Parameter Settings for User Entity Instance: VGA_SYNC_module:U1|video_PLL:video_PLL_inst|altpll:altpll_component
- 17. altpll Parameter Settings by Entity Instance
- 18. Port Connectivity Checks: "VGA_SYNC_module:U1"
- 19. Post-Synthesis Netlist Statistics for Top Partition
- 20. Elapsed Time Per Partition
- 21. Analysis & Synthesis Messages
+  8. Analysis & Synthesis RAM Summary
+  9. State Machine - |VGA_Test|LCD_Display:U2|next_command
+ 10. State Machine - |VGA_Test|LCD_Display:U2|state
+ 11. Registers Removed During Synthesis
+ 12. Removed Registers Triggering Further Register Optimizations
+ 13. General Register Statistics
+ 14. Inverted Register Statistics
+ 15. Registers Packed Into Inferred Megafunctions
+ 16. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 17. Source assignments for VGA_SYNC_module:U1|altsyncram:Mux6_rtl_0|altsyncram_ma01:auto_generated
+ 18. Source assignments for VGA_SYNC_module:U1|altsyncram:Mux10_rtl_0|altsyncram_na01:auto_generated
+ 19. Source assignments for VGA_SYNC_module:U1|altsyncram:Mux14_rtl_0|altsyncram_oa01:auto_generated
+ 20. Source assignments for VGA_SYNC_module:U1|altsyncram:Mux7_rtl_0|altsyncram_pa01:auto_generated
+ 21. Source assignments for VGA_SYNC_module:U1|altsyncram:Mux11_rtl_0|altsyncram_qa01:auto_generated
+ 22. Source assignments for VGA_SYNC_module:U1|altsyncram:Mux4_rtl_0|altsyncram_ra01:auto_generated
+ 23. Source assignments for VGA_SYNC_module:U1|altsyncram:Mux8_rtl_0|altsyncram_sa01:auto_generated
+ 24. Source assignments for VGA_SYNC_module:U1|altsyncram:Mux12_rtl_0|altsyncram_ta01:auto_generated
+ 25. Source assignments for VGA_SYNC_module:U1|altsyncram:Mux5_rtl_0|altsyncram_ua01:auto_generated
+ 26. Source assignments for VGA_SYNC_module:U1|altsyncram:Mux9_rtl_0|altsyncram_va01:auto_generated
+ 27. Source assignments for VGA_SYNC_module:U1|altsyncram:Mux13_rtl_0|altsyncram_7c01:auto_generated
+ 28. Parameter Settings for User Entity Instance: LCD_Display:U2
+ 29. Parameter Settings for User Entity Instance: VGA_SYNC_module:U1
+ 30. Parameter Settings for User Entity Instance: VGA_SYNC_module:U1|video_PLL:video_PLL_inst|altpll:altpll_component
+ 31. Parameter Settings for Inferred Entity Instance: VGA_SYNC_module:U1|altsyncram:Mux6_rtl_0
+ 32. Parameter Settings for Inferred Entity Instance: VGA_SYNC_module:U1|altsyncram:Mux10_rtl_0
+ 33. Parameter Settings for Inferred Entity Instance: VGA_SYNC_module:U1|altsyncram:Mux14_rtl_0
+ 34. Parameter Settings for Inferred Entity Instance: VGA_SYNC_module:U1|altsyncram:Mux7_rtl_0
+ 35. Parameter Settings for Inferred Entity Instance: VGA_SYNC_module:U1|altsyncram:Mux11_rtl_0
+ 36. Parameter Settings for Inferred Entity Instance: VGA_SYNC_module:U1|altsyncram:Mux4_rtl_0
+ 37. Parameter Settings for Inferred Entity Instance: VGA_SYNC_module:U1|altsyncram:Mux8_rtl_0
+ 38. Parameter Settings for Inferred Entity Instance: VGA_SYNC_module:U1|altsyncram:Mux12_rtl_0
+ 39. Parameter Settings for Inferred Entity Instance: VGA_SYNC_module:U1|altsyncram:Mux5_rtl_0
+ 40. Parameter Settings for Inferred Entity Instance: VGA_SYNC_module:U1|altsyncram:Mux9_rtl_0
+ 41. Parameter Settings for Inferred Entity Instance: VGA_SYNC_module:U1|altsyncram:Mux13_rtl_0
+ 42. altpll Parameter Settings by Entity Instance
+ 43. altsyncram Parameter Settings by Entity Instance
+ 44. Port Connectivity Checks: "VGA_SYNC_module:U1"
+ 45. Post-Synthesis Netlist Statistics for Top Partition
+ 46. Elapsed Time Per Partition
+ 47. Analysis & Synthesis Messages
 
 
 
@@ -53,18 +79,18 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu May  5 22:03:11 2022       ;
+; Analysis & Synthesis Status        ; Successful - Thu May  5 23:03:27 2022       ;
 ; Quartus Prime Version              ; 21.1.0 Build 842 10/21/2021 SJ Lite Edition ;
 ; Revision Name                      ; LEG16                                       ;
 ; Top-level Entity Name              ; VGA_Test                                    ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 157                                         ;
-;     Total combinational functions  ; 144                                         ;
-;     Dedicated logic registers      ; 92                                          ;
-; Total registers                    ; 92                                          ;
+; Total logic elements               ; 286                                         ;
+;     Total combinational functions  ; 239                                         ;
+;     Dedicated logic registers      ; 128                                         ;
+; Total registers                    ; 128                                         ;
 ; Total pins                         ; 65                                          ;
 ; Total virtual pins                 ; 0                                           ;
-; Total memory bits                  ; 0                                           ;
+; Total memory bits                  ; 720,896                                     ;
 ; Embedded Multiplier 9-bit elements ; 0                                           ;
 ; Total PLLs                         ; 1                                           ;
 +------------------------------------+---------------------------------------------+
@@ -173,22 +199,53 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                              ;
-+----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                          ; Library ;
-+----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------+---------+
-; LCD_Display.vhd                  ; yes             ; User VHDL File               ; C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/LCD_Display.vhd       ;         ;
-; DE2_VGA/video_PLL.vhd            ; yes             ; User Wizard-Generated File   ; C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/video_PLL.vhd ;         ;
-; DE2_VGA/VGA_Test.vhd             ; yes             ; User VHDL File               ; C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd  ;         ;
-; DE2_VGA/VGA_SYNC.VHD             ; yes             ; User VHDL File               ; C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD  ;         ;
-; altpll.tdf                       ; yes             ; Megafunction                 ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/altpll.tdf                     ;         ;
-; aglobal211.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/aglobal211.inc                 ;         ;
-; stratix_pll.inc                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/stratix_pll.inc                ;         ;
-; stratixii_pll.inc                ; yes             ; Megafunction                 ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/stratixii_pll.inc              ;         ;
-; cycloneii_pll.inc                ; yes             ; Megafunction                 ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/cycloneii_pll.inc              ;         ;
-; db/altpll_dp72.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/altpll_dp72.tdf    ;         ;
-+----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------+---------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                             ;
++----------------------------------+-----------------+-------------------------------------------------------+---------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                                             ; File Name with Absolute Path                                                                ; Library ;
++----------------------------------+-----------------+-------------------------------------------------------+---------------------------------------------------------------------------------------------+---------+
+; LCD_Display.vhd                  ; yes             ; User VHDL File                                        ; C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/LCD_Display.vhd             ;         ;
+; DE2_VGA/video_PLL.vhd            ; yes             ; User Wizard-Generated File                            ; C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/video_PLL.vhd       ;         ;
+; DE2_VGA/VGA_Test.vhd             ; yes             ; User VHDL File                                        ; C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd        ;         ;
+; DE2_VGA/VGA_SYNC.VHD             ; yes             ; User VHDL File                                        ; C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD        ;         ;
+; altpll.tdf                       ; yes             ; Megafunction                                          ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/altpll.tdf                           ;         ;
+; aglobal211.inc                   ; yes             ; Megafunction                                          ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/aglobal211.inc                       ;         ;
+; stratix_pll.inc                  ; yes             ; Megafunction                                          ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/stratix_pll.inc                      ;         ;
+; stratixii_pll.inc                ; yes             ; Megafunction                                          ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/stratixii_pll.inc                    ;         ;
+; cycloneii_pll.inc                ; yes             ; Megafunction                                          ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/cycloneii_pll.inc                    ;         ;
+; db/altpll_dp72.tdf               ; yes             ; Auto-Generated Megafunction                           ; C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/altpll_dp72.tdf          ;         ;
+; altsyncram.tdf                   ; yes             ; Megafunction                                          ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/altsyncram.tdf                       ;         ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                                          ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/stratix_ram_block.inc                ;         ;
+; lpm_mux.inc                      ; yes             ; Megafunction                                          ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/lpm_mux.inc                          ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction                                          ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/lpm_decode.inc                       ;         ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                                          ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/a_rdenreg.inc                        ;         ;
+; altrom.inc                       ; yes             ; Megafunction                                          ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/altrom.inc                           ;         ;
+; altram.inc                       ; yes             ; Megafunction                                          ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/altram.inc                           ;         ;
+; altdpram.inc                     ; yes             ; Megafunction                                          ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/altdpram.inc                         ;         ;
+; db/altsyncram_ma01.tdf           ; yes             ; Auto-Generated Megafunction                           ; C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/altsyncram_ma01.tdf      ;         ;
+; LEG16.VGA_Test0.rtl.mif          ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/LEG16.VGA_Test0.rtl.mif  ;         ;
+; db/mux_4nb.tdf                   ; yes             ; Auto-Generated Megafunction                           ; C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/mux_4nb.tdf              ;         ;
+; db/altsyncram_na01.tdf           ; yes             ; Auto-Generated Megafunction                           ; C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/altsyncram_na01.tdf      ;         ;
+; LEG16.VGA_Test1.rtl.mif          ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/LEG16.VGA_Test1.rtl.mif  ;         ;
+; db/altsyncram_oa01.tdf           ; yes             ; Auto-Generated Megafunction                           ; C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/altsyncram_oa01.tdf      ;         ;
+; LEG16.VGA_Test2.rtl.mif          ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/LEG16.VGA_Test2.rtl.mif  ;         ;
+; db/altsyncram_pa01.tdf           ; yes             ; Auto-Generated Megafunction                           ; C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/altsyncram_pa01.tdf      ;         ;
+; LEG16.VGA_Test3.rtl.mif          ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/LEG16.VGA_Test3.rtl.mif  ;         ;
+; db/altsyncram_qa01.tdf           ; yes             ; Auto-Generated Megafunction                           ; C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/altsyncram_qa01.tdf      ;         ;
+; LEG16.VGA_Test4.rtl.mif          ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/LEG16.VGA_Test4.rtl.mif  ;         ;
+; db/altsyncram_ra01.tdf           ; yes             ; Auto-Generated Megafunction                           ; C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/altsyncram_ra01.tdf      ;         ;
+; LEG16.VGA_Test5.rtl.mif          ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/LEG16.VGA_Test5.rtl.mif  ;         ;
+; db/altsyncram_sa01.tdf           ; yes             ; Auto-Generated Megafunction                           ; C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/altsyncram_sa01.tdf      ;         ;
+; LEG16.VGA_Test6.rtl.mif          ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/LEG16.VGA_Test6.rtl.mif  ;         ;
+; db/altsyncram_ta01.tdf           ; yes             ; Auto-Generated Megafunction                           ; C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/altsyncram_ta01.tdf      ;         ;
+; LEG16.VGA_Test7.rtl.mif          ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/LEG16.VGA_Test7.rtl.mif  ;         ;
+; db/altsyncram_ua01.tdf           ; yes             ; Auto-Generated Megafunction                           ; C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/altsyncram_ua01.tdf      ;         ;
+; LEG16.VGA_Test8.rtl.mif          ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/LEG16.VGA_Test8.rtl.mif  ;         ;
+; db/altsyncram_va01.tdf           ; yes             ; Auto-Generated Megafunction                           ; C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/altsyncram_va01.tdf      ;         ;
+; LEG16.VGA_Test9.rtl.mif          ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/LEG16.VGA_Test9.rtl.mif  ;         ;
+; db/altsyncram_7c01.tdf           ; yes             ; Auto-Generated Megafunction                           ; C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/altsyncram_7c01.tdf      ;         ;
+; LEG16.VGA_Test10.rtl.mif         ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/LEG16.VGA_Test10.rtl.mif ;         ;
++----------------------------------+-----------------+-------------------------------------------------------+---------------------------------------------------------------------------------------------+---------+
 
 
 +--------------------------------------------------------------+
@@ -196,23 +253,24 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimated Total logic elements              ; 157            ;
+; Estimated Total logic elements              ; 286            ;
 ;                                             ;                ;
-; Total combinational functions               ; 144            ;
+; Total combinational functions               ; 239            ;
 ; Logic element usage by number of LUT inputs ;                ;
-;     -- 4 input functions                    ; 67             ;
-;     -- 3 input functions                    ; 10             ;
-;     -- <=2 input functions                  ; 67             ;
+;     -- 4 input functions                    ; 153            ;
+;     -- 3 input functions                    ; 15             ;
+;     -- <=2 input functions                  ; 71             ;
 ;                                             ;                ;
 ; Logic elements by mode                      ;                ;
-;     -- normal mode                          ; 107            ;
+;     -- normal mode                          ; 202            ;
 ;     -- arithmetic mode                      ; 37             ;
 ;                                             ;                ;
-; Total registers                             ; 92             ;
-;     -- Dedicated logic registers            ; 92             ;
+; Total registers                             ; 128            ;
+;     -- Dedicated logic registers            ; 128            ;
 ;     -- I/O registers                        ; 0              ;
 ;                                             ;                ;
 ; I/O pins                                    ; 65             ;
+; Total memory bits                           ; 720896         ;
 ;                                             ;                ;
 ; Embedded Multiplier 9-bit elements          ; 0              ;
 ;                                             ;                ;
@@ -220,25 +278,66 @@ https://fpgasoftware.intel.com/eula.
 ;     -- PLLs                                 ; 1              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 93             ;
-; Total fan-out                               ; 832            ;
-; Average fan-out                             ; 2.22           ;
+; Maximum fan-out                             ; 217            ;
+; Total fan-out                               ; 2625           ;
+; Average fan-out                             ; 4.42           ;
 +---------------------------------------------+----------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                             ;
-+------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------+-----------------+--------------+
-; Compilation Hierarchy Node               ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                      ; Entity Name     ; Library Name ;
-+------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------+-----------------+--------------+
-; |VGA_Test                                ; 144 (0)             ; 92 (0)                    ; 0           ; 0            ; 0       ; 0         ; 65   ; 0            ; |VGA_Test                                                                                                ; VGA_Test        ; work         ;
-;    |LCD_Display:U2|                      ; 121 (121)           ; 60 (60)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|LCD_Display:U2                                                                                 ; LCD_Display     ; work         ;
-;    |VGA_SYNC_module:U1|                  ; 23 (23)             ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1                                                                             ; VGA_SYNC_module ; work         ;
-;       |video_PLL:video_PLL_inst|         ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1|video_PLL:video_PLL_inst                                                    ; video_PLL       ; work         ;
-;          |altpll:altpll_component|       ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1|video_PLL:video_PLL_inst|altpll:altpll_component                            ; altpll          ; work         ;
-;             |altpll_dp72:auto_generated| ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1|video_PLL:video_PLL_inst|altpll:altpll_component|altpll_dp72:auto_generated ; altpll_dp72     ; work         ;
-+------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------+-----------------+--------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                              ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------+-----------------+--------------+
+; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                      ; Entity Name     ; Library Name ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------+-----------------+--------------+
+; |VGA_Test                                 ; 239 (0)             ; 128 (0)                   ; 720896      ; 0            ; 0       ; 0         ; 65   ; 0            ; |VGA_Test                                                                                                ; VGA_Test        ; work         ;
+;    |LCD_Display:U2|                       ; 204 (204)           ; 60 (60)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|LCD_Display:U2                                                                                 ; LCD_Display     ; work         ;
+;    |VGA_SYNC_module:U1|                   ; 35 (35)             ; 68 (35)                   ; 720896      ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1                                                                             ; VGA_SYNC_module ; work         ;
+;       |altsyncram:Mux10_rtl_0|            ; 0 (0)               ; 3 (0)                     ; 65536       ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1|altsyncram:Mux10_rtl_0                                                      ; altsyncram      ; work         ;
+;          |altsyncram_na01:auto_generated| ; 0 (0)               ; 3 (3)                     ; 65536       ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1|altsyncram:Mux10_rtl_0|altsyncram_na01:auto_generated                       ; altsyncram_na01 ; work         ;
+;       |altsyncram:Mux11_rtl_0|            ; 0 (0)               ; 3 (0)                     ; 65536       ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1|altsyncram:Mux11_rtl_0                                                      ; altsyncram      ; work         ;
+;          |altsyncram_qa01:auto_generated| ; 0 (0)               ; 3 (3)                     ; 65536       ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1|altsyncram:Mux11_rtl_0|altsyncram_qa01:auto_generated                       ; altsyncram_qa01 ; work         ;
+;       |altsyncram:Mux12_rtl_0|            ; 0 (0)               ; 3 (0)                     ; 65536       ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1|altsyncram:Mux12_rtl_0                                                      ; altsyncram      ; work         ;
+;          |altsyncram_ta01:auto_generated| ; 0 (0)               ; 3 (3)                     ; 65536       ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1|altsyncram:Mux12_rtl_0|altsyncram_ta01:auto_generated                       ; altsyncram_ta01 ; work         ;
+;       |altsyncram:Mux13_rtl_0|            ; 0 (0)               ; 3 (0)                     ; 65536       ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1|altsyncram:Mux13_rtl_0                                                      ; altsyncram      ; work         ;
+;          |altsyncram_7c01:auto_generated| ; 0 (0)               ; 3 (3)                     ; 65536       ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1|altsyncram:Mux13_rtl_0|altsyncram_7c01:auto_generated                       ; altsyncram_7c01 ; work         ;
+;       |altsyncram:Mux14_rtl_0|            ; 0 (0)               ; 3 (0)                     ; 65536       ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1|altsyncram:Mux14_rtl_0                                                      ; altsyncram      ; work         ;
+;          |altsyncram_oa01:auto_generated| ; 0 (0)               ; 3 (3)                     ; 65536       ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1|altsyncram:Mux14_rtl_0|altsyncram_oa01:auto_generated                       ; altsyncram_oa01 ; work         ;
+;       |altsyncram:Mux4_rtl_0|             ; 0 (0)               ; 3 (0)                     ; 65536       ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1|altsyncram:Mux4_rtl_0                                                       ; altsyncram      ; work         ;
+;          |altsyncram_ra01:auto_generated| ; 0 (0)               ; 3 (3)                     ; 65536       ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1|altsyncram:Mux4_rtl_0|altsyncram_ra01:auto_generated                        ; altsyncram_ra01 ; work         ;
+;       |altsyncram:Mux5_rtl_0|             ; 0 (0)               ; 3 (0)                     ; 65536       ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1|altsyncram:Mux5_rtl_0                                                       ; altsyncram      ; work         ;
+;          |altsyncram_ua01:auto_generated| ; 0 (0)               ; 3 (3)                     ; 65536       ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1|altsyncram:Mux5_rtl_0|altsyncram_ua01:auto_generated                        ; altsyncram_ua01 ; work         ;
+;       |altsyncram:Mux6_rtl_0|             ; 0 (0)               ; 3 (0)                     ; 65536       ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1|altsyncram:Mux6_rtl_0                                                       ; altsyncram      ; work         ;
+;          |altsyncram_ma01:auto_generated| ; 0 (0)               ; 3 (3)                     ; 65536       ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1|altsyncram:Mux6_rtl_0|altsyncram_ma01:auto_generated                        ; altsyncram_ma01 ; work         ;
+;       |altsyncram:Mux7_rtl_0|             ; 0 (0)               ; 3 (0)                     ; 65536       ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1|altsyncram:Mux7_rtl_0                                                       ; altsyncram      ; work         ;
+;          |altsyncram_pa01:auto_generated| ; 0 (0)               ; 3 (3)                     ; 65536       ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1|altsyncram:Mux7_rtl_0|altsyncram_pa01:auto_generated                        ; altsyncram_pa01 ; work         ;
+;       |altsyncram:Mux8_rtl_0|             ; 0 (0)               ; 3 (0)                     ; 65536       ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1|altsyncram:Mux8_rtl_0                                                       ; altsyncram      ; work         ;
+;          |altsyncram_sa01:auto_generated| ; 0 (0)               ; 3 (3)                     ; 65536       ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1|altsyncram:Mux8_rtl_0|altsyncram_sa01:auto_generated                        ; altsyncram_sa01 ; work         ;
+;       |altsyncram:Mux9_rtl_0|             ; 0 (0)               ; 3 (0)                     ; 65536       ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1|altsyncram:Mux9_rtl_0                                                       ; altsyncram      ; work         ;
+;          |altsyncram_va01:auto_generated| ; 0 (0)               ; 3 (3)                     ; 65536       ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1|altsyncram:Mux9_rtl_0|altsyncram_va01:auto_generated                        ; altsyncram_va01 ; work         ;
+;       |video_PLL:video_PLL_inst|          ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1|video_PLL:video_PLL_inst                                                    ; video_PLL       ; work         ;
+;          |altpll:altpll_component|        ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1|video_PLL:video_PLL_inst|altpll:altpll_component                            ; altpll          ; work         ;
+;             |altpll_dp72:auto_generated|  ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1|video_PLL:video_PLL_inst|altpll:altpll_component|altpll_dp72:auto_generated ; altpll_dp72     ; work         ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------+-----------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                 ;
++-------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+-------+--------------------------+
+; Name                                                                                ; Type ; Mode ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size  ; MIF                      ;
++-------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+-------+--------------------------+
+; VGA_SYNC_module:U1|altsyncram:Mux10_rtl_0|altsyncram_na01:auto_generated|ALTSYNCRAM ; AUTO ; ROM  ; 65536        ; 1            ; --           ; --           ; 65536 ; LEG16.VGA_Test1.rtl.mif  ;
+; VGA_SYNC_module:U1|altsyncram:Mux11_rtl_0|altsyncram_qa01:auto_generated|ALTSYNCRAM ; AUTO ; ROM  ; 65536        ; 1            ; --           ; --           ; 65536 ; LEG16.VGA_Test4.rtl.mif  ;
+; VGA_SYNC_module:U1|altsyncram:Mux12_rtl_0|altsyncram_ta01:auto_generated|ALTSYNCRAM ; AUTO ; ROM  ; 65536        ; 1            ; --           ; --           ; 65536 ; LEG16.VGA_Test7.rtl.mif  ;
+; VGA_SYNC_module:U1|altsyncram:Mux13_rtl_0|altsyncram_7c01:auto_generated|ALTSYNCRAM ; AUTO ; ROM  ; 65536        ; 1            ; --           ; --           ; 65536 ; LEG16.VGA_Test10.rtl.mif ;
+; VGA_SYNC_module:U1|altsyncram:Mux14_rtl_0|altsyncram_oa01:auto_generated|ALTSYNCRAM ; AUTO ; ROM  ; 65536        ; 1            ; --           ; --           ; 65536 ; LEG16.VGA_Test2.rtl.mif  ;
+; VGA_SYNC_module:U1|altsyncram:Mux4_rtl_0|altsyncram_ra01:auto_generated|ALTSYNCRAM  ; AUTO ; ROM  ; 65536        ; 1            ; --           ; --           ; 65536 ; LEG16.VGA_Test5.rtl.mif  ;
+; VGA_SYNC_module:U1|altsyncram:Mux5_rtl_0|altsyncram_ua01:auto_generated|ALTSYNCRAM  ; AUTO ; ROM  ; 65536        ; 1            ; --           ; --           ; 65536 ; LEG16.VGA_Test8.rtl.mif  ;
+; VGA_SYNC_module:U1|altsyncram:Mux6_rtl_0|altsyncram_ma01:auto_generated|ALTSYNCRAM  ; AUTO ; ROM  ; 65536        ; 1            ; --           ; --           ; 65536 ; LEG16.VGA_Test0.rtl.mif  ;
+; VGA_SYNC_module:U1|altsyncram:Mux7_rtl_0|altsyncram_pa01:auto_generated|ALTSYNCRAM  ; AUTO ; ROM  ; 65536        ; 1            ; --           ; --           ; 65536 ; LEG16.VGA_Test3.rtl.mif  ;
+; VGA_SYNC_module:U1|altsyncram:Mux8_rtl_0|altsyncram_sa01:auto_generated|ALTSYNCRAM  ; AUTO ; ROM  ; 65536        ; 1            ; --           ; --           ; 65536 ; LEG16.VGA_Test6.rtl.mif  ;
+; VGA_SYNC_module:U1|altsyncram:Mux9_rtl_0|altsyncram_va01:auto_generated|ALTSYNCRAM  ; AUTO ; ROM  ; 65536        ; 1            ; --           ; --           ; 65536 ; LEG16.VGA_Test9.rtl.mif  ;
++-------------------------------------------------------------------------------------+------+------+--------------+--------------+--------------+--------------+-------+--------------------------+
 
 
 Encoding Type:  One-Hot
@@ -285,17 +384,57 @@ Encoding Type:  One-Hot
 +---------------------+---------------------+-------------------+--------------+--------------+------------+------------------+-------------------+-------------+--------------------+----------------+------------------+----------------+--------------+
 
 
-+---------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                          ;
-+----------------------------------------+----------------------------------------------------+
-; Register name                          ; Reason for Removal                                 ;
-+----------------------------------------+----------------------------------------------------+
-; LCD_Display:U2|next_command.HOLD       ; Merged with LCD_Display:U2|next_command.DROP_LCD_E ;
-; LCD_Display:U2|next_command.RESET1     ; Merged with LCD_Display:U2|next_command.DROP_LCD_E ;
-; VGA_SYNC_module:U1|PC[0]               ; Merged with VGA_SYNC_module:U1|Hex_Display_Data[0] ;
-; LCD_Display:U2|next_command.DROP_LCD_E ; Stuck at GND due to stuck port data_in             ;
-; Total Number of Removed Registers = 4  ;                                                    ;
-+----------------------------------------+----------------------------------------------------+
++------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                   ;
++---------------------------------------------+--------------------------------------------------------+
+; Register name                               ; Reason for Removal                                     ;
++---------------------------------------------+--------------------------------------------------------+
+; VGA_SYNC_module:U1|Hex_Display_Data[27,31]  ; Stuck at GND due to stuck port data_in                 ;
+; VGA_SYNC_module:U1|Hex_Display_Data[16..26] ; Lost fanout                                            ;
+; VGA_SYNC_module:U1|Hex_Display_Data[17]~35  ; Merged with VGA_SYNC_module:U1|Hex_Display_Data[17]~36 ;
+; VGA_SYNC_module:U1|Hex_Display_Data[17]~36  ; Merged with VGA_SYNC_module:U1|Hex_Display_Data[21]~31 ;
+; VGA_SYNC_module:U1|Hex_Display_Data[21]~31  ; Merged with VGA_SYNC_module:U1|Hex_Display_Data[21]~32 ;
+; VGA_SYNC_module:U1|Hex_Display_Data[21]~32  ; Merged with VGA_SYNC_module:U1|Hex_Display_Data[25]~27 ;
+; VGA_SYNC_module:U1|Hex_Display_Data[25]~27  ; Merged with VGA_SYNC_module:U1|Hex_Display_Data[25]~28 ;
+; VGA_SYNC_module:U1|Hex_Display_Data[25]~28  ; Merged with VGA_SYNC_module:U1|Hex_Display_Data[18]~23 ;
+; VGA_SYNC_module:U1|Hex_Display_Data[18]~23  ; Merged with VGA_SYNC_module:U1|Hex_Display_Data[18]~24 ;
+; VGA_SYNC_module:U1|Hex_Display_Data[18]~24  ; Merged with VGA_SYNC_module:U1|Hex_Display_Data[22]~19 ;
+; VGA_SYNC_module:U1|Hex_Display_Data[22]~19  ; Merged with VGA_SYNC_module:U1|Hex_Display_Data[22]~20 ;
+; VGA_SYNC_module:U1|Hex_Display_Data[22]~20  ; Merged with VGA_SYNC_module:U1|Hex_Display_Data[26]~15 ;
+; VGA_SYNC_module:U1|Hex_Display_Data[26]~15  ; Merged with VGA_SYNC_module:U1|Hex_Display_Data[26]~16 ;
+; VGA_SYNC_module:U1|Hex_Display_Data[26]~16  ; Merged with VGA_SYNC_module:U1|Hex_Display_Data[19]~12 ;
+; VGA_SYNC_module:U1|Hex_Display_Data[19]~12  ; Merged with VGA_SYNC_module:U1|Hex_Display_Data[23]~9  ;
+; VGA_SYNC_module:U1|Hex_Display_Data[23]~9   ; Merged with VGA_SYNC_module:U1|Hex_Display_Data[16]~6  ;
+; VGA_SYNC_module:U1|Hex_Display_Data[16]~6   ; Merged with VGA_SYNC_module:U1|Hex_Display_Data[20]~3  ;
+; VGA_SYNC_module:U1|Hex_Display_Data[20]~3   ; Merged with VGA_SYNC_module:U1|Hex_Display_Data[24]~0  ;
+; VGA_SYNC_module:U1|Hex_Display_Data[20]~5   ; Merged with VGA_SYNC_module:U1|Hex_Display_Data[24]~2  ;
+; VGA_SYNC_module:U1|Hex_Display_Data[16]~8   ; Merged with VGA_SYNC_module:U1|Hex_Display_Data[24]~2  ;
+; VGA_SYNC_module:U1|Hex_Display_Data[23]~11  ; Merged with VGA_SYNC_module:U1|Hex_Display_Data[24]~2  ;
+; VGA_SYNC_module:U1|Hex_Display_Data[19]~14  ; Merged with VGA_SYNC_module:U1|Hex_Display_Data[24]~2  ;
+; VGA_SYNC_module:U1|Hex_Display_Data[26]~18  ; Merged with VGA_SYNC_module:U1|Hex_Display_Data[24]~2  ;
+; VGA_SYNC_module:U1|Hex_Display_Data[22]~22  ; Merged with VGA_SYNC_module:U1|Hex_Display_Data[24]~2  ;
+; VGA_SYNC_module:U1|Hex_Display_Data[18]~26  ; Merged with VGA_SYNC_module:U1|Hex_Display_Data[24]~2  ;
+; VGA_SYNC_module:U1|Hex_Display_Data[25]~30  ; Merged with VGA_SYNC_module:U1|Hex_Display_Data[24]~2  ;
+; VGA_SYNC_module:U1|Hex_Display_Data[21]~34  ; Merged with VGA_SYNC_module:U1|Hex_Display_Data[24]~2  ;
+; VGA_SYNC_module:U1|Hex_Display_Data[17]~38  ; Merged with VGA_SYNC_module:U1|Hex_Display_Data[24]~2  ;
+; VGA_SYNC_module:U1|PC[0]                    ; Merged with VGA_SYNC_module:U1|Hex_Display_Data[0]     ;
+; LCD_Display:U2|next_command.HOLD            ; Merged with LCD_Display:U2|next_command.DROP_LCD_E     ;
+; LCD_Display:U2|next_command.RESET1          ; Merged with LCD_Display:U2|next_command.DROP_LCD_E     ;
+; VGA_SYNC_module:U1|Hex_Display_Data[28]     ; Merged with VGA_SYNC_module:U1|Hex_Display_Data[24]~0  ;
+; VGA_SYNC_module:U1|Hex_Display_Data[30]     ; Merged with VGA_SYNC_module:U1|Hex_Display_Data[29]    ;
+; LCD_Display:U2|next_command.DROP_LCD_E      ; Stuck at GND due to stuck port data_in                 ;
+; Total Number of Removed Registers = 45      ;                                                        ;
++---------------------------------------------+--------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                            ;
++-----------------------------------------+---------------------------+----------------------------------------------------------------------------------+
+; Register name                           ; Reason for Removal        ; Registers Removed due to This Register                                           ;
++-----------------------------------------+---------------------------+----------------------------------------------------------------------------------+
+; VGA_SYNC_module:U1|Hex_Display_Data[31] ; Stuck at GND              ; VGA_SYNC_module:U1|Hex_Display_Data[23], VGA_SYNC_module:U1|Hex_Display_Data[19] ;
+;                                         ; due to stuck port data_in ;                                                                                  ;
++-----------------------------------------+---------------------------+----------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -303,12 +442,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 92    ;
+; Total registers                              ; 128   ;
 ; Number of registers using Synchronous Clear  ; 20    ;
 ; Number of registers using Synchronous Load   ; 5     ;
 ; Number of registers using Asynchronous Clear ; 34    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 69    ;
+; Number of registers using Clock Enable       ; 105   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -323,15 +462,34 @@ Encoding Type:  One-Hot
 ; LCD_Display:U2|DATA_BUS_VALUE[3]        ; 2       ;
 ; LCD_Display:U2|DATA_BUS_VALUE[4]        ; 1       ;
 ; LCD_Display:U2|DATA_BUS_VALUE[5]        ; 1       ;
-; VGA_SYNC_module:U1|Hex_Display_Data[2]  ; 1       ;
 ; VGA_SYNC_module:U1|Hex_Display_Data[10] ; 1       ;
-; VGA_SYNC_module:U1|Hex_Display_Data[0]  ; 3       ;
-; VGA_SYNC_module:U1|Hex_Display_Data[4]  ; 1       ;
+; VGA_SYNC_module:U1|Hex_Display_Data[2]  ; 1       ;
 ; VGA_SYNC_module:U1|Hex_Display_Data[8]  ; 1       ;
+; VGA_SYNC_module:U1|Hex_Display_Data[4]  ; 1       ;
 ; VGA_SYNC_module:U1|Hex_Display_Data[12] ; 1       ;
+; VGA_SYNC_module:U1|Hex_Display_Data[0]  ; 93      ;
 ; VGA_SYNC_module:U1|enableSwitch         ; 1       ;
 ; Total number of inverted registers = 12 ;         ;
 +-----------------------------------------+---------+
+
+
++------------------------------------------------------------------------------------+
+; Registers Packed Into Inferred Megafunctions                                       ;
++--------------------------------------------+--------------------------------+------+
+; Register Name                              ; Megafunction                   ; Type ;
++--------------------------------------------+--------------------------------+------+
+; VGA_SYNC_module:U1|Hex_Display_Data[24]~1  ; VGA_SYNC_module:U1|Mux6_rtl_0  ; ROM  ;
+; VGA_SYNC_module:U1|Hex_Display_Data[20]~4  ; VGA_SYNC_module:U1|Mux10_rtl_0 ; ROM  ;
+; VGA_SYNC_module:U1|Hex_Display_Data[16]~7  ; VGA_SYNC_module:U1|Mux14_rtl_0 ; ROM  ;
+; VGA_SYNC_module:U1|Hex_Display_Data[23]~10 ; VGA_SYNC_module:U1|Mux7_rtl_0  ; ROM  ;
+; VGA_SYNC_module:U1|Hex_Display_Data[19]~13 ; VGA_SYNC_module:U1|Mux11_rtl_0 ; ROM  ;
+; VGA_SYNC_module:U1|Hex_Display_Data[26]~17 ; VGA_SYNC_module:U1|Mux4_rtl_0  ; ROM  ;
+; VGA_SYNC_module:U1|Hex_Display_Data[22]~21 ; VGA_SYNC_module:U1|Mux8_rtl_0  ; ROM  ;
+; VGA_SYNC_module:U1|Hex_Display_Data[18]~25 ; VGA_SYNC_module:U1|Mux12_rtl_0 ; ROM  ;
+; VGA_SYNC_module:U1|Hex_Display_Data[25]~29 ; VGA_SYNC_module:U1|Mux5_rtl_0  ; ROM  ;
+; VGA_SYNC_module:U1|Hex_Display_Data[21]~33 ; VGA_SYNC_module:U1|Mux9_rtl_0  ; ROM  ;
+; VGA_SYNC_module:U1|Hex_Display_Data[17]~37 ; VGA_SYNC_module:U1|Mux13_rtl_0 ; ROM  ;
++--------------------------------------------+--------------------------------+------+
 
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -339,11 +497,109 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                   ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------+
-; 3:1                ; 20 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |VGA_Test|LCD_Display:U2|CLK_COUNT_400HZ[10] ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |VGA_Test|LCD_Display:U2|DATA_BUS_VALUE[4]   ;
+; 3:1                ; 20 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |VGA_Test|LCD_Display:U2|CLK_COUNT_400HZ[16] ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |VGA_Test|LCD_Display:U2|DATA_BUS_VALUE[5]   ;
 ; 3:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; No         ; |VGA_Test|LCD_Display:U2|state               ;
-; 32:1               ; 4 bits    ; 84 LEs        ; 60 LEs               ; 24 LEs                 ; No         ; |VGA_Test|LCD_Display:U2|Mux6                ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------+
+; Source assignments for VGA_SYNC_module:U1|altsyncram:Mux6_rtl_0|altsyncram_ma01:auto_generated ;
++---------------------------------+--------------------+------+----------------------------------+
+; Assignment                      ; Value              ; From ; To                               ;
++---------------------------------+--------------------+------+----------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                ;
++---------------------------------+--------------------+------+----------------------------------+
+
+
++-------------------------------------------------------------------------------------------------+
+; Source assignments for VGA_SYNC_module:U1|altsyncram:Mux10_rtl_0|altsyncram_na01:auto_generated ;
++---------------------------------+--------------------+------+-----------------------------------+
+; Assignment                      ; Value              ; From ; To                                ;
++---------------------------------+--------------------+------+-----------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                 ;
++---------------------------------+--------------------+------+-----------------------------------+
+
+
++-------------------------------------------------------------------------------------------------+
+; Source assignments for VGA_SYNC_module:U1|altsyncram:Mux14_rtl_0|altsyncram_oa01:auto_generated ;
++---------------------------------+--------------------+------+-----------------------------------+
+; Assignment                      ; Value              ; From ; To                                ;
++---------------------------------+--------------------+------+-----------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                 ;
++---------------------------------+--------------------+------+-----------------------------------+
+
+
++------------------------------------------------------------------------------------------------+
+; Source assignments for VGA_SYNC_module:U1|altsyncram:Mux7_rtl_0|altsyncram_pa01:auto_generated ;
++---------------------------------+--------------------+------+----------------------------------+
+; Assignment                      ; Value              ; From ; To                               ;
++---------------------------------+--------------------+------+----------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                ;
++---------------------------------+--------------------+------+----------------------------------+
+
+
++-------------------------------------------------------------------------------------------------+
+; Source assignments for VGA_SYNC_module:U1|altsyncram:Mux11_rtl_0|altsyncram_qa01:auto_generated ;
++---------------------------------+--------------------+------+-----------------------------------+
+; Assignment                      ; Value              ; From ; To                                ;
++---------------------------------+--------------------+------+-----------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                 ;
++---------------------------------+--------------------+------+-----------------------------------+
+
+
++------------------------------------------------------------------------------------------------+
+; Source assignments for VGA_SYNC_module:U1|altsyncram:Mux4_rtl_0|altsyncram_ra01:auto_generated ;
++---------------------------------+--------------------+------+----------------------------------+
+; Assignment                      ; Value              ; From ; To                               ;
++---------------------------------+--------------------+------+----------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                ;
++---------------------------------+--------------------+------+----------------------------------+
+
+
++------------------------------------------------------------------------------------------------+
+; Source assignments for VGA_SYNC_module:U1|altsyncram:Mux8_rtl_0|altsyncram_sa01:auto_generated ;
++---------------------------------+--------------------+------+----------------------------------+
+; Assignment                      ; Value              ; From ; To                               ;
++---------------------------------+--------------------+------+----------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                ;
++---------------------------------+--------------------+------+----------------------------------+
+
+
++-------------------------------------------------------------------------------------------------+
+; Source assignments for VGA_SYNC_module:U1|altsyncram:Mux12_rtl_0|altsyncram_ta01:auto_generated ;
++---------------------------------+--------------------+------+-----------------------------------+
+; Assignment                      ; Value              ; From ; To                                ;
++---------------------------------+--------------------+------+-----------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                 ;
++---------------------------------+--------------------+------+-----------------------------------+
+
+
++------------------------------------------------------------------------------------------------+
+; Source assignments for VGA_SYNC_module:U1|altsyncram:Mux5_rtl_0|altsyncram_ua01:auto_generated ;
++---------------------------------+--------------------+------+----------------------------------+
+; Assignment                      ; Value              ; From ; To                               ;
++---------------------------------+--------------------+------+----------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                ;
++---------------------------------+--------------------+------+----------------------------------+
+
+
++------------------------------------------------------------------------------------------------+
+; Source assignments for VGA_SYNC_module:U1|altsyncram:Mux9_rtl_0|altsyncram_va01:auto_generated ;
++---------------------------------+--------------------+------+----------------------------------+
+; Assignment                      ; Value              ; From ; To                               ;
++---------------------------------+--------------------+------+----------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                ;
++---------------------------------+--------------------+------+----------------------------------+
+
+
++-------------------------------------------------------------------------------------------------+
+; Source assignments for VGA_SYNC_module:U1|altsyncram:Mux13_rtl_0|altsyncram_7c01:auto_generated ;
++---------------------------------+--------------------+------+-----------------------------------+
+; Assignment                      ; Value              ; From ; To                                ;
++---------------------------------+--------------------+------+-----------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                 ;
++---------------------------------+--------------------+------+-----------------------------------+
 
 
 +-------------------------------------------------------------+
@@ -740,6 +996,677 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
++-------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: VGA_SYNC_module:U1|altsyncram:Mux6_rtl_0 ;
++------------------------------------+-------------------------+----------------------------+
+; Parameter Name                     ; Value                   ; Type                       ;
++------------------------------------+-------------------------+----------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                       ; Untyped                    ;
+; AUTO_CARRY_CHAINS                  ; ON                      ; AUTO_CARRY                 ;
+; IGNORE_CARRY_BUFFERS               ; OFF                     ; IGNORE_CARRY               ;
+; AUTO_CASCADE_CHAINS                ; ON                      ; AUTO_CASCADE               ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                     ; IGNORE_CASCADE             ;
+; WIDTH_BYTEENA                      ; 1                       ; Untyped                    ;
+; OPERATION_MODE                     ; ROM                     ; Untyped                    ;
+; WIDTH_A                            ; 1                       ; Untyped                    ;
+; WIDTHAD_A                          ; 16                      ; Untyped                    ;
+; NUMWORDS_A                         ; 65536                   ; Untyped                    ;
+; OUTDATA_REG_A                      ; UNREGISTERED            ; Untyped                    ;
+; ADDRESS_ACLR_A                     ; NONE                    ; Untyped                    ;
+; OUTDATA_ACLR_A                     ; NONE                    ; Untyped                    ;
+; WRCONTROL_ACLR_A                   ; NONE                    ; Untyped                    ;
+; INDATA_ACLR_A                      ; NONE                    ; Untyped                    ;
+; BYTEENA_ACLR_A                     ; NONE                    ; Untyped                    ;
+; WIDTH_B                            ; 1                       ; Untyped                    ;
+; WIDTHAD_B                          ; 1                       ; Untyped                    ;
+; NUMWORDS_B                         ; 1                       ; Untyped                    ;
+; INDATA_REG_B                       ; CLOCK1                  ; Untyped                    ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                  ; Untyped                    ;
+; RDCONTROL_REG_B                    ; CLOCK1                  ; Untyped                    ;
+; ADDRESS_REG_B                      ; CLOCK1                  ; Untyped                    ;
+; OUTDATA_REG_B                      ; UNREGISTERED            ; Untyped                    ;
+; BYTEENA_REG_B                      ; CLOCK1                  ; Untyped                    ;
+; INDATA_ACLR_B                      ; NONE                    ; Untyped                    ;
+; WRCONTROL_ACLR_B                   ; NONE                    ; Untyped                    ;
+; ADDRESS_ACLR_B                     ; NONE                    ; Untyped                    ;
+; OUTDATA_ACLR_B                     ; NONE                    ; Untyped                    ;
+; RDCONTROL_ACLR_B                   ; NONE                    ; Untyped                    ;
+; BYTEENA_ACLR_B                     ; NONE                    ; Untyped                    ;
+; WIDTH_BYTEENA_A                    ; 1                       ; Untyped                    ;
+; WIDTH_BYTEENA_B                    ; 1                       ; Untyped                    ;
+; RAM_BLOCK_TYPE                     ; AUTO                    ; Untyped                    ;
+; BYTE_SIZE                          ; 8                       ; Untyped                    ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE               ; Untyped                    ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ    ; Untyped                    ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ    ; Untyped                    ;
+; INIT_FILE                          ; LEG16.VGA_Test0.rtl.mif ; Untyped                    ;
+; INIT_FILE_LAYOUT                   ; PORT_A                  ; Untyped                    ;
+; MAXIMUM_DEPTH                      ; 0                       ; Untyped                    ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL                  ; Untyped                    ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                  ; Untyped                    ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                  ; Untyped                    ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                  ; Untyped                    ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN         ; Untyped                    ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN         ; Untyped                    ;
+; ENABLE_ECC                         ; FALSE                   ; Untyped                    ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                   ; Untyped                    ;
+; WIDTH_ECCSTATUS                    ; 3                       ; Untyped                    ;
+; DEVICE_FAMILY                      ; Cyclone IV E            ; Untyped                    ;
+; CBXI_PARAMETER                     ; altsyncram_ma01         ; Untyped                    ;
++------------------------------------+-------------------------+----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: VGA_SYNC_module:U1|altsyncram:Mux10_rtl_0 ;
++------------------------------------+-------------------------+-----------------------------+
+; Parameter Name                     ; Value                   ; Type                        ;
++------------------------------------+-------------------------+-----------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                       ; Untyped                     ;
+; AUTO_CARRY_CHAINS                  ; ON                      ; AUTO_CARRY                  ;
+; IGNORE_CARRY_BUFFERS               ; OFF                     ; IGNORE_CARRY                ;
+; AUTO_CASCADE_CHAINS                ; ON                      ; AUTO_CASCADE                ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                     ; IGNORE_CASCADE              ;
+; WIDTH_BYTEENA                      ; 1                       ; Untyped                     ;
+; OPERATION_MODE                     ; ROM                     ; Untyped                     ;
+; WIDTH_A                            ; 1                       ; Untyped                     ;
+; WIDTHAD_A                          ; 16                      ; Untyped                     ;
+; NUMWORDS_A                         ; 65536                   ; Untyped                     ;
+; OUTDATA_REG_A                      ; UNREGISTERED            ; Untyped                     ;
+; ADDRESS_ACLR_A                     ; NONE                    ; Untyped                     ;
+; OUTDATA_ACLR_A                     ; NONE                    ; Untyped                     ;
+; WRCONTROL_ACLR_A                   ; NONE                    ; Untyped                     ;
+; INDATA_ACLR_A                      ; NONE                    ; Untyped                     ;
+; BYTEENA_ACLR_A                     ; NONE                    ; Untyped                     ;
+; WIDTH_B                            ; 1                       ; Untyped                     ;
+; WIDTHAD_B                          ; 1                       ; Untyped                     ;
+; NUMWORDS_B                         ; 1                       ; Untyped                     ;
+; INDATA_REG_B                       ; CLOCK1                  ; Untyped                     ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                  ; Untyped                     ;
+; RDCONTROL_REG_B                    ; CLOCK1                  ; Untyped                     ;
+; ADDRESS_REG_B                      ; CLOCK1                  ; Untyped                     ;
+; OUTDATA_REG_B                      ; UNREGISTERED            ; Untyped                     ;
+; BYTEENA_REG_B                      ; CLOCK1                  ; Untyped                     ;
+; INDATA_ACLR_B                      ; NONE                    ; Untyped                     ;
+; WRCONTROL_ACLR_B                   ; NONE                    ; Untyped                     ;
+; ADDRESS_ACLR_B                     ; NONE                    ; Untyped                     ;
+; OUTDATA_ACLR_B                     ; NONE                    ; Untyped                     ;
+; RDCONTROL_ACLR_B                   ; NONE                    ; Untyped                     ;
+; BYTEENA_ACLR_B                     ; NONE                    ; Untyped                     ;
+; WIDTH_BYTEENA_A                    ; 1                       ; Untyped                     ;
+; WIDTH_BYTEENA_B                    ; 1                       ; Untyped                     ;
+; RAM_BLOCK_TYPE                     ; AUTO                    ; Untyped                     ;
+; BYTE_SIZE                          ; 8                       ; Untyped                     ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE               ; Untyped                     ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ    ; Untyped                     ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ    ; Untyped                     ;
+; INIT_FILE                          ; LEG16.VGA_Test1.rtl.mif ; Untyped                     ;
+; INIT_FILE_LAYOUT                   ; PORT_A                  ; Untyped                     ;
+; MAXIMUM_DEPTH                      ; 0                       ; Untyped                     ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL                  ; Untyped                     ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                  ; Untyped                     ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                  ; Untyped                     ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                  ; Untyped                     ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN         ; Untyped                     ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN         ; Untyped                     ;
+; ENABLE_ECC                         ; FALSE                   ; Untyped                     ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                   ; Untyped                     ;
+; WIDTH_ECCSTATUS                    ; 3                       ; Untyped                     ;
+; DEVICE_FAMILY                      ; Cyclone IV E            ; Untyped                     ;
+; CBXI_PARAMETER                     ; altsyncram_na01         ; Untyped                     ;
++------------------------------------+-------------------------+-----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: VGA_SYNC_module:U1|altsyncram:Mux14_rtl_0 ;
++------------------------------------+-------------------------+-----------------------------+
+; Parameter Name                     ; Value                   ; Type                        ;
++------------------------------------+-------------------------+-----------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                       ; Untyped                     ;
+; AUTO_CARRY_CHAINS                  ; ON                      ; AUTO_CARRY                  ;
+; IGNORE_CARRY_BUFFERS               ; OFF                     ; IGNORE_CARRY                ;
+; AUTO_CASCADE_CHAINS                ; ON                      ; AUTO_CASCADE                ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                     ; IGNORE_CASCADE              ;
+; WIDTH_BYTEENA                      ; 1                       ; Untyped                     ;
+; OPERATION_MODE                     ; ROM                     ; Untyped                     ;
+; WIDTH_A                            ; 1                       ; Untyped                     ;
+; WIDTHAD_A                          ; 16                      ; Untyped                     ;
+; NUMWORDS_A                         ; 65536                   ; Untyped                     ;
+; OUTDATA_REG_A                      ; UNREGISTERED            ; Untyped                     ;
+; ADDRESS_ACLR_A                     ; NONE                    ; Untyped                     ;
+; OUTDATA_ACLR_A                     ; NONE                    ; Untyped                     ;
+; WRCONTROL_ACLR_A                   ; NONE                    ; Untyped                     ;
+; INDATA_ACLR_A                      ; NONE                    ; Untyped                     ;
+; BYTEENA_ACLR_A                     ; NONE                    ; Untyped                     ;
+; WIDTH_B                            ; 1                       ; Untyped                     ;
+; WIDTHAD_B                          ; 1                       ; Untyped                     ;
+; NUMWORDS_B                         ; 1                       ; Untyped                     ;
+; INDATA_REG_B                       ; CLOCK1                  ; Untyped                     ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                  ; Untyped                     ;
+; RDCONTROL_REG_B                    ; CLOCK1                  ; Untyped                     ;
+; ADDRESS_REG_B                      ; CLOCK1                  ; Untyped                     ;
+; OUTDATA_REG_B                      ; UNREGISTERED            ; Untyped                     ;
+; BYTEENA_REG_B                      ; CLOCK1                  ; Untyped                     ;
+; INDATA_ACLR_B                      ; NONE                    ; Untyped                     ;
+; WRCONTROL_ACLR_B                   ; NONE                    ; Untyped                     ;
+; ADDRESS_ACLR_B                     ; NONE                    ; Untyped                     ;
+; OUTDATA_ACLR_B                     ; NONE                    ; Untyped                     ;
+; RDCONTROL_ACLR_B                   ; NONE                    ; Untyped                     ;
+; BYTEENA_ACLR_B                     ; NONE                    ; Untyped                     ;
+; WIDTH_BYTEENA_A                    ; 1                       ; Untyped                     ;
+; WIDTH_BYTEENA_B                    ; 1                       ; Untyped                     ;
+; RAM_BLOCK_TYPE                     ; AUTO                    ; Untyped                     ;
+; BYTE_SIZE                          ; 8                       ; Untyped                     ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE               ; Untyped                     ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ    ; Untyped                     ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ    ; Untyped                     ;
+; INIT_FILE                          ; LEG16.VGA_Test2.rtl.mif ; Untyped                     ;
+; INIT_FILE_LAYOUT                   ; PORT_A                  ; Untyped                     ;
+; MAXIMUM_DEPTH                      ; 0                       ; Untyped                     ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL                  ; Untyped                     ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                  ; Untyped                     ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                  ; Untyped                     ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                  ; Untyped                     ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN         ; Untyped                     ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN         ; Untyped                     ;
+; ENABLE_ECC                         ; FALSE                   ; Untyped                     ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                   ; Untyped                     ;
+; WIDTH_ECCSTATUS                    ; 3                       ; Untyped                     ;
+; DEVICE_FAMILY                      ; Cyclone IV E            ; Untyped                     ;
+; CBXI_PARAMETER                     ; altsyncram_oa01         ; Untyped                     ;
++------------------------------------+-------------------------+-----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: VGA_SYNC_module:U1|altsyncram:Mux7_rtl_0 ;
++------------------------------------+-------------------------+----------------------------+
+; Parameter Name                     ; Value                   ; Type                       ;
++------------------------------------+-------------------------+----------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                       ; Untyped                    ;
+; AUTO_CARRY_CHAINS                  ; ON                      ; AUTO_CARRY                 ;
+; IGNORE_CARRY_BUFFERS               ; OFF                     ; IGNORE_CARRY               ;
+; AUTO_CASCADE_CHAINS                ; ON                      ; AUTO_CASCADE               ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                     ; IGNORE_CASCADE             ;
+; WIDTH_BYTEENA                      ; 1                       ; Untyped                    ;
+; OPERATION_MODE                     ; ROM                     ; Untyped                    ;
+; WIDTH_A                            ; 1                       ; Untyped                    ;
+; WIDTHAD_A                          ; 16                      ; Untyped                    ;
+; NUMWORDS_A                         ; 65536                   ; Untyped                    ;
+; OUTDATA_REG_A                      ; UNREGISTERED            ; Untyped                    ;
+; ADDRESS_ACLR_A                     ; NONE                    ; Untyped                    ;
+; OUTDATA_ACLR_A                     ; NONE                    ; Untyped                    ;
+; WRCONTROL_ACLR_A                   ; NONE                    ; Untyped                    ;
+; INDATA_ACLR_A                      ; NONE                    ; Untyped                    ;
+; BYTEENA_ACLR_A                     ; NONE                    ; Untyped                    ;
+; WIDTH_B                            ; 1                       ; Untyped                    ;
+; WIDTHAD_B                          ; 1                       ; Untyped                    ;
+; NUMWORDS_B                         ; 1                       ; Untyped                    ;
+; INDATA_REG_B                       ; CLOCK1                  ; Untyped                    ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                  ; Untyped                    ;
+; RDCONTROL_REG_B                    ; CLOCK1                  ; Untyped                    ;
+; ADDRESS_REG_B                      ; CLOCK1                  ; Untyped                    ;
+; OUTDATA_REG_B                      ; UNREGISTERED            ; Untyped                    ;
+; BYTEENA_REG_B                      ; CLOCK1                  ; Untyped                    ;
+; INDATA_ACLR_B                      ; NONE                    ; Untyped                    ;
+; WRCONTROL_ACLR_B                   ; NONE                    ; Untyped                    ;
+; ADDRESS_ACLR_B                     ; NONE                    ; Untyped                    ;
+; OUTDATA_ACLR_B                     ; NONE                    ; Untyped                    ;
+; RDCONTROL_ACLR_B                   ; NONE                    ; Untyped                    ;
+; BYTEENA_ACLR_B                     ; NONE                    ; Untyped                    ;
+; WIDTH_BYTEENA_A                    ; 1                       ; Untyped                    ;
+; WIDTH_BYTEENA_B                    ; 1                       ; Untyped                    ;
+; RAM_BLOCK_TYPE                     ; AUTO                    ; Untyped                    ;
+; BYTE_SIZE                          ; 8                       ; Untyped                    ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE               ; Untyped                    ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ    ; Untyped                    ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ    ; Untyped                    ;
+; INIT_FILE                          ; LEG16.VGA_Test3.rtl.mif ; Untyped                    ;
+; INIT_FILE_LAYOUT                   ; PORT_A                  ; Untyped                    ;
+; MAXIMUM_DEPTH                      ; 0                       ; Untyped                    ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL                  ; Untyped                    ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                  ; Untyped                    ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                  ; Untyped                    ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                  ; Untyped                    ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN         ; Untyped                    ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN         ; Untyped                    ;
+; ENABLE_ECC                         ; FALSE                   ; Untyped                    ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                   ; Untyped                    ;
+; WIDTH_ECCSTATUS                    ; 3                       ; Untyped                    ;
+; DEVICE_FAMILY                      ; Cyclone IV E            ; Untyped                    ;
+; CBXI_PARAMETER                     ; altsyncram_pa01         ; Untyped                    ;
++------------------------------------+-------------------------+----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: VGA_SYNC_module:U1|altsyncram:Mux11_rtl_0 ;
++------------------------------------+-------------------------+-----------------------------+
+; Parameter Name                     ; Value                   ; Type                        ;
++------------------------------------+-------------------------+-----------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                       ; Untyped                     ;
+; AUTO_CARRY_CHAINS                  ; ON                      ; AUTO_CARRY                  ;
+; IGNORE_CARRY_BUFFERS               ; OFF                     ; IGNORE_CARRY                ;
+; AUTO_CASCADE_CHAINS                ; ON                      ; AUTO_CASCADE                ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                     ; IGNORE_CASCADE              ;
+; WIDTH_BYTEENA                      ; 1                       ; Untyped                     ;
+; OPERATION_MODE                     ; ROM                     ; Untyped                     ;
+; WIDTH_A                            ; 1                       ; Untyped                     ;
+; WIDTHAD_A                          ; 16                      ; Untyped                     ;
+; NUMWORDS_A                         ; 65536                   ; Untyped                     ;
+; OUTDATA_REG_A                      ; UNREGISTERED            ; Untyped                     ;
+; ADDRESS_ACLR_A                     ; NONE                    ; Untyped                     ;
+; OUTDATA_ACLR_A                     ; NONE                    ; Untyped                     ;
+; WRCONTROL_ACLR_A                   ; NONE                    ; Untyped                     ;
+; INDATA_ACLR_A                      ; NONE                    ; Untyped                     ;
+; BYTEENA_ACLR_A                     ; NONE                    ; Untyped                     ;
+; WIDTH_B                            ; 1                       ; Untyped                     ;
+; WIDTHAD_B                          ; 1                       ; Untyped                     ;
+; NUMWORDS_B                         ; 1                       ; Untyped                     ;
+; INDATA_REG_B                       ; CLOCK1                  ; Untyped                     ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                  ; Untyped                     ;
+; RDCONTROL_REG_B                    ; CLOCK1                  ; Untyped                     ;
+; ADDRESS_REG_B                      ; CLOCK1                  ; Untyped                     ;
+; OUTDATA_REG_B                      ; UNREGISTERED            ; Untyped                     ;
+; BYTEENA_REG_B                      ; CLOCK1                  ; Untyped                     ;
+; INDATA_ACLR_B                      ; NONE                    ; Untyped                     ;
+; WRCONTROL_ACLR_B                   ; NONE                    ; Untyped                     ;
+; ADDRESS_ACLR_B                     ; NONE                    ; Untyped                     ;
+; OUTDATA_ACLR_B                     ; NONE                    ; Untyped                     ;
+; RDCONTROL_ACLR_B                   ; NONE                    ; Untyped                     ;
+; BYTEENA_ACLR_B                     ; NONE                    ; Untyped                     ;
+; WIDTH_BYTEENA_A                    ; 1                       ; Untyped                     ;
+; WIDTH_BYTEENA_B                    ; 1                       ; Untyped                     ;
+; RAM_BLOCK_TYPE                     ; AUTO                    ; Untyped                     ;
+; BYTE_SIZE                          ; 8                       ; Untyped                     ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE               ; Untyped                     ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ    ; Untyped                     ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ    ; Untyped                     ;
+; INIT_FILE                          ; LEG16.VGA_Test4.rtl.mif ; Untyped                     ;
+; INIT_FILE_LAYOUT                   ; PORT_A                  ; Untyped                     ;
+; MAXIMUM_DEPTH                      ; 0                       ; Untyped                     ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL                  ; Untyped                     ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                  ; Untyped                     ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                  ; Untyped                     ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                  ; Untyped                     ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN         ; Untyped                     ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN         ; Untyped                     ;
+; ENABLE_ECC                         ; FALSE                   ; Untyped                     ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                   ; Untyped                     ;
+; WIDTH_ECCSTATUS                    ; 3                       ; Untyped                     ;
+; DEVICE_FAMILY                      ; Cyclone IV E            ; Untyped                     ;
+; CBXI_PARAMETER                     ; altsyncram_qa01         ; Untyped                     ;
++------------------------------------+-------------------------+-----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: VGA_SYNC_module:U1|altsyncram:Mux4_rtl_0 ;
++------------------------------------+-------------------------+----------------------------+
+; Parameter Name                     ; Value                   ; Type                       ;
++------------------------------------+-------------------------+----------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                       ; Untyped                    ;
+; AUTO_CARRY_CHAINS                  ; ON                      ; AUTO_CARRY                 ;
+; IGNORE_CARRY_BUFFERS               ; OFF                     ; IGNORE_CARRY               ;
+; AUTO_CASCADE_CHAINS                ; ON                      ; AUTO_CASCADE               ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                     ; IGNORE_CASCADE             ;
+; WIDTH_BYTEENA                      ; 1                       ; Untyped                    ;
+; OPERATION_MODE                     ; ROM                     ; Untyped                    ;
+; WIDTH_A                            ; 1                       ; Untyped                    ;
+; WIDTHAD_A                          ; 16                      ; Untyped                    ;
+; NUMWORDS_A                         ; 65536                   ; Untyped                    ;
+; OUTDATA_REG_A                      ; UNREGISTERED            ; Untyped                    ;
+; ADDRESS_ACLR_A                     ; NONE                    ; Untyped                    ;
+; OUTDATA_ACLR_A                     ; NONE                    ; Untyped                    ;
+; WRCONTROL_ACLR_A                   ; NONE                    ; Untyped                    ;
+; INDATA_ACLR_A                      ; NONE                    ; Untyped                    ;
+; BYTEENA_ACLR_A                     ; NONE                    ; Untyped                    ;
+; WIDTH_B                            ; 1                       ; Untyped                    ;
+; WIDTHAD_B                          ; 1                       ; Untyped                    ;
+; NUMWORDS_B                         ; 1                       ; Untyped                    ;
+; INDATA_REG_B                       ; CLOCK1                  ; Untyped                    ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                  ; Untyped                    ;
+; RDCONTROL_REG_B                    ; CLOCK1                  ; Untyped                    ;
+; ADDRESS_REG_B                      ; CLOCK1                  ; Untyped                    ;
+; OUTDATA_REG_B                      ; UNREGISTERED            ; Untyped                    ;
+; BYTEENA_REG_B                      ; CLOCK1                  ; Untyped                    ;
+; INDATA_ACLR_B                      ; NONE                    ; Untyped                    ;
+; WRCONTROL_ACLR_B                   ; NONE                    ; Untyped                    ;
+; ADDRESS_ACLR_B                     ; NONE                    ; Untyped                    ;
+; OUTDATA_ACLR_B                     ; NONE                    ; Untyped                    ;
+; RDCONTROL_ACLR_B                   ; NONE                    ; Untyped                    ;
+; BYTEENA_ACLR_B                     ; NONE                    ; Untyped                    ;
+; WIDTH_BYTEENA_A                    ; 1                       ; Untyped                    ;
+; WIDTH_BYTEENA_B                    ; 1                       ; Untyped                    ;
+; RAM_BLOCK_TYPE                     ; AUTO                    ; Untyped                    ;
+; BYTE_SIZE                          ; 8                       ; Untyped                    ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE               ; Untyped                    ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ    ; Untyped                    ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ    ; Untyped                    ;
+; INIT_FILE                          ; LEG16.VGA_Test5.rtl.mif ; Untyped                    ;
+; INIT_FILE_LAYOUT                   ; PORT_A                  ; Untyped                    ;
+; MAXIMUM_DEPTH                      ; 0                       ; Untyped                    ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL                  ; Untyped                    ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                  ; Untyped                    ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                  ; Untyped                    ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                  ; Untyped                    ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN         ; Untyped                    ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN         ; Untyped                    ;
+; ENABLE_ECC                         ; FALSE                   ; Untyped                    ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                   ; Untyped                    ;
+; WIDTH_ECCSTATUS                    ; 3                       ; Untyped                    ;
+; DEVICE_FAMILY                      ; Cyclone IV E            ; Untyped                    ;
+; CBXI_PARAMETER                     ; altsyncram_ra01         ; Untyped                    ;
++------------------------------------+-------------------------+----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: VGA_SYNC_module:U1|altsyncram:Mux8_rtl_0 ;
++------------------------------------+-------------------------+----------------------------+
+; Parameter Name                     ; Value                   ; Type                       ;
++------------------------------------+-------------------------+----------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                       ; Untyped                    ;
+; AUTO_CARRY_CHAINS                  ; ON                      ; AUTO_CARRY                 ;
+; IGNORE_CARRY_BUFFERS               ; OFF                     ; IGNORE_CARRY               ;
+; AUTO_CASCADE_CHAINS                ; ON                      ; AUTO_CASCADE               ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                     ; IGNORE_CASCADE             ;
+; WIDTH_BYTEENA                      ; 1                       ; Untyped                    ;
+; OPERATION_MODE                     ; ROM                     ; Untyped                    ;
+; WIDTH_A                            ; 1                       ; Untyped                    ;
+; WIDTHAD_A                          ; 16                      ; Untyped                    ;
+; NUMWORDS_A                         ; 65536                   ; Untyped                    ;
+; OUTDATA_REG_A                      ; UNREGISTERED            ; Untyped                    ;
+; ADDRESS_ACLR_A                     ; NONE                    ; Untyped                    ;
+; OUTDATA_ACLR_A                     ; NONE                    ; Untyped                    ;
+; WRCONTROL_ACLR_A                   ; NONE                    ; Untyped                    ;
+; INDATA_ACLR_A                      ; NONE                    ; Untyped                    ;
+; BYTEENA_ACLR_A                     ; NONE                    ; Untyped                    ;
+; WIDTH_B                            ; 1                       ; Untyped                    ;
+; WIDTHAD_B                          ; 1                       ; Untyped                    ;
+; NUMWORDS_B                         ; 1                       ; Untyped                    ;
+; INDATA_REG_B                       ; CLOCK1                  ; Untyped                    ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                  ; Untyped                    ;
+; RDCONTROL_REG_B                    ; CLOCK1                  ; Untyped                    ;
+; ADDRESS_REG_B                      ; CLOCK1                  ; Untyped                    ;
+; OUTDATA_REG_B                      ; UNREGISTERED            ; Untyped                    ;
+; BYTEENA_REG_B                      ; CLOCK1                  ; Untyped                    ;
+; INDATA_ACLR_B                      ; NONE                    ; Untyped                    ;
+; WRCONTROL_ACLR_B                   ; NONE                    ; Untyped                    ;
+; ADDRESS_ACLR_B                     ; NONE                    ; Untyped                    ;
+; OUTDATA_ACLR_B                     ; NONE                    ; Untyped                    ;
+; RDCONTROL_ACLR_B                   ; NONE                    ; Untyped                    ;
+; BYTEENA_ACLR_B                     ; NONE                    ; Untyped                    ;
+; WIDTH_BYTEENA_A                    ; 1                       ; Untyped                    ;
+; WIDTH_BYTEENA_B                    ; 1                       ; Untyped                    ;
+; RAM_BLOCK_TYPE                     ; AUTO                    ; Untyped                    ;
+; BYTE_SIZE                          ; 8                       ; Untyped                    ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE               ; Untyped                    ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ    ; Untyped                    ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ    ; Untyped                    ;
+; INIT_FILE                          ; LEG16.VGA_Test6.rtl.mif ; Untyped                    ;
+; INIT_FILE_LAYOUT                   ; PORT_A                  ; Untyped                    ;
+; MAXIMUM_DEPTH                      ; 0                       ; Untyped                    ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL                  ; Untyped                    ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                  ; Untyped                    ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                  ; Untyped                    ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                  ; Untyped                    ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN         ; Untyped                    ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN         ; Untyped                    ;
+; ENABLE_ECC                         ; FALSE                   ; Untyped                    ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                   ; Untyped                    ;
+; WIDTH_ECCSTATUS                    ; 3                       ; Untyped                    ;
+; DEVICE_FAMILY                      ; Cyclone IV E            ; Untyped                    ;
+; CBXI_PARAMETER                     ; altsyncram_sa01         ; Untyped                    ;
++------------------------------------+-------------------------+----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: VGA_SYNC_module:U1|altsyncram:Mux12_rtl_0 ;
++------------------------------------+-------------------------+-----------------------------+
+; Parameter Name                     ; Value                   ; Type                        ;
++------------------------------------+-------------------------+-----------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                       ; Untyped                     ;
+; AUTO_CARRY_CHAINS                  ; ON                      ; AUTO_CARRY                  ;
+; IGNORE_CARRY_BUFFERS               ; OFF                     ; IGNORE_CARRY                ;
+; AUTO_CASCADE_CHAINS                ; ON                      ; AUTO_CASCADE                ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                     ; IGNORE_CASCADE              ;
+; WIDTH_BYTEENA                      ; 1                       ; Untyped                     ;
+; OPERATION_MODE                     ; ROM                     ; Untyped                     ;
+; WIDTH_A                            ; 1                       ; Untyped                     ;
+; WIDTHAD_A                          ; 16                      ; Untyped                     ;
+; NUMWORDS_A                         ; 65536                   ; Untyped                     ;
+; OUTDATA_REG_A                      ; UNREGISTERED            ; Untyped                     ;
+; ADDRESS_ACLR_A                     ; NONE                    ; Untyped                     ;
+; OUTDATA_ACLR_A                     ; NONE                    ; Untyped                     ;
+; WRCONTROL_ACLR_A                   ; NONE                    ; Untyped                     ;
+; INDATA_ACLR_A                      ; NONE                    ; Untyped                     ;
+; BYTEENA_ACLR_A                     ; NONE                    ; Untyped                     ;
+; WIDTH_B                            ; 1                       ; Untyped                     ;
+; WIDTHAD_B                          ; 1                       ; Untyped                     ;
+; NUMWORDS_B                         ; 1                       ; Untyped                     ;
+; INDATA_REG_B                       ; CLOCK1                  ; Untyped                     ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                  ; Untyped                     ;
+; RDCONTROL_REG_B                    ; CLOCK1                  ; Untyped                     ;
+; ADDRESS_REG_B                      ; CLOCK1                  ; Untyped                     ;
+; OUTDATA_REG_B                      ; UNREGISTERED            ; Untyped                     ;
+; BYTEENA_REG_B                      ; CLOCK1                  ; Untyped                     ;
+; INDATA_ACLR_B                      ; NONE                    ; Untyped                     ;
+; WRCONTROL_ACLR_B                   ; NONE                    ; Untyped                     ;
+; ADDRESS_ACLR_B                     ; NONE                    ; Untyped                     ;
+; OUTDATA_ACLR_B                     ; NONE                    ; Untyped                     ;
+; RDCONTROL_ACLR_B                   ; NONE                    ; Untyped                     ;
+; BYTEENA_ACLR_B                     ; NONE                    ; Untyped                     ;
+; WIDTH_BYTEENA_A                    ; 1                       ; Untyped                     ;
+; WIDTH_BYTEENA_B                    ; 1                       ; Untyped                     ;
+; RAM_BLOCK_TYPE                     ; AUTO                    ; Untyped                     ;
+; BYTE_SIZE                          ; 8                       ; Untyped                     ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE               ; Untyped                     ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ    ; Untyped                     ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ    ; Untyped                     ;
+; INIT_FILE                          ; LEG16.VGA_Test7.rtl.mif ; Untyped                     ;
+; INIT_FILE_LAYOUT                   ; PORT_A                  ; Untyped                     ;
+; MAXIMUM_DEPTH                      ; 0                       ; Untyped                     ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL                  ; Untyped                     ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                  ; Untyped                     ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                  ; Untyped                     ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                  ; Untyped                     ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN         ; Untyped                     ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN         ; Untyped                     ;
+; ENABLE_ECC                         ; FALSE                   ; Untyped                     ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                   ; Untyped                     ;
+; WIDTH_ECCSTATUS                    ; 3                       ; Untyped                     ;
+; DEVICE_FAMILY                      ; Cyclone IV E            ; Untyped                     ;
+; CBXI_PARAMETER                     ; altsyncram_ta01         ; Untyped                     ;
++------------------------------------+-------------------------+-----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: VGA_SYNC_module:U1|altsyncram:Mux5_rtl_0 ;
++------------------------------------+-------------------------+----------------------------+
+; Parameter Name                     ; Value                   ; Type                       ;
++------------------------------------+-------------------------+----------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                       ; Untyped                    ;
+; AUTO_CARRY_CHAINS                  ; ON                      ; AUTO_CARRY                 ;
+; IGNORE_CARRY_BUFFERS               ; OFF                     ; IGNORE_CARRY               ;
+; AUTO_CASCADE_CHAINS                ; ON                      ; AUTO_CASCADE               ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                     ; IGNORE_CASCADE             ;
+; WIDTH_BYTEENA                      ; 1                       ; Untyped                    ;
+; OPERATION_MODE                     ; ROM                     ; Untyped                    ;
+; WIDTH_A                            ; 1                       ; Untyped                    ;
+; WIDTHAD_A                          ; 16                      ; Untyped                    ;
+; NUMWORDS_A                         ; 65536                   ; Untyped                    ;
+; OUTDATA_REG_A                      ; UNREGISTERED            ; Untyped                    ;
+; ADDRESS_ACLR_A                     ; NONE                    ; Untyped                    ;
+; OUTDATA_ACLR_A                     ; NONE                    ; Untyped                    ;
+; WRCONTROL_ACLR_A                   ; NONE                    ; Untyped                    ;
+; INDATA_ACLR_A                      ; NONE                    ; Untyped                    ;
+; BYTEENA_ACLR_A                     ; NONE                    ; Untyped                    ;
+; WIDTH_B                            ; 1                       ; Untyped                    ;
+; WIDTHAD_B                          ; 1                       ; Untyped                    ;
+; NUMWORDS_B                         ; 1                       ; Untyped                    ;
+; INDATA_REG_B                       ; CLOCK1                  ; Untyped                    ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                  ; Untyped                    ;
+; RDCONTROL_REG_B                    ; CLOCK1                  ; Untyped                    ;
+; ADDRESS_REG_B                      ; CLOCK1                  ; Untyped                    ;
+; OUTDATA_REG_B                      ; UNREGISTERED            ; Untyped                    ;
+; BYTEENA_REG_B                      ; CLOCK1                  ; Untyped                    ;
+; INDATA_ACLR_B                      ; NONE                    ; Untyped                    ;
+; WRCONTROL_ACLR_B                   ; NONE                    ; Untyped                    ;
+; ADDRESS_ACLR_B                     ; NONE                    ; Untyped                    ;
+; OUTDATA_ACLR_B                     ; NONE                    ; Untyped                    ;
+; RDCONTROL_ACLR_B                   ; NONE                    ; Untyped                    ;
+; BYTEENA_ACLR_B                     ; NONE                    ; Untyped                    ;
+; WIDTH_BYTEENA_A                    ; 1                       ; Untyped                    ;
+; WIDTH_BYTEENA_B                    ; 1                       ; Untyped                    ;
+; RAM_BLOCK_TYPE                     ; AUTO                    ; Untyped                    ;
+; BYTE_SIZE                          ; 8                       ; Untyped                    ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE               ; Untyped                    ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ    ; Untyped                    ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ    ; Untyped                    ;
+; INIT_FILE                          ; LEG16.VGA_Test8.rtl.mif ; Untyped                    ;
+; INIT_FILE_LAYOUT                   ; PORT_A                  ; Untyped                    ;
+; MAXIMUM_DEPTH                      ; 0                       ; Untyped                    ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL                  ; Untyped                    ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                  ; Untyped                    ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                  ; Untyped                    ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                  ; Untyped                    ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN         ; Untyped                    ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN         ; Untyped                    ;
+; ENABLE_ECC                         ; FALSE                   ; Untyped                    ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                   ; Untyped                    ;
+; WIDTH_ECCSTATUS                    ; 3                       ; Untyped                    ;
+; DEVICE_FAMILY                      ; Cyclone IV E            ; Untyped                    ;
+; CBXI_PARAMETER                     ; altsyncram_ua01         ; Untyped                    ;
++------------------------------------+-------------------------+----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: VGA_SYNC_module:U1|altsyncram:Mux9_rtl_0 ;
++------------------------------------+-------------------------+----------------------------+
+; Parameter Name                     ; Value                   ; Type                       ;
++------------------------------------+-------------------------+----------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                       ; Untyped                    ;
+; AUTO_CARRY_CHAINS                  ; ON                      ; AUTO_CARRY                 ;
+; IGNORE_CARRY_BUFFERS               ; OFF                     ; IGNORE_CARRY               ;
+; AUTO_CASCADE_CHAINS                ; ON                      ; AUTO_CASCADE               ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                     ; IGNORE_CASCADE             ;
+; WIDTH_BYTEENA                      ; 1                       ; Untyped                    ;
+; OPERATION_MODE                     ; ROM                     ; Untyped                    ;
+; WIDTH_A                            ; 1                       ; Untyped                    ;
+; WIDTHAD_A                          ; 16                      ; Untyped                    ;
+; NUMWORDS_A                         ; 65536                   ; Untyped                    ;
+; OUTDATA_REG_A                      ; UNREGISTERED            ; Untyped                    ;
+; ADDRESS_ACLR_A                     ; NONE                    ; Untyped                    ;
+; OUTDATA_ACLR_A                     ; NONE                    ; Untyped                    ;
+; WRCONTROL_ACLR_A                   ; NONE                    ; Untyped                    ;
+; INDATA_ACLR_A                      ; NONE                    ; Untyped                    ;
+; BYTEENA_ACLR_A                     ; NONE                    ; Untyped                    ;
+; WIDTH_B                            ; 1                       ; Untyped                    ;
+; WIDTHAD_B                          ; 1                       ; Untyped                    ;
+; NUMWORDS_B                         ; 1                       ; Untyped                    ;
+; INDATA_REG_B                       ; CLOCK1                  ; Untyped                    ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                  ; Untyped                    ;
+; RDCONTROL_REG_B                    ; CLOCK1                  ; Untyped                    ;
+; ADDRESS_REG_B                      ; CLOCK1                  ; Untyped                    ;
+; OUTDATA_REG_B                      ; UNREGISTERED            ; Untyped                    ;
+; BYTEENA_REG_B                      ; CLOCK1                  ; Untyped                    ;
+; INDATA_ACLR_B                      ; NONE                    ; Untyped                    ;
+; WRCONTROL_ACLR_B                   ; NONE                    ; Untyped                    ;
+; ADDRESS_ACLR_B                     ; NONE                    ; Untyped                    ;
+; OUTDATA_ACLR_B                     ; NONE                    ; Untyped                    ;
+; RDCONTROL_ACLR_B                   ; NONE                    ; Untyped                    ;
+; BYTEENA_ACLR_B                     ; NONE                    ; Untyped                    ;
+; WIDTH_BYTEENA_A                    ; 1                       ; Untyped                    ;
+; WIDTH_BYTEENA_B                    ; 1                       ; Untyped                    ;
+; RAM_BLOCK_TYPE                     ; AUTO                    ; Untyped                    ;
+; BYTE_SIZE                          ; 8                       ; Untyped                    ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE               ; Untyped                    ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ    ; Untyped                    ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ    ; Untyped                    ;
+; INIT_FILE                          ; LEG16.VGA_Test9.rtl.mif ; Untyped                    ;
+; INIT_FILE_LAYOUT                   ; PORT_A                  ; Untyped                    ;
+; MAXIMUM_DEPTH                      ; 0                       ; Untyped                    ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL                  ; Untyped                    ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                  ; Untyped                    ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                  ; Untyped                    ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                  ; Untyped                    ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN         ; Untyped                    ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN         ; Untyped                    ;
+; ENABLE_ECC                         ; FALSE                   ; Untyped                    ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                   ; Untyped                    ;
+; WIDTH_ECCSTATUS                    ; 3                       ; Untyped                    ;
+; DEVICE_FAMILY                      ; Cyclone IV E            ; Untyped                    ;
+; CBXI_PARAMETER                     ; altsyncram_va01         ; Untyped                    ;
++------------------------------------+-------------------------+----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: VGA_SYNC_module:U1|altsyncram:Mux13_rtl_0 ;
++------------------------------------+--------------------------+----------------------------+
+; Parameter Name                     ; Value                    ; Type                       ;
++------------------------------------+--------------------------+----------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                        ; Untyped                    ;
+; AUTO_CARRY_CHAINS                  ; ON                       ; AUTO_CARRY                 ;
+; IGNORE_CARRY_BUFFERS               ; OFF                      ; IGNORE_CARRY               ;
+; AUTO_CASCADE_CHAINS                ; ON                       ; AUTO_CASCADE               ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                      ; IGNORE_CASCADE             ;
+; WIDTH_BYTEENA                      ; 1                        ; Untyped                    ;
+; OPERATION_MODE                     ; ROM                      ; Untyped                    ;
+; WIDTH_A                            ; 1                        ; Untyped                    ;
+; WIDTHAD_A                          ; 16                       ; Untyped                    ;
+; NUMWORDS_A                         ; 65536                    ; Untyped                    ;
+; OUTDATA_REG_A                      ; UNREGISTERED             ; Untyped                    ;
+; ADDRESS_ACLR_A                     ; NONE                     ; Untyped                    ;
+; OUTDATA_ACLR_A                     ; NONE                     ; Untyped                    ;
+; WRCONTROL_ACLR_A                   ; NONE                     ; Untyped                    ;
+; INDATA_ACLR_A                      ; NONE                     ; Untyped                    ;
+; BYTEENA_ACLR_A                     ; NONE                     ; Untyped                    ;
+; WIDTH_B                            ; 1                        ; Untyped                    ;
+; WIDTHAD_B                          ; 1                        ; Untyped                    ;
+; NUMWORDS_B                         ; 1                        ; Untyped                    ;
+; INDATA_REG_B                       ; CLOCK1                   ; Untyped                    ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                   ; Untyped                    ;
+; RDCONTROL_REG_B                    ; CLOCK1                   ; Untyped                    ;
+; ADDRESS_REG_B                      ; CLOCK1                   ; Untyped                    ;
+; OUTDATA_REG_B                      ; UNREGISTERED             ; Untyped                    ;
+; BYTEENA_REG_B                      ; CLOCK1                   ; Untyped                    ;
+; INDATA_ACLR_B                      ; NONE                     ; Untyped                    ;
+; WRCONTROL_ACLR_B                   ; NONE                     ; Untyped                    ;
+; ADDRESS_ACLR_B                     ; NONE                     ; Untyped                    ;
+; OUTDATA_ACLR_B                     ; NONE                     ; Untyped                    ;
+; RDCONTROL_ACLR_B                   ; NONE                     ; Untyped                    ;
+; BYTEENA_ACLR_B                     ; NONE                     ; Untyped                    ;
+; WIDTH_BYTEENA_A                    ; 1                        ; Untyped                    ;
+; WIDTH_BYTEENA_B                    ; 1                        ; Untyped                    ;
+; RAM_BLOCK_TYPE                     ; AUTO                     ; Untyped                    ;
+; BYTE_SIZE                          ; 8                        ; Untyped                    ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                ; Untyped                    ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ     ; Untyped                    ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ     ; Untyped                    ;
+; INIT_FILE                          ; LEG16.VGA_Test10.rtl.mif ; Untyped                    ;
+; INIT_FILE_LAYOUT                   ; PORT_A                   ; Untyped                    ;
+; MAXIMUM_DEPTH                      ; 0                        ; Untyped                    ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL                   ; Untyped                    ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                   ; Untyped                    ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                   ; Untyped                    ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                   ; Untyped                    ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN          ; Untyped                    ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN          ; Untyped                    ;
+; ENABLE_ECC                         ; FALSE                    ; Untyped                    ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                    ; Untyped                    ;
+; WIDTH_ECCSTATUS                    ; 3                        ; Untyped                    ;
+; DEVICE_FAMILY                      ; Cyclone IV E             ; Untyped                    ;
+; CBXI_PARAMETER                     ; altsyncram_7c01          ; Untyped                    ;
++------------------------------------+--------------------------+----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
 +-----------------------------------------------------------------------------------------------------+
 ; altpll Parameter Settings by Entity Instance                                                        ;
 +-------------------------------+---------------------------------------------------------------------+
@@ -755,6 +1682,136 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     -- VCO_MULTIPLY_BY        ; 0                                                                   ;
 ;     -- VCO_DIVIDE_BY          ; 0                                                                   ;
 +-------------------------------+---------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                      ;
++-------------------------------------------+-------------------------------------------+
+; Name                                      ; Value                                     ;
++-------------------------------------------+-------------------------------------------+
+; Number of entity instances                ; 11                                        ;
+; Entity Instance                           ; VGA_SYNC_module:U1|altsyncram:Mux6_rtl_0  ;
+;     -- OPERATION_MODE                     ; ROM                                       ;
+;     -- WIDTH_A                            ; 1                                         ;
+;     -- NUMWORDS_A                         ; 65536                                     ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                              ;
+;     -- WIDTH_B                            ; 1                                         ;
+;     -- NUMWORDS_B                         ; 1                                         ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                    ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                              ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                      ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                 ;
+; Entity Instance                           ; VGA_SYNC_module:U1|altsyncram:Mux10_rtl_0 ;
+;     -- OPERATION_MODE                     ; ROM                                       ;
+;     -- WIDTH_A                            ; 1                                         ;
+;     -- NUMWORDS_A                         ; 65536                                     ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                              ;
+;     -- WIDTH_B                            ; 1                                         ;
+;     -- NUMWORDS_B                         ; 1                                         ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                    ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                              ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                      ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                 ;
+; Entity Instance                           ; VGA_SYNC_module:U1|altsyncram:Mux14_rtl_0 ;
+;     -- OPERATION_MODE                     ; ROM                                       ;
+;     -- WIDTH_A                            ; 1                                         ;
+;     -- NUMWORDS_A                         ; 65536                                     ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                              ;
+;     -- WIDTH_B                            ; 1                                         ;
+;     -- NUMWORDS_B                         ; 1                                         ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                    ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                              ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                      ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                 ;
+; Entity Instance                           ; VGA_SYNC_module:U1|altsyncram:Mux7_rtl_0  ;
+;     -- OPERATION_MODE                     ; ROM                                       ;
+;     -- WIDTH_A                            ; 1                                         ;
+;     -- NUMWORDS_A                         ; 65536                                     ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                              ;
+;     -- WIDTH_B                            ; 1                                         ;
+;     -- NUMWORDS_B                         ; 1                                         ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                    ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                              ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                      ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                 ;
+; Entity Instance                           ; VGA_SYNC_module:U1|altsyncram:Mux11_rtl_0 ;
+;     -- OPERATION_MODE                     ; ROM                                       ;
+;     -- WIDTH_A                            ; 1                                         ;
+;     -- NUMWORDS_A                         ; 65536                                     ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                              ;
+;     -- WIDTH_B                            ; 1                                         ;
+;     -- NUMWORDS_B                         ; 1                                         ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                    ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                              ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                      ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                 ;
+; Entity Instance                           ; VGA_SYNC_module:U1|altsyncram:Mux4_rtl_0  ;
+;     -- OPERATION_MODE                     ; ROM                                       ;
+;     -- WIDTH_A                            ; 1                                         ;
+;     -- NUMWORDS_A                         ; 65536                                     ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                              ;
+;     -- WIDTH_B                            ; 1                                         ;
+;     -- NUMWORDS_B                         ; 1                                         ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                    ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                              ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                      ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                 ;
+; Entity Instance                           ; VGA_SYNC_module:U1|altsyncram:Mux8_rtl_0  ;
+;     -- OPERATION_MODE                     ; ROM                                       ;
+;     -- WIDTH_A                            ; 1                                         ;
+;     -- NUMWORDS_A                         ; 65536                                     ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                              ;
+;     -- WIDTH_B                            ; 1                                         ;
+;     -- NUMWORDS_B                         ; 1                                         ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                    ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                              ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                      ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                 ;
+; Entity Instance                           ; VGA_SYNC_module:U1|altsyncram:Mux12_rtl_0 ;
+;     -- OPERATION_MODE                     ; ROM                                       ;
+;     -- WIDTH_A                            ; 1                                         ;
+;     -- NUMWORDS_A                         ; 65536                                     ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                              ;
+;     -- WIDTH_B                            ; 1                                         ;
+;     -- NUMWORDS_B                         ; 1                                         ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                    ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                              ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                      ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                 ;
+; Entity Instance                           ; VGA_SYNC_module:U1|altsyncram:Mux5_rtl_0  ;
+;     -- OPERATION_MODE                     ; ROM                                       ;
+;     -- WIDTH_A                            ; 1                                         ;
+;     -- NUMWORDS_A                         ; 65536                                     ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                              ;
+;     -- WIDTH_B                            ; 1                                         ;
+;     -- NUMWORDS_B                         ; 1                                         ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                    ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                              ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                      ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                 ;
+; Entity Instance                           ; VGA_SYNC_module:U1|altsyncram:Mux9_rtl_0  ;
+;     -- OPERATION_MODE                     ; ROM                                       ;
+;     -- WIDTH_A                            ; 1                                         ;
+;     -- NUMWORDS_A                         ; 65536                                     ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                              ;
+;     -- WIDTH_B                            ; 1                                         ;
+;     -- NUMWORDS_B                         ; 1                                         ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                    ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                              ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                      ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                 ;
+; Entity Instance                           ; VGA_SYNC_module:U1|altsyncram:Mux13_rtl_0 ;
+;     -- OPERATION_MODE                     ; ROM                                       ;
+;     -- WIDTH_A                            ; 1                                         ;
+;     -- NUMWORDS_A                         ; 65536                                     ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                              ;
+;     -- WIDTH_B                            ; 1                                         ;
+;     -- NUMWORDS_B                         ; 1                                         ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                    ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                              ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                      ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                 ;
++-------------------------------------------+-------------------------------------------+
 
 
 +------------------------------------------------------------------------------------------------------------------------+
@@ -776,28 +1833,29 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 65                          ;
-; cycloneiii_ff         ; 92                          ;
+; cycloneiii_ff         ; 128                         ;
 ;     CLR               ; 1                           ;
-;     ENA               ; 31                          ;
+;     ENA               ; 67                          ;
 ;     ENA CLR           ; 33                          ;
 ;     ENA SLD           ; 5                           ;
 ;     SCLR              ; 20                          ;
 ;     plain             ; 2                           ;
 ; cycloneiii_io_obuf    ; 8                           ;
-; cycloneiii_lcell_comb ; 148                         ;
+; cycloneiii_lcell_comb ; 243                         ;
 ;     arith             ; 37                          ;
 ;         2 data inputs ; 36                          ;
 ;         3 data inputs ; 1                           ;
-;     normal            ; 111                         ;
+;     normal            ; 206                         ;
 ;         0 data inputs ; 2                           ;
-;         1 data inputs ; 12                          ;
-;         2 data inputs ; 21                          ;
-;         3 data inputs ; 9                           ;
-;         4 data inputs ; 67                          ;
+;         1 data inputs ; 13                          ;
+;         2 data inputs ; 24                          ;
+;         3 data inputs ; 14                          ;
+;         4 data inputs ; 153                         ;
 ; cycloneiii_pll        ; 1                           ;
+; cycloneiii_ram_block  ; 88                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 6.00                        ;
-; Average LUT depth     ; 2.71                        ;
+; Max LUT depth         ; 9.00                        ;
+; Average LUT depth     ; 4.82                        ;
 +-----------------------+-----------------------------+
 
 
@@ -806,7 +1864,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:26     ;
 +----------------+--------------+
 
 
@@ -816,7 +1874,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
-    Info: Processing started: Thu May  5 22:02:59 2022
+    Info: Processing started: Thu May  5 23:02:47 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off LEG16 -c LEG16
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -856,8 +1914,7 @@ Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(110): used impl
 Warning (10036): Verilog HDL or VHDL warning at VGA_SYNC.VHD(115): object "distToCircleCenterSquared" assigned a value but never read File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 115
 Warning (10540): VHDL Signal Declaration warning at VGA_SYNC.VHD(119): used explicit default value for signal "SP" because signal was never assigned a value File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 119
 Warning (10540): VHDL Signal Declaration warning at VGA_SYNC.VHD(123): used explicit default value for signal "memory" because signal was never assigned a value File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 123
-Warning (10036): Verilog HDL or VHDL warning at VGA_SYNC.VHD(310): object "instr" assigned a value but never read File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 310
-Info (12128): Elaborating entity "video_PLL" for hierarchy "VGA_SYNC_module:U1|video_PLL:video_PLL_inst" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 297
+Info (12128): Elaborating entity "video_PLL" for hierarchy "VGA_SYNC_module:U1|video_PLL:video_PLL_inst" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 302
 Info (12128): Elaborating entity "altpll" for hierarchy "VGA_SYNC_module:U1|video_PLL:video_PLL_inst|altpll:altpll_component" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/video_PLL.vhd Line: 132
 Info (12130): Elaborated megafunction instantiation "VGA_SYNC_module:U1|video_PLL:video_PLL_inst|altpll:altpll_component" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/video_PLL.vhd Line: 132
 Info (12133): Instantiated megafunction "VGA_SYNC_module:U1|video_PLL:video_PLL_inst|altpll:altpll_component" with the following parameter: File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/video_PLL.vhd Line: 132
@@ -917,6 +1974,218 @@ Info (12133): Instantiated megafunction "VGA_SYNC_module:U1|video_PLL:video_PLL_
 Info (12021): Found 1 design units, including 1 entities, in source file db/altpll_dp72.tdf
     Info (12023): Found entity 1: altpll_dp72 File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/altpll_dp72.tdf Line: 26
 Info (12128): Elaborating entity "altpll_dp72" for hierarchy "VGA_SYNC_module:U1|video_PLL:video_PLL_inst|altpll:altpll_component|altpll_dp72:auto_generated" File: c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/altpll.tdf Line: 898
+Info (19000): Inferred 11 megafunctions from design logic
+    Info (276031): Inferred altsyncram megafunction from the following design logic: "VGA_SYNC_module:U1|Mux6_rtl_0"
+        Info (286033): Parameter OPERATION_MODE set to ROM
+        Info (286033): Parameter WIDTH_A set to 1
+        Info (286033): Parameter WIDTHAD_A set to 16
+        Info (286033): Parameter NUMWORDS_A set to 65536
+        Info (286033): Parameter OUTDATA_REG_A set to UNREGISTERED
+        Info (286033): Parameter RAM_BLOCK_TYPE set to AUTO
+        Info (286033): Parameter INIT_FILE set to LEG16.VGA_Test0.rtl.mif
+    Info (276031): Inferred altsyncram megafunction from the following design logic: "VGA_SYNC_module:U1|Mux10_rtl_0"
+        Info (286033): Parameter OPERATION_MODE set to ROM
+        Info (286033): Parameter WIDTH_A set to 1
+        Info (286033): Parameter WIDTHAD_A set to 16
+        Info (286033): Parameter NUMWORDS_A set to 65536
+        Info (286033): Parameter OUTDATA_REG_A set to UNREGISTERED
+        Info (286033): Parameter RAM_BLOCK_TYPE set to AUTO
+        Info (286033): Parameter INIT_FILE set to LEG16.VGA_Test1.rtl.mif
+    Info (276031): Inferred altsyncram megafunction from the following design logic: "VGA_SYNC_module:U1|Mux14_rtl_0"
+        Info (286033): Parameter OPERATION_MODE set to ROM
+        Info (286033): Parameter WIDTH_A set to 1
+        Info (286033): Parameter WIDTHAD_A set to 16
+        Info (286033): Parameter NUMWORDS_A set to 65536
+        Info (286033): Parameter OUTDATA_REG_A set to UNREGISTERED
+        Info (286033): Parameter RAM_BLOCK_TYPE set to AUTO
+        Info (286033): Parameter INIT_FILE set to LEG16.VGA_Test2.rtl.mif
+    Info (276031): Inferred altsyncram megafunction from the following design logic: "VGA_SYNC_module:U1|Mux7_rtl_0"
+        Info (286033): Parameter OPERATION_MODE set to ROM
+        Info (286033): Parameter WIDTH_A set to 1
+        Info (286033): Parameter WIDTHAD_A set to 16
+        Info (286033): Parameter NUMWORDS_A set to 65536
+        Info (286033): Parameter OUTDATA_REG_A set to UNREGISTERED
+        Info (286033): Parameter RAM_BLOCK_TYPE set to AUTO
+        Info (286033): Parameter INIT_FILE set to LEG16.VGA_Test3.rtl.mif
+    Info (276031): Inferred altsyncram megafunction from the following design logic: "VGA_SYNC_module:U1|Mux11_rtl_0"
+        Info (286033): Parameter OPERATION_MODE set to ROM
+        Info (286033): Parameter WIDTH_A set to 1
+        Info (286033): Parameter WIDTHAD_A set to 16
+        Info (286033): Parameter NUMWORDS_A set to 65536
+        Info (286033): Parameter OUTDATA_REG_A set to UNREGISTERED
+        Info (286033): Parameter RAM_BLOCK_TYPE set to AUTO
+        Info (286033): Parameter INIT_FILE set to LEG16.VGA_Test4.rtl.mif
+    Info (276031): Inferred altsyncram megafunction from the following design logic: "VGA_SYNC_module:U1|Mux4_rtl_0"
+        Info (286033): Parameter OPERATION_MODE set to ROM
+        Info (286033): Parameter WIDTH_A set to 1
+        Info (286033): Parameter WIDTHAD_A set to 16
+        Info (286033): Parameter NUMWORDS_A set to 65536
+        Info (286033): Parameter OUTDATA_REG_A set to UNREGISTERED
+        Info (286033): Parameter RAM_BLOCK_TYPE set to AUTO
+        Info (286033): Parameter INIT_FILE set to LEG16.VGA_Test5.rtl.mif
+    Info (276031): Inferred altsyncram megafunction from the following design logic: "VGA_SYNC_module:U1|Mux8_rtl_0"
+        Info (286033): Parameter OPERATION_MODE set to ROM
+        Info (286033): Parameter WIDTH_A set to 1
+        Info (286033): Parameter WIDTHAD_A set to 16
+        Info (286033): Parameter NUMWORDS_A set to 65536
+        Info (286033): Parameter OUTDATA_REG_A set to UNREGISTERED
+        Info (286033): Parameter RAM_BLOCK_TYPE set to AUTO
+        Info (286033): Parameter INIT_FILE set to LEG16.VGA_Test6.rtl.mif
+    Info (276031): Inferred altsyncram megafunction from the following design logic: "VGA_SYNC_module:U1|Mux12_rtl_0"
+        Info (286033): Parameter OPERATION_MODE set to ROM
+        Info (286033): Parameter WIDTH_A set to 1
+        Info (286033): Parameter WIDTHAD_A set to 16
+        Info (286033): Parameter NUMWORDS_A set to 65536
+        Info (286033): Parameter OUTDATA_REG_A set to UNREGISTERED
+        Info (286033): Parameter RAM_BLOCK_TYPE set to AUTO
+        Info (286033): Parameter INIT_FILE set to LEG16.VGA_Test7.rtl.mif
+    Info (276031): Inferred altsyncram megafunction from the following design logic: "VGA_SYNC_module:U1|Mux5_rtl_0"
+        Info (286033): Parameter OPERATION_MODE set to ROM
+        Info (286033): Parameter WIDTH_A set to 1
+        Info (286033): Parameter WIDTHAD_A set to 16
+        Info (286033): Parameter NUMWORDS_A set to 65536
+        Info (286033): Parameter OUTDATA_REG_A set to UNREGISTERED
+        Info (286033): Parameter RAM_BLOCK_TYPE set to AUTO
+        Info (286033): Parameter INIT_FILE set to LEG16.VGA_Test8.rtl.mif
+    Info (276031): Inferred altsyncram megafunction from the following design logic: "VGA_SYNC_module:U1|Mux9_rtl_0"
+        Info (286033): Parameter OPERATION_MODE set to ROM
+        Info (286033): Parameter WIDTH_A set to 1
+        Info (286033): Parameter WIDTHAD_A set to 16
+        Info (286033): Parameter NUMWORDS_A set to 65536
+        Info (286033): Parameter OUTDATA_REG_A set to UNREGISTERED
+        Info (286033): Parameter RAM_BLOCK_TYPE set to AUTO
+        Info (286033): Parameter INIT_FILE set to LEG16.VGA_Test9.rtl.mif
+    Info (276031): Inferred altsyncram megafunction from the following design logic: "VGA_SYNC_module:U1|Mux13_rtl_0"
+        Info (286033): Parameter OPERATION_MODE set to ROM
+        Info (286033): Parameter WIDTH_A set to 1
+        Info (286033): Parameter WIDTHAD_A set to 16
+        Info (286033): Parameter NUMWORDS_A set to 65536
+        Info (286033): Parameter OUTDATA_REG_A set to UNREGISTERED
+        Info (286033): Parameter RAM_BLOCK_TYPE set to AUTO
+        Info (286033): Parameter INIT_FILE set to LEG16.VGA_Test10.rtl.mif
+Info (12130): Elaborated megafunction instantiation "VGA_SYNC_module:U1|altsyncram:Mux6_rtl_0"
+Info (12133): Instantiated megafunction "VGA_SYNC_module:U1|altsyncram:Mux6_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "ROM"
+    Info (12134): Parameter "WIDTH_A" = "1"
+    Info (12134): Parameter "WIDTHAD_A" = "16"
+    Info (12134): Parameter "NUMWORDS_A" = "65536"
+    Info (12134): Parameter "OUTDATA_REG_A" = "UNREGISTERED"
+    Info (12134): Parameter "RAM_BLOCK_TYPE" = "AUTO"
+    Info (12134): Parameter "INIT_FILE" = "LEG16.VGA_Test0.rtl.mif"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_ma01.tdf
+    Info (12023): Found entity 1: altsyncram_ma01 File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/altsyncram_ma01.tdf Line: 30
+Info (12021): Found 1 design units, including 1 entities, in source file db/mux_4nb.tdf
+    Info (12023): Found entity 1: mux_4nb File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/mux_4nb.tdf Line: 23
+Info (12130): Elaborated megafunction instantiation "VGA_SYNC_module:U1|altsyncram:Mux10_rtl_0"
+Info (12133): Instantiated megafunction "VGA_SYNC_module:U1|altsyncram:Mux10_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "ROM"
+    Info (12134): Parameter "WIDTH_A" = "1"
+    Info (12134): Parameter "WIDTHAD_A" = "16"
+    Info (12134): Parameter "NUMWORDS_A" = "65536"
+    Info (12134): Parameter "OUTDATA_REG_A" = "UNREGISTERED"
+    Info (12134): Parameter "RAM_BLOCK_TYPE" = "AUTO"
+    Info (12134): Parameter "INIT_FILE" = "LEG16.VGA_Test1.rtl.mif"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_na01.tdf
+    Info (12023): Found entity 1: altsyncram_na01 File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/altsyncram_na01.tdf Line: 30
+Info (12130): Elaborated megafunction instantiation "VGA_SYNC_module:U1|altsyncram:Mux14_rtl_0"
+Info (12133): Instantiated megafunction "VGA_SYNC_module:U1|altsyncram:Mux14_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "ROM"
+    Info (12134): Parameter "WIDTH_A" = "1"
+    Info (12134): Parameter "WIDTHAD_A" = "16"
+    Info (12134): Parameter "NUMWORDS_A" = "65536"
+    Info (12134): Parameter "OUTDATA_REG_A" = "UNREGISTERED"
+    Info (12134): Parameter "RAM_BLOCK_TYPE" = "AUTO"
+    Info (12134): Parameter "INIT_FILE" = "LEG16.VGA_Test2.rtl.mif"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_oa01.tdf
+    Info (12023): Found entity 1: altsyncram_oa01 File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/altsyncram_oa01.tdf Line: 30
+Info (12130): Elaborated megafunction instantiation "VGA_SYNC_module:U1|altsyncram:Mux7_rtl_0"
+Info (12133): Instantiated megafunction "VGA_SYNC_module:U1|altsyncram:Mux7_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "ROM"
+    Info (12134): Parameter "WIDTH_A" = "1"
+    Info (12134): Parameter "WIDTHAD_A" = "16"
+    Info (12134): Parameter "NUMWORDS_A" = "65536"
+    Info (12134): Parameter "OUTDATA_REG_A" = "UNREGISTERED"
+    Info (12134): Parameter "RAM_BLOCK_TYPE" = "AUTO"
+    Info (12134): Parameter "INIT_FILE" = "LEG16.VGA_Test3.rtl.mif"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_pa01.tdf
+    Info (12023): Found entity 1: altsyncram_pa01 File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/altsyncram_pa01.tdf Line: 30
+Info (12130): Elaborated megafunction instantiation "VGA_SYNC_module:U1|altsyncram:Mux11_rtl_0"
+Info (12133): Instantiated megafunction "VGA_SYNC_module:U1|altsyncram:Mux11_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "ROM"
+    Info (12134): Parameter "WIDTH_A" = "1"
+    Info (12134): Parameter "WIDTHAD_A" = "16"
+    Info (12134): Parameter "NUMWORDS_A" = "65536"
+    Info (12134): Parameter "OUTDATA_REG_A" = "UNREGISTERED"
+    Info (12134): Parameter "RAM_BLOCK_TYPE" = "AUTO"
+    Info (12134): Parameter "INIT_FILE" = "LEG16.VGA_Test4.rtl.mif"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_qa01.tdf
+    Info (12023): Found entity 1: altsyncram_qa01 File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/altsyncram_qa01.tdf Line: 30
+Info (12130): Elaborated megafunction instantiation "VGA_SYNC_module:U1|altsyncram:Mux4_rtl_0"
+Info (12133): Instantiated megafunction "VGA_SYNC_module:U1|altsyncram:Mux4_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "ROM"
+    Info (12134): Parameter "WIDTH_A" = "1"
+    Info (12134): Parameter "WIDTHAD_A" = "16"
+    Info (12134): Parameter "NUMWORDS_A" = "65536"
+    Info (12134): Parameter "OUTDATA_REG_A" = "UNREGISTERED"
+    Info (12134): Parameter "RAM_BLOCK_TYPE" = "AUTO"
+    Info (12134): Parameter "INIT_FILE" = "LEG16.VGA_Test5.rtl.mif"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_ra01.tdf
+    Info (12023): Found entity 1: altsyncram_ra01 File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/altsyncram_ra01.tdf Line: 30
+Info (12130): Elaborated megafunction instantiation "VGA_SYNC_module:U1|altsyncram:Mux8_rtl_0"
+Info (12133): Instantiated megafunction "VGA_SYNC_module:U1|altsyncram:Mux8_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "ROM"
+    Info (12134): Parameter "WIDTH_A" = "1"
+    Info (12134): Parameter "WIDTHAD_A" = "16"
+    Info (12134): Parameter "NUMWORDS_A" = "65536"
+    Info (12134): Parameter "OUTDATA_REG_A" = "UNREGISTERED"
+    Info (12134): Parameter "RAM_BLOCK_TYPE" = "AUTO"
+    Info (12134): Parameter "INIT_FILE" = "LEG16.VGA_Test6.rtl.mif"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_sa01.tdf
+    Info (12023): Found entity 1: altsyncram_sa01 File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/altsyncram_sa01.tdf Line: 30
+Info (12130): Elaborated megafunction instantiation "VGA_SYNC_module:U1|altsyncram:Mux12_rtl_0"
+Info (12133): Instantiated megafunction "VGA_SYNC_module:U1|altsyncram:Mux12_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "ROM"
+    Info (12134): Parameter "WIDTH_A" = "1"
+    Info (12134): Parameter "WIDTHAD_A" = "16"
+    Info (12134): Parameter "NUMWORDS_A" = "65536"
+    Info (12134): Parameter "OUTDATA_REG_A" = "UNREGISTERED"
+    Info (12134): Parameter "RAM_BLOCK_TYPE" = "AUTO"
+    Info (12134): Parameter "INIT_FILE" = "LEG16.VGA_Test7.rtl.mif"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_ta01.tdf
+    Info (12023): Found entity 1: altsyncram_ta01 File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/altsyncram_ta01.tdf Line: 30
+Info (12130): Elaborated megafunction instantiation "VGA_SYNC_module:U1|altsyncram:Mux5_rtl_0"
+Info (12133): Instantiated megafunction "VGA_SYNC_module:U1|altsyncram:Mux5_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "ROM"
+    Info (12134): Parameter "WIDTH_A" = "1"
+    Info (12134): Parameter "WIDTHAD_A" = "16"
+    Info (12134): Parameter "NUMWORDS_A" = "65536"
+    Info (12134): Parameter "OUTDATA_REG_A" = "UNREGISTERED"
+    Info (12134): Parameter "RAM_BLOCK_TYPE" = "AUTO"
+    Info (12134): Parameter "INIT_FILE" = "LEG16.VGA_Test8.rtl.mif"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_ua01.tdf
+    Info (12023): Found entity 1: altsyncram_ua01 File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/altsyncram_ua01.tdf Line: 30
+Info (12130): Elaborated megafunction instantiation "VGA_SYNC_module:U1|altsyncram:Mux9_rtl_0"
+Info (12133): Instantiated megafunction "VGA_SYNC_module:U1|altsyncram:Mux9_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "ROM"
+    Info (12134): Parameter "WIDTH_A" = "1"
+    Info (12134): Parameter "WIDTHAD_A" = "16"
+    Info (12134): Parameter "NUMWORDS_A" = "65536"
+    Info (12134): Parameter "OUTDATA_REG_A" = "UNREGISTERED"
+    Info (12134): Parameter "RAM_BLOCK_TYPE" = "AUTO"
+    Info (12134): Parameter "INIT_FILE" = "LEG16.VGA_Test9.rtl.mif"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_va01.tdf
+    Info (12023): Found entity 1: altsyncram_va01 File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/altsyncram_va01.tdf Line: 30
+Info (12130): Elaborated megafunction instantiation "VGA_SYNC_module:U1|altsyncram:Mux13_rtl_0"
+Info (12133): Instantiated megafunction "VGA_SYNC_module:U1|altsyncram:Mux13_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "ROM"
+    Info (12134): Parameter "WIDTH_A" = "1"
+    Info (12134): Parameter "WIDTHAD_A" = "16"
+    Info (12134): Parameter "NUMWORDS_A" = "65536"
+    Info (12134): Parameter "OUTDATA_REG_A" = "UNREGISTERED"
+    Info (12134): Parameter "RAM_BLOCK_TYPE" = "AUTO"
+    Info (12134): Parameter "INIT_FILE" = "LEG16.VGA_Test10.rtl.mif"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_7c01.tdf
+    Info (12023): Found entity 1: altsyncram_7c01 File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/db/altsyncram_7c01.tdf Line: 30
 Info (13000): Registers with preset signals will power-up high File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/LCD_Display.vhd Line: 46
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Warning (13024): Output pins are stuck at VCC or GND
@@ -951,6 +2220,7 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "LCD_BLON" is stuck at VCC File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 71
     Warning (13410): Pin "LCD_ON" is stuck at VCC File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 73
 Info (286030): Timing-Driven Synthesis is running
+Info (17049): 11 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 1 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 20 input pin(s) that do not drive logic
@@ -974,16 +2244,17 @@ Warning (21074): Design contains 20 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[15]" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 55
     Warning (15610): No output dependent on input pin "SW[16]" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 55
     Warning (15610): No output dependent on input pin "SW[17]" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 55
-Info (21057): Implemented 224 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 442 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 23 input pins
     Info (21059): Implemented 34 output pins
     Info (21060): Implemented 8 bidirectional pins
-    Info (21061): Implemented 158 logic cells
+    Info (21061): Implemented 288 logic cells
+    Info (21064): Implemented 88 RAM segments
     Info (21065): Implemented 1 PLLs
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 72 warnings
-    Info: Peak virtual memory: 691 megabytes
-    Info: Processing ended: Thu May  5 22:03:11 2022
-    Info: Elapsed time: 00:00:12
-    Info: Total CPU time (on all processors): 00:00:23
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 71 warnings
+    Info: Peak virtual memory: 899 megabytes
+    Info: Processing ended: Thu May  5 23:03:27 2022
+    Info: Elapsed time: 00:00:40
+    Info: Total CPU time (on all processors): 00:00:50
 
 
