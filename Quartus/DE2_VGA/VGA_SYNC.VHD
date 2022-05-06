@@ -36,7 +36,7 @@ ARCHITECTURE a OF VGA_SYNC_module IS
   
 COMPONENT LCD_Display -- referencing an entity in a different file or declaration
 
-	GENERIC(Num_Hex_Digits: Integer:= 2);
+	GENERIC(Num_Hex_Digits: Integer:= 4);
 
 	-- the ports in component declaration are the same (repeated) from the entity declaration
 	PORT(reset					: IN	STD_LOGIC;
@@ -339,7 +339,7 @@ video_on <= video_on_int;
 		(reset				=>	not SWITCHES(7), --NOT SW(17),
 		 -- v-- port/internal signals
 		 clk_50MHz			=>	clock_50Mhz, -- signal from outside
-		 Hex_Display_Data	=>	SWITCHES(7 DOWNTO 0),	--Hex_Display_Data, --SW(7 DOWNTO 0),	
+		 Hex_Display_Data	=>	Hex_Display_Data, --SW(7 DOWNTO 0),	
 		 LCD_RS				=>	LCD_RS,
 		 LCD_E				=>	LCD_EN,
 		 LCD_RW				=>	LCD_RW,
@@ -351,7 +351,7 @@ PROCESS(clock_50Mhz)
 BEGIN
 	--WAIT UNTIL(pixel_clock_int'EVENT) AND (pixel_clock_int='1');
   if rising_edge(clock_50Mhz) then
-		Hex_Display_Data <= "00010101";
+		Hex_Display_Data <= "0001010100010101";
 	
 	-- Calculate circle coords
 	-- Compute distance to the circleCenterX and Y:
@@ -379,7 +379,7 @@ BEGIN
 		-- runOneIter basically
 		instr := memory(conv_integer(PC));
 		PC <= PC + 1;
-		Hex_Display_Data <= "00010101";
+		Hex_Display_Data <= PC;
 		-- --
 		-- end if;
 

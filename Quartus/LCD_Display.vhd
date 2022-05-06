@@ -1,4 +1,3 @@
--- LCD_Display --
 LIBRARY IEEE;
 USE  IEEE.STD_LOGIC_1164.all;
 USE  IEEE.STD_LOGIC_ARITH.all;
@@ -8,7 +7,7 @@ USE  IEEE.STD_LOGIC_UNSIGNED.all;
 ENTITY LCD_Display IS
 -- Enter number of live Hex hardware data values to display
 -- (do not count ASCII character constants)
-	GENERIC(Num_Hex_Digits: Integer:= 2); 
+	GENERIC(Num_Hex_Digits: Integer:= 4); 
 
 -----------------------------------------------------------------------
 -- LCD Displays 16 Characters on 2 lines
@@ -50,7 +49,7 @@ ENTITY LCD_Display IS
 		
 END ENTITY LCD_Display;
 
-ARCHITECTURE ab OF LCD_Display IS
+ARCHITECTURE a OF LCD_Display IS
 
 TYPE character_string IS ARRAY ( 0 TO 31 ) OF STD_LOGIC_VECTOR( 7 DOWNTO 0 );
 
@@ -81,8 +80,8 @@ LCD_display_string <= (
 ------------------------------
 -- Line 1
 X"56",X"61",X"6C",X"75",X"65",X"3D",
-X"0" & Hex_Display_Data(7 DOWNTO 4),X"0" & Hex_Display_Data(3 DOWNTO 0),
-X"20",X"20",X"20",X"20",X"20",X"20",X"20",X"20",
+X"0" & Hex_Display_Data(15 DOWNTO 12),X"0" & Hex_Display_Data(11 DOWNTO 8),X"0" & Hex_Display_Data(7 DOWNTO 4),X"0" & Hex_Display_Data(3 DOWNTO 0),
+X"20",X"20",X"20",X"20",X"20",X"20",
 -- Line 2
 X"44",X"45",X"32",X"20",X"20",X"20",X"20",X"20",
 X"20",X"20",X"20",X"20",X"20",X"20",X"20",X"20");
@@ -247,4 +246,4 @@ X"20",X"20",X"20",X"20",X"20",X"20",X"20",X"20");
 		  END IF;
 		END IF;
 	END PROCESS;
-END ab;
+END a;
