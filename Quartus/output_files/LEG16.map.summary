@@ -1,14 +1,14 @@
-Analysis & Synthesis Status : Successful - Thu May  5 23:03:27 2022
+Analysis & Synthesis Status : Successful - Thu May  5 23:13:43 2022
 Quartus Prime Version : 21.1.0 Build 842 10/21/2021 SJ Lite Edition
 Revision Name : LEG16
 Top-level Entity Name : VGA_Test
 Family : Cyclone IV E
-Total logic elements : 286
-    Total combinational functions : 239
-    Dedicated logic registers : 128
-Total registers : 128
+Total logic elements : 488
+    Total combinational functions : 363
+    Dedicated logic registers : 236
+Total registers : 236
 Total pins : 65
 Total virtual pins : 0
-Total memory bits : 720,896
+Total memory bits : 0
 Embedded Multiplier 9-bit elements : 0
 Total PLLs : 1

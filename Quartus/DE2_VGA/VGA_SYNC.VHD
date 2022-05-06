@@ -347,9 +347,9 @@ BEGIN
 				when mn_addi =>
 					registers(conv_integer(decodedInstruction.conditionOrRegSelect)).dataOrInstruction <= registers(conv_integer(decodedInstruction.conditionOrRegSelect)).dataOrInstruction + decodedInstruction.immediate_orRegSelects_orRegSelectAndExtraOperation;
 							  -- MAXIMUM
-					-- Hex_Display_Data(31 downto 16) <= registers(conv_integer(decodedInstruction.conditionOrRegSelect)).dataOrInstruction;
+					Hex_Display_Data(31 downto 16) <= registers(conv_integer(decodedInstruction.conditionOrRegSelect)).dataOrInstruction;
 					--Hex_Display_Data(31 downto 16) <= "1110111011101110";
-					Hex_Display_Data(31 downto 16) <= instr.dataOrInstruction;
+					--Hex_Display_Data(31 downto 16) <= instr.dataOrInstruction;
 				when others =>
 					Hex_Display_Data(31 downto 16) <= "0110011001100110";
 			end case;
