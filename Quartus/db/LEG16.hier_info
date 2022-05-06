@@ -275,6 +275,10 @@ clock_50Mhz => Hex_Display_Data[28]~reg0.CLK
 clock_50Mhz => Hex_Display_Data[29]~reg0.CLK
 clock_50Mhz => Hex_Display_Data[30]~reg0.CLK
 clock_50Mhz => Hex_Display_Data[31]~reg0.CLK
+clock_50Mhz => Hex_Display_Data[60]~reg0.CLK
+clock_50Mhz => Hex_Display_Data[61]~reg0.CLK
+clock_50Mhz => Hex_Display_Data[62]~reg0.CLK
+clock_50Mhz => Hex_Display_Data[63]~reg0.CLK
 clock_50Mhz => registers[0].dataOrInstruction[0].CLK
 clock_50Mhz => registers[0].dataOrInstruction[1].CLK
 clock_50Mhz => registers[0].dataOrInstruction[2].CLK
@@ -631,6 +635,10 @@ KEYS[0] => PC[0].ENA
 KEYS[0] => Hex_Display_Data[29]~reg0.ENA
 KEYS[0] => Hex_Display_Data[30]~reg0.ENA
 KEYS[0] => Hex_Display_Data[31]~reg0.ENA
+KEYS[0] => Hex_Display_Data[60]~reg0.ENA
+KEYS[0] => Hex_Display_Data[61]~reg0.ENA
+KEYS[0] => Hex_Display_Data[62]~reg0.ENA
+KEYS[0] => Hex_Display_Data[63]~reg0.ENA
 KEYS[0] => registers[0].dataOrInstruction[0].ENA
 KEYS[0] => registers[0].dataOrInstruction[1].ENA
 KEYS[0] => registers[0].dataOrInstruction[2].ENA
@@ -958,10 +966,10 @@ Hex_Display_Data[56] <= <VCC>
 Hex_Display_Data[57] <= <GND>
 Hex_Display_Data[58] <= <VCC>
 Hex_Display_Data[59] <= <GND>
-Hex_Display_Data[60] <= <VCC>
-Hex_Display_Data[61] <= <GND>
-Hex_Display_Data[62] <= <GND>
-Hex_Display_Data[63] <= <GND>
+Hex_Display_Data[60] <= Hex_Display_Data[60]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Hex_Display_Data[61] <= Hex_Display_Data[61]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Hex_Display_Data[62] <= Hex_Display_Data[62]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Hex_Display_Data[63] <= Hex_Display_Data[63]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |VGA_Test|VGA_SYNC_module:U1|video_PLL:video_PLL_inst

@@ -376,6 +376,12 @@ BEGIN
 					Hex_Display_Data(31 downto 16) <= "0110011001100110";
 			end case;
 			Hex_Display_Data(15 downto 0) <= PC;
+			-- Write out flags
+			Hex_Display_Data(63) <= fl_carry;
+			Hex_Display_Data(62) <= fl_zero;
+			Hex_Display_Data(61) <= fl_signedCarry;
+			Hex_Display_Data(60) <= fl_negative;
+			-- Increment PC
 			PC <= PC + 1;
 			-- --
 
