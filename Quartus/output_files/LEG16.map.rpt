@@ -1,5 +1,5 @@
 Analysis & Synthesis report for LEG16
-Fri May  6 16:55:39 2022
+Fri May  6 17:56:40 2022
 Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
 
 
@@ -53,15 +53,15 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri May  6 16:55:39 2022       ;
+; Analysis & Synthesis Status        ; Successful - Fri May  6 17:56:40 2022       ;
 ; Quartus Prime Version              ; 21.1.0 Build 842 10/21/2021 SJ Lite Edition ;
 ; Revision Name                      ; LEG16                                       ;
 ; Top-level Entity Name              ; VGA_Test                                    ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 493                                         ;
-;     Total combinational functions  ; 367                                         ;
-;     Dedicated logic registers      ; 237                                         ;
-; Total registers                    ; 237                                         ;
+; Total logic elements               ; 1,034                                       ;
+;     Total combinational functions  ; 794                                         ;
+;     Dedicated logic registers      ; 372                                         ;
+; Total registers                    ; 372                                         ;
 ; Total pins                         ; 65                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
@@ -169,7 +169,9 @@ https://fpgasoftware.intel.com/eula.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-4         ;   0.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -196,20 +198,20 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimated Total logic elements              ; 493            ;
+; Estimated Total logic elements              ; 1,034          ;
 ;                                             ;                ;
-; Total combinational functions               ; 367            ;
+; Total combinational functions               ; 794            ;
 ; Logic element usage by number of LUT inputs ;                ;
-;     -- 4 input functions                    ; 210            ;
-;     -- 3 input functions                    ; 60             ;
-;     -- <=2 input functions                  ; 97             ;
+;     -- 4 input functions                    ; 522            ;
+;     -- 3 input functions                    ; 159            ;
+;     -- <=2 input functions                  ; 113            ;
 ;                                             ;                ;
 ; Logic elements by mode                      ;                ;
-;     -- normal mode                          ; 315            ;
-;     -- arithmetic mode                      ; 52             ;
+;     -- normal mode                          ; 642            ;
+;     -- arithmetic mode                      ; 152            ;
 ;                                             ;                ;
-; Total registers                             ; 237            ;
-;     -- Dedicated logic registers            ; 237            ;
+; Total registers                             ; 372            ;
+;     -- Dedicated logic registers            ; 372            ;
 ;     -- I/O registers                        ; 0              ;
 ;                                             ;                ;
 ; I/O pins                                    ; 65             ;
@@ -220,9 +222,9 @@ https://fpgasoftware.intel.com/eula.
 ;     -- PLLs                                 ; 1              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 238            ;
-; Total fan-out                               ; 2047           ;
-; Average fan-out                             ; 2.76           ;
+; Maximum fan-out                             ; 373            ;
+; Total fan-out                               ; 4032           ;
+; Average fan-out                             ; 3.09           ;
 +---------------------------------------------+----------------+
 
 
@@ -231,9 +233,9 @@ https://fpgasoftware.intel.com/eula.
 +------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------+-----------------+--------------+
 ; Compilation Hierarchy Node               ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                      ; Entity Name     ; Library Name ;
 +------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------------------------------------------------+-----------------+--------------+
-; |VGA_Test                                ; 367 (0)             ; 237 (0)                   ; 0           ; 0            ; 0       ; 0         ; 65   ; 0            ; |VGA_Test                                                                                                ; VGA_Test        ; work         ;
-;    |LCD_Display:U2|                      ; 136 (136)           ; 60 (60)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|LCD_Display:U2                                                                                 ; LCD_Display     ; work         ;
-;    |VGA_SYNC_module:U1|                  ; 231 (231)           ; 177 (177)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1                                                                             ; VGA_SYNC_module ; work         ;
+; |VGA_Test                                ; 794 (0)             ; 372 (0)                   ; 0           ; 0            ; 0       ; 0         ; 65   ; 0            ; |VGA_Test                                                                                                ; VGA_Test        ; work         ;
+;    |LCD_Display:U2|                      ; 138 (138)           ; 60 (60)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|LCD_Display:U2                                                                                 ; LCD_Display     ; work         ;
+;    |VGA_SYNC_module:U1|                  ; 656 (656)           ; 312 (312)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1                                                                             ; VGA_SYNC_module ; work         ;
 ;       |video_PLL:video_PLL_inst|         ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1|video_PLL:video_PLL_inst                                                    ; video_PLL       ; work         ;
 ;          |altpll:altpll_component|       ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1|video_PLL:video_PLL_inst|altpll:altpll_component                            ; altpll          ; work         ;
 ;             |altpll_dp72:auto_generated| ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |VGA_Test|VGA_SYNC_module:U1|video_PLL:video_PLL_inst|altpll:altpll_component|altpll_dp72:auto_generated ; altpll_dp72     ; work         ;
@@ -285,18 +287,17 @@ Encoding Type:  One-Hot
 +---------------------+---------------------+-------------------+--------------+--------------+------------+------------------+-------------------+-------------+--------------------+----------------+------------------+----------------+--------------+
 
 
-+--------------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                               ;
-+---------------------------------------------+----------------------------------------------------+
-; Register name                               ; Reason for Removal                                 ;
-+---------------------------------------------+----------------------------------------------------+
-; VGA_SYNC_module:U1|Hex_Display_Data[61..63] ; Stuck at GND due to stuck port data_in             ;
-; LCD_Display:U2|next_command.HOLD            ; Merged with LCD_Display:U2|next_command.DROP_LCD_E ;
-; LCD_Display:U2|next_command.RESET1          ; Merged with LCD_Display:U2|next_command.DROP_LCD_E ;
-; VGA_SYNC_module:U1|PC[0]                    ; Merged with VGA_SYNC_module:U1|Hex_Display_Data[0] ;
-; LCD_Display:U2|next_command.DROP_LCD_E      ; Stuck at GND due to stuck port data_in             ;
-; Total Number of Removed Registers = 7       ;                                                    ;
-+---------------------------------------------+----------------------------------------------------+
++---------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                          ;
++----------------------------------------+----------------------------------------------------+
+; Register name                          ; Reason for Removal                                 ;
++----------------------------------------+----------------------------------------------------+
+; LCD_Display:U2|next_command.HOLD       ; Merged with LCD_Display:U2|next_command.DROP_LCD_E ;
+; LCD_Display:U2|next_command.RESET1     ; Merged with LCD_Display:U2|next_command.DROP_LCD_E ;
+; VGA_SYNC_module:U1|PC[0]               ; Merged with VGA_SYNC_module:U1|Hex_Display_Data[0] ;
+; LCD_Display:U2|next_command.DROP_LCD_E ; Stuck at GND due to stuck port data_in             ;
+; Total Number of Removed Registers = 4  ;                                                    ;
++----------------------------------------+----------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -304,12 +305,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 237   ;
+; Total registers                              ; 372   ;
 ; Number of registers using Synchronous Clear  ; 20    ;
-; Number of registers using Synchronous Load   ; 5     ;
+; Number of registers using Synchronous Load   ; 8     ;
 ; Number of registers using Asynchronous Clear ; 34    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 214   ;
+; Number of registers using Clock Enable       ; 348   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -328,39 +329,51 @@ Encoding Type:  One-Hot
 ; VGA_SYNC_module:U1|Hex_Display_Data[18] ; 1       ;
 ; VGA_SYNC_module:U1|Hex_Display_Data[10] ; 1       ;
 ; VGA_SYNC_module:U1|Hex_Display_Data[26] ; 1       ;
-; VGA_SYNC_module:U1|Hex_Display_Data[20] ; 1       ;
-; VGA_SYNC_module:U1|Hex_Display_Data[16] ; 1       ;
+; VGA_SYNC_module:U1|Hex_Display_Data[0]  ; 47      ;
 ; VGA_SYNC_module:U1|Hex_Display_Data[4]  ; 1       ;
-; VGA_SYNC_module:U1|Hex_Display_Data[8]  ; 1       ;
 ; VGA_SYNC_module:U1|Hex_Display_Data[12] ; 1       ;
-; VGA_SYNC_module:U1|Hex_Display_Data[0]  ; 40      ;
+; VGA_SYNC_module:U1|Hex_Display_Data[16] ; 1       ;
+; VGA_SYNC_module:U1|Hex_Display_Data[20] ; 1       ;
+; VGA_SYNC_module:U1|Hex_Display_Data[8]  ; 1       ;
+; VGA_SYNC_module:U1|Hex_Display_Data[60] ; 1       ;
 ; VGA_SYNC_module:U1|Hex_Display_Data[28] ; 1       ;
 ; VGA_SYNC_module:U1|Hex_Display_Data[24] ; 1       ;
-; VGA_SYNC_module:U1|Hex_Display_Data[60] ; 1       ;
-; VGA_SYNC_module:U1|enableSwitch         ; 3       ;
+; VGA_SYNC_module:U1|enableSwitch         ; 2       ;
 ; Total number of inverted registers = 19 ;         ;
 +-----------------------------------------+---------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                      ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------+
-; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |VGA_Test|VGA_SYNC_module:U1|registers[0].dataOrInstruction[3]  ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |VGA_Test|VGA_SYNC_module:U1|registers[1].dataOrInstruction[3]  ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |VGA_Test|VGA_SYNC_module:U1|registers[2].dataOrInstruction[11] ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |VGA_Test|VGA_SYNC_module:U1|registers[3].dataOrInstruction[3]  ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |VGA_Test|VGA_SYNC_module:U1|registers[4].dataOrInstruction[2]  ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |VGA_Test|VGA_SYNC_module:U1|registers[5].dataOrInstruction[1]  ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |VGA_Test|VGA_SYNC_module:U1|registers[6].dataOrInstruction[5]  ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |VGA_Test|VGA_SYNC_module:U1|registers[7].dataOrInstruction[12] ;
-; 3:1                ; 20 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |VGA_Test|LCD_Display:U2|CLK_COUNT_400HZ[11]                    ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |VGA_Test|LCD_Display:U2|DATA_BUS_VALUE[4]                      ;
-; 3:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; No         ; |VGA_Test|LCD_Display:U2|state                                  ;
-; 8:1                ; 16 bits   ; 80 LEs        ; 80 LEs               ; 0 LEs                  ; No         ; |VGA_Test|VGA_SYNC_module:U1|Mux28                              ;
-; 32:1               ; 3 bits    ; 63 LEs        ; 36 LEs               ; 27 LEs                 ; No         ; |VGA_Test|LCD_Display:U2|Mux3                                   ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------+
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |VGA_Test|VGA_SYNC_module:U1|registers[15].dataOrInstruction[5]  ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |VGA_Test|VGA_SYNC_module:U1|registers[14].dataOrInstruction[10] ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |VGA_Test|VGA_SYNC_module:U1|registers[13].dataOrInstruction[14] ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |VGA_Test|VGA_SYNC_module:U1|registers[12].dataOrInstruction[9]  ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |VGA_Test|VGA_SYNC_module:U1|registers[11].dataOrInstruction[11] ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |VGA_Test|VGA_SYNC_module:U1|registers[10].dataOrInstruction[6]  ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |VGA_Test|VGA_SYNC_module:U1|registers[9].dataOrInstruction[11]  ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |VGA_Test|VGA_SYNC_module:U1|registers[8].dataOrInstruction[2]   ;
+; 3:1                ; 20 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |VGA_Test|LCD_Display:U2|CLK_COUNT_400HZ[6]                      ;
+; 16:1               ; 9 bits    ; 90 LEs        ; 36 LEs               ; 54 LEs                 ; Yes        ; |VGA_Test|VGA_SYNC_module:U1|Hex_Display_Data[17]                ;
+; 16:1               ; 3 bits    ; 30 LEs        ; 6 LEs                ; 24 LEs                 ; Yes        ; |VGA_Test|VGA_SYNC_module:U1|fl_carry                            ;
+; 19:1               ; 16 bits   ; 192 LEs       ; 32 LEs               ; 160 LEs                ; Yes        ; |VGA_Test|VGA_SYNC_module:U1|registers[0].dataOrInstruction[0]   ;
+; 19:1               ; 16 bits   ; 192 LEs       ; 32 LEs               ; 160 LEs                ; Yes        ; |VGA_Test|VGA_SYNC_module:U1|registers[1].dataOrInstruction[8]   ;
+; 19:1               ; 16 bits   ; 192 LEs       ; 32 LEs               ; 160 LEs                ; Yes        ; |VGA_Test|VGA_SYNC_module:U1|registers[2].dataOrInstruction[15]  ;
+; 19:1               ; 16 bits   ; 192 LEs       ; 32 LEs               ; 160 LEs                ; Yes        ; |VGA_Test|VGA_SYNC_module:U1|registers[3].dataOrInstruction[15]  ;
+; 19:1               ; 16 bits   ; 192 LEs       ; 32 LEs               ; 160 LEs                ; Yes        ; |VGA_Test|VGA_SYNC_module:U1|registers[4].dataOrInstruction[15]  ;
+; 19:1               ; 16 bits   ; 192 LEs       ; 32 LEs               ; 160 LEs                ; Yes        ; |VGA_Test|VGA_SYNC_module:U1|registers[5].dataOrInstruction[0]   ;
+; 19:1               ; 16 bits   ; 192 LEs       ; 32 LEs               ; 160 LEs                ; Yes        ; |VGA_Test|VGA_SYNC_module:U1|registers[6].dataOrInstruction[13]  ;
+; 19:1               ; 16 bits   ; 192 LEs       ; 32 LEs               ; 160 LEs                ; Yes        ; |VGA_Test|VGA_SYNC_module:U1|registers[7].dataOrInstruction[7]   ;
+; 16:1               ; 6 bits    ; 60 LEs        ; 24 LEs               ; 36 LEs                 ; Yes        ; |VGA_Test|VGA_SYNC_module:U1|Hex_Display_Data[28]                ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |VGA_Test|LCD_Display:U2|DATA_BUS_VALUE[5]                       ;
+; 3:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; No         ; |VGA_Test|LCD_Display:U2|state                                   ;
+; 8:1                ; 16 bits   ; 80 LEs        ; 80 LEs               ; 0 LEs                  ; No         ; |VGA_Test|VGA_SYNC_module:U1|Mux26                               ;
+; 16:1               ; 16 bits   ; 160 LEs       ; 160 LEs              ; 0 LEs                  ; No         ; |VGA_Test|VGA_SYNC_module:U1|Mux32                               ;
+; 32:1               ; 4 bits    ; 84 LEs        ; 48 LEs               ; 36 LEs                 ; No         ; |VGA_Test|LCD_Display:U2|Mux6                                    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------+
 
 
 +-------------------------------------------------------------+
@@ -793,28 +806,28 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 65                          ;
-; cycloneiii_ff         ; 237                         ;
+; cycloneiii_ff         ; 372                         ;
 ;     CLR               ; 1                           ;
-;     ENA               ; 176                         ;
+;     ENA               ; 307                         ;
 ;     ENA CLR           ; 33                          ;
-;     ENA SLD           ; 5                           ;
+;     ENA SLD           ; 8                           ;
 ;     SCLR              ; 20                          ;
-;     plain             ; 2                           ;
+;     plain             ; 3                           ;
 ; cycloneiii_io_obuf    ; 8                           ;
-; cycloneiii_lcell_comb ; 371                         ;
-;     arith             ; 52                          ;
-;         2 data inputs ; 43                          ;
-;         3 data inputs ; 9                           ;
-;     normal            ; 319                         ;
+; cycloneiii_lcell_comb ; 798                         ;
+;     arith             ; 152                         ;
+;         2 data inputs ; 53                          ;
+;         3 data inputs ; 99                          ;
+;     normal            ; 646                         ;
 ;         0 data inputs ; 2                           ;
-;         1 data inputs ; 13                          ;
-;         2 data inputs ; 43                          ;
-;         3 data inputs ; 51                          ;
-;         4 data inputs ; 210                         ;
+;         1 data inputs ; 16                          ;
+;         2 data inputs ; 46                          ;
+;         3 data inputs ; 60                          ;
+;         4 data inputs ; 522                         ;
 ; cycloneiii_pll        ; 1                           ;
 ;                       ;                             ;
-; Max LUT depth         ; 9.50                        ;
-; Average LUT depth     ; 5.56                        ;
+; Max LUT depth         ; 15.00                       ;
+; Average LUT depth     ; 9.44                        ;
 +-----------------------+-----------------------------+
 
 
@@ -823,7 +836,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:37     ;
+; Top            ; 00:00:48     ;
 +----------------+--------------+
 
 
@@ -833,7 +846,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
-    Info: Processing started: Fri May  6 16:54:49 2022
+    Info: Processing started: Fri May  6 17:55:37 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off LEG16 -c LEG16
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -863,18 +876,14 @@ Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(17): used impli
 Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(17): used implicit default value for signal "vert_sync_out" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 17
 Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(19): used implicit default value for signal "pixel_row" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 19
 Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(19): used implicit default value for signal "pixel_column" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 19
-Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(110): used implicit default value for signal "video_on_v" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 110
-Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(110): used implicit default value for signal "video_on_h" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 110
-Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(111): used implicit default value for signal "h_count" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 111
-Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(111): used implicit default value for signal "v_count" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 111
-Warning (10036): Verilog HDL or VHDL warning at VGA_SYNC.VHD(116): object "distToCircleCenterSquared" assigned a value but never read File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 116
-Warning (10540): VHDL Signal Declaration warning at VGA_SYNC.VHD(120): used explicit default value for signal "SP" because signal was never assigned a value File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 120
-Warning (10540): VHDL Signal Declaration warning at VGA_SYNC.VHD(123): used explicit default value for signal "fl_carry" because signal was never assigned a value File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 123
-Warning (10540): VHDL Signal Declaration warning at VGA_SYNC.VHD(124): used explicit default value for signal "fl_zero" because signal was never assigned a value File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 124
-Warning (10540): VHDL Signal Declaration warning at VGA_SYNC.VHD(125): used explicit default value for signal "fl_signedCarry" because signal was never assigned a value File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 125
-Warning (10540): VHDL Signal Declaration warning at VGA_SYNC.VHD(126): used explicit default value for signal "fl_negative" because signal was never assigned a value File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 126
-Warning (10540): VHDL Signal Declaration warning at VGA_SYNC.VHD(142): used explicit default value for signal "memory" because signal was never assigned a value File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 142
-Info (12128): Elaborating entity "video_PLL" for hierarchy "VGA_SYNC_module:U1|video_PLL:video_PLL_inst" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 321
+Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(147): used implicit default value for signal "video_on_v" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 147
+Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(147): used implicit default value for signal "video_on_h" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 147
+Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(148): used implicit default value for signal "h_count" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 148
+Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(148): used implicit default value for signal "v_count" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 148
+Warning (10036): Verilog HDL or VHDL warning at VGA_SYNC.VHD(153): object "distToCircleCenterSquared" assigned a value but never read File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 153
+Warning (10540): VHDL Signal Declaration warning at VGA_SYNC.VHD(157): used explicit default value for signal "SP" because signal was never assigned a value File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 157
+Warning (10540): VHDL Signal Declaration warning at VGA_SYNC.VHD(214): used explicit default value for signal "memory" because signal was never assigned a value File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 214
+Info (12128): Elaborating entity "video_PLL" for hierarchy "VGA_SYNC_module:U1|video_PLL:video_PLL_inst" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 393
 Info (12128): Elaborating entity "altpll" for hierarchy "VGA_SYNC_module:U1|video_PLL:video_PLL_inst|altpll:altpll_component" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/video_PLL.vhd Line: 132
 Info (12130): Elaborated megafunction instantiation "VGA_SYNC_module:U1|video_PLL:video_PLL_inst|altpll:altpll_component" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/video_PLL.vhd Line: 132
 Info (12133): Instantiated megafunction "VGA_SYNC_module:U1|video_PLL:video_PLL_inst|altpll:altpll_component" with the following parameter: File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/video_PLL.vhd Line: 132
@@ -991,16 +1000,16 @@ Warning (21074): Design contains 20 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[15]" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 55
     Warning (15610): No output dependent on input pin "SW[16]" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 55
     Warning (15610): No output dependent on input pin "SW[17]" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd Line: 55
-Info (21057): Implemented 576 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1133 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 23 input pins
     Info (21059): Implemented 34 output pins
     Info (21060): Implemented 8 bidirectional pins
-    Info (21061): Implemented 510 logic cells
+    Info (21061): Implemented 1067 logic cells
     Info (21065): Implemented 1 PLLs
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 75 warnings
-    Info: Peak virtual memory: 854 megabytes
-    Info: Processing ended: Fri May  6 16:55:39 2022
-    Info: Elapsed time: 00:00:50
-    Info: Total CPU time (on all processors): 00:00:59
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 71 warnings
+    Info: Peak virtual memory: 845 megabytes
+    Info: Processing ended: Fri May  6 17:56:40 2022
+    Info: Elapsed time: 00:01:03
+    Info: Total CPU time (on all processors): 00:01:11
 
 

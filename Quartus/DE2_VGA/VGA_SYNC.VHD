@@ -87,6 +87,28 @@ ARCHITECTURE a OF VGA_SYNC_module IS
 
 	-- functions --
 
+	function f_maximum(arg1: in t_MemoryCell; arg2: in t_MemoryCell)
+		return t_MemoryCell is variable v_res: t_MemoryCell;
+	begin
+		if arg1.dataOrInstruction > arg2.dataOrInstruction then
+			v_res := arg1;
+		else
+			v_res := arg2;
+		end if;
+		return v_res;
+	end function;
+	
+	function f_minimum(arg1: in t_MemoryCell; arg2: in t_MemoryCell)
+		return t_MemoryCell is variable v_res: t_MemoryCell;
+	begin
+		if arg1.dataOrInstruction < arg2.dataOrInstruction then
+			v_res := arg1;
+		else
+			v_res := arg2;
+		end if;
+		return v_res;
+	end function;
+
 	-- https://www.nandland.com/vhdl/examples/example-function-advanced.html
   function f_is_msb_set_forUInt8 (
     value    : in std_logic_vector(7 downto 0))
@@ -103,6 +125,21 @@ ARCHITECTURE a OF VGA_SYNC_module IS
 		v_res := (dataOrInstruction => conv_std_logic_vector(value, mcbi)); -- https://insights.sigasi.com/tech/records-initialize/
 		return v_res;
 	end function f_memoryCellFromImmediate;
+	
+	function f_memoryCellFromImmediate_vecMCBI(value: in std_logic_vector(mcbi-1 downto 0))
+		return t_MemoryCell is variable v_res: t_MemoryCell;
+	begin
+		v_res := (dataOrInstruction => value); -- https://insights.sigasi.com/tech/records-initialize/
+		return v_res;
+	end function f_memoryCellFromImmediate_vecMCBI;
+	
+	function f_memoryCellFromImmediate_vec8(value: in std_logic_vector(7 downto 0))
+		return t_MemoryCell is variable v_res: t_MemoryCell;
+	begin
+		v_res := (dataOrInstruction => (others => '0')); -- https://insights.sigasi.com/tech/records-initialize/
+		v_res.dataOrInstruction(7 downto 0) := value;
+		return v_res;
+	end function f_memoryCellFromImmediate_vec8;
 
 	-- signals --
 	
@@ -133,7 +170,42 @@ ARCHITECTURE a OF VGA_SYNC_module IS
 			fl_zero <= '1';
 		else
 			fl_zero <= '0';
+		end if;
+		if arg1.dataOrInstruction(15) = arg2.dataOrInstruction(15) and res.dataOrInstruction(15) /= arg1.dataOrInstruction(15) then
+			fl_signedCarry <= '1';
+		else
+			fl_signedCarry <= '0';
 		 end if;
+		if res.dataOrInstruction(15) = '1' then
+			fl_negative <= '1';
+		else
+			fl_negative <= '0';
+		 end if;
+	end procedure;
+	
+	procedure p_updateFlagsForAdd_internal(arg1: in t_MemoryCell; arg2: in t_MemoryCell; res: in t_MemoryCell) is
+	begin
+		if res.dataOrInstruction < f_maximum(arg1, arg2).dataOrInstruction then
+			fl_carry <= '1';
+		else
+			fl_carry <= '0';
+		end if;
+	end procedure;
+
+	procedure p_updateFlagsForAdd(arg1: in t_MemoryCell; arg2: in t_MemoryCell; res: in t_MemoryCell) is
+	begin
+	  p_updateFlagsForAdd_internal(arg1, arg2, res);
+	  p_updateFlagsForAddAndSubCommon(arg1, arg2, res);
+	end procedure;
+	
+	procedure p_updateFlagsForSub(arg1: in t_MemoryCell; arg2: in t_MemoryCell; res: in t_MemoryCell) is
+	begin
+		if res.dataOrInstruction > f_minimum(arg1, arg2).dataOrInstruction then
+			fl_carry <= '1';
+		else
+			fl_carry <= '0';
+		end if;
+	  p_updateFlagsForAddAndSubCommon(arg1, arg2, res);
 	end procedure;
 
 	-- etc. --
@@ -333,7 +405,7 @@ video_on <= video_on_int;
 PROCESS(clock_50Mhz)
   variable instr : t_MemoryCell := (dataOrInstruction => conv_std_logic_vector(0, 16));
   variable decodedInstruction : t_Instruction;
-  variable res: std_logic_vector(15 downto 0);
+  variable res: std_logic_vector(mcbi-1 downto 0);
 BEGIN
 	--WAIT UNTIL(pixel_clock_int'EVENT) AND (pixel_clock_int='1');
   if rising_edge(clock_50Mhz) then
@@ -366,15 +438,36 @@ BEGIN
 			case decodedInstruction.mnemonic is 
 				when mn_addi =>
 					res := registers(conv_integer(decodedInstruction.conditionOrRegSelect)).dataOrInstruction + decodedInstruction.immediate_orRegSelects_orRegSelectAndExtraOperation;
+					p_updateFlagsForAdd(registers(conv_integer(decodedInstruction.conditionOrRegSelect)), f_memoryCellFromImmediate_vec8(decodedInstruction.immediate_orRegSelects_orRegSelectAndExtraOperation), f_memoryCellFromImmediate_vecMCBI(res));
+					
 					registers(conv_integer(decodedInstruction.conditionOrRegSelect)).dataOrInstruction <= res;
-							  -- MAXIMUM
+					
 					--Hex_Display_Data(31 downto 16) <= registers(conv_integer(decodedInstruction.conditionOrRegSelect)).dataOrInstruction; --reads back the old value
-					Hex_Display_Data(31 downto 16) <= res;
 					--Hex_Display_Data(31 downto 16) <= "1110111011101110";
 					--Hex_Display_Data(31 downto 16) <= instr.dataOrInstruction;
+
+					-- Write out res
+					Hex_Display_Data(31 downto 16) <= res;
+				when mn_subi =>
+					res := registers(conv_integer(decodedInstruction.conditionOrRegSelect)).dataOrInstruction - decodedInstruction.immediate_orRegSelects_orRegSelectAndExtraOperation;
+					p_updateFlagsForSub(registers(conv_integer(decodedInstruction.conditionOrRegSelect)), f_memoryCellFromImmediate_vec8(decodedInstruction.immediate_orRegSelects_orRegSelectAndExtraOperation), f_memoryCellFromImmediate_vecMCBI(res));
+					
+					registers(conv_integer(decodedInstruction.conditionOrRegSelect)).dataOrInstruction <= res;
+
+					-- Write out res
+					Hex_Display_Data(31 downto 16) <= res;
+				when mn_add =>
+					res := registers(conv_integer(decodedInstruction.conditionOrRegSelect)).dataOrInstruction + registers(conv_integer(decodedInstruction.immediate_orRegSelects_orRegSelectAndExtraOperation(3 downto 0))).dataOrInstruction;
+					p_updateFlagsForAdd(registers(conv_integer(decodedInstruction.conditionOrRegSelect)), registers(conv_integer(decodedInstruction.immediate_orRegSelects_orRegSelectAndExtraOperation(3 downto 0))), f_memoryCellFromImmediate_vecMCBI(res));
+					
+					registers(conv_integer(decodedInstruction.immediate_orRegSelects_orRegSelectAndExtraOperation(7 downto 4))).dataOrInstruction <= res;
+					
+					-- Write out res
+					Hex_Display_Data(31 downto 16) <= res;
 				when others =>
 					Hex_Display_Data(31 downto 16) <= "0110011001100110";
 			end case;
+			-- Write out PC
 			Hex_Display_Data(15 downto 0) <= PC;
 			-- Write out flags
 			Hex_Display_Data(63) <= fl_carry;
