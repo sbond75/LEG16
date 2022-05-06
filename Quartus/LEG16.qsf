@@ -1109,7 +1109,6 @@ set_instance_assignment -name IO_STANDARD LVDS -to HSMC_TX_D_N[16]
 set_instance_assignment -name IO_STANDARD LVDS -to HSMC_RX_D_N[16]
 set_instance_assignment -name IO_STANDARD LVDS -to HSMC_CLKOUT_N2
 set_instance_assignment -name IO_STANDARD LVDS -to HSMC_CLKOUT_N1
-set_global_assignment -name VHDL_FILE LCD_Test.vhd
 set_global_assignment -name VHDL_FILE LCD_Display.vhd
 set_global_assignment -name VHDL_FILE DE2_VGA/video_PLL.vhd
 set_global_assignment -name VHDL_FILE DE2_VGA/VGA_Test.vhd

@@ -17,7 +17,7 @@
 -- PROGRAM "Quartus Prime"
 -- VERSION "Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition"
 
--- DATE "05/05/2022 23:19:02"
+-- DATE "05/06/2022 16:49:52"
 
 -- 
 -- Device: Altera EP4CE115F29C7 Package FBGA780
@@ -693,7 +693,7 @@ SIGNAL \U1|registers[4].dataOrInstruction\ : std_logic_vector(15 DOWNTO 0);
 SIGNAL \U2|CHAR_COUNT\ : std_logic_vector(4 DOWNTO 0);
 SIGNAL \U1|PC\ : std_logic_vector(15 DOWNTO 0);
 SIGNAL \U1|registers[6].dataOrInstruction\ : std_logic_vector(15 DOWNTO 0);
-SIGNAL \U1|Hex_Display_Data\ : std_logic_vector(31 DOWNTO 0);
+SIGNAL \U1|Hex_Display_Data\ : std_logic_vector(63 DOWNTO 0);
 SIGNAL \U2|DATA_BUS_VALUE\ : std_logic_vector(7 DOWNTO 0);
 SIGNAL \U1|registers[7].dataOrInstruction\ : std_logic_vector(15 DOWNTO 0);
 SIGNAL \U1|registers[2].dataOrInstruction\ : std_logic_vector(15 DOWNTO 0);

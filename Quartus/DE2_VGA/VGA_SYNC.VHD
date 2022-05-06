@@ -24,7 +24,7 @@ ENTITY VGA_SYNC_module IS
     
     --SW 			: IN STD_LOGIC_VECTOR (17 downto 0);         -- DPDT switches
 
-	Hex_Display_Data: out std_logic_vector((Num_Hex_Digits*4)-1 downto 0) := "00010101000101010001010100010101"
+	Hex_Display_Data: out std_logic_vector((Num_Hex_Digits*4)-1 downto 0) := "0001010100010101000101010001010100010101000101010001010100010101"
 			);
 END VGA_SYNC_module;
 ARCHITECTURE a OF VGA_SYNC_module IS
@@ -77,6 +77,7 @@ ARCHITECTURE a OF VGA_SYNC_module IS
 		dataOrInstruction: std_logic_vector(15 downto 0);
 	end record t_MemoryCell;
 	constant t_MemoryCell_size: unsigned := conv_unsigned(2, 64); -- bytes
+	constant mcbi: integer := 16; -- bits in a t_MemoryCell
 	
 	type t_Instruction is record
 		immediate_orRegSelects_orRegSelectAndExtraOperation: std_logic_vector(7 downto 0); -- this is used to store either an immediate or two register selects or ((a register select and an extra operation)).
@@ -99,7 +100,7 @@ ARCHITECTURE a OF VGA_SYNC_module IS
 	function f_memoryCellFromImmediate(value: in unsigned)
 		return t_MemoryCell is variable v_res: t_MemoryCell;
 	begin
-		v_res := (dataOrInstruction => conv_std_logic_vector(value, 16)); -- https://insights.sigasi.com/tech/records-initialize/
+		v_res := (dataOrInstruction => conv_std_logic_vector(value, mcbi)); -- https://insights.sigasi.com/tech/records-initialize/
 		return v_res;
 	end function f_memoryCellFromImmediate;
 
@@ -115,9 +116,27 @@ ARCHITECTURE a OF VGA_SYNC_module IS
 	signal distToCircleCenterSquared: STD_LOGIC_VECTOR(19 DOWNTO 0);
 	--signal distToCircleCenterReal: integer;
 
-        signal PC: MemoryPointingRegister := conv_std_logic_vector(0, 16);
-        signal SP: MemoryPointingRegister := conv_std_logic_vector(16383, 16); --floor(65535 / 2 / 2); --"should" be: conv_std_logic_vector(MEMORY_SIZE / t_MemoryCell_size / 2, 16); -- We initialize SP to halfway in the memory
+    signal PC: MemoryPointingRegister := conv_std_logic_vector(0, mcbi);
+    signal SP: MemoryPointingRegister := conv_std_logic_vector(16383, mcbi); --floor(65535 / 2 / 2); --"should" be: conv_std_logic_vector(MEMORY_SIZE / t_MemoryCell_size / 2, 16); -- We initialize SP to halfway in the memory
 	signal SP_orig: MemoryPointingRegister := SP;
+	-- flags
+	signal fl_carry: std_logic := '0';
+	signal fl_zero: std_logic := '0';
+	signal fl_signedCarry: std_logic := '0';
+	signal fl_negative: std_logic := '0';
+
+	-- procedures --
+	
+	procedure p_updateFlagsForAddAndSubCommon(arg1: in t_MemoryCell; arg2: in t_MemoryCell; res: in t_MemoryCell) is
+	begin
+		if res.dataOrInstruction = conv_std_logic_vector(0, mcbi) then
+			fl_zero <= '1';
+		else
+			fl_zero <= '0';
+		 end if;
+	end procedure;
+
+	-- etc. --
 
 	type t_MEMORY is array(65535 downto 0) of t_MemoryCell; --"should" be: type t_MEMORY is array(MEMORY_SIZE downto 0) of t_MemoryCell;
 	signal memory: t_MEMORY := (

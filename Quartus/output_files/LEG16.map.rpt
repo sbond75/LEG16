@@ -1,5 +1,5 @@
 Analysis & Synthesis report for LEG16
-Thu May  5 23:18:37 2022
+Fri May  6 16:49:28 2022
 Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
 
 
@@ -53,7 +53,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu May  5 23:18:37 2022       ;
+; Analysis & Synthesis Status        ; Successful - Fri May  6 16:49:28 2022       ;
 ; Quartus Prime Version              ; 21.1.0 Build 842 10/21/2021 SJ Lite Edition ;
 ; Revision Name                      ; LEG16                                       ;
 ; Top-level Entity Name              ; VGA_Test                                    ;
@@ -366,7 +366,7 @@ Encoding Type:  One-Hot
 +----------------+-------+------------------------------------+
 ; Parameter Name ; Value ; Type                               ;
 +----------------+-------+------------------------------------+
-; num_hex_digits ; 8     ; Signed Integer                     ;
+; num_hex_digits ; 16    ; Signed Integer                     ;
 +----------------+-------+------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
@@ -376,7 +376,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+----------------------------------------+
 ; Parameter Name ; Value ; Type                                   ;
 +----------------+-------+----------------------------------------+
-; num_hex_digits ; 8     ; Signed Integer                         ;
+; num_hex_digits ; 16    ; Signed Integer                         ;
 +----------------+-------+----------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
@@ -821,7 +821,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:39     ;
+; Top            ; 00:00:37     ;
 +----------------+--------------+
 
 
@@ -831,7 +831,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
-    Info: Processing started: Thu May  5 23:17:46 2022
+    Info: Processing started: Fri May  6 16:48:38 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off LEG16 -c LEG16
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -864,14 +864,14 @@ Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(17): used impli
 Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(17): used implicit default value for signal "vert_sync_out" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 17
 Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(19): used implicit default value for signal "pixel_row" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 19
 Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(19): used implicit default value for signal "pixel_column" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 19
-Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(109): used implicit default value for signal "video_on_v" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 109
-Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(109): used implicit default value for signal "video_on_h" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 109
-Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(110): used implicit default value for signal "h_count" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 110
-Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(110): used implicit default value for signal "v_count" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 110
-Warning (10036): Verilog HDL or VHDL warning at VGA_SYNC.VHD(115): object "distToCircleCenterSquared" assigned a value but never read File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 115
-Warning (10540): VHDL Signal Declaration warning at VGA_SYNC.VHD(119): used explicit default value for signal "SP" because signal was never assigned a value File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 119
-Warning (10540): VHDL Signal Declaration warning at VGA_SYNC.VHD(123): used explicit default value for signal "memory" because signal was never assigned a value File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 123
-Info (12128): Elaborating entity "video_PLL" for hierarchy "VGA_SYNC_module:U1|video_PLL:video_PLL_inst" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 302
+Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(110): used implicit default value for signal "video_on_v" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 110
+Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(110): used implicit default value for signal "video_on_h" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 110
+Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(111): used implicit default value for signal "h_count" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 111
+Warning (10541): VHDL Signal Declaration warning at VGA_SYNC.VHD(111): used implicit default value for signal "v_count" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 111
+Warning (10036): Verilog HDL or VHDL warning at VGA_SYNC.VHD(116): object "distToCircleCenterSquared" assigned a value but never read File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 116
+Warning (10540): VHDL Signal Declaration warning at VGA_SYNC.VHD(120): used explicit default value for signal "SP" because signal was never assigned a value File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 120
+Warning (10540): VHDL Signal Declaration warning at VGA_SYNC.VHD(142): used explicit default value for signal "memory" because signal was never assigned a value File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 142
+Info (12128): Elaborating entity "video_PLL" for hierarchy "VGA_SYNC_module:U1|video_PLL:video_PLL_inst" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD Line: 321
 Info (12128): Elaborating entity "altpll" for hierarchy "VGA_SYNC_module:U1|video_PLL:video_PLL_inst|altpll:altpll_component" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/video_PLL.vhd Line: 132
 Info (12130): Elaborated megafunction instantiation "VGA_SYNC_module:U1|video_PLL:video_PLL_inst|altpll:altpll_component" File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/video_PLL.vhd Line: 132
 Info (12133): Instantiated megafunction "VGA_SYNC_module:U1|video_PLL:video_PLL_inst|altpll:altpll_component" with the following parameter: File: C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/video_PLL.vhd Line: 132
@@ -995,9 +995,9 @@ Info (21057): Implemented 574 device resources after synthesis - the final resou
     Info (21061): Implemented 508 logic cells
     Info (21065): Implemented 1 PLLs
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 71 warnings
-    Info: Peak virtual memory: 829 megabytes
-    Info: Processing ended: Thu May  5 23:18:37 2022
-    Info: Elapsed time: 00:00:51
-    Info: Total CPU time (on all processors): 00:01:03
+    Info: Peak virtual memory: 827 megabytes
+    Info: Processing ended: Fri May  6 16:49:28 2022
+    Info: Elapsed time: 00:00:50
+    Info: Total CPU time (on all processors): 00:01:01
 
 

@@ -1,5 +1,5 @@
 Fitter report for LEG16
-Thu May  5 23:18:52 2022
+Fri May  6 16:49:42 2022
 Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
 
 
@@ -70,7 +70,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Fitter Summary                                                                   ;
 +------------------------------------+---------------------------------------------+
-; Fitter Status                      ; Successful - Thu May  5 23:18:52 2022       ;
+; Fitter Status                      ; Successful - Fri May  6 16:49:42 2022       ;
 ; Quartus Prime Version              ; 21.1.0 Build 842 10/21/2021 SJ Lite Edition ;
 ; Revision Name                      ; LEG16                                       ;
 ; Top-level Entity Name              ; VGA_Test                                    ;
@@ -162,8 +162,8 @@ https://fpgasoftware.intel.com/eula.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.4%      ;
-;     Processors 3-4         ;   0.4%      ;
+;     Processor 2            ;   0.5%      ;
+;     Processors 3-4         ;   0.5%      ;
 +----------------------------+-------------+
 
 
@@ -3373,9 +3373,9 @@ Warning (169177): 9 pins must meet Intel FPGA requirements for 3.3-, 3.0-, and 2
 Info (144001): Generated suppressed messages file C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/output_files/LEG16.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 469 warnings
     Info: Peak virtual memory: 1498 megabytes
-    Info: Processing ended: Thu May  5 23:18:53 2022
-    Info: Elapsed time: 00:00:15
-    Info: Total CPU time (on all processors): 00:00:20
+    Info: Processing ended: Fri May  6 16:49:42 2022
+    Info: Elapsed time: 00:00:13
+    Info: Total CPU time (on all processors): 00:00:18
 
 
 +----------------------------+

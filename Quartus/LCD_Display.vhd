@@ -7,7 +7,7 @@ USE  IEEE.STD_LOGIC_UNSIGNED.all;
 ENTITY LCD_Display IS
 -- Enter number of live Hex hardware data values to display
 -- (do not count ASCII character constants)
-	GENERIC(constant Num_Hex_Digits: Integer); 
+	GENERIC(Num_Hex_Digits: Integer:= 4); 
 
 -----------------------------------------------------------------------
 -- LCD Displays 16 Characters on 2 lines
