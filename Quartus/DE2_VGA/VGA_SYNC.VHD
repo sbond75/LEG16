@@ -358,6 +358,7 @@ ARCHITECTURE a OF VGA_SYNC_module IS
     -- (PC=65)
     66 => (dataOrInstruction => "0001000110011100"), -- brdnz r1 to -100 -- Shouldn't branch
     -- (PC=66)
+    117 => (dataOrInstruction => "1000000010011101"), -- Add a branch back to after the `br to 100` instruction
     others => (dataOrInstruction => conv_std_logic_vector(0, 16))
 ); -- Instructions and data memory
 	
@@ -486,12 +487,12 @@ BEGIN
 					-- Write out res
 					Hex_Display_Data(31 downto 16) <= res;
 				when mn_br =>
-					if f_is_msb_set_forUInt8(decodedInstruction.immediate_orRegSelects_orRegSelectAndExtraOperation) = '1' then
-						imm := -conv_signed(conv_integer(decodedInstruction.immediate_orRegSelects_orRegSelectAndExtraOperation), 8);
-					--std_logic_vector(-signed(unsigned(decodedInstruction.immediate_orRegSelects_orRegSelectAndExtraOperation))); --std_logic_vector(-signed(resize(unsigned(decodedInstruction.immediate_orRegSelects_orRegSelectAndExtraOperation), imm'length))); -- two's complement ( https://stackoverflow.com/questions/20428277/twos-complement-vhdl )
-					else
+					-- if f_is_msb_set_forUInt8(decodedInstruction.immediate_orRegSelects_orRegSelectAndExtraOperation) = '1' then
+					-- 	imm := -conv_signed(conv_integer(decodedInstruction.immediate_orRegSelects_orRegSelectAndExtraOperation), 8);
+					-- --std_logic_vector(-signed(unsigned(decodedInstruction.immediate_orRegSelects_orRegSelectAndExtraOperation))); --std_logic_vector(-signed(resize(unsigned(decodedInstruction.immediate_orRegSelects_orRegSelectAndExtraOperation), imm'length))); -- two's complement ( https://stackoverflow.com/questions/20428277/twos-complement-vhdl )
+					-- else
 						imm := decodedInstruction.immediate_orRegSelects_orRegSelectAndExtraOperation;
-					end if;
+					-- end if;
 					case decodedInstruction.conditionOrRegSelect is
 						when cond_none =>
 							doBr := '1';
@@ -537,8 +538,12 @@ BEGIN
 						end case;
 						if doBr = '1' then
 							--p_doJump(PC, PC+imm*2, out_overrodePC);
-							  PC <= PC+imm; --TODO: hack, should multiply by 2 like above
-							  out_overrodePC := '1';
+							if f_is_msb_set_forUInt8(decodedInstruction.immediate_orRegSelects_orRegSelectAndExtraOperation) = '1' then
+								PC <= PC-imm;
+							else
+								PC <= PC+imm; --TODO: hack, should multiply by 2 like above
+								out_overrodePC := '1';
+							end if;
 						end if;
 				when others =>
 					Hex_Display_Data(31 downto 16) <= "0110011001100110";
