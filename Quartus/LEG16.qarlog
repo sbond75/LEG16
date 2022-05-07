@@ -1,0 +1,18 @@
+Quartus Prime Archive log --	C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/LEG16.qarlog
+
+Archive:	C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/LEG16.qar
+Date:		Fri May  6 20:16:30 2022
+Quartus Prime		21.1.0 Build 842 10/21/2021 SJ Lite Edition
+
+	=========== Files Selected: ===========
+C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_SYNC.VHD
+C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/VGA_Test.vhd
+C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/DE2_VGA/video_PLL.vhd
+C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/LCD_Display.vhd
+C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/LEG16.qpf
+C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/LEG16.qsf
+C:/Users/rab24ack/Desktop/FPGADesign/FinalProject/LEG16/Quartus/assignment_defaults.qdf
+	======= Total: 7 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.
